@@ -446,9 +446,10 @@
         case NC_BYTE:
         {
             unsigned char *theText;
-            theText = (unsigned char *)malloc(sizeof(unsigned char)*[[theValues objectAtIndex:0]length]);
+            //assumes object is an NSData object
+            theText = (unsigned char *)malloc(sizeof(unsigned char)*[(NSData *)[theValues objectAtIndex:0]length]);
             [[theValues objectAtIndex:0] getBytes:theText];
-            status = nc_put_att_uchar (ncid,varID,[attName cString],theType,[[theValues objectAtIndex:0]length],theText);
+            status = nc_put_att_uchar (ncid,varID,[attName cString],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
             free(theText);
             if(status!=NC_NOERR)
             {
@@ -460,7 +461,8 @@
         }
         case NC_CHAR:
         {
-            status = nc_put_att_text (ncid,varID,[attName cString],[[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cString]);
+            //now assuming that the object at index is a NSData object
+            status = nc_put_att_text (ncid,varID,[attName cString],[(NSData *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cString]);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Write NC_CHAR" errorCode:status];
