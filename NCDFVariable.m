@@ -1874,4 +1874,71 @@
     }
     return nil;
 }
+
+-(NSString *)htmlDescription
+{
+	NSMutableString *theString = [[[NSMutableString alloc] init]autorelease];
+	NSArray *theCurrentDims = [self allVariableDimInformation];
+	NSArray *theCurrentAtts = [self getVariableAttributes];
+	//Step 1.  Add variable name and internal link
+	
+	[theString appendString:@"\n<BR>\n"];
+	[theString appendFormat:@"<a name=\"var-%@\"></a><h4>%@</h4><BR>",[self variableName],[self variableName]];
+	[theString appendString:@"<blockquote>\n"];
+	//Step 2. Dimension information
+	 if([theCurrentDims count] > 0)
+	 {
+		 [theString appendString:@"<b>Dimensions</b>\n<BR>\n"];
+		 //Step 2a. create a table
+		 [theString appendString:@"<table width=\"600\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\">\n"];
+		 NSEnumerator *anEnum = [theCurrentDims objectEnumerator];
+		 NCDFDimension *aDim;
+		 while(aDim = [anEnum nextObject])
+		 {
+			 [theString appendString:@"<tr>\n"];
+				[theString appendString:@"<td  width=\"200\">\n"];
+					[theString appendFormat:@"%@",[aDim dimensionName]];
+				[theString appendString:@"</td>\n"];
+				[theString appendString:@"<td>\n"];
+					[theString appendFormat:@"%i",[aDim dimLength]];
+				[theString appendString:@"</td>\n"];
+			 [theString appendString:@"</tr>\n"];
+			 
+		 }
+		 [theString appendString:@"</table>"];
+	 }
+	 else
+	 {
+		 [theString appendFormat:@"<b>Dimensionless</b>\n<BR>\n"];
+	 }
+	 [theString appendString:@"<P>"];
+	//Step 3. Attribute Information
+	 if([theCurrentAtts count] > 0)
+	 {
+		 [theString appendString:@"<b>Attributes</b>\n<BR>\n"];
+		 //Step 2a. create a table
+		 [theString appendString:@"<table width=\"600\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\">\n"];
+		 NSEnumerator *anEnum = [theCurrentAtts objectEnumerator];
+		 NCDFAttribute *anAtt;
+		 while(anAtt = [anEnum nextObject])
+		 {
+			 [theString appendString:@"<tr>\n"];
+			 [theString appendString:@"<td  width=\"200\">\n"];
+			 [theString appendFormat:@"%@",[anAtt attributeName]];
+			 [theString appendString:@"</td>\n"];
+			 [theString appendString:@"<td>\n"];
+			 [theString appendFormat:@"%@",[anAtt contentDescription]];
+			 [theString appendString:@"</td>\n"];
+			 [theString appendString:@"</tr>\n"];
+			 
+		 }
+		 [theString appendString:@"</table>"];
+	 }
+	 else
+	 {
+		 [theString appendFormat:@"<b>No Variable Attributes</b>\n<BR>\n"];
+	 }
+	 [theString appendString:@"</blockquote>\n"];
+	 return [NSString stringWithString:theString];
+}
 @end

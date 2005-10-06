@@ -419,4 +419,11 @@
 
 */
 -(NCDFAttribute *)variableAttributeByName:(NSString *)name;
+
+	/*! 
+	@method htmlDescription:
+    @abstract Returns a description of the variable and all of its attributes in an html form.
+    @discussion  This method is to provide a method to export the metadata of a netcdf file into a HTML document.
+	*/
+-(NSString *)htmlDescription;
 @end

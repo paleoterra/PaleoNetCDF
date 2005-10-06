@@ -1296,6 +1296,146 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     return result;
 }
 
-
+-(NSString *)htmlDescription
+{
+	/*
+	 theVariables;
+	 NSMutableArray *theGlobalAttributes;
+	 NSMutableArray *theDimensions
+	 */
+	NSMutableString *theString = [[[NSMutableString alloc] init] autorelease];
+	//Step 1. Header
+	[theString appendString:@"<html>\n"];
+	[theString appendString:@"<head>\n"];
+	[theString appendFormat:@"<title>NetCDF File Description: %@</title>\n",[[self theFilePath] lastPathComponent]];
+	[theString appendString:@"</head>\n"];
+	[theString appendString:@"<body>\n"];
+	
+	[theString appendFormat:@"<center><H1>NetCDF File Description: %@</H1></center>\n<BR>",[[self theFilePath] lastPathComponent]];
+	
+	//create quick links for each value
+	[theString appendString:@"Quicklinks:<P>\n"];
+	[theString appendString:@"\n<table width=\"600\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\">\n"];
+	
+	[theString appendString:@"<tr>\n"];
+	[theString appendString:@"<td width=\"200\">"];
+	[theString appendString:@"Global Attributes:<BR>"];
+	[theString appendString:@"</td>"];
+	[theString appendString:@"<td width=\"200\">"];
+	[theString appendString:@"Dimensions:<BR>\n"];
+	[theString appendString:@"</td>"];
+	[theString appendString:@"<td width=\"200\">"];
+	[theString appendString:@"Variables:<BR>\n"];
+	[theString appendString:@"</td>"];
+	[theString appendString:@"</tr>\n"];
+	
+	[theString appendString:@"<tr>\n"];
+	
+	[theString appendString:@"<td valign=\"top\" width=\"200\">"];
+	if([theGlobalAttributes count] >0)
+	{
+		NSEnumerator *anEnum = [theGlobalAttributes objectEnumerator];
+		NCDFAttribute *anAtt;
+		while(anAtt = [anEnum nextObject])
+		{
+			[theString appendFormat:@"<a href=\"#gatt-%@\">%@</a><BR>\n",[anAtt attributeName],[anAtt attributeName]];
+		}
+	}
+	[theString appendString:@"<P>"];
+	[theString appendString:@"</td>"];
+	
+	[theString appendString:@"<td valign=\"top\" width=\"200\">"];
+	if([theDimensions count] >0)
+	{
+		NSEnumerator *anEnum = [theDimensions objectEnumerator];
+		NCDFDimension *aDim;
+		while(aDim = [anEnum nextObject])
+		{
+			[theString appendFormat:@"<a href=\"#dim-%@\">%@</a><BR>\n",[aDim dimensionName],[aDim dimensionName]];
+		}
+	}
+	[theString appendString:@"<P>"];
+	[theString appendString:@"</td>"];
+	
+	[theString appendString:@"<td valign=\"top\" width=\"200\">"];
+	if([theVariables count] >0)
+	{
+		NSEnumerator *anEnum = [theVariables objectEnumerator];
+		NCDFVariable *aVar;
+		while(aVar = [anEnum nextObject])
+		{
+			[theString appendFormat:@"<a href=\"#var-%@\">%@</a><BR>\n",[aVar variableName],[aVar variableName]];
+		}
+	}
+	[theString appendString:@"</td>"];
+	[theString appendString:@"</tr>\n"];
+	[theString appendString:@"</table>\n"];
+	[theString appendString:@"<P>"];
+	
+	[theString appendString:@"<hr>"];
+	
+	//at this point, I'm ready to build all technical information for the document.
+	
+	
+	//part 1. attributes.  Attributes don't self-generate HTML.  This is becuase they're likely to be in a table.  
+	//in this case, 1 table per attribute.
+	
+	
+	//[theString appendString:@"\n<table width=\"500\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\">\n"];
+	
+	if([theGlobalAttributes count] >0)
+	{
+		[theString appendString:@"<H2> Global Attributes:<H2><BR>\n"];
+		NSEnumerator *anEnum = [theGlobalAttributes objectEnumerator];
+		NCDFAttribute *anAtt;
+		while(anAtt = [anEnum nextObject])
+		{
+			[theString appendString:@"\n<table width=\"600\" border=\"1\" cellspacing=\"3\" cellpadding=\"0\">\n"];
+			[theString appendString:@"<tr>\n"];
+			[theString appendString:@"<td valign=\"top\" width=\"200\">\n"];
+			[theString appendFormat:@"<a name=\"gatt-%@\"></a>%@\n",[anAtt attributeName],[anAtt attributeName]];
+			[theString appendString:@"</td>\n"];
+			[theString appendString:@"<td valign=\"top\" >\n"];
+			[theString appendFormat:@"%@",[anAtt contentDescription]];
+			[theString appendString:@"</td>\n"];
+			[theString appendString:@"</table>"];
+		}
+	}
+	
+	//part 2. dims.  make individual tables like the atts.
+	if([theDimensions count] >0)
+	{
+		[theString appendString:@"<H2>Dimensions:<H2><BR>\n"];
+		NSEnumerator *anEnum = [theDimensions objectEnumerator];
+		NCDFDimension *aDim;
+		while(aDim = [anEnum nextObject])
+		{
+			[theString appendString:@"\n<table width=\"600\" border=\"1\" cellspacing=\"3\" cellpadding=\"0\">\n"];
+			[theString appendString:@"<tr>\n"];
+			[theString appendString:@"<td  valign=\"top\" width=\"200\">\n"];
+			[theString appendFormat:@"<a name=\"dim-%@\"></a>%@\n",[aDim dimensionName],[aDim dimensionName]];
+			[theString appendString:@"</td>\n"];
+			[theString appendString:@"<td valign=\"top\" >\n"];
+			[theString appendFormat:@"%i",[aDim dimLength]];
+			[theString appendString:@"</td>\n"];
+			[theString appendString:@"</table>"];
+		}
+	}
+	
+	//part 2. dims.  make individual tables like the atts.
+	if([theVariables count] >0)
+	{
+		[theString appendString:@"<H2>Variables:<H2><BR>\n"];
+		NSEnumerator *anEnum = [theVariables objectEnumerator];
+		NCDFVariable *aVar;
+		while(aVar = [anEnum nextObject])
+		{
+			[theString appendString:[aVar htmlDescription]];
+		}
+	}
+	[theString appendString:@"</body>\n"];
+	[theString appendString:@"</html>\n"];
+	return [NSString stringWithString:theString];
+}
 
 @end
