@@ -579,7 +579,7 @@
     
     if(theErrorHandle == nil)
         theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+    status = nc_open([fileName cString],NC_NOWRITE,&ncid);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getVariableAttributes" subMethod:@"Open file" errorCode:status];
