@@ -10,7 +10,7 @@
 		089C1668FE841158C02AAC07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		08FB77B5FE84181DC02AAC07 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB77B4FE84181DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		1058C7B3FEA5585E11CA2CBB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
-		B4326AC2090F2F8B000B7357 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4326AC1090F2F8B000B7357 /* netcdf.h */; };
+		B4326AC2090F2F8B000B7357 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4326AC1090F2F8B000B7357 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4326AC4090F2F94000B7357 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4326AC3090F2F94000B7357 /* libnetcdf.a */; };
 		F577E7F102F7267901EA6D6B /* NCDFError.h in Headers */ = {isa = PBXBuildFile; fileRef = F577E7EF02F7267901EA6D6B /* NCDFError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F577E7F202F7267901EA6D6B /* NCDFError.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F002F7267901EA6D6B /* NCDFError.m */; };
@@ -547,7 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -556,7 +556,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.2.8.sdk;
 			};
 			name = Development;
 		};
@@ -564,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -573,7 +573,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.2.8.sdk;
 			};
 			name = Deployment;
 		};
@@ -581,7 +581,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -590,7 +590,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.2.8.sdk;
 			};
 			name = test;
 		};
@@ -598,7 +598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.2;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -607,7 +607,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.2.8.sdk;
 			};
 			name = Default;
 		};
