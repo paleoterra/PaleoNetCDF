@@ -352,12 +352,107 @@
 			};
 			PBXWorkspaceStateSaveDate = 152742503;
 		};
+		perUserProjectItems = {
+			B46DDF73091AAF86001A5988 /* PBXTextBookmark */ = B46DDF73091AAF86001A5988 /* PBXTextBookmark */;
+			B46DDF74091AAF86001A5988 /* PBXTextBookmark */ = B46DDF74091AAF86001A5988 /* PBXTextBookmark */;
+			B46DDF77091AAFB5001A5988 /* PBXTextBookmark */ = B46DDF77091AAFB5001A5988 /* PBXTextBookmark */;
+			B46DDF78091AAFB5001A5988 /* PBXTextBookmark */ = B46DDF78091AAFB5001A5988 /* PBXTextBookmark */;
+			B46DDF79091AAFB5001A5988 /* PBXTextBookmark */ = B46DDF79091AAFB5001A5988 /* PBXTextBookmark */;
+			B46DDF7A091AAFB5001A5988 /* PBXTextBookmark */ = B46DDF7A091AAFB5001A5988 /* PBXTextBookmark */;
+			B46DDF7D091AAFDF001A5988 /* PBXTextBookmark */ = B46DDF7D091AAFDF001A5988 /* PBXTextBookmark */;
+			B46DDF7E091AAFDF001A5988 /* PBXTextBookmark */ = B46DDF7E091AAFDF001A5988 /* PBXTextBookmark */;
+			B46DDF7F091AAFE4001A5988 /* PBXTextBookmark */ = B46DDF7F091AAFE4001A5988 /* PBXTextBookmark */;
+		};
 		sourceControlManager = B4E21034080C4EB4001311B3 /* Source Control */;
 		userBuildSettings = {
 		};
 	};
 	0867D69CFE84028FC02AAC07 /* netcdf */ = {
 		activeExec = 0;
+	};
+	B46DDF73091AAF86001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "pointer targets in passing argument 4 of 'nc_get_att_text' differ in signedness";
+		fRef = F59DFCF8021B0C04018B4C67 /* NCDFAttribute.m */;
+		rLen = 1;
+		rLoc = 122;
+		rType = 1;
+	};
+	B46DDF74091AAF86001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F59DFCF8021B0C04018B4C67 /* NCDFAttribute.m */;
+		name = "status = nc_get_att_text (ncid,variableID,[attName cString],theText);";
+		rLen = 82;
+		rLoc = 3340;
+		rType = 0;
+		vrLen = 1151;
+		vrLoc = 2769;
+	};
+	B46DDF77091AAFB5001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F59DFCF8021B0C04018B4C67 /* NCDFAttribute.m */;
+		name = "theString = [NSString stringWithCString:theText];";
+		rLen = 62;
+		rLoc = 3747;
+		rType = 0;
+		vrLen = 1142;
+		vrLoc = 2769;
+	};
+	B46DDF78091AAFB5001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "pointer targets in passing argument 3 of 'nc_put_var_text' differ in signedness";
+		fRef = F59DFCFC021B183E018B4C67 /* NCDFVariable.m */;
+		rLen = 1;
+		rLoc = 296;
+		rType = 1;
+	};
+	B46DDF79091AAFB5001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F59DFCF8021B0C04018B4C67 /* NCDFAttribute.m */;
+		name = "theString = [NSString stringWithCString:theText];";
+		rLen = 62;
+		rLoc = 3747;
+		rType = 0;
+		vrLen = 1142;
+		vrLoc = 2769;
+	};
+	B46DDF7A091AAFB5001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F59DFCFC021B183E018B4C67 /* NCDFVariable.m */;
+		name = "result = nc_put_var_text(ncid,varID,theText);";
+		rLen = 58;
+		rLoc = 9564;
+		rType = 0;
+		vrLen = 1097;
+		vrLoc = 9047;
+	};
+	B46DDF7D091AAFDF001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "pointer targets in passing argument 3 of 'nc_put_var_text' differ in signedness";
+		fRef = F59DFCFC021B183E018B4C67 /* NCDFVariable.m */;
+		rLen = 1;
+		rLoc = 296;
+		rType = 1;
+	};
+	B46DDF7E091AAFDF001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F59DFCFC021B183E018B4C67 /* NCDFVariable.m */;
+		name = "result = nc_put_var_text(ncid,varID,theText);";
+		rLen = 58;
+		rLoc = 9564;
+		rType = 0;
+		vrLen = 1226;
+		vrLoc = 9346;
+	};
+	B46DDF7F091AAFE4001A5988 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F59DFCFC021B183E018B4C67 /* NCDFVariable.m */;
+		name = "result = nc_put_var_text(ncid,varID,theText);";
+		rLen = 58;
+		rLoc = 9564;
+		rType = 0;
+		vrLen = 1226;
+		vrLoc = 9346;
 	};
 	B4E21034080C4EB4001311B3 /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -445,8 +540,8 @@
 	F59DFCF8021B0C04018B4C67 /* NCDFAttribute.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1526, 6356}}";
-			sepNavSelRange = "{11066, 8}";
-			sepNavVisRect = "{{0, 5032}, {734, 59}}";
+			sepNavSelRange = "{3747, 62}";
+			sepNavVisRect = "{{0, 1509}, {777, 385}}";
 			sepNavWindowFrame = "{{15, 116}, {913, 881}}";
 		};
 	};
@@ -461,8 +556,8 @@
 	F59DFCFC021B183E018B4C67 /* NCDFVariable.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1454, 27230}}";
-			sepNavSelRange = "{39022, 15}";
-			sepNavVisRect = "{{0, 15034}, {868, 752}}";
+			sepNavSelRange = "{9564, 58}";
+			sepNavVisRect = "{{0, 4084}, {777, 385}}";
 			sepNavWindowFrame = "{{21, 121}, {913, 881}}";
 		};
 	};

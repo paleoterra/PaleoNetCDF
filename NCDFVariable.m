@@ -92,8 +92,8 @@
     {
         case NC_BYTE:
         {
-            unsigned char *theText;
-            theText = (unsigned char *)malloc(sizeof(unsigned char)*total_values);
+            char *theText;
+            theText = (char *)malloc(sizeof(char)*total_values);
             result = nc_get_var_text(ncid,varID,theText);
             if(result!=NC_NOERR)
             {
@@ -287,12 +287,12 @@
     {
         case NC_BYTE:
         {
-            unsigned char *theText;
+             char *theText;
             NSLog(@"byte");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length];
             
-            theText = (unsigned char *)malloc(sizeof(unsigned char)*total_values);
+            theText = ( char *)malloc(sizeof( char)*total_values);
             [dataForWriting getBytes:theText];
             result = nc_put_var_text(ncid,varID,theText);
             if(result!=NC_NOERR)

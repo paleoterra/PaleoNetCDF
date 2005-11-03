@@ -117,7 +117,7 @@
         }
         case NC_CHAR:
         {
-            unsigned char *theText;
+            char *theText;
             NSString *theString;
             theText = (char *)malloc(sizeof(char)*length+1);
             status = nc_get_att_text (ncid,variableID,[attName cString],theText);
