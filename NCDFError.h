@@ -16,6 +16,7 @@ information to a programmer and end user.
 
 
 /*!
+	@header
   @class NCDFError
 @abstract NCDFError objects handle errors created by netcdf file operations.
     @discussion One limitation of the netCDF libary is that it doesn't allow for localized error codes

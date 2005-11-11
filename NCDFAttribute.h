@@ -7,9 +7,10 @@
 //
 
 /*!
+	@header
   @class NCDFAttribute
-@abstract NCDFAttribute objects handle information about netcdf attributes
-    @discussion NCDFAttribute objects are the primary control objects for both netcdf global attributes and variable attributes.  NCDFHandles and NCDFVariables are the primary classes that should create NCDFAttribute object.  Attributes contain metadata information about a netcdf file or variable.  
+  @abstract NCDFAttribute objects handle information about netcdf attributes
+  @discussion NCDFAttribute objects are the primary control objects for both netcdf global attributes and variable attributes.  NCDFHandles and NCDFVariables are the primary classes that should create NCDFAttribute object.  Attributes contain metadata information about a netcdf file or variable.  
 */
 
 #import <Foundation/Foundation.h>

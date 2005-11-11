@@ -7,8 +7,9 @@
 //
 
 /*!
+	@header
   @class NCDFHandle
-@abstract NCDFHandle is the primary class of working with netcdf files
+ @abstract NCDFHandle is the primary class of working with netcdf files
     @discussion NCDFHandle is the primary interface for a netcdf file.  It will automatically discover the contents for a netcdf file for you.  It also allows you to change the overall file structure by adding or removing attributes, dimensions, and variables.  Only one NCDFHandle should exist per netcdf file.  Although a handle may exist, the actual netcdf file is not open except when the handle is conducting a file operation.  It also manages some temporary work files created during the file editing process for protection of the original file.
 */
 

@@ -8,6 +8,7 @@
 
 
 /*!
+	@header
   @class NCDFErrorHandle
 @abstract NCDFErrorHandle objects handle errors created by netcdf file operations.
     @discussion One limitation of the netCDF libary is that it doesn't allow for localized error codes

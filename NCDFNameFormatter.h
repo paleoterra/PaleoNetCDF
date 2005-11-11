@@ -7,9 +7,10 @@
 //
 
 /*!
-  @class NCDFNameFormatter
-@abstract NCDFNameFormatter is a subclass of NSFormatter designed to turn a number into a byte size report for display.
-    @discussion This method is a convenience method for GUI interface elements.  It should be attached to any NSTextField for which a user can define a name of an attribute, dimension, or variable.  This class will prevent the user from passing illegal names.
+	@header
+	@class NCDFNameFormatter
+	@abstract NCDFNameFormatter is a subclass of NSFormatter designed to turn a number into a byte size report for display.
+	@discussion This method is a convenience method for GUI interface elements.  It should be attached to any NSTextField for which a user can define a name of an attribute, dimension, or variable.  This class will prevent the user from passing illegal names.
 */
 #import <Foundation/Foundation.h>
 

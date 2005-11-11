@@ -7,6 +7,7 @@
 //
 
 /*!
+@header
   @class NCDFDimension
 @abstract NCDFDimension objects handle information about netcdf dimensions
     @discussion

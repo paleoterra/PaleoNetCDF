@@ -7,6 +7,7 @@
 //
 
 /*!
+@header
   @class NCDFVariable
 @abstract NCDFVariable objects handle data sets within netcdf files.
     @discussion NCDFVariable objects are the primary interface for working with netcdf data sets.  The datasets are in the form of binary raster data using 0 to many dimensions.  The dimensions refered to by a variable describe the variable's data shape.  Use this class to access and write data from a netcdf file.  
