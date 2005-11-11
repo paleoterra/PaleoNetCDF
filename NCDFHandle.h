@@ -29,7 +29,9 @@
 
 
 
-
+/*!
+	@functiongroup Initialization
+*/
 
 //*****************************INITIALIZATION METHODS***********************************
 /*!
@@ -57,6 +59,9 @@
 */
 -(void)dealloc;
 
+/*!
+	@functiongroup Internal Use Only
+*/
 
 //*****************************SETUP METHODS***********************************
 /*!
@@ -72,12 +77,21 @@
 
   @discussion This method allows access to the path for the current netcdf file. <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+
+	/*!
+	@functiongroup Handle Information
+	 */
 -(NSString *)theFilePath;
 /*!
   @method initializeArrays
   @abstract This method initializes all the metadata arrays that hold the contents of the netcdf file.
   @discussion This private method empties all the arrays the store all NCDFVariables, NCDFDimensions, and NCDFAttributes.  It should not be called exept by existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+
+/*!
+	@functiongroup Internal Use Only
+*/
+
 -(void)initializeArrays;
 /*!
   @method seedArrays
@@ -94,6 +108,9 @@
 */
 -(void)createFileAtPath:(NSString *)thePath;
 
+	/*!
+	@functiongroup Handle Information
+	 */
 /*!
   @method refresh
   @abstract Force reset of the NCDFHandle metadata.
@@ -105,6 +122,9 @@
 
 //*****************************ACCESSORS***********************************
 
+	/*!
+	@functiongroup Working With Dimensions
+	 */
 
 /*!
   @method getDimensions
@@ -119,23 +139,39 @@
 
   @discussion This method returns all netcdf global attributes for a file in a NSMutableArray.  NSMutableArrays are used so that applications can maintain connection with this array even after the NCDFHandle makes a refresh call. <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+
+	/*!
+	@functiongroup Working With Attributes
+	 */
 -(NSMutableArray *)getGlobalAttributes;
+
+	/*!
+	@functiongroup Working With Variables
+	 */	
 /*!
   @method getVariables
   @abstract Retrieves all NCDFVariables for variables.
   @discussion This method returns all netcdf variables for a file in a NSMutableArray.  NSMutableArrays are used so that applications can maintain connection with this array even after the NCDFHandle makes a refresh call.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+	
 -(NSMutableArray *)getVariables;
 /*!
   @method theErrorHandle
   @abstract Retrieves a pointer to the default NCDFErrorHandle.
   @discussion This method returns the default error handle.  This can be obtained by this method and directly from the error handle itself.  <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+
+	/*!
+	@functiongroup Error Handling
+	 */
+
 -(NCDFErrorHandle *)theErrorHandle;
 
 
 //*****************************DIMENSIONS***********************************
-
+	/*!
+	@functiongroup Working With Dimensions
+	 */
 /*!
   @method createNewDimensionWithName:size:
   @abstract Creates a new dimension in the netcdf file.
@@ -190,7 +226,9 @@
 
 
 //*****************************GLOBAL ATTRIBUTES***********************************
-
+	/*!
+	@functiongroup Working With Attributes
+	 */
 /*!
   @method createNewGlobalAttributeWithName:dataType:values:
   @abstract Creates a new global attribute.
@@ -240,6 +278,10 @@
 
 
 //*****************************VALIDATION OF TEXT***********************************
+
+	/*!
+	@functiongroup Internal Use Only
+	 */
 /*!
   @method parseNameString:
   @abstract Parses a new name string to ensure compliance with netcdf naming standards.
@@ -251,8 +293,10 @@
 -(NSString *)parseNameString:(NSString *)theString;
 
 
-//*****************************VALIDATION OF TEXT***********************************
-
+//*****************************VariablesT***********************************
+	/*!
+	@functiongroup Working With Variables
+	 */
 /*!
   @method createNewVariableWithName:type:dimNameArray:
   @abstract Creates a new variable.
@@ -317,6 +361,10 @@
         
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+
+	/*!
+	@functiongroup Working With Dimensions
+	 */
 -(NCDFDimension *)retrieveDimensionByName:(NSString *)aName;
 
 /*!
@@ -344,6 +392,10 @@
         
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
+
+	/*!
+	@functiongroup Working With Dimensions
+	 */
 -(NCDFDimension *)retrieveDimensionByIndex:(int)index;
 
 /*!
@@ -355,10 +407,15 @@
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)extendUnlimitedVariableBy:(int)units;
+
+	/*!
+	@functiongroup Exporting Metadata
+	 */
 	/*! 
-		 @method htmlDescription:
+		 @method htmlDescription
     @abstract Returns a description of the variable and all of its attributes in an html form.
     @discussion  This method is to provide a method to export the metadata of a netcdf file into a HTML document.
 	*/
+
 -(NSString *)htmlDescription;
 @end

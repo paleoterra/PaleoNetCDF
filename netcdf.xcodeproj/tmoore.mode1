@@ -204,48 +204,7 @@
 		</dict>
 	</array>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>B4E1C89509242C3E0014A0B6</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>netcdf.hdoc</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>B4E1C89609242C3E0014A0B6</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>netcdf.hdoc</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>B4E1C8CE09242DBE0014A0B6</string>
-						<key>history</key>
-						<array>
-							<string>B4E1C89709242C3E0014A0B6</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {913, 784}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>423 -234 913 825 0 0 1280 1002 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -278,8 +237,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -329,8 +286,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
-									<integer>4</integer>
+									<integer>9</integer>
+									<integer>7</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -356,7 +313,7 @@
 							<real>247</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>306 444 817 410 0 0 1280 1002 </string>
+						<string>13 498 817 410 0 0 1280 1002 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -367,12 +324,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>netcdf.h</string>
+								<string>NCDFHandle.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -380,15 +339,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>netcdf.h</string>
+										<string>NCDFHandle.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B4E1C8CD09242DBE0014A0B6</string>
+										<string>B4E1C90E09243AF00014A0B6</string>
 										<key>history</key>
 										<array>
-											<string>B4E1C8B809242DBE0014A0B6</string>
-											<string>B4E1C8B909242DBE0014A0B6</string>
 											<string>B4E1C8BA09242DBE0014A0B6</string>
 											<string>B4E1C8BB09242DBE0014A0B6</string>
 											<string>B4E1C8BC09242DBE0014A0B6</string>
@@ -396,8 +353,12 @@
 											<string>B4E1C8BE09242DBE0014A0B6</string>
 											<string>B4E1C8BF09242DBE0014A0B6</string>
 											<string>B4E1C8C009242DBE0014A0B6</string>
-											<string>B4E1C8C109242DBE0014A0B6</string>
-											<string>B4E1C8C209242DBE0014A0B6</string>
+											<string>B4E1C8D4092431C80014A0B6</string>
+											<string>B4E1C8D5092431C80014A0B6</string>
+											<string>B4E1C8D7092431C80014A0B6</string>
+											<string>B4E1C8E7092432B00014A0B6</string>
+											<string>B4E1C8FC09243A070014A0B6</string>
+											<string>B4E1C8E6092432B00014A0B6</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -411,6 +372,13 @@
 											<string>B4E1C8CA09242DBE0014A0B6</string>
 											<string>B4E1C8CB09242DBE0014A0B6</string>
 											<string>B4E1C8CC09242DBE0014A0B6</string>
+											<string>B4E1C8D8092431C80014A0B6</string>
+											<string>B4E1C8D9092431C80014A0B6</string>
+											<string>B4E1C8DA092431C80014A0B6</string>
+											<string>B4E1C8DB092431C80014A0B6</string>
+											<string>B4E1C8E8092432B00014A0B6</string>
+											<string>B4E1C8E9092432B00014A0B6</string>
+											<string>B4E1C8FD09243A070014A0B6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -424,7 +392,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {526, 250}}</string>
 								<key>RubberWindowFrame</key>
-								<string>306 444 817 410 0 0 1280 1002 </string>
+								<string>13 498 817 410 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -444,7 +412,7 @@
 								<key>Frame</key>
 								<string>{{0, 255}, {526, 114}}</string>
 								<key>RubberWindowFrame</key>
-								<string>306 444 817 410 0 0 1280 1002 </string>
+								<string>13 498 817 410 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -589,7 +557,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>153365950.496279</real>
+	<real>153369328.899308</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -605,14 +573,13 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>B4E1C86F092427070014A0B6</string>
-		<string>B46DE096091B06BD001A5988</string>
 		<string>B4326ABB090F2F12000B7357</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
-		<string>B4E1C89509242C3E0014A0B6</string>
 		<string>/Volumes/Work/_checkedout/netcdfframework/netcdf.xcodeproj</string>
+		<string>B46DE096091B06BD001A5988</string>
 	</array>
 	<key>WindowString</key>
-	<string>306 444 817 410 0 0 1280 1002 </string>
+	<string>13 498 817 410 0 0 1280 1002 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>
@@ -633,7 +600,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>NCDFVariableByteSizeFormatter.h</string>
+								<string>NCDFHandle.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -704,7 +671,7 @@
 			<key>WindowToolGUID</key>
 			<string>B46DE096091B06BD001A5988</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
