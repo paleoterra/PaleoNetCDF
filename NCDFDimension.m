@@ -89,7 +89,7 @@
     if(theErrorHandle==nil)
         theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
     newName = [self parseNameString:newName];
-    theCPath = (char *)malloc(sizeof(char)*[fileName length]);
+    theCPath = (char *)malloc(sizeof(char)*[fileName length]+1);
     [fileName getCString:theCPath];
     status = nc_open(theCPath,NC_WRITE,&ncid);
     free(theCPath);
@@ -104,7 +104,7 @@
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFDimension" methodName:@"renameDimension" subMethod:@"redefine mode" errorCode:status];
         return NO;
     }
-    theCName = (char *)malloc(sizeof(char)*[newName length]);
+    theCName = (char *)malloc(sizeof(char)*[newName length]+1);
     [newName getCString:theCName];
     status = nc_rename_dim(ncid,dimID,theCName);
     free(theCName);

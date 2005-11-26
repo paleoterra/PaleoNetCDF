@@ -30,7 +30,7 @@
     [self seedArrays];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self autorelease];
+        [self release];
         return nil;
     }
     else
@@ -52,7 +52,7 @@
     [self createFileAtPath:thePath];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self autorelease];
+        [self release];
         return nil;
     }
     [self setFilePath:thePath];
@@ -60,7 +60,7 @@
     [self seedArrays];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self autorelease];
+        [self release];
         return nil;
     }
     else
@@ -121,7 +121,7 @@
 #endif
     if(!filePath)
         return;
-    theCPath = (char *)malloc(sizeof(char)*[filePath length]);
+    theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
     [filePath getCString:theCPath];
     //NSLog(@"%s",theCPath);
     status = nc_open(theCPath,NC_NOWRITE,&ncid);
@@ -324,7 +324,7 @@
 #ifdef DEBUG_LOG
     NSLog(dimName);
 #endif
-    theCPath = (char *)malloc(sizeof(char)*[filePath length]);
+    theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
     [filePath getCString:theCPath];
     status = nc_open(theCPath,NC_WRITE,&ncid);
     free(theCPath);
@@ -339,7 +339,7 @@
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewDimensionWithName" subMethod:@"Set redefine mode" errorCode:status];
         return NO;
     }
-    theCName = (char *)malloc(sizeof(char)*[dimName length]);
+    theCName = (char *)malloc(sizeof(char)*[dimName length]+1);
     [dimName getCString:theCName];
     status = nc_def_dim(ncid,theCName,length,&newID);
     free(theCName);
@@ -411,7 +411,7 @@
     
     
     
-    theCPath = (char *)malloc(sizeof(char)*[filePath length]);
+    theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
     [filePath getCString:theCPath];
     status = nc_open(theCPath,NC_WRITE,&ncid);
     free(theCPath);
@@ -437,7 +437,7 @@
         NSLog(dimName);
 #endif
         length = [[newDimensionArray objectAtIndex:i]dimLength];
-        theCName = (char *)malloc(sizeof(char)*[dimName length]);
+        theCName = (char *)malloc(sizeof(char)*[dimName length]+1);
         [dimName getCString:theCName];
         status = nc_def_dim(ncid,theCName,length,&newID);
         if(status!=NC_NOERR)
@@ -453,8 +453,7 @@
     [validDim release];
     [self initializeArrays];
     [self seedArrays];
-    [returnDims autorelease];
-    return [NSArray arrayWithArray:returnDims];
+    return [NSArray arrayWithArray:[returnDims autorelease]];
 
 }
 
@@ -503,7 +502,7 @@
         [theManager removeFileAtPath:filePath handler:nil];
         [theManager movePath:tempPath toPath:filePath handler:nil];
         [self refresh];
-        [newHandle autorelease];
+        [newHandle release];
         return YES;
     }
 }
@@ -599,7 +598,7 @@
         [theManager removeFileAtPath:filePath handler:nil];
         [theManager movePath:tempPath toPath:filePath handler:nil];
         [self refresh];
-        [newHandle autorelease];
+        [newHandle release];
         return YES;
     }
 }
@@ -625,7 +624,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 #endif
     attName = [self parseNameString:attName];
 
-    theCPath = (char *)malloc(sizeof(char)*[filePath length]);
+    theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
     [filePath getCString:theCPath];
 
     status = nc_open(theCPath,NC_WRITE,&ncid);
@@ -798,8 +797,8 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         else
         [existingAttributes addObject:[theNewAttributes objectAtIndex:i]];
     }
-    [existingAttributes autorelease];
-    return [NSArray arrayWithArray:existingAttributes];
+    
+    return [NSArray arrayWithArray:[existingAttributes autorelease]];
 }
 
 -(BOOL)deleteGlobalAttributeWithName:(NSString *)attName
@@ -843,7 +842,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 {
     /*This method ensures that a name for creation or renaming of an netcdf object does not contain white spaces.  All white spaces are replaced with "_" values.*/
     /*Validation*/
-    NSString *newString;
+    
     NSMutableString *mutString;
     NSRange theRange;
     NSScanner *theScanner = [NSScanner scannerWithString:theString];
@@ -860,8 +859,8 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         if(![theScanner isAtEnd])
             [mutString replaceCharactersInRange:theRange withString:@"_"];
     }
-    newString = [[NSString stringWithString:mutString] retain];
-    return [newString autorelease];
+    
+    return [NSString stringWithString:mutString];
 }
 
 
@@ -989,8 +988,8 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             [variablesNotAdded addObject:[theNewVariables objectAtIndex:i]];
         }
     }
-    [variablesNotAdded autorelease];
-    return [NSArray arrayWithArray:variablesNotAdded];
+    
+    return [NSArray arrayWithArray:[variablesNotAdded autorelease]];
 }
 
 -(BOOL)createNewVariableWithName:(NSString *)variableName type:(nc_type)theType dimNameArray:(NSArray *)selectedDims
@@ -1107,7 +1106,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theManager removeFileAtPath:filePath handler:nil];
         [theManager movePath:tempPath toPath:filePath handler:nil];
         [self refresh];
-        [newHandle autorelease];
+        [newHandle release];
         return YES;
     }
 }
@@ -1161,7 +1160,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             NSLog(@"creating 2");
             [newHandle createNewVariableWithPropertyList:aTempDict];
             NSLog(@"creating 3");
-            [aTempDict autorelease];
+            [aTempDict release];
             NSLog(@"end creating");
         }
         NSLog(@"%i of %i",i,[theVariables count]);
@@ -1178,7 +1177,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theManager removeFileAtPath:filePath handler:nil];
         [theManager movePath:tempPath toPath:filePath handler:nil];
         [self refresh];
-        [newHandle autorelease];
+        [newHandle release];
         return YES;
     }
 }

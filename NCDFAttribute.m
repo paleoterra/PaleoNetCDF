@@ -250,18 +250,18 @@
         DOUBLE = NO
         */
     int i;
-    NSString *initial;
+    NSMutableString *initial;
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: contentDescription");
 #endif
-    initial = [NSString stringWithString:@""];
+    initial = [[NSMutableString alloc] init];
     for(i=0;i<[theValues count];i++)
     {
-        initial = [initial stringByAppendingString:[self stringFromObject:[theValues objectAtIndex:i]]];
+        [initial appendString:[self stringFromObject:[theValues objectAtIndex:i]]];
     
     }
-    [initial retain];
-    return [initial autorelease];
+    
+    return [NSString stringWithString:[initial autorelease]];
 }
 
 -(NSString *)stringFromObject:(id)object
@@ -270,7 +270,7 @@
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: stringFromObject");
 #endif
-    theString = [NSString stringWithString:@""];
+    
     switch (type){
         case NC_BYTE:
         {	
@@ -316,10 +316,9 @@
             NSLog(@"Case NC_NAT not handled");
         }
     }
-    if(theString)
-        return [theString autorelease];
-    else
-        return [NSString stringWithString:@""];
+    
+	return [theString autorelease];
+    
 }
 
 
