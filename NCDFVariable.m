@@ -550,7 +550,7 @@
     if(!dataWritten)
         return NO;
 
-    
+    [theHandle refresh];
     numberOfAttributes++;
     return YES;
 
@@ -560,7 +560,10 @@
 -(BOOL)createNewVariableAttributePropertyList:(NSDictionary *)propertyList
 {
     if([self createNewVariableAttributeWithName:[propertyList objectForKey:@"attributeName"] dataType:[[propertyList objectForKey:@"nc_type"] intValue] values:[propertyList objectForKey:@"values"]])
-        return YES;
+    {
+		[theHandle refresh];
+		return YES;
+	}
     else
         return NO;
 }
@@ -647,6 +650,7 @@
         return NO;
     }
     nc_close(ncid);
+	[theHandle refresh];
     numberOfAttributes--;
     return YES;
 }
@@ -722,6 +726,7 @@
         return NO;
     }
     nc_close(ncid);
+	[theHandle refresh];
     return YES;
     
 }

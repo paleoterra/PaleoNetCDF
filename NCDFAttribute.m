@@ -379,6 +379,7 @@
         return NO;
     }
     nc_close(ncid);
+	[theHandle refresh];
     return YES;
     
 }

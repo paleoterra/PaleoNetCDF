@@ -350,8 +350,7 @@
     }
 
     nc_close(ncid);
-    [self initializeArrays];
-    [self seedArrays];
+    [self refresh];
     return YES;
 
 }
@@ -364,6 +363,8 @@
     i = [[propertyList objectForKey:@"length"] intValue];
     length = (size_t)i;
     result = [self createNewDimensionWithName:[propertyList objectForKey:@"dimName"] size:length];
+	if(result)
+		[self refresh];
     return result;
 }
 
@@ -749,8 +750,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         return NO;
 
     
-    [self initializeArrays];
-    [self seedArrays];
+    [self refresh];
     return YES;
 
 
@@ -762,7 +762,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     int i;
     i = [[propertyList objectForKey:@"nc_type"] intValue];
     result = [self createNewGlobalAttributeWithName:[propertyList objectForKey:@"attributeName"] dataType:(nc_type)i values:[propertyList objectForKey:@"values"]];
-    return result;
+    if(result)
+		[self refresh];
+	return result;
 }
 
 
@@ -825,8 +827,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     nc_close(ncid);
     if(status==NC_NOERR)
     {
-        [self initializeArrays];
-        [self seedArrays];
+        [self refresh];
         return YES;
     }
     else

@@ -116,6 +116,7 @@
     [dimName release];
     dimName = [newName copy];
     nc_close(ncid);
+	[theHandle refresh];
     return YES;
 }
 
