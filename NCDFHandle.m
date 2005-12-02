@@ -28,6 +28,7 @@
     [self setFilePath:thePath];
     [self initializeArrays];
     [self seedArrays];
+	NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
     if(errorCount<[theErrorHandle errorCount])
     {
         [self release];
@@ -99,11 +100,11 @@
     NSLog(@"NCDFHandle: initializeArrays");
 #endif
     if(theVariables)
-        [theVariables release];
+        [theVariables autorelease];
     if(theGlobalAttributes)
-        [theGlobalAttributes release];
+        [theGlobalAttributes autorelease];
     if(theDimensions)
-        [theDimensions release];
+        [theDimensions autorelease];
     theVariables = [[NSMutableArray alloc] init];
     theGlobalAttributes = [[NSMutableArray alloc] init];
     theDimensions = [[NSMutableArray alloc] init];

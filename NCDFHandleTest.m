@@ -15,7 +15,7 @@
 
 /*Note: this setFilePath does not check for valid paths.  It only handles string objects and 
 nil objects*/
--(void)setFilePathTestNormalPath
+-(void)testSetFilePathNormalPath
 {
     NCDFHandle *theHandle = [[NCDFHandle alloc] initWithPath:@"/Volumes/projects01/programs/netcdf/testNCFiles/aprens_0ka.nc"];
     [theHandle setFilePath:@"/Volumes/projects01/programs/netcdf/testNCFiles/test"];
@@ -24,7 +24,7 @@ nil objects*/
     //passed 7/29/2002
 }
 
--(void)setFilePathTestNilPath
+-(void)testSetFilePathTestNilPath
 {
     NCDFHandle *theHandle = [[NCDFHandle alloc] initWithPath:@"/Volumes/projects01/programs/netcdf/testNCFiles/aprens_0ka.nc"];
     [theHandle setFilePath:@""];

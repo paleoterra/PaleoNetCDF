@@ -6,7 +6,7 @@
 //  Copyright (c) 2001 Argonne National Laboratory. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 #import <SenTestingKit/SenTestingKit.h>
 
 @interface NCDFHandleTest : SenTestCase {

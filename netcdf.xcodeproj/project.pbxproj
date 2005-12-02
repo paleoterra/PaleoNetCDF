@@ -47,6 +47,10 @@
 		B46DE0BC091B0C37001A5988 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4326AC3090F2F94000B7357 /* libnetcdf.a */; };
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
+		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
+		B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */; };
+		B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */; };
+		B4E546FA093D4D8700794457 /* NCDFErrorHandleTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7FF02F8761A01EA6D6B /* NCDFErrorHandleTester.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -105,6 +109,16 @@
 		};
 /* End PBXBuildStyle section */
 
+/* Begin PBXContainerItemProxy section */
+		B4E54641093D432600794457 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B46DE09D091B0BD1001A5988 /* netcdf */;
+			remoteInfo = netcdf;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -117,6 +131,9 @@
 		B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "netcdf-Info.plist"; sourceTree = "<group>"; };
 		B4E1C853092424D00014A0B6 /* UC.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UC.config; sourceTree = "<group>"; };
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
+		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
 		F577E7E902F58D3D01EA6D6B /* NCDFHandleTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NCDFHandleTest.h; sourceTree = "<group>"; };
 		F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NCDFHandleTest.m; sourceTree = "<group>"; };
 		F577E7EF02F7267901EA6D6B /* NCDFError.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NCDFError.h; sourceTree = "<group>"; };
@@ -154,6 +171,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4E54637093D432000794457 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -161,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				B46DE09E091B0BD1001A5988 /* netcdf.framework */,
+				B4E5463A093D432000794457 /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +202,7 @@
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */,
+				B4E5463B093D432000794457 /* UnitTests-Info.plist */,
 			);
 			name = netcdf;
 			sourceTree = "<group>";
@@ -183,6 +210,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B4E5467F093D483A00794457 /* SenTestingKit.framework */,
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
 			);
@@ -366,6 +394,65 @@
 ";
 			productType = "com.apple.product-type.framework";
 		};
+		B4E54639093D432000794457 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4E5463C093D432100794457 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				B4E54635093D432000794457 /* Resources */,
+				B4E54636093D432000794457 /* Sources */,
+				B4E54637093D432000794457 /* Frameworks */,
+				B4E54638093D432000794457 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			dependencies = (
+				B4E54642093D432600794457 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = B4E5463A093D432000794457 /* UnitTests.octest */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.UnitTests</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -386,6 +473,7 @@
 			targets = (
 				B46DE09D091B0BD1001A5988 /* netcdf */,
 				B4E1C85A092425F90014A0B6 /* API */,
+				B4E54639093D432000794457 /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -397,6 +485,13 @@
 			files = (
 				B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */,
 				B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4E54635093D432000794457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +510,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here\n\nAPI_TARGET=\"$TARGET_BUILD_DIR/API\"\n\nif [ -f \"$API_TARGET\" ] ; then\n\trm -Rf $API_TARGET\nfi\nmkdir $API_TARGET\ncp *.hdoc $API_TARGET/\n/usr/bin/headerdoc2html -o $API_TARGET *.h\n\n/usr/bin/gatherheaderdoc $API_TARGET\nexit 0";
+		};
+		B4E54638093D432000794457 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -435,7 +543,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4E54636093D432000794457 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */,
+				B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */,
+				B4E546FA093D4D8700794457 /* NCDFErrorHandleTester.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4E54642093D432600794457 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B46DE09D091B0BD1001A5988 /* netcdf */;
+			targetProxy = B4E54641093D432600794457 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
@@ -695,6 +821,120 @@
 			};
 			name = Default;
 		};
+		B4E5463D093D432100794457 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Development;
+		};
+		B4E5463E093D432100794457 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		B4E5463F093D432100794457 /* test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = test;
+		};
+		B4E54640093D432100794457 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS)",
+					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Default;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -727,6 +967,17 @@
 				B4E1C8630924260C0014A0B6 /* Deployment */,
 				B4E1C8640924260C0014A0B6 /* test */,
 				B4E1C8650924260C0014A0B6 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		B4E5463C093D432100794457 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4E5463D093D432100794457 /* Development */,
+				B4E5463E093D432100794457 /* Deployment */,
+				B4E5463F093D432100794457 /* test */,
+				B4E54640093D432100794457 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
