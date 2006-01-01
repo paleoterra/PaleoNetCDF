@@ -11,7 +11,7 @@
 
 @implementation NCDFHandle
 
-//Initialization methods
+#pragma mark *** Initilization methods ***
 
 -(id)initWithFileAtPath:(NSString *)thePath
 {
@@ -28,7 +28,7 @@
     [self setFilePath:thePath];
     [self initializeArrays];
     [self seedArrays];
-	NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
+	//NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
     if(errorCount<[theErrorHandle errorCount])
     {
         [self release];
@@ -69,7 +69,7 @@
     return self;
 }
 
-//setup methods
+#pragma mark *** Setup methods ***
 
 -(void)setFilePath:(NSString *)thePath
 {
@@ -129,14 +129,14 @@
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Opening netCDF file" errorCode:status];
-        NSLog(@"seedArrays: error open");
+        //NSLog(@"seedArrays: error open");
         return;
     }
     status = nc_inq(ncid,&numberDims,&numberVariables,&numberGlobalAtts,&numberUnlimited);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring netCDF file" errorCode:status];
-        NSLog(@"seedArrays: error nc_inq");
+        //NSLog(@"seedArrays: error nc_inq");
         return;
     }
     //NSLog(@"m dim");
@@ -150,7 +150,7 @@
         if(status!=NC_NOERR)
         {
             [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring DIMS in netCDF file" errorCode:status];
-            NSLog(@"seedArrays: error nc_inq_dim");
+            //NSLog(@"seedArrays: error nc_inq_dim");
             return;
         }
         cocoaName = [NSString stringWithCString:name];
@@ -174,7 +174,7 @@
         if(status!=NC_NOERR)
         {
             [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute by name in netCDF file" errorCode:status];
-            NSLog(@"seedArrays: error nc_inq_attname");
+            //NSLog(@"seedArrays: error nc_inq_attname");
             return;
         }
         status = nc_inq_att ( ncid, NC_GLOBAL, name,
@@ -182,7 +182,7 @@
         if(status!=NC_NOERR)
         {
             [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute in netCDF file" errorCode:status];
-            NSLog(@"seedArrays: error nc_inq_att");
+            //NSLog(@"seedArrays: error nc_inq_att");
             return;
         }
         theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name] variableID:NC_GLOBAL length:length type:attributeType handle:self];
@@ -204,7 +204,7 @@
         if(status!=NC_NOERR)
         {
             [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring variable in netCDF file" errorCode:status];
-            NSLog(@"seedArrays: error nc_inq_var");
+            //NSLog(@"seedArrays: error nc_inq_var");
             return;
         }
         theDimList = [[NSMutableArray alloc] init];
@@ -238,7 +238,7 @@
     if(status!=NC_NOERR)
     {
             [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createFileAtPath" subMethod:@"Creating new file" errorCode:status];
-            NSLog(@"seedArrays: error nc_create");
+            //NSLog(@"seedArrays: error nc_create");
             return;
         }
     nc_close(ncid);
@@ -256,7 +256,7 @@
     [self seedArrays];
 }
 
-//deallocation
+#pragma mark *** Deallocation methods ***
 -(void)dealloc
 {
     /*Releases all arrays held by the handle*/
@@ -279,7 +279,7 @@
     [super dealloc];
 }
 
-//accessors
+#pragma mark *** Simple Accessing Methods ***
 
 -(NSMutableArray *)getDimensions
 {
@@ -288,12 +288,15 @@
     return theDimensions;
 }
 
+
+
 -(NSMutableArray *)getGlobalAttributes
 {
     /*Returns a mutable array listing all the global attributes in the current netcdf file.  This method may be updated to return only a NSArray*/
     /*Accessors*/
     return theGlobalAttributes;
 }
+
 
 -(NSMutableArray *)getVariables
 {
@@ -302,12 +305,14 @@
     return theVariables;
 }
 
+
+#pragma mark *** Error Handle Methods ***
 -(NCDFErrorHandle *)theErrorHandle
 {
     return theErrorHandle;
 }
 
-//Modify netcdf: Dimensions
+#pragma mark *** Dimension Methods ***
 
 -(BOOL)createNewDimensionWithName:(NSString *)dimName size:(size_t)length
 {
@@ -529,7 +534,7 @@
     {
         [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
     }
-    NSLog(@"attributes created");
+    //NSLog(@"attributes created");
     for(i=0;i<[theDimensions count];i++)
     {
         if(![[[theDimensions objectAtIndex:i] dimensionName] isEqualToString:resizeDimName])
@@ -537,7 +542,7 @@
         else
             [newHandle createNewDimensionWithName:resizeDimName size:(size_t)newSize];
     }
-    NSLog(@"dims created");
+    //NSLog(@"dims created");
     for(i=0;i<[theVariables count];i++)
     {
         if(![[theVariables objectAtIndex:i] doesVariableUseDimensionName:resizeDimName])
@@ -588,7 +593,7 @@
             
         }
     }
-    NSLog(@"finished making");
+    //NSLog(@"finished making");
     if(errorCount<[theErrorHandle errorCount])
     {
         [theManager removeFileAtPath:tempPath handler:nil];
@@ -611,7 +616,7 @@ x3) need to check if removing a dim will change the numbers.  If not, some modif
 X4) Modify existing methods to handle the creation of dimension variables automatically - blank values.  THis is ruled out since variables require more information than just a yes or no.*/
 
 
-//Modify netcdf: Global Attributes
+#pragma mark *** Global Attributes Methods ***
 
 -(BOOL)createNewGlobalAttributeWithName:(NSString *)attName dataType:(nc_type)theType values:(NSArray *)theValues
 {
@@ -838,7 +843,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
 }
 
-//Validation
+#pragma mark *** Validation Methods ***
 
 -(NSString *)parseNameString:(NSString *)theString
 {
@@ -866,7 +871,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 }
 
 
-//Modify netcdf: Variables
+#pragma mark *** Variables Methods ***
 
 -(BOOL)createVariableWithName:(NSString *)varName type:(nc_type)theType dimArray:(NSArray *)theVariableDims
 {
@@ -1120,54 +1125,54 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     NSString *tempPath = [filePath stringByAppendingString:@"_.nc"];
 
     int i, errorCount,j;
-    NSLog(@"deleteVariablesWithNames");
+    //NSLog(@"deleteVariablesWithNames");
     errorCount = [theErrorHandle errorCount];
     while([theManager fileExistsAtPath:tempPath])
     {
         tempPath = [tempPath stringByAppendingString:@"_.nc"];
     }
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
-    NSLog(@"theGlobalAttributes");
+    //NSLog(@"theGlobalAttributes");
     for(i=0;i<[theGlobalAttributes count];i++)
     {
         [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
     }
-    NSLog(@"theDimensions");
+    //NSLog(@"theDimensions");
     for(i=0;i<[theDimensions count];i++)
     {
         
         [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
     }
-    NSLog(@"theVariables");
+    //NSLog(@"theVariables");
     for(i=0;i<[theVariables count];i++)
     {
         BOOL Valid;
-        if(theVariables!=nil)
-            NSLog(@"have variables");
-        if(nameArray!=nil)
-            NSLog(@"have name array");
+        //if(theVariables!=nil)
+        //    NSLog(@"have variables");
+        //if(nameArray!=nil)
+         //   NSLog(@"have name array");
         Valid = YES;
         for(j=0;j<[nameArray count];j++)
         {
             if([[[theVariables objectAtIndex:i] variableName] isEqualToString:[nameArray objectAtIndex:j]])
                 Valid = NO;
         }
-        NSLog(@"checking valid");
+        //NSLog(@"checking valid");
         if(Valid)
         {
-            NSLog(@"creating");
+            //NSLog(@"creating");
             NSDictionary *aTempDict = [[[theVariables objectAtIndex:i] propertyList] retain];
-            NSLog(@"creating 1");
+            //NSLog(@"creating 1");
             [newHandle refresh];
-            NSLog(@"creating 2");
+            //NSLog(@"creating 2");
             [newHandle createNewVariableWithPropertyList:aTempDict];
-            NSLog(@"creating 3");
+            //NSLog(@"creating 3");
             [aTempDict release];
-            NSLog(@"end creating");
+            //NSLog(@"end creating");
         }
-        NSLog(@"%i of %i",i,[theVariables count]);
+        //NSLog(@"%i of %i",i,[theVariables count]);
     }
-    NSLog(@"errorCount");
+    //NSLog(@"errorCount");
     if(errorCount<[theErrorHandle errorCount])
     {
         [theManager removeFileAtPath:tempPath handler:nil];
@@ -1183,6 +1188,8 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         return YES;
     }
 }
+
+#pragma mark *** Presently Unclassified Methods ***
 
 -(NCDFVariable *)retrieveVariableByName:(NSString *)aName
 {

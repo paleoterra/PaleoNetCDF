@@ -288,7 +288,7 @@
         case NC_BYTE:
         {
              char *theText;
-            NSLog(@"byte");
+            //NSLog(@"byte");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length];
             
@@ -306,7 +306,7 @@
         case NC_CHAR:
         {
             char *theText;
-            NSLog(@"char");
+            //NSLog(@"char");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length];
             theText = (char *)malloc(sizeof(char)*total_values+1);
@@ -323,7 +323,7 @@
         case NC_SHORT:
         {
             short *array;
-            NSLog(@"short");
+            //NSLog(@"short");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length]/2;
             array = (short *)malloc(sizeof(short)*total_values);
@@ -340,7 +340,7 @@
         case NC_INT:
         {
             int *array;
-            NSLog(@"int");
+            //NSLog(@"int");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length]/4;
             array = (int *)malloc(sizeof(int)*total_values);
@@ -358,22 +358,22 @@
         case NC_FLOAT:
         {
             float *array;
-            NSLog(@"float");
+            //NSLog(@"float");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length]/4;
             //NSLog(@"Total values %i",total_values);
             array = (float *)malloc(sizeof(float)*total_values);
-            NSLog(@"size %i %i",(sizeof(float)*total_values),[dataForWriting length]);
+            //NSLog(@"size %i %i",(sizeof(float)*total_values),[dataForWriting length]);
             [dataForWriting getBytes:array];
-            NSLog(@"data field");
+            //NSLog(@"data field");
             result = nc_put_var_float(ncid,varID,array);
-            NSLog(@"put var field");
+            //NSLog(@"put var field");
             if(result!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeAllVariableData" subMethod:@"Write NC_FLOAT" errorCode:result];
                 return ;
             }
-            NSLog(@"free field");
+            //NSLog(@"free field");
             free(array);
             break;
         }
@@ -402,7 +402,7 @@
             }
         }
     }
-    NSLog(@"end");
+    //NSLog(@"end");
     nc_close(ncid);
 }
 
@@ -1945,5 +1945,60 @@
 	 }
 	 [theString appendString:@"</blockquote>\n"];
 	 return [NSString stringWithString:theString];
+}
+
+-(NSString *)typeDescription
+{
+	switch([self variableNC_TYPE])
+	{
+		case NC_BYTE:
+			return [NSString stringWithString:@"BYTE"];
+			break;
+		case NC_CHAR:
+			return [NSString stringWithString:@"CHAR"];
+			break;
+		case NC_SHORT:
+			return [NSString stringWithString:@"SHORT INTEGER"];
+			break;
+		case NC_INT:
+			return [NSString stringWithString:@"INTEGER"];
+			break;
+		case NC_FLOAT:
+			return [NSString stringWithString:@"FLOAT"];
+			break;
+		case NC_DOUBLE:
+			return [NSString stringWithString:@"DOUBLE"];
+			break;
+		default:
+			return [NSString stringWithString:@"UNKNOWN"];
+	}
+}
+
+-(NSString *)stringValueForSingleValueCoordinates:(NSArray *)coordinates
+{
+	id result = [self getSingleValue:coordinates];
+	switch([self variableNC_TYPE])
+	{
+		case NC_BYTE:
+			return [NSString stringWithFormat:@"%i",[result intValue]];
+			break;
+		case NC_CHAR:
+			return [NSString stringWithFormat:@"%@",result];
+			break;
+		case NC_SHORT:
+			return [NSString stringWithFormat:@"%i",[result intValue]];
+			break;
+		case NC_INT:
+			return [NSString stringWithFormat:@"%i",[result intValue]];
+			break;
+		case NC_FLOAT:
+			return [NSString stringWithFormat:@"%e",[result floatValue]];
+			break;
+		case NC_DOUBLE:
+			return [NSString stringWithFormat:@"%e",[result doubleValue]];
+			break;
+		default:
+			return [NSString stringWithFormat:@"UNKNOWN"];
+	}
 }
 @end

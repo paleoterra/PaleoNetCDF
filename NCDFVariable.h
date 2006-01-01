@@ -427,4 +427,8 @@
     @discussion  This method is to provide a method to export the metadata of a netcdf file into a HTML document.
 	*/
 -(NSString *)htmlDescription;
+
+-(NSString *)typeDescription;
+
+-(NSString *)stringValueForSingleValueCoordinates:(NSArray *)coordinates;
 @end
