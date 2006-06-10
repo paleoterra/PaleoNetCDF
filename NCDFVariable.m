@@ -63,7 +63,7 @@
         */
     int i;
     NSArray *theDims;
-    char *theCPath;
+    
     size_t total_values;
     int ncid,result;
     NSData *theData;
@@ -72,17 +72,17 @@
 #endif*/
     theData = nil;
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     theDims = [theHandle getDimensions];
     total_values = 1;
     for(i=0;i<[dimIDs count];i++)
     {
         total_values *= [[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
     }
-    theCPath = (char *)malloc(sizeof(char)*[fileName length]+1);
-    [fileName getCString:theCPath];
-    result = nc_open(theCPath,NC_NOWRITE,&ncid);
-    free(theCPath);
+    //theCPath = (char *)malloc(sizeof(char)*[fileName length]+1);
+    //[fileName getCString:theCPath];
+    result = nc_open([fileName cString],NC_NOWRITE,&ncid);
+    //free(theCPath);
     if(result!=NC_NOERR)
     {
        [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Open netCDF failed" errorCode:result];
@@ -254,12 +254,12 @@
         */
     int i;
     NSArray *theDims;
-    char *theCPath;
+ 
     size_t total_values;
     int ncid,result;
     BOOL usesUnlimitedDim;
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     theDims = [theHandle getDimensions];
     total_values = 1;
     usesUnlimitedDim = NO;
@@ -273,10 +273,9 @@
         else
         total_values *= [[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
     }
-    theCPath = (char *)malloc(sizeof(char)*[fileName length]);
-    [fileName getCString:theCPath];
-    result = nc_open(theCPath,NC_WRITE,&ncid);
-    free(theCPath);
+   
+    result = nc_open([fileName cString],NC_WRITE,&ncid);
+    
     
     if(result!=NC_NOERR)
     {
@@ -420,27 +419,30 @@
         */
     int ncid;
     int status;
-    char *theCPath;
+   
     BOOL dataWritten;
     
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
-    theCPath = (char *)malloc(sizeof(char)*[fileName length]);
-    [fileName getCString:theCPath];
-    status = nc_open(theCPath,NC_WRITE,&ncid);
-    free(theCPath);
+        theErrorHandle = [theHandle theErrorHandle];
+	
+    
+    status = nc_open([fileName cString],NC_WRITE,&ncid);
+   
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Open file" errorCode:status];
         return NO;
     }
     status = nc_redef(ncid);
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Open file" errorCode:status];
         nc_close(ncid);
         return NO;
     }
+	
     dataWritten = NO;
     switch (theType){
         case NC_BYTE:
@@ -462,8 +464,10 @@
         case NC_CHAR:
         {
             //now assuming that the object at index is a NSData object
-            status = nc_put_att_text (ncid,varID,[attName cString],[(NSData *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cString]);
-            if(status!=NC_NOERR)
+	
+            status = nc_put_att_text (ncid,varID,[attName cString],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cString]);
+     
+			if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Write NC_CHAR" errorCode:status];
             }
@@ -581,7 +585,7 @@
     NSArray *theFinal;
     
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     status = nc_open([fileName cString],NC_NOWRITE,&ncid);
     if(status!=NC_NOERR)
     {
@@ -628,7 +632,7 @@
     int status;
     
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     status = nc_open([fileName cString],NC_WRITE,&ncid);
     if(status!=NC_NOERR)
     {
@@ -703,7 +707,7 @@
     int ncid;
     
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
     status = nc_open([fileName cString],NC_WRITE,&ncid);
     if(status!=NC_NOERR)
@@ -771,7 +775,7 @@
     size_t *index;
     
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     if([dimIDs count]!=[coordinates count])
     {
         return NO;
@@ -909,7 +913,7 @@
     BOOL isError;
     size_t *index,*edges;
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
         
     if(([dimIDs count]!=[startCoordinates count])||([dimIDs count]!=[edgeLengths count]))
     {
@@ -1056,7 +1060,7 @@
     size_t *index;
     theObject = nil;
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     errorCount = [theErrorHandle errorCount];
     if([dimIDs count]!=[coordinates count])
     {
@@ -1165,7 +1169,7 @@
     NSData *theData;
     unitSize = 0;
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     errorCount = [theErrorHandle errorCount];
     if(([dimIDs count]!=[startCoordinates count])||([dimIDs count]!=[edgeLengths count]))
     {
@@ -2000,5 +2004,42 @@
 		default:
 			return [NSString stringWithFormat:@"UNKNOWN"];
 	}
+}
+
+-(void)updateVariableWithVariable:(NCDFVariable *)aVar
+{
+	NSString *temp = [variableName retain];
+    variableName = [[aVar variableName] copy];
+	[temp autorelease];
+	
+    varID = [aVar variableID];
+    dataType = [aVar variableNC_TYPE];
+	NSArray *tempDim = [dimIDs retain];
+    dimIDs = [[aVar variableDimensions] copy];
+	[tempDim autorelease];
+    numberOfAttributes = [aVar attributeCount];
+}
+
+-(int)variableID
+{
+	return varID;
+}
+
+-(int)attributeCount
+{
+	return numberOfAttributes;
+}
+
+-(NSComparisonResult)compare:(id)object
+{	
+	if([object isKindOfClass:[NCDFVariable class]])
+	{
+		if([self variableID] < [(NCDFVariable *)object variableID])
+			return NSOrderedAscending;
+		else
+			return NSOrderedDescending;
+	}
+	else
+	return NSOrderedSame;
 }
 @end

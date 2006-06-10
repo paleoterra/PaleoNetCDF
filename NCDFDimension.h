@@ -176,5 +176,6 @@
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(NSDictionary *)propertyList;
-
+-(void)updateDimensionWithDimension:(NCDFDimension *)aDim;
+-(NSComparisonResult)compare:(id)object;
 @end

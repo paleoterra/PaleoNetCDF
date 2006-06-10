@@ -23,11 +23,12 @@
 #endif
     self = [super init];
     //added 0.2.1d1
-    theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+    theErrorHandle = [[NCDFErrorHandle alloc] init];
+
     errorCount = [theErrorHandle errorCount];
     [self setFilePath:thePath];
     [self initializeArrays];
-    [self seedArrays];
+    
 	//NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
     if(errorCount<[theErrorHandle errorCount])
     {
@@ -48,7 +49,7 @@
 #endif
     [super init];
     //added 0.2.1d1
-    theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+    theErrorHandle =[[NCDFErrorHandle alloc] init];
     errorCount = [theErrorHandle errorCount];
     [self createFileAtPath:thePath];
     if(errorCount<[theErrorHandle errorCount])
@@ -58,7 +59,7 @@
     }
     [self setFilePath:thePath];
     [self initializeArrays];
-    [self seedArrays];
+
     if(errorCount<[theErrorHandle errorCount])
     {
         [self release];
@@ -108,9 +109,10 @@
     theVariables = [[NSMutableArray alloc] init];
     theGlobalAttributes = [[NSMutableArray alloc] init];
     theDimensions = [[NSMutableArray alloc] init];
+	[self seedArrays:[NSArray arrayWithObjects:theDimensions,theGlobalAttributes,theVariables,nil]];
 }
 
--(void)seedArrays
+-(void)seedArrays:(NSArray *)typeArrays
 {
     /*Populates NCDFDimension,NCDFAttribute,and NCDFVariable objects based on an existing netcdf file.  This method should only be invoked by subclasses of any of the above objects when the objects values were changed in the file.  However, changing these values will release objects held by the handle.*/
     /*Initialization*/
@@ -133,6 +135,7 @@
         return;
     }
     status = nc_inq(ncid,&numberDims,&numberVariables,&numberGlobalAtts,&numberUnlimited);
+	//NSLog(@"dims, %i,variable count %i, globalatts %i",numberDims,numberVariables,numberGlobalAtts);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring netCDF file" errorCode:status];
@@ -157,7 +160,7 @@
         //if([cocoaName isEqualToString:@"time"])
             //NSLog(@"time value = %i",length);
         theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
-        [theDimensions addObject:theDim];
+        [[typeArrays objectAtIndex:0] addObject:theDim];
         if(theDim)
             [theDim release];
     
@@ -186,7 +189,7 @@
             return;
         }
         theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name] variableID:NC_GLOBAL length:length type:attributeType handle:self];
-        [theGlobalAttributes addObject:theAtt];
+        [[typeArrays objectAtIndex:1] addObject:theAtt];
         [theAtt release];
         
     }
@@ -213,7 +216,7 @@
             [theDimList addObject:[NSNumber numberWithInt:dimIDs[j]]];
         }
         theVar = [[NCDFVariable alloc] initWithPath:filePath variableName:[NSString stringWithCString:name] variableID:i type:theType theDims:theDimList attributeCount:numberOfAttributes handle:self];
-        [theVariables addObject:theVar];
+        [[typeArrays objectAtIndex:2] addObject:theVar];
         [theVar release];
         [theDimList release];
     }
@@ -252,8 +255,92 @@
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: refresh");
 #endif
-    [self initializeArrays];
-    [self seedArrays];
+    //[self initializeArrays];
+    //[self seedArrays];
+	NSMutableArray *tempDim = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *tempAtt = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *tempVar = [[[NSMutableArray alloc] init] autorelease];
+	[self seedArrays:[NSArray arrayWithObjects:tempDim,tempAtt,tempVar,nil]];
+	//temp arrays are seeded.  Now we need to update,add, and delete.
+	
+	//How to do the dims
+	NSMutableArray *theDimsLeft = [NSMutableArray arrayWithArray:theDimensions] ;
+	NCDFDimension *aDim,*mainDim;
+	NSEnumerator *anEnum = [tempDim objectEnumerator];
+	while(aDim = [anEnum nextObject])
+	{
+		mainDim = [self retrieveDimensionByName:[aDim dimensionName]];
+		if(mainDim)
+		{
+			[theDimsLeft removeObject:mainDim]; //delete the dim from our temp main list
+			[mainDim updateDimensionWithDimension:aDim];
+		}
+		else
+			[theDimensions addObject:aDim];
+		mainDim = nil;
+	}
+	NSEnumerator *anEnuma = [theDimsLeft objectEnumerator];
+	while(aDim = [anEnuma nextObject])
+	{
+		[[aDim retain] autorelease];
+		[theDimensions removeObject:aDim];
+	}
+	[theDimsLeft removeAllObjects];
+	[theDimensions sortUsingSelector:@selector(compare:)];
+
+	
+	//global attributes
+	NCDFAttribute *anAtt,*mainAtt;
+	NSEnumerator *anEnum1 = [tempAtt objectEnumerator];
+	
+	NSMutableArray *theAttsLeft = [NSMutableArray arrayWithArray:theGlobalAttributes] ;
+	while(anAtt = [anEnum1 nextObject])
+	{
+		mainAtt = [self retrieveGlobalAttributeByName:[anAtt attributeName]];
+		if(mainAtt)
+		{
+			[theAttsLeft removeObject:mainAtt]; //delete the dim from our temp main list
+			[mainAtt updateAttributeWithAttribute:anAtt];
+		}
+		else
+			[theGlobalAttributes addObject:anAtt];
+		mainAtt = nil;
+	}
+	NSEnumerator *anEnum1a = [theAttsLeft objectEnumerator];
+	while(anAtt = [anEnum1a nextObject])
+	{
+		[[anAtt retain] autorelease];
+		[theGlobalAttributes removeObject:anAtt];
+	}
+	[theAttsLeft removeAllObjects];
+
+
+	//global variables
+	//global attributes
+	NCDFVariable *aVar,*mainVar;
+	NSEnumerator *anEnum2 = [tempVar objectEnumerator];
+	//NSLog([tempVar description]);
+	NSMutableArray *theVarsLeft = [NSMutableArray arrayWithArray:theVariables];
+	while(aVar = [anEnum2 nextObject])
+	{
+		mainVar = [self retrieveVariableByName:[aVar variableName]];
+		if(mainVar)
+		{
+			[theVarsLeft removeObject:mainVar]; //delete the dim from our temp main list
+			[mainVar updateVariableWithVariable:aVar];
+		}
+		else
+			[theVariables addObject:aVar];
+		mainAtt = nil;
+	}
+	NSEnumerator *anEnum2a = [theVarsLeft objectEnumerator];
+	while(aVar = [anEnum2a nextObject])
+	{
+		[[aVar retain] autorelease];
+		[theVariables removeObject:aVar];
+	}
+	[theVarsLeft removeAllObjects];
+	//NSLog(@"the count here is %i",[theVariables count]);
 }
 
 #pragma mark *** Deallocation methods ***
@@ -275,6 +362,9 @@
     
     if(filePath)
         [filePath release];
+	
+	if(theErrorHandle)
+		[theErrorHandle release]; 
     
     [super dealloc];
 }
@@ -458,8 +548,7 @@
     }
     nc_close(ncid);
     [validDim release];
-    [self initializeArrays];
-    [self seedArrays];
+    [self refresh];
     return [NSArray arrayWithArray:[returnDims autorelease]];
 
 }
@@ -886,6 +975,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     NSLog(@"NCDFHandle: createVariableWithName");
 #endif
     status = nc_open([filePath cString],NC_WRITE,&ncid);
+
     if(status != NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createVariableWithName" subMethod:@"Open File" errorCode:status];
@@ -893,6 +983,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         return NO;
     }
     status = nc_redef(ncid);
+
     //set up dims
     theDimNumbers = (int *)malloc(sizeof(int)*[theVariableDims count]);
     for(i=0;i<[theVariableDims count];i++)
@@ -902,7 +993,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     
     //parse variableName
     theName = [self parseNameString:varName];
-    
+
     status = nc_def_var(ncid,[theName cString],theType,[theVariableDims count],theDimNumbers,&varID);
     free(theDimNumbers);
     if(status != NC_NOERR)
@@ -911,12 +1002,15 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         return NO;
     }
     status = nc_close(ncid);
+
     if(status != NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createVariableWithName" subMethod:@"Close File" errorCode:status];
         return NO;
     }
+
     [self refresh];
+
     return YES;
     
 }
@@ -1063,8 +1157,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewVariableWithName" subMethod:@"Variable write" errorCode:status];
         return NO;
     }
+	nc_close(ncid);
     [self refresh];
-    nc_close(ncid);
+    
     return YES;
 }
 
@@ -1218,6 +1313,21 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
     return nil;
 
+}
+
+-(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName
+{
+    int i;
+#ifdef DEBUG_NCDFHandle
+    NSLog(@"NCDFHandle: retrieveDimensionByName");
+#endif
+    for(i=0;i<[theGlobalAttributes count];i++)
+    {
+        if([[[theGlobalAttributes objectAtIndex:i] attributeName] isEqualToString:aName])
+            return [theGlobalAttributes objectAtIndex:i];
+    }
+    return nil;
+	
 }
 
 -(NCDFDimension *)retrieveUnlimitedDimension

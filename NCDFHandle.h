@@ -98,7 +98,7 @@
   @abstract This method retrieves netcdf metadata and stores the data in arrays.
   @discussion This private method places all the metadata describing NCDFAttributes, NCDFDimensions, and NCDFVariables into arrays.  Do not call this method except from existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
--(void)seedArrays;
+-(void)seedArrays:(NSArray *)typeArrays;
 
 /*!
   @method createFileAtPath:
@@ -418,4 +418,5 @@
 	*/
 
 -(NSString *)htmlDescription;
+-(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName;
 @end

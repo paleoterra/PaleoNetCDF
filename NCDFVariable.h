@@ -431,4 +431,7 @@
 -(NSString *)typeDescription;
 
 -(NSString *)stringValueForSingleValueCoordinates:(NSArray *)coordinates;
+-(int)variableID;
+-(int)attributeCount;
+-(void)updateVariableWithVariable:(NCDFVariable *)aVar;
 @end

@@ -202,4 +202,8 @@
     NCDFAttributePropertyListFieldValues - The actual values stored in an array.  All values in single NSNumber objects except for NC_CHAR which are stored in a single NSString object.
 */
 -(NSDictionary *)propertyList;
+-(int)variableID;
+-(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt;
+-(NSComparisonResult)compare:(id)object;
+
 @end

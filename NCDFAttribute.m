@@ -87,7 +87,7 @@
     NSLog(@"NCDFAttribute: loadValues");
 #endif
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     if(theValues)
         [theValues release];
     tempValues = [[NSMutableArray alloc] init];
@@ -356,7 +356,7 @@
     NSLog(@"NCDFAttribute: renameAttribute");
 #endif
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
     status = nc_open([fileName cString],NC_WRITE,&ncid);
     if(status!=NC_NOERR)
@@ -449,5 +449,34 @@
     [theTemp release];
     return [thePropertyList autorelease];
 
+}
+
+-(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt
+{
+
+    variableID = [anAtt variableID];
+    type = [anAtt attributeNC_TYPE];
+    length = [anAtt attributeLength];
+    //need to load values
+    [self setValueArray:[anAtt getAttributeValueArray]];
+
+}
+
+-(int)variableID
+{
+	return variableID;
+}
+
+-(NSComparisonResult)compare:(id)object
+{
+	if([object isKindOfClass:[NCDFVariable class]])
+	{
+		if([self variableID] < [(NCDFVariable *)object variableID])
+			return NSOrderedAscending;
+		else
+			return NSOrderedDescending;
+	}
+	else
+		return NSOrderedSame;
 }
 @end

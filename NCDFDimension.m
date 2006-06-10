@@ -87,7 +87,7 @@
     char *theCPath;
     char *theCName;
     if(theErrorHandle==nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
     theCPath = (char *)malloc(sizeof(char)*[fileName length]+1);
     [fileName getCString:theCPath];
@@ -166,7 +166,7 @@
 {
     int ncid,pid,status;
     if(theErrorHandle == nil)
-        theErrorHandle = [NCDFErrorHandle defaultErrorHandle];
+        theErrorHandle = [theHandle theErrorHandle];
     status = nc_open([fileName cString],NC_NOWRITE,&ncid);
     if(status!=NC_NOERR)
     {
@@ -200,5 +200,30 @@
     thePropertyList = [[NSDictionary dictionaryWithDictionary:theTemp]retain];
     [theTemp release];
     return [thePropertyList autorelease];
+}
+
+-(void)updateDimensionWithDimension:(NCDFDimension *)aDim
+{
+    dimID = [aDim dimensionID];
+    dimName = [[aDim dimensionName] copy];
+    length = [aDim dimLength];//Dimension length is a count.
+}
+
+-(NSString *)description
+{
+	return [NSString stringWithFormat:@"NCDFDimension: %@\nID: %i\nLength: %i\n",[self dimensionName],[self dimLength],[self dimensionID]];
+}
+
+-(NSComparisonResult)compare:(id)object
+{
+	if([object isKindOfClass:[NCDFDimension class]])
+	{
+		if([self dimensionID] < [(NCDFDimension *)object dimensionID])
+			return NSOrderedAscending;
+		else
+			return NSOrderedDescending;
+	}
+	else
+		return NSOrderedSame;
 }
 @end
