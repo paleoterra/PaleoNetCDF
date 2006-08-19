@@ -82,21 +82,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC046055464E500DB518D /* libnetcdf.a */;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
 			remoteInfo = "netcdf-PPC";
 		};
 		B4F086F00A96D465001FA8D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B4F084DC0A96A43D001FA8D4 /* libnetcdf.a */;
+			remoteGlobalIDString = B4F084DC0A96A43D001FA8D4;
 			remoteInfo = "netcdf-intel";
 		};
 		B4F086F60A96D5EB001FA8D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = B4F084E20A96A482001FA8D4 /* universal */;
+			remoteGlobalIDString = B4F084E20A96A482001FA8D4;
 			remoteInfo = universal;
 		};
 /* End PBXContainerItemProxy section */
