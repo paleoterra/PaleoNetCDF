@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		B4F084E20A96A482001FA8D4 /* universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B4F084E70A96A4B9001FA8D4 /* Build configuration list for PBXAggregateTarget "universal" */;
+			buildPhases = (
+				B4F086520A96B1B8001FA8D4 /* ShellScript */,
+			);
+			dependencies = (
+				B4F084E40A96A49A001FA8D4 /* PBXTargetDependency */,
+				B4F084E60A96A49B001FA8D4 /* PBXTargetDependency */,
+			);
+			name = universal;
+			productName = universal;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		B4F0845B0A96A145001FA8D4 /* attr.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083650A96A144001FA8D4 /* attr.c */; };
+		B4F0845C0A96A145001FA8D4 /* dim.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083680A96A144001FA8D4 /* dim.c */; };
+		B4F084620A96A145001FA8D4 /* nc.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0836F0A96A144001FA8D4 /* nc.c */; };
+		B4F084640A96A145001FA8D4 /* ncio.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083710A96A144001FA8D4 /* ncio.c */; };
+		B4F084660A96A145001FA8D4 /* ncx.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083730A96A144001FA8D4 /* ncx.c */; };
+		B4F0846C0A96A145001FA8D4 /* putget.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0837B0A96A144001FA8D4 /* putget.c */; };
+		B4F0846E0A96A145001FA8D4 /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0837E0A96A144001FA8D4 /* string.c */; };
+		B4F084730A96A145001FA8D4 /* v1hpg.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083850A96A144001FA8D4 /* v1hpg.c */; };
+		B4F084740A96A145001FA8D4 /* v2i.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083860A96A144001FA8D4 /* v2i.c */; };
+		B4F084750A96A145001FA8D4 /* var.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083870A96A144001FA8D4 /* var.c */; };
+		B4F084EA0A96A4F1001FA8D4 /* attr.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083650A96A144001FA8D4 /* attr.c */; };
+		B4F084EB0A96A4F1001FA8D4 /* dim.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083680A96A144001FA8D4 /* dim.c */; };
+		B4F084EC0A96A4F1001FA8D4 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083690A96A144001FA8D4 /* error.c */; };
+		B4F084ED0A96A4F1001FA8D4 /* libvers.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0836D0A96A144001FA8D4 /* libvers.c */; };
+		B4F084EE0A96A4F1001FA8D4 /* nc.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0836F0A96A144001FA8D4 /* nc.c */; };
+		B4F084EF0A96A4F1001FA8D4 /* ncio.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083710A96A144001FA8D4 /* ncio.c */; };
+		B4F084F00A96A4F1001FA8D4 /* ncx.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083730A96A144001FA8D4 /* ncx.c */; };
+		B4F084F10A96A4F1001FA8D4 /* putget.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0837B0A96A144001FA8D4 /* putget.c */; };
+		B4F084F20A96A4F1001FA8D4 /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F0837E0A96A144001FA8D4 /* string.c */; };
+		B4F084F30A96A4F1001FA8D4 /* v1hpg.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083850A96A144001FA8D4 /* v1hpg.c */; };
+		B4F084F40A96A4F1001FA8D4 /* v2i.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083860A96A144001FA8D4 /* v2i.c */; };
+		B4F084F50A96A4F1001FA8D4 /* var.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083870A96A144001FA8D4 /* var.c */; };
+		B4F086170A96ADED001FA8D4 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083690A96A144001FA8D4 /* error.c */; };
+		B4F086B20A96C9C3001FA8D4 /* posixio.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F086B10A96C9C3001FA8D4 /* posixio.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4F084E30A96A49A001FA8D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC045055464E500DB518D;
+			remoteInfo = "netcdf-PPC";
+		};
+		B4F084E50A96A49B001FA8D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4F084DB0A96A43D001FA8D4;
+			remoteInfo = "netcdf-intel";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B4F083160A96A144001FA8D4 /* config.h.intel */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = config.h.intel; path = ../src/config.h.intel; sourceTree = SOURCE_ROOT; };
+		B4F083170A96A144001FA8D4 /* config.h.ppc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = config.h.ppc; path = ../src/config.h.ppc; sourceTree = SOURCE_ROOT; };
+		B4F083650A96A144001FA8D4 /* attr.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = attr.c; sourceTree = "<group>"; };
+		B4F083680A96A144001FA8D4 /* dim.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = dim.c; sourceTree = "<group>"; };
+		B4F083690A96A144001FA8D4 /* error.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
+		B4F0836A0A96A144001FA8D4 /* fbits.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = fbits.h; sourceTree = "<group>"; };
+		B4F0836B0A96A144001FA8D4 /* ffio.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ffio.c; sourceTree = "<group>"; };
+		B4F0836D0A96A144001FA8D4 /* libvers.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = libvers.c; sourceTree = "<group>"; };
+		B4F0836F0A96A144001FA8D4 /* nc.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = nc.c; sourceTree = "<group>"; };
+		B4F083700A96A144001FA8D4 /* nc.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = nc.h; sourceTree = "<group>"; };
+		B4F083710A96A144001FA8D4 /* ncio.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ncio.c; sourceTree = "<group>"; };
+		B4F083720A96A144001FA8D4 /* ncio.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ncio.h; sourceTree = "<group>"; };
+		B4F083730A96A144001FA8D4 /* ncx.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ncx.c; sourceTree = "<group>"; };
+		B4F083740A96A144001FA8D4 /* ncx.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ncx.h; sourceTree = "<group>"; };
+		B4F083780A96A144001FA8D4 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
+		B4F083790A96A144001FA8D4 /* onstack.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = onstack.h; sourceTree = "<group>"; };
+		B4F0837B0A96A144001FA8D4 /* putget.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = putget.c; sourceTree = "<group>"; };
+		B4F0837D0A96A144001FA8D4 /* rnd.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = rnd.h; sourceTree = "<group>"; };
+		B4F0837E0A96A144001FA8D4 /* string.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
+		B4F083850A96A144001FA8D4 /* v1hpg.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = v1hpg.c; sourceTree = "<group>"; };
+		B4F083860A96A144001FA8D4 /* v2i.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = v2i.c; sourceTree = "<group>"; };
+		B4F083870A96A144001FA8D4 /* var.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = var.c; sourceTree = "<group>"; };
+		B4F084DC0A96A43D001FA8D4 /* libnetcdf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libnetcdf.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4F086360A96B135001FA8D4 /* config.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../src/config.h; sourceTree = SOURCE_ROOT; };
+		B4F086B10A96C9C3001FA8D4 /* posixio.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = posixio.c; sourceTree = "<group>"; };
+		D2AAC046055464E500DB518D /* libnetcdf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libnetcdf.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B4F084DA0A96A43D001FA8D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D289987405E68DCB004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* netcdf */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = netcdf;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B4F086360A96B135001FA8D4 /* config.h */,
+				B4F083160A96A144001FA8D4 /* config.h.intel */,
+				B4F083170A96A144001FA8D4 /* config.h.ppc */,
+				B4F083640A96A144001FA8D4 /* libsrc */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC046055464E500DB518D /* libnetcdf.a */,
+				B4F084DC0A96A43D001FA8D4 /* libnetcdf.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B4F083640A96A144001FA8D4 /* libsrc */ = {
+			isa = PBXGroup;
+			children = (
+				B4F083650A96A144001FA8D4 /* attr.c */,
+				B4F083680A96A144001FA8D4 /* dim.c */,
+				B4F083690A96A144001FA8D4 /* error.c */,
+				B4F0836A0A96A144001FA8D4 /* fbits.h */,
+				B4F0836B0A96A144001FA8D4 /* ffio.c */,
+				B4F0836D0A96A144001FA8D4 /* libvers.c */,
+				B4F0836F0A96A144001FA8D4 /* nc.c */,
+				B4F083700A96A144001FA8D4 /* nc.h */,
+				B4F083710A96A144001FA8D4 /* ncio.c */,
+				B4F083720A96A144001FA8D4 /* ncio.h */,
+				B4F083730A96A144001FA8D4 /* ncx.c */,
+				B4F083740A96A144001FA8D4 /* ncx.h */,
+				B4F083780A96A144001FA8D4 /* netcdf.h */,
+				B4F083790A96A144001FA8D4 /* onstack.h */,
+				B4F0837B0A96A144001FA8D4 /* putget.c */,
+				B4F0837D0A96A144001FA8D4 /* rnd.h */,
+				B4F086B10A96C9C3001FA8D4 /* posixio.c */,
+				B4F0837E0A96A144001FA8D4 /* string.c */,
+				B4F083850A96A144001FA8D4 /* v1hpg.c */,
+				B4F083860A96A144001FA8D4 /* v2i.c */,
+				B4F083870A96A144001FA8D4 /* var.c */,
+			);
+			name = libsrc;
+			path = ../src/libsrc;
+			sourceTree = SOURCE_ROOT;
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B4F084D80A96A43D001FA8D4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC043055464E500DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B4F084DB0A96A43D001FA8D4 /* netcdf-intel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4F084DD0A96A45B001FA8D4 /* Build configuration list for PBXNativeTarget "netcdf-intel" */;
+			buildPhases = (
+				B4F084D80A96A43D001FA8D4 /* Headers */,
+				B4F084D90A96A43D001FA8D4 /* Sources */,
+				B4F084DA0A96A43D001FA8D4 /* Frameworks */,
+				B4F086640A96B203001FA8D4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "netcdf-intel";
+			productName = "netcdf-intel";
+			productReference = B4F084DC0A96A43D001FA8D4 /* libnetcdf.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D2AAC045055464E500DB518D /* netcdf-PPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "netcdf-PPC" */;
+			buildPhases = (
+				B4F084F60A96A63E001FA8D4 /* ShellScript */,
+				D2AAC043055464E500DB518D /* Headers */,
+				D2AAC044055464E500DB518D /* Sources */,
+				D289987405E68DCB004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "netcdf-PPC";
+			productName = netcdf;
+			productReference = D2AAC046055464E500DB518D /* libnetcdf.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "netcdf" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* netcdf */;
+			projectDirPath = "";
+			targets = (
+				D2AAC045055464E500DB518D /* netcdf-PPC */,
+				B4F084DB0A96A43D001FA8D4 /* netcdf-intel */,
+				B4F084E20A96A482001FA8D4 /* universal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B4F084F60A96A63E001FA8D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../src\n\ncp config.h.ppc config.h\n\nexit 0\n";
+		};
+		B4F086520A96B1B8001FA8D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n\nlipo -create $BUILT_PRODUCTS_DIR/*/libnetcdf.a -output $BUILT_PRODUCTS_DIR/libnetcdf.a\nexit 0";
+		};
+		B4F086640A96B203001FA8D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../src\n\ncp config.h.intel config.h\n\nexit 0\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B4F084D90A96A43D001FA8D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4F084EA0A96A4F1001FA8D4 /* attr.c in Sources */,
+				B4F084EB0A96A4F1001FA8D4 /* dim.c in Sources */,
+				B4F084EC0A96A4F1001FA8D4 /* error.c in Sources */,
+				B4F084ED0A96A4F1001FA8D4 /* libvers.c in Sources */,
+				B4F084EE0A96A4F1001FA8D4 /* nc.c in Sources */,
+				B4F084EF0A96A4F1001FA8D4 /* ncio.c in Sources */,
+				B4F084F00A96A4F1001FA8D4 /* ncx.c in Sources */,
+				B4F084F10A96A4F1001FA8D4 /* putget.c in Sources */,
+				B4F084F20A96A4F1001FA8D4 /* string.c in Sources */,
+				B4F084F30A96A4F1001FA8D4 /* v1hpg.c in Sources */,
+				B4F084F40A96A4F1001FA8D4 /* v2i.c in Sources */,
+				B4F084F50A96A4F1001FA8D4 /* var.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC044055464E500DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4F0845B0A96A145001FA8D4 /* attr.c in Sources */,
+				B4F0845C0A96A145001FA8D4 /* dim.c in Sources */,
+				B4F084620A96A145001FA8D4 /* nc.c in Sources */,
+				B4F084640A96A145001FA8D4 /* ncio.c in Sources */,
+				B4F084660A96A145001FA8D4 /* ncx.c in Sources */,
+				B4F0846C0A96A145001FA8D4 /* putget.c in Sources */,
+				B4F0846E0A96A145001FA8D4 /* string.c in Sources */,
+				B4F084730A96A145001FA8D4 /* v1hpg.c in Sources */,
+				B4F084740A96A145001FA8D4 /* v2i.c in Sources */,
+				B4F084750A96A145001FA8D4 /* var.c in Sources */,
+				B4F086170A96ADED001FA8D4 /* error.c in Sources */,
+				B4F086B20A96C9C3001FA8D4 /* posixio.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4F084E40A96A49A001FA8D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC045055464E500DB518D /* netcdf-PPC */;
+			targetProxy = B4F084E30A96A49A001FA8D4 /* PBXContainerItemProxy */;
+		};
+		B4F084E60A96A49B001FA8D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4F084DB0A96A43D001FA8D4 /* netcdf-intel */;
+			targetProxy = B4F084E50A96A49B001FA8D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91EC08733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/PPC";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-c",
+					"-g",
+					"-O2",
+				);
+				PRODUCT_NAME = netcdf;
+				SYMROOT = build;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB91ED08733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/PPC";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-c",
+					"-g",
+					"-O2",
+				);
+				PRODUCT_NAME = netcdf;
+				SYMROOT = build;
+				ZERO_LINK = YES;
+			};
+			name = Release;
+		};
+		1DEB91F008733DB70010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		1DEB91F108733DB70010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+		B4F084DE0A96A45B001FA8D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/intel";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = netcdf;
+				SYMROOT = build;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		B4F084DF0A96A45B001FA8D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/intel";
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = netcdf;
+				SYMROOT = build;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B4F084E80A96A4B9001FA8D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = universal;
+			};
+			name = Debug;
+		};
+		B4F084E90A96A4B9001FA8D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = universal;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "netcdf-PPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91EC08733DB70010E9CD /* Debug */,
+				1DEB91ED08733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91EF08733DB70010E9CD /* Build configuration list for PBXProject "netcdf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91F008733DB70010E9CD /* Debug */,
+				1DEB91F108733DB70010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4F084DD0A96A45B001FA8D4 /* Build configuration list for PBXNativeTarget "netcdf-intel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4F084DE0A96A45B001FA8D4 /* Debug */,
+				B4F084DF0A96A45B001FA8D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4F084E70A96A4B9001FA8D4 /* Build configuration list for PBXAggregateTarget "universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4F084E80A96A4B9001FA8D4 /* Debug */,
+				B4F084E90A96A4B9001FA8D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
