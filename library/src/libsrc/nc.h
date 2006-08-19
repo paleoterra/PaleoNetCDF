@@ -9,7 +9,7 @@
 /*
  *	netcdf library 'private' data structures, objects and interfaces
  */
-#include <config.h>
+#include "config.h"
 
 /* If netcdf-4 is in use, rename all nc_ functions to nc3_ functions. */
 #ifdef USE_NETCDF4
