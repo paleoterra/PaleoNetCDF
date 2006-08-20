@@ -44,11 +44,11 @@
 		B46DE0BA091B0C23001A5988 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5865CDD03816E68018B4C9C /* NCDFVariableByteSizeFormatter.m */; };
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
+		B49CA3250A98FC38004B1916 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49CA3240A98FC38004B1916 /* libnetcdf.a */; };
 		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
 		B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */; };
 		B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */; };
 		B4E546FA093D4D8700794457 /* NCDFErrorHandleTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7FF02F8761A01EA6D6B /* NCDFErrorHandleTester.m */; };
-		B4F086FE0A96D68E001FA8D4 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B426AE2D0A8ACC6E00E21A64 /* libnetcdf.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -111,6 +111,7 @@
 		B4326AC1090F2F8B000B7357 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
 		B46DE09E091B0BD1001A5988 /* netcdf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = netcdf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "netcdf-Info.plist"; sourceTree = "<group>"; };
+		B49CA3240A98FC38004B1916 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/build/Release/libnetcdf.a; sourceTree = "<group>"; };
 		B4E1C853092424D00014A0B6 /* UC.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UC.config; sourceTree = "<group>"; };
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4F086FE0A96D68E001FA8D4 /* libnetcdf.a in Frameworks */,
+				B49CA3250A98FC38004B1916 /* libnetcdf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +196,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B49CA3240A98FC38004B1916 /* libnetcdf.a */,
 				B4E5467F093D483A00794457 /* SenTestingKit.framework */,
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
@@ -618,9 +620,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -661,9 +666,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -699,9 +707,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -737,9 +748,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (

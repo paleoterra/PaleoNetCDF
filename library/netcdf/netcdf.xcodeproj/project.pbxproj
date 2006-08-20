@@ -46,10 +46,16 @@
 		B4F084F40A96A4F1001FA8D4 /* v2i.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083860A96A144001FA8D4 /* v2i.c */; };
 		B4F084F50A96A4F1001FA8D4 /* var.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083870A96A144001FA8D4 /* var.c */; };
 		B4F086170A96ADED001FA8D4 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F083690A96A144001FA8D4 /* error.c */; };
-		B4F086B20A96C9C3001FA8D4 /* posixio.c in Sources */ = {isa = PBXBuildFile; fileRef = B4F086B10A96C9C3001FA8D4 /* posixio.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B49CA33E0A98FEAE004B1916 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC045055464E500DB518D;
+			remoteInfo = "netcdf-PPC";
+		};
 		B4F084E30A96A49A001FA8D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
@@ -203,14 +209,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4F084DD0A96A45B001FA8D4 /* Build configuration list for PBXNativeTarget "netcdf-intel" */;
 			buildPhases = (
+				B4F086640A96B203001FA8D4 /* ShellScript */,
 				B4F084D80A96A43D001FA8D4 /* Headers */,
 				B4F084D90A96A43D001FA8D4 /* Sources */,
 				B4F084DA0A96A43D001FA8D4 /* Frameworks */,
-				B4F086640A96B203001FA8D4 /* ShellScript */,
+				B428510D0A990DB100DDC6F9 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B49CA33F0A98FEAE004B1916 /* PBXTargetDependency */,
 			);
 			name = "netcdf-intel";
 			productName = "netcdf-intel";
@@ -225,6 +233,7 @@
 				D2AAC043055464E500DB518D /* Headers */,
 				D2AAC044055464E500DB518D /* Sources */,
 				D289987405E68DCB004EDB86 /* Frameworks */,
+				B428510B0A990D7700DDC6F9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -253,6 +262,32 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B428510B0A990D7700DDC6F9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ranlib $BUILT_PRODUCTS_DIR/libnetcdf.a\nexit 0";
+		};
+		B428510D0A990DB100DDC6F9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ranlib $BUILT_PRODUCTS_DIR/libnetcdf.a";
+		};
 		B4F084F60A96A63E001FA8D4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n\nlipo -create $BUILT_PRODUCTS_DIR/*/libnetcdf.a -output $BUILT_PRODUCTS_DIR/libnetcdf.a\nexit 0";
+			shellScript = "\n\nlipo -create \"$BUILT_PRODUCTS_DIR/PPC/libnetcdf.a\"  \"$BUILT_PRODUCTS_DIR/intel/libnetcdf.a\"-output $BUILT_PRODUCTS_DIR/libnetcdf.a\nexit 0";
 		};
 		B4F086640A96B203001FA8D4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -329,13 +364,17 @@
 				B4F084740A96A145001FA8D4 /* v2i.c in Sources */,
 				B4F084750A96A145001FA8D4 /* var.c in Sources */,
 				B4F086170A96ADED001FA8D4 /* error.c in Sources */,
-				B4F086B20A96C9C3001FA8D4 /* posixio.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B49CA33F0A98FEAE004B1916 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC045055464E500DB518D /* netcdf-PPC */;
+			targetProxy = B49CA33E0A98FEAE004B1916 /* PBXContainerItemProxy */;
+		};
 		B4F084E40A96A49A001FA8D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC045055464E500DB518D /* netcdf-PPC */;
@@ -357,11 +396,12 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INSTALL_PATH = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-c",
@@ -370,7 +410,7 @@
 				);
 				PRODUCT_NAME = netcdf;
 				SYMROOT = build;
-				ZERO_LINK = YES;
+				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -380,10 +420,12 @@
 				ARCHS = "$(NATIVE_ARCH)";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/PPC";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-c",
@@ -392,7 +434,7 @@
 				);
 				PRODUCT_NAME = netcdf;
 				SYMROOT = build;
-				ZERO_LINK = YES;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -425,13 +467,15 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
+				GCC_MODEL_TUNING = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
 				PREBINDING = NO;
 				PRODUCT_NAME = netcdf;
 				SYMROOT = build;
-				ZERO_LINK = YES;
+				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -443,8 +487,10 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
+				GCC_MODEL_TUNING = "";
 				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
 				PREBINDING = NO;
 				PRODUCT_NAME = netcdf;
 				SYMROOT = build;
