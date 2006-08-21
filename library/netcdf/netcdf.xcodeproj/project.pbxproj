@@ -12,6 +12,7 @@
 			buildConfigurationList = B4F084E70A96A4B9001FA8D4 /* Build configuration list for PBXAggregateTarget "universal" */;
 			buildPhases = (
 				B4F086520A96B1B8001FA8D4 /* ShellScript */,
+				B47BF27D0A9A166D00092C22 /* ShellScript */,
 			);
 			dependencies = (
 				B4F084E40A96A49A001FA8D4 /* PBXTargetDependency */,
@@ -288,6 +289,19 @@
 			shellPath = /bin/sh;
 			shellScript = "ranlib $BUILT_PRODUCTS_DIR/libnetcdf.a";
 		};
+		B47BF27D0A9A166D00092C22 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n\nFRAMEWORK=${BUILT_PRODUCTS_DIR}/libnetcdf.a\nFRAMEWORKTARGET=\"$SRCROOT/currentbuild\"\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/libnetcdf.a\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/libnetcdf.a\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\nexit 0";
+		};
 		B4F084F60A96A63E001FA8D4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,7 +326,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n\nlipo -create \"$BUILT_PRODUCTS_DIR/PPC/libnetcdf.a\"  \"$BUILT_PRODUCTS_DIR/intel/libnetcdf.a\"-output $BUILT_PRODUCTS_DIR/libnetcdf.a\nexit 0";
+			shellScript = "\n\nlipo -create \"$BUILT_PRODUCTS_DIR\"/*/libnetcdf.a -output \"$BUILT_PRODUCTS_DIR/libnetcdf.a\"\n\n\nexit 0";
 		};
 		B4F086640A96B203001FA8D4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

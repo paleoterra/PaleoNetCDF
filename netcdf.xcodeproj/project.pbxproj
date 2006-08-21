@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		B47BF2A40A9A1E3400092C22 /* noheaders */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B47BF2AB0A9A1E8600092C22 /* Build configuration list for PBXAggregateTarget "noheaders" */;
+			buildPhases = (
+				B47BF2A90A9A1E6700092C22 /* ShellScript */,
+			);
+			dependencies = (
+				B47BF2A60A9A1E3B00092C22 /* PBXTargetDependency */,
+			);
+			name = noheaders;
+			productName = noheaders;
+		};
 		B4E1C85A092425F90014A0B6 /* API */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B4E1C8610924260C0014A0B6 /* Build configuration list for PBXAggregateTarget "API" */;
@@ -44,7 +56,7 @@
 		B46DE0BA091B0C23001A5988 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5865CDD03816E68018B4C9C /* NCDFVariableByteSizeFormatter.m */; };
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
-		B49CA3250A98FC38004B1916 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49CA3240A98FC38004B1916 /* libnetcdf.a */; };
+		B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47BF28F0A9A1A2300092C22 /* libnetcdf.a */; };
 		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
 		B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */; };
 		B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */; };
@@ -71,6 +83,13 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		B47BF2A50A9A1E3B00092C22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B46DE09D091B0BD1001A5988 /* netcdf */;
+			remoteInfo = netcdf;
+		};
 		B4E54641093D432600794457 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -111,7 +130,7 @@
 		B4326AC1090F2F8B000B7357 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
 		B46DE09E091B0BD1001A5988 /* netcdf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = netcdf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "netcdf-Info.plist"; sourceTree = "<group>"; };
-		B49CA3240A98FC38004B1916 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/build/Release/libnetcdf.a; sourceTree = "<group>"; };
+		B47BF28F0A9A1A2300092C22 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/currentbuild/libnetcdf.a; sourceTree = "<group>"; };
 		B4E1C853092424D00014A0B6 /* UC.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UC.config; sourceTree = "<group>"; };
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B49CA3250A98FC38004B1916 /* libnetcdf.a in Frameworks */,
+				B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +215,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				B49CA3240A98FC38004B1916 /* libnetcdf.a */,
+				B47BF28F0A9A1A2300092C22 /* libnetcdf.a */,
 				B4E5467F093D483A00794457 /* SenTestingKit.framework */,
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
@@ -329,6 +348,7 @@
 				B46DE09A091B0BD1001A5988 /* Resources */,
 				B46DE09B091B0BD1001A5988 /* Sources */,
 				B46DE09C091B0BD1001A5988 /* Frameworks */,
+				B47BF29C0A9A1AB800092C22 /* ShellScript */,
 			);
 			buildRules = (
 				B46DE0A6091B0BE3001A5988 /* PBXBuildRule */,
@@ -381,6 +401,7 @@
 				B46DE09D091B0BD1001A5988 /* netcdf */,
 				B4E1C85A092425F90014A0B6 /* API */,
 				B4E54639093D432000794457 /* UnitTests */,
+				B47BF2A40A9A1E3400092C22 /* noheaders */,
 			);
 		};
 /* End PBXProject section */
@@ -422,6 +443,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B47BF29C0A9A1AB800092C22 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nFRAMEWORKNAME=netcdf.framework\nFRAMEWORK=${BUILT_PRODUCTS_DIR}/${FRAMEWORKNAME}\nFRAMEWORKTARGET=${BUILD_ROOT}/currentbuild\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/$FRAMEWORKNAME\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/$FRAMEWORKNAME\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\nexit 0";
+		};
+		B47BF2A90A9A1E6700092C22 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nFRAMEWORKNAME=netcdf.framework\nFRAMEWORK=${BUILD_ROOT}/currentbuild/${FRAMEWORKNAME}\nFRAMEWORKTARGET=${BUILD_ROOT}/headerlessbuild\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/$FRAMEWORKNAME\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/$FRAMEWORKNAME\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\n\nexit 0";
+		};
 		B4E1C859092425F90014A0B6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,6 +527,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B47BF2A60A9A1E3B00092C22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B46DE09D091B0BD1001A5988 /* netcdf */;
+			targetProxy = B47BF2A50A9A1E3B00092C22 /* PBXContainerItemProxy */;
+		};
 		B4E54642093D432600794457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B46DE09D091B0BD1001A5988 /* netcdf */;
@@ -621,10 +673,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
@@ -667,10 +721,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
@@ -708,10 +764,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
@@ -749,10 +807,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
@@ -771,6 +831,42 @@
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
+			};
+			name = Default;
+		};
+		B47BF2AC0A9A1E8600092C22 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = noheaders;
+			};
+			name = Development;
+		};
+		B47BF2AD0A9A1E8600092C22 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = noheaders;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		B47BF2AE0A9A1E8600092C22 /* test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = noheaders;
+			};
+			name = test;
+		};
+		B47BF2AF0A9A1E8600092C22 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = noheaders;
 			};
 			name = Default;
 		};
@@ -973,6 +1069,17 @@
 				B46DE0A2091B0BD2001A5988 /* Deployment */,
 				B46DE0A3091B0BD2001A5988 /* test */,
 				B46DE0A4091B0BD2001A5988 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		B47BF2AB0A9A1E8600092C22 /* Build configuration list for PBXAggregateTarget "noheaders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B47BF2AC0A9A1E8600092C22 /* Development */,
+				B47BF2AD0A9A1E8600092C22 /* Deployment */,
+				B47BF2AE0A9A1E8600092C22 /* test */,
+				B47BF2AF0A9A1E8600092C22 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
