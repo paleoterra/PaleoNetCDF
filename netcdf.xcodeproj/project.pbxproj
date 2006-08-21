@@ -7,18 +7,6 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		B47BF2A40A9A1E3400092C22 /* noheaders */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B47BF2AB0A9A1E8600092C22 /* Build configuration list for PBXAggregateTarget "noheaders" */;
-			buildPhases = (
-				B47BF2A90A9A1E6700092C22 /* ShellScript */,
-			);
-			dependencies = (
-				B47BF2A60A9A1E3B00092C22 /* PBXTargetDependency */,
-			);
-			name = noheaders;
-			productName = noheaders;
-		};
 		B4E1C85A092425F90014A0B6 /* API */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B4E1C8610924260C0014A0B6 /* Build configuration list for PBXAggregateTarget "API" */;
@@ -34,25 +22,14 @@
 
 /* Begin PBXBuildFile section */
 		B426AE2E0A8ACC6E00E21A64 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B426AE2D0A8ACC6E00E21A64 /* libnetcdf.a */; };
-		B46DE0A7091B0BFF001A5988 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4326AC1090F2F8B000B7357 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B46DE0A8091B0C11001A5988 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCF7021B0C04018B4C67 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0A9091B0C12001A5988 /* NCDFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = F59DFCF8021B0C04018B4C67 /* NCDFAttribute.m */; };
-		B46DE0AA091B0C14001A5988 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5865CD503816861018B4C9C /* NCDFDataTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0AB091B0C15001A5988 /* NCDFDataTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5865CD603816861018B4C9C /* NCDFDataTypeFormatter.m */; };
-		B46DE0AC091B0C16001A5988 /* NCDFDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFC9C021AEE5F018B4C67 /* NCDFDimension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0AD091B0C17001A5988 /* NCDFDimension.m in Sources */ = {isa = PBXBuildFile; fileRef = F59DFC9D021AEE5F018B4C67 /* NCDFDimension.m */; };
-		B46DE0AE091B0C18001A5988 /* NCDFError.h in Headers */ = {isa = PBXBuildFile; fileRef = F577E7EF02F7267901EA6D6B /* NCDFError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0AF091B0C19001A5988 /* NCDFError.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F002F7267901EA6D6B /* NCDFError.m */; };
-		B46DE0B0091B0C1A001A5988 /* NCDFErrorHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = F577E7FA02F874FD01EA6D6B /* NCDFErrorHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0B1091B0C1A001A5988 /* NCDFErrorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7FB02F874FD01EA6D6B /* NCDFErrorHandle.m */; };
-		B46DE0B2091B0C1B001A5988 /* NCDFHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFC8E021AE71B018B4C67 /* NCDFHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0B3091B0C1C001A5988 /* NCDFHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F59DFC8F021AE71B018B4C67 /* NCDFHandle.m */; };
-		B46DE0B4091B0C1D001A5988 /* NCDFNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F586675603845383018B4C9C /* NCDFNameFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0B5091B0C1E001A5988 /* NCDFNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F586675703845383018B4C9C /* NCDFNameFormatter.m */; };
-		B46DE0B6091B0C1F001A5988 /* NCDFNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCFF021B19B0018B4C67 /* NCDFNetCDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B46DE0B7091B0C20001A5988 /* NCDFVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCFB021B183E018B4C67 /* NCDFVariable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0B8091B0C21001A5988 /* NCDFVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = F59DFCFC021B183E018B4C67 /* NCDFVariable.m */; };
-		B46DE0B9091B0C22001A5988 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5865CDC03816E68018B4C9C /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B46DE0BA091B0C23001A5988 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F5865CDD03816E68018B4C9C /* NCDFVariableByteSizeFormatter.m */; };
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
@@ -83,13 +60,6 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		B47BF2A50A9A1E3B00092C22 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B46DE09D091B0BD1001A5988 /* netcdf */;
-			remoteInfo = netcdf;
-		};
 		B4E54641093D432600794457 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -318,33 +288,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		B46DE099091B0BD1001A5988 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B46DE0A7091B0BFF001A5988 /* netcdf.h in Headers */,
-				B46DE0A8091B0C11001A5988 /* NCDFAttribute.h in Headers */,
-				B46DE0AA091B0C14001A5988 /* NCDFDataTypeFormatter.h in Headers */,
-				B46DE0AC091B0C16001A5988 /* NCDFDimension.h in Headers */,
-				B46DE0AE091B0C18001A5988 /* NCDFError.h in Headers */,
-				B46DE0B0091B0C1A001A5988 /* NCDFErrorHandle.h in Headers */,
-				B46DE0B2091B0C1B001A5988 /* NCDFHandle.h in Headers */,
-				B46DE0B4091B0C1D001A5988 /* NCDFNameFormatter.h in Headers */,
-				B46DE0B6091B0C1F001A5988 /* NCDFNetCDF.h in Headers */,
-				B46DE0B7091B0C20001A5988 /* NCDFVariable.h in Headers */,
-				B46DE0B9091B0C22001A5988 /* NCDFVariableByteSizeFormatter.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		B46DE09D091B0BD1001A5988 /* netcdf */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46DE0A0091B0BD2001A5988 /* Build configuration list for PBXNativeTarget "netcdf" */;
 			buildPhases = (
-				B46DE099091B0BD1001A5988 /* Headers */,
 				B46DE09A091B0BD1001A5988 /* Resources */,
 				B46DE09B091B0BD1001A5988 /* Sources */,
 				B46DE09C091B0BD1001A5988 /* Frameworks */,
@@ -401,7 +349,6 @@
 				B46DE09D091B0BD1001A5988 /* netcdf */,
 				B4E1C85A092425F90014A0B6 /* API */,
 				B4E54639093D432000794457 /* UnitTests */,
-				B47BF2A40A9A1E3400092C22 /* noheaders */,
 			);
 		};
 /* End PBXProject section */
@@ -455,19 +402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\nFRAMEWORKNAME=netcdf.framework\nFRAMEWORK=${BUILT_PRODUCTS_DIR}/${FRAMEWORKNAME}\nFRAMEWORKTARGET=${BUILD_ROOT}/currentbuild\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/$FRAMEWORKNAME\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/$FRAMEWORKNAME\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\nexit 0";
-		};
-		B47BF2A90A9A1E6700092C22 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\nFRAMEWORKNAME=netcdf.framework\nFRAMEWORK=${BUILD_ROOT}/currentbuild/${FRAMEWORKNAME}\nFRAMEWORKTARGET=${BUILD_ROOT}/headerlessbuild\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/$FRAMEWORKNAME\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/$FRAMEWORKNAME\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\n\nexit 0";
 		};
 		B4E1C859092425F90014A0B6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -527,11 +461,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B47BF2A60A9A1E3B00092C22 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B46DE09D091B0BD1001A5988 /* netcdf */;
-			targetProxy = B47BF2A50A9A1E3B00092C22 /* PBXContainerItemProxy */;
-		};
 		B4E54642093D432600794457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B46DE09D091B0BD1001A5988 /* netcdf */;
@@ -834,42 +763,6 @@
 			};
 			name = Default;
 		};
-		B47BF2AC0A9A1E8600092C22 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = noheaders;
-			};
-			name = Development;
-		};
-		B47BF2AD0A9A1E8600092C22 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				PRODUCT_NAME = noheaders;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-		B47BF2AE0A9A1E8600092C22 /* test */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = noheaders;
-			};
-			name = test;
-		};
-		B47BF2AF0A9A1E8600092C22 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = noheaders;
-			};
-			name = Default;
-		};
 		B4E1C8620924260C0014A0B6 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1069,17 +962,6 @@
 				B46DE0A2091B0BD2001A5988 /* Deployment */,
 				B46DE0A3091B0BD2001A5988 /* test */,
 				B46DE0A4091B0BD2001A5988 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		B47BF2AB0A9A1E8600092C22 /* Build configuration list for PBXAggregateTarget "noheaders" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B47BF2AC0A9A1E8600092C22 /* Development */,
-				B47BF2AD0A9A1E8600092C22 /* Deployment */,
-				B47BF2AE0A9A1E8600092C22 /* test */,
-				B47BF2AF0A9A1E8600092C22 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
