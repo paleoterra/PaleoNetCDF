@@ -34,6 +34,17 @@
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
 		B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47BF28F0A9A1A2300092C22 /* libnetcdf.a */; };
+		B4B033720A9F5533008D45E9 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4326AC1090F2F8B000B7357 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033730A9F5549008D45E9 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCF7021B0C04018B4C67 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033740A9F554B008D45E9 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5865CD503816861018B4C9C /* NCDFDataTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033750A9F554B008D45E9 /* NCDFDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFC9C021AEE5F018B4C67 /* NCDFDimension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033760A9F554D008D45E9 /* NCDFError.h in Headers */ = {isa = PBXBuildFile; fileRef = F577E7EF02F7267901EA6D6B /* NCDFError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033770A9F554D008D45E9 /* NCDFErrorHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = F577E7FA02F874FD01EA6D6B /* NCDFErrorHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033780A9F554F008D45E9 /* NCDFHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFC8E021AE71B018B4C67 /* NCDFHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B033790A9F554F008D45E9 /* NCDFNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F586675603845383018B4C9C /* NCDFNameFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B0337A0A9F5550008D45E9 /* NCDFNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCFF021B19B0018B4C67 /* NCDFNetCDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B0337B0A9F5551008D45E9 /* NCDFVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCFB021B183E018B4C67 /* NCDFVariable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4B0337C0A9F5551008D45E9 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5865CDC03816E68018B4C9C /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
 		B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */; };
 		B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */; };
@@ -288,11 +299,33 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		B4B033700A9F551C008D45E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4B033720A9F5533008D45E9 /* netcdf.h in Headers */,
+				B4B033730A9F5549008D45E9 /* NCDFAttribute.h in Headers */,
+				B4B033740A9F554B008D45E9 /* NCDFDataTypeFormatter.h in Headers */,
+				B4B033750A9F554B008D45E9 /* NCDFDimension.h in Headers */,
+				B4B033760A9F554D008D45E9 /* NCDFError.h in Headers */,
+				B4B033770A9F554D008D45E9 /* NCDFErrorHandle.h in Headers */,
+				B4B033780A9F554F008D45E9 /* NCDFHandle.h in Headers */,
+				B4B033790A9F554F008D45E9 /* NCDFNameFormatter.h in Headers */,
+				B4B0337A0A9F5550008D45E9 /* NCDFNetCDF.h in Headers */,
+				B4B0337B0A9F5551008D45E9 /* NCDFVariable.h in Headers */,
+				B4B0337C0A9F5551008D45E9 /* NCDFVariableByteSizeFormatter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		B46DE09D091B0BD1001A5988 /* netcdf */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46DE0A0091B0BD2001A5988 /* Build configuration list for PBXNativeTarget "netcdf" */;
 			buildPhases = (
+				B4B033700A9F551C008D45E9 /* Headers */,
 				B46DE09A091B0BD1001A5988 /* Resources */,
 				B46DE09B091B0BD1001A5988 /* Sources */,
 				B46DE09C091B0BD1001A5988 /* Frameworks */,
