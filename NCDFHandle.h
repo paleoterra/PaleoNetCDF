@@ -25,6 +25,8 @@
     NSString *filePath;
     //added in version 0.2.1d1
     NCDFErrorHandle *theErrorHandle;
+	//for multithreading, NSLock
+	NSLock *handleLock;
 }
 
 
@@ -118,7 +120,7 @@
 */
 -(void)refresh;
 
-
+-(NSLock *)handleLock;
 
 //*****************************ACCESSORS***********************************
 

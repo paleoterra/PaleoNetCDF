@@ -81,6 +81,9 @@
 */
 -(id)initNewDimWithName:(NSString *)name length:(size_t)aLength;
 
+
+-(NSLock *)handleLock;
+
 /*!
   @method dimensionName
   @abstract Access the dimension name.

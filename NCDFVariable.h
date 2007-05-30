@@ -96,6 +96,7 @@
 */
 -(id)initWithPath:(NSString *)thePath variableName:(NSString *)theName variableID:(int)theID type:(nc_type)theType theDims:(NSArray *)theDims attributeCount:(int)nAtt handle:(NCDFHandle *)handle;
 
+-(NSLock *)handleLock;
 
 -(NSData *)readAllVariableData;
 

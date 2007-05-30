@@ -61,6 +61,10 @@
     [super dealloc];
 }
 
+-(NSLock *)handleLock
+{
+	return [theHandle handleLock];
+}
 
 -(NSString *)dimensionName
 {

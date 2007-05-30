@@ -60,7 +60,7 @@
     }
     [self setFilePath:thePath];
     [self initializeArrays];
-
+	handleLock = [[NSLock alloc] init];
     if(errorCount<[theErrorHandle errorCount])
     {
         [self release];
@@ -111,6 +111,11 @@
     theGlobalAttributes = [[NSMutableArray alloc] init];
     theDimensions = [[NSMutableArray alloc] init];
 	[self seedArrays:[NSArray arrayWithObjects:theDimensions,theGlobalAttributes,theVariables,nil]];
+}
+
+-(NSLock *)handleLock
+{
+	return handleLock;
 }
 
 -(void)seedArrays:(NSArray *)typeArrays
@@ -366,7 +371,8 @@
 	
 	if(theErrorHandle)
 		[theErrorHandle release]; 
-    
+    if(handleLock)
+		[handleLock release];
     [super dealloc];
 }
 

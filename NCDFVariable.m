@@ -47,6 +47,10 @@
     [super dealloc];
 }
 
+-(NSLock *)handleLock
+{
+	return [theHandle handleLock];
+}
 -(NSString *)variableName
 {
     /*Returns the reciever's variable name.*/
@@ -1210,8 +1214,8 @@
         }
         case NC_CHAR:
         {
-            unsigned char *theText;
-            theText = ( char *)malloc(sizeof(unsigned char) *unitSize+1);
+            char *theText;
+            theText = (char *)malloc(sizeof(char) *unitSize+1);
             
             status = nc_get_vara_text(ncid,varID,index,edges,theText);
             theData = [NSData dataWithBytes:theText length:(sizeof(char) *unitSize)];

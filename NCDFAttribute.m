@@ -62,6 +62,11 @@
     return self;
 }
 
+-(NSLock *)handleLock
+{
+	return [theHandle handleLock];
+}
+
 -(void)dealloc
 {
 #ifdef DEBUG_NCDFAttribute

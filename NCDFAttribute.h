@@ -96,6 +96,9 @@
 */
 -(id)initWithName:(NSString *)theName length:(size_t)dataLength type:(nc_type)theType valueArray:(NSArray *)newValues;
 
+//may return nil;
+-(NSLock *)handleLock;
+
 
 /*! 
     @method loadValues
