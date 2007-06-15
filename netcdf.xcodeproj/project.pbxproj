@@ -45,6 +45,8 @@
 		B4B0337A0A9F5550008D45E9 /* NCDFNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCFF021B19B0018B4C67 /* NCDFNetCDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4B0337B0A9F5551008D45E9 /* NCDFVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCFB021B183E018B4C67 /* NCDFVariable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4B0337C0A9F5551008D45E9 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5865CDC03816E68018B4C9C /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4E4CBF30C1E573600C5F6B1 /* NCDFSlab.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E4CBF10C1E573600C5F6B1 /* NCDFSlab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4E4CBF40C1E573600C5F6B1 /* NCDFSlab.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E4CBF20C1E573600C5F6B1 /* NCDFSlab.m */; };
 		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
 		B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */; };
 		B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */; };
@@ -115,6 +117,8 @@
 		B47BF28F0A9A1A2300092C22 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/currentbuild/libnetcdf.a; sourceTree = "<group>"; };
 		B4E1C853092424D00014A0B6 /* UC.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UC.config; sourceTree = "<group>"; };
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
+		B4E4CBF10C1E573600C5F6B1 /* NCDFSlab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDFSlab.h; sourceTree = "<group>"; };
+		B4E4CBF20C1E573600C5F6B1 /* NCDFSlab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDFSlab.m; sourceTree = "<group>"; };
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
@@ -238,6 +242,8 @@
 				F5865CDD03816E68018B4C9C /* NCDFVariableByteSizeFormatter.m */,
 				F586675603845383018B4C9C /* NCDFNameFormatter.h */,
 				F586675703845383018B4C9C /* NCDFNameFormatter.m */,
+				B4E4CBF10C1E573600C5F6B1 /* NCDFSlab.h */,
+				B4E4CBF20C1E573600C5F6B1 /* NCDFSlab.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4E4CBF30C1E573600C5F6B1 /* NCDFSlab.h in Headers */,
 				B4B033720A9F5533008D45E9 /* netcdf.h in Headers */,
 				B4B033730A9F5549008D45E9 /* NCDFAttribute.h in Headers */,
 				B4B033740A9F554B008D45E9 /* NCDFDataTypeFormatter.h in Headers */,
@@ -480,6 +487,7 @@
 				B46DE0B5091B0C1E001A5988 /* NCDFNameFormatter.m in Sources */,
 				B46DE0B8091B0C21001A5988 /* NCDFVariable.m in Sources */,
 				B46DE0BA091B0C23001A5988 /* NCDFVariableByteSizeFormatter.m in Sources */,
+				B4E4CBF40C1E573600C5F6B1 /* NCDFSlab.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

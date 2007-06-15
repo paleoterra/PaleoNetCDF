@@ -68,7 +68,7 @@
 #define NCDFVariablePropertyListFieldAttributes @"attributes"
 
 
-@class NCDFHandle,NCDFAttribute;
+@class NCDFHandle,NCDFAttribute,NCDFSlab;
 @interface NCDFVariable : NSObject {
     NSString *fileName;
     int varID;
@@ -435,4 +435,6 @@
 -(int)variableID;
 -(int)attributeCount;
 -(void)updateVariableWithVariable:(NCDFVariable *)aVar;
+-(NCDFSlab *)getSlabForStartCoordinates:(NSArray *)startCoordinates edgeLengths:(NSArray *)edgeLengths;
+-(NCDFSlab *)getAllDataInSlab;
 @end

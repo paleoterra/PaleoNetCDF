@@ -2046,4 +2046,19 @@
 	else
 	return NSOrderedSame;
 }
+
+-(NCDFSlab *)getSlabForStartCoordinates:(NSArray *)startCoordinates edgeLengths:(NSArray *)edgeLengths
+{
+	NSData *theTempData = [self getValueArrayAtLocation:startCoordinates edgeLengths:edgeLengths];
+	NCDFSlab *theSlab = [[[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:edgeLengths] autorelease];
+	return [theSlab autorelease];
+}
+
+
+-(NCDFSlab *)getAllDataInSlab
+{
+	NSData *theTempData = [self readAllVariableData];
+	NCDFSlab *theSlab = [[[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:[self lengthArray]] autorelease];
+	return theSlab;
+}
 @end

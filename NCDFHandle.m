@@ -29,7 +29,7 @@
     [self setFilePath:thePath];
     [self initializeArrays];
     
-	NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
+	//NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
     if(errorCount<[theErrorHandle errorCount])
     {
 		[theErrorHandle logAllErrors];

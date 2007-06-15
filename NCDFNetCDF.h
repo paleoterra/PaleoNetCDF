@@ -22,5 +22,5 @@
 #import "NCDFVariableByteSizeFormatter.h"
 #import "NCDFDataTypeFormatter.h"
 #import "NCDFNameFormatter.h"
-
+#import "NCDFSlab.h"
 
