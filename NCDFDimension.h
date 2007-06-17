@@ -81,7 +81,10 @@
 */
 -(id)initNewDimWithName:(NSString *)name length:(size_t)aLength;
 
-
+	/*! 
+    @method -(NSLock *)handleLock
+    @abstract Returns an NSLock object from the owning NCDFHandle object.
+	*/
 -(NSLock *)handleLock;
 
 /*!
@@ -179,6 +182,18 @@
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(NSDictionary *)propertyList;
+
+	/*! 
+    @method -(void)updateDimensionWithDimension:(NCDFDimension *)aDim
+    @abstract Updates the receiver with information from a new NCDFDimension.
+    @discussion  This method replaces all the information in a dimension with the information in aDim, generally used for updated the object from file.  This method should be considered a private method.
+	*/
 -(void)updateDimensionWithDimension:(NCDFDimension *)aDim;
+
+	/*! 
+    @method -(NSComparisonResult)compare:(id)object
+    @abstract Compares two NCDFDimension object's variable ID.
+    @discussion  This method can be used to sort NCDFDimension objects using their variable IDs.  Returns NSOrderedAccending,NSOrderedDecending, or NSOrderedSame.
+	*/
 -(NSComparisonResult)compare:(id)object;
 @end

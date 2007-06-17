@@ -96,7 +96,10 @@
 */
 -(id)initWithName:(NSString *)theName length:(size_t)dataLength type:(nc_type)theType valueArray:(NSArray *)newValues;
 
-//may return nil;
+	/*! 
+    @method -(NSLock *)handleLock
+    @abstract Returns an NSLock object from the owning NCDFHandle object.
+	*/
 -(NSLock *)handleLock;
 
 
@@ -205,8 +208,26 @@
     NCDFAttributePropertyListFieldValues - The actual values stored in an array.  All values in single NSNumber objects except for NC_CHAR which are stored in a single NSString object.
 */
 -(NSDictionary *)propertyList;
+
+	/*! 
+    @method variableID
+    @abstract Returns the ID number of the owner.
+    @discussion  The ID number returned is the ID number of a variable.  However, if the ID number is equal to NC_GLOBAL, then the owner is the NCDFHandle.  (Same as ownerVariableID method)
+	*/
 -(int)variableID;
+
+	/*! 
+    @method -(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt
+    @abstract Updates the receiver with information from a new NCDFAttribute.
+    @discussion  This method replaces all the information in an attribute with the information in anAtt, generally used for updated the object from file.  This method should be considered a private method.
+	*/
 -(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt;
+
+	/*! 
+    @method -(NSComparisonResult)compare:(id)object
+    @abstract Compares two NCDFAttribute object's variable ID.
+    @discussion  This method can be used to sort NCDFAttribute objects using their variable IDs.  Returns NSOrderedAccending,NSOrderedDecending, or NSOrderedSame.
+	*/
 -(NSComparisonResult)compare:(id)object;
 
 @end

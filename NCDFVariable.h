@@ -96,6 +96,10 @@
 */
 -(id)initWithPath:(NSString *)thePath variableName:(NSString *)theName variableID:(int)theID type:(nc_type)theType theDims:(NSArray *)theDims attributeCount:(int)nAtt handle:(NCDFHandle *)handle;
 
+	/*! 
+    @method -(NSLock *)handleLock
+    @abstract Returns an NSLock object from the owning NCDFHandle object.
+	*/
 -(NSLock *)handleLock;
 
 -(NSData *)readAllVariableData;

@@ -120,6 +120,10 @@
 */
 -(void)refresh;
 
+	/*! 
+    @method -(NSLock *)handleLock
+    @abstract Returns an NSLock object for the handle.
+	*/
 -(NSLock *)handleLock;
 
 //*****************************ACCESSORS***********************************
@@ -420,5 +424,12 @@
 	*/
 
 -(NSString *)htmlDescription;
+
+	/*!
+	@method -(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName
+	 @abstract Allows access to global attributes by name.
+	 @param name NSString object containing the desired name of the global attribute desired.
+	 @discussion Retrieves NCDFAttribute object that global to the netcdf file  by attribute name.
+	 */
 -(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName;
 @end
