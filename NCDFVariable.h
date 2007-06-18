@@ -6,13 +6,6 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-/*!
-@header
-  @class NCDFVariable
-@abstract NCDFVariable objects handle data sets within netcdf files.
-    @discussion NCDFVariable objects are the primary interface for working with netcdf data sets.  The datasets are in the form of binary raster data using 0 to many dimensions.  The dimensions refered to by a variable describe the variable's data shape.  Use this class to access and write data from a netcdf file.  
-*/
-
 
 
 #import <Foundation/Foundation.h>
@@ -69,6 +62,15 @@
 
 
 @class NCDFHandle,NCDFAttribute,NCDFSlab;
+
+
+/*!
+@header
+ @class NCDFVariable
+ @abstract NCDFVariable objects handle data sets within netcdf files.
+ @discussion NCDFVariable objects are the primary interface for working with netcdf data sets.  The datasets are in the form of binary raster data using 0 to many dimensions.  The dimensions refered to by a variable describe the variable's data shape.  Use this class to access and write data from a netcdf file.  
+ */
+
 @interface NCDFVariable : NSObject {
     NSString *fileName;
     int varID;
@@ -97,7 +99,7 @@
 -(id)initWithPath:(NSString *)thePath variableName:(NSString *)theName variableID:(int)theID type:(nc_type)theType theDims:(NSArray *)theDims attributeCount:(int)nAtt handle:(NCDFHandle *)handle;
 
 	/*! 
-    @method -(NSLock *)handleLock
+    @method handleLock
     @abstract Returns an NSLock object from the owning NCDFHandle object.
 	*/
 -(NSLock *)handleLock;

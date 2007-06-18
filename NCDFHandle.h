@@ -6,18 +6,19 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-/*!
-	@header
-  @class NCDFHandle
- @abstract NCDFHandle is the primary class of working with netcdf files
-    @discussion NCDFHandle is the primary interface for a netcdf file.  It will automatically discover the contents for a netcdf file for you.  It also allows you to change the overall file structure by adding or removing attributes, dimensions, and variables.  Only one NCDFHandle should exist per netcdf file.  Although a handle may exist, the actual netcdf file is not open except when the handle is conducting a file operation.  It also manages some temporary work files created during the file editing process for protection of the original file.
-*/
+
 
 #import <Foundation/Foundation.h>
 
 //added 0.2.1d1
 @class NCDFErrorHandle,NCDFError,NCDFDimension,NCDFAttribute,NCDFVariable;
 
+/*!
+@header
+ @class NCDFHandle
+ @abstract NCDFHandle is the primary class of working with netcdf files
+ @discussion NCDFHandle is the primary interface for a netcdf file.  It will automatically discover the contents for a netcdf file for you.  It also allows you to change the overall file structure by adding or removing attributes, dimensions, and variables.  Only one NCDFHandle should exist per netcdf file.  Although a handle may exist, the actual netcdf file is not open except when the handle is conducting a file operation.  It also manages some temporary work files created during the file editing process for protection of the original file.
+ */
 @interface NCDFHandle : NSObject {
     NSMutableArray *theVariables;
     NSMutableArray *theGlobalAttributes;
@@ -63,6 +64,7 @@
 
 /*!
 	@functiongroup Internal Use Only
+ 
 */
 
 //*****************************SETUP METHODS***********************************
@@ -82,6 +84,7 @@
 
 	/*!
 	@functiongroup Handle Information
+	 
 	 */
 -(NSString *)theFilePath;
 /*!
@@ -92,6 +95,7 @@
 
 /*!
 	@functiongroup Internal Use Only
+ 
 */
 
 -(void)initializeArrays;
@@ -112,6 +116,7 @@
 
 	/*!
 	@functiongroup Handle Information
+	 
 	 */
 /*!
   @method refresh
@@ -121,7 +126,7 @@
 -(void)refresh;
 
 	/*! 
-    @method -(NSLock *)handleLock
+    @method handleLock
     @abstract Returns an NSLock object for the handle.
 	*/
 -(NSLock *)handleLock;
@@ -130,6 +135,7 @@
 
 	/*!
 	@functiongroup Working With Dimensions
+	 
 	 */
 
 /*!
@@ -148,11 +154,13 @@
 
 	/*!
 	@functiongroup Working With Attributes
+	 
 	 */
 -(NSMutableArray *)getGlobalAttributes;
 
 	/*!
 	@functiongroup Working With Variables
+	 
 	 */	
 /*!
   @method getVariables
@@ -169,6 +177,7 @@
 
 	/*!
 	@functiongroup Error Handling
+	 
 	 */
 
 -(NCDFErrorHandle *)theErrorHandle;
@@ -177,6 +186,7 @@
 //*****************************DIMENSIONS***********************************
 	/*!
 	@functiongroup Working With Dimensions
+	 
 	 */
 /*!
   @method createNewDimensionWithName:size:
@@ -426,7 +436,7 @@
 -(NSString *)htmlDescription;
 
 	/*!
-	@method -(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName
+	@method retrieveGlobalAttributeByName:
 	 @abstract Allows access to global attributes by name.
 	 @param name NSString object containing the desired name of the global attribute desired.
 	 @discussion Retrieves NCDFAttribute object that global to the netcdf file  by attribute name.

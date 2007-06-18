@@ -6,12 +6,7 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-/*!
-	@header
-  @class NCDFAttribute
-  @abstract NCDFAttribute objects handle information about netcdf attributes
-  @discussion NCDFAttribute objects are the primary control objects for both netcdf global attributes and variable attributes.  NCDFHandles and NCDFVariables are the primary classes that should create NCDFAttribute object.  Attributes contain metadata information about a netcdf file or variable.  
-*/
+
 
 #import <Foundation/Foundation.h>
 #import "netcdf.h"
@@ -59,6 +54,13 @@
 #define NCDFAttributePropertyListFieldValues @"values"
 
 @class NCDFHandle,NCDFErrorHandle;
+
+/*!
+@header
+ @class NCDFAttribute
+ @abstract NCDFAttribute objects handle information about netcdf attributes
+ @discussion NCDFAttribute objects are the primary control objects for both netcdf global attributes and variable attributes.  NCDFHandles and NCDFVariables are the primary classes that should create NCDFAttribute object.  Attributes contain metadata information about a netcdf file or variable.  
+ */
 @interface NCDFAttribute : NSObject {
     NSString *fileName;
     int variableID;
@@ -97,7 +99,7 @@
 -(id)initWithName:(NSString *)theName length:(size_t)dataLength type:(nc_type)theType valueArray:(NSArray *)newValues;
 
 	/*! 
-    @method -(NSLock *)handleLock
+    @method handleLock
     @abstract Returns an NSLock object from the owning NCDFHandle object.
 	*/
 -(NSLock *)handleLock;
@@ -217,14 +219,14 @@
 -(int)variableID;
 
 	/*! 
-    @method -(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt
+    @method updateAttributeWithAttribute:
     @abstract Updates the receiver with information from a new NCDFAttribute.
     @discussion  This method replaces all the information in an attribute with the information in anAtt, generally used for updated the object from file.  This method should be considered a private method.
 	*/
 -(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt;
 
 	/*! 
-    @method -(NSComparisonResult)compare:(id)object
+    @method compare:
     @abstract Compares two NCDFAttribute object's variable ID.
     @discussion  This method can be used to sort NCDFAttribute objects using their variable IDs.  Returns NSOrderedAccending,NSOrderedDecending, or NSOrderedSame.
 	*/

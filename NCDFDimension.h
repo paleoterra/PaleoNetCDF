@@ -6,13 +6,6 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-/*!
-@header
-  @class NCDFDimension
-@abstract NCDFDimension objects handle information about netcdf dimensions
-    @discussion
-  NCDFDimension is the primary object to access and change an individual netcdf file.  Objects from this class should only be created in a few ways.  First, NCDFHandle is responsible for creating all NCDFDimension objects for a netcdf file.  For copy/paste/drag/drop, use the propertylist command to obtain a copy and implement an NSArchiver.
-*/
 
 #import <Foundation/Foundation.h>
 
@@ -47,6 +40,15 @@
 #define NCDFDimensionPropertyListFieldLength @"length"
 
 @class NCDFHandle,NCDFErrorHandle;
+
+
+/*!
+@header
+ @class NCDFDimension
+ @abstract NCDFDimension objects handle information about netcdf dimensions
+ @discussion
+ NCDFDimension is the primary object to access and change an individual netcdf file.  Objects from this class should only be created in a few ways.  First, NCDFHandle is responsible for creating all NCDFDimension objects for a netcdf file.  For copy/paste/drag/drop, use the propertylist command to obtain a copy and implement an NSArchiver.
+ */
 @interface NCDFDimension : NSObject {
     NSString *fileName;
     int dimID;
@@ -82,7 +84,7 @@
 -(id)initNewDimWithName:(NSString *)name length:(size_t)aLength;
 
 	/*! 
-    @method -(NSLock *)handleLock
+    @method handleLock
     @abstract Returns an NSLock object from the owning NCDFHandle object.
 	*/
 -(NSLock *)handleLock;
@@ -184,14 +186,14 @@
 -(NSDictionary *)propertyList;
 
 	/*! 
-    @method -(void)updateDimensionWithDimension:(NCDFDimension *)aDim
+    @method updateDimensionWithDimension:
     @abstract Updates the receiver with information from a new NCDFDimension.
     @discussion  This method replaces all the information in a dimension with the information in aDim, generally used for updated the object from file.  This method should be considered a private method.
 	*/
 -(void)updateDimensionWithDimension:(NCDFDimension *)aDim;
 
 	/*! 
-    @method -(NSComparisonResult)compare:(id)object
+    @method compare:
     @abstract Compares two NCDFDimension object's variable ID.
     @discussion  This method can be used to sort NCDFDimension objects using their variable IDs.  Returns NSOrderedAccending,NSOrderedDecending, or NSOrderedSame.
 	*/
