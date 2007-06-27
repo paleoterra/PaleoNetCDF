@@ -363,5 +363,8 @@
 	return theSlab;
 }
 
-
+-(int)variableID
+{
+	return [[[_seriesHandle rootHandle] retrieveVariableByName:_variableName] variableID];
+}
 @end

@@ -373,6 +373,8 @@
 		[theErrorHandle release]; 
     if(handleLock)
 		[handleLock release];
+	if(_theCompareValue)
+		[_theCompareValue release];
     [super dealloc];
 }
 
@@ -1563,4 +1565,42 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	return [NSString stringWithString:theString];
 }
 
+
+-(NSComparisonResult)compareUnlimitedValue:(id)object
+{
+	if(!_theCompareValue)
+		[self createCompareValue];
+	
+	NSComparisonResult result = [_theCompareValue compare:[object compareValue]];
+	
+	return result;
+}
+
+
+-(NSNumber *)compareValue
+{
+	if(!_theCompareValue)
+		[self createCompareValue];
+	return _theCompareValue;
+}
+
+-(void)createCompareValue
+{
+\
+	if(!_theCompareValue)
+	{
+		NCDFVariable *theVar = [self retrieveUnlimitedVariable];
+		if(theVar)
+		{
+			_theCompareValue = [[theVar getSingleValue:[NSArray arrayWithObject:[NSNumber numberWithInt:0]]] retain];
+			if(!_theCompareValue)
+				_theCompareValue = [[NSNumber numberWithFloat:NAN] retain];
+		}
+		else
+		{
+			_theCompareValue = [[NSNumber numberWithFloat:NAN] retain];
+		}
+	}
+	\
+}
 @end

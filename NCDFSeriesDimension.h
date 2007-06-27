@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "NCDFProtocols.h"
 @class NCDFDimension;
 
 /*!
@@ -16,7 +16,7 @@
  @abstract NCDFSeriesDimension objects for defining dimensionality of data variables. 
  @discussion NCDFSeriesDimension is an immutable class designed to allow a programmer to access netcdf data over multiple files using standard notation.  This class allows for dimensions to span files.
  */
-@interface NCDFSeriesDimension : NSObject {
+@interface NCDFSeriesDimension : NSObject <NCDFImmutableDimensionProtocol>{
     NSString *_dimName;
     size_t _length;
     NSMutableArray *_unlimitedLengthArray;
@@ -87,5 +87,7 @@
 	@discussion Returns an array with NSRange objects describing a selection for each file for later reading. This method is for unlimited dimensions only.
 	*/
 -(NSArray *)rangeArrayForRange:(NSRange)aRange;
+
+
 
 @end

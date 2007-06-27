@@ -8,7 +8,7 @@
 
 
 #import <Foundation/Foundation.h>
-
+#import "NCDFProtocols.h"
 /*!
     @defined NCDFDimensionPropertyListType
     @discussion Defines the standard string for copy/paste types for NCDFDimension property lists encoded using NSArchiving.
@@ -49,7 +49,7 @@
  @discussion
  NCDFDimension is the primary object to access and change an individual netcdf file.  Objects from this class should only be created in a few ways.  First, NCDFHandle is responsible for creating all NCDFDimension objects for a netcdf file.  For copy/paste/drag/drop, use the propertylist command to obtain a copy and implement an NSArchiver.
  */
-@interface NCDFDimension : NSObject {
+@interface NCDFDimension : NSObject <NCDFImmutableDimensionProtocol>{
     NSString *fileName;
     int dimID;
     NSString *dimName;

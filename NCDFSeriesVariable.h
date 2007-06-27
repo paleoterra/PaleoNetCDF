@@ -7,14 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "NCDFProtocols.h"
 /*!
 @header
  @class NCDFSeriesVariable
  @abstract NCDFSeriesVariable objects for accessing netcdf variables over multiple files 
  @discussion NCDFSeriesVariable is an immutable class designed to allow a programmer to access netcdf data over multiple files using standard notation.  This approach simplifies multi-file access by hiding the complexity of accessing each file into one simplified interface.
  */
-@interface NCDFSeriesVariable : NSObject {
+@interface NCDFSeriesVariable : NSObject <NCDFImmutableVariableProtocol>{
     NSString *_variableName;
     nc_type _dataType;
 	NSString *_typeName;
@@ -131,7 +131,7 @@
 -(int)currentVariableSize;
 
 	/*! 
-	@method currentVariableSize
+	@method currentVariableByteSize
 	@abstract Returns the total size of the variable in bytes for a unlimited variable unit.
 	@discussion This method returns the byte size of the variable.
 	*/
@@ -217,4 +217,11 @@
 
 	*/
 -(NCDFSlab *)getAllDataInSlab;
+
+	/*! 
+	@method variableID
+    @abstract Returns netCDF variable ID number for the variable.  
+    @discussion  Returns netCDF variable ID number for the variable from the root handle only. 
+	*/
+-(int)variableID;
 @end

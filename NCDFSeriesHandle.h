@@ -59,14 +59,35 @@
 /*! 
 @method initWithOrderedURLSeries:
 @abstract Initialize a new NCDFSeriesHandle using an NSArray of netcdf urls.
-@param paths NSArray object containing urls to netcdf files.
+@param urls NSArray object containing urls to netcdf files.
 @discussion Initializes a new NCDFSeriesHandle object using an NSArray of urls.  The array must be ordered correctly since this initialization method does not attempt to correct the order based on the unlimited dimension data. Note that urls should be file urls.
 */
 -(id)initWithOrderedURLSeries:(NSArray *)urls;
 
-//-(id)initWithUnorderedPathSeries:(NSArray *)paths;
-//-(id)initWithUnorderedURLSeries:(NSArray *)urls;
+	/*! 
+@method initWithUnorderedPathSeries:sorted:
+	@abstract Initialize a new NCDFSeriesHandle using an NSArray of netcdf urls and attempt to sort.
+	@param paths NSArray object containing paths to netcdf files.
+	@param sorted BOOL pointer for returning whether the sort was successful.
+	@discussion Initializes a new NCDFSeriesHandle object using an NSArray of paths.  This initialization method attempts to sort the handles (and paths) based on the first unlimited dimension variable value in an accending order.  If the successful (i.e. all handles are arranged in accending order), then the BOOL will be set to YES.  Otherwise, the original order will be used.0
+	*/
+-(id)initWithUnorderedPathSeries:(NSArray *)paths sorted:(BOOL *)sorted;
 
+	/*! 
+@method initWithUnorderedURLSeries:sorted:
+	@abstract Initialize a new NCDFSeriesHandle using an NSArray of netcdf urls and attempt to sort.
+	@param urls NSArray object containing urls to netcdf files.
+	@param sorted BOOL pointer for returning whether the sort was successful.
+	@discussion Initializes a new NCDFSeriesHandle object using an NSArray of urls.  This initialization method attempts to sort the handles (and urls) based on the first unlimited dimension variable value in an accending order.  If the successful (i.e. all handles are arranged in accending order), then the BOOL will be set to YES.  Otherwise, the original order will be used.0
+	*/
+-(id)initWithUnorderedURLSeries:(NSArray *)urls sorted:(BOOL *)sorted;
+
+	/*! 
+@method sortHandles
+	@abstract Sorts the NSArray object containing the NCDFHandles.
+	@discussion Sorts handles based on the first value for the dimension variable in each file. 
+	*/
+-(BOOL)sortHandles;
 /*! 
 @method writeSeriesToFile:
 @abstract Write file list to path.

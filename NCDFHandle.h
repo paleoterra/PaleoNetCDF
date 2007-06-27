@@ -28,6 +28,7 @@
     NCDFErrorHandle *theErrorHandle;
 	//for multithreading, NSLock
 	NSLock *handleLock;
+	NSNumber *_theCompareValue;
 }
 
 
@@ -64,7 +65,6 @@
 
 /*!
 	@functiongroup Internal Use Only
- 
 */
 
 //*****************************SETUP METHODS***********************************
@@ -84,7 +84,6 @@
 
 	/*!
 	@functiongroup Handle Information
-	 
 	 */
 -(NSString *)theFilePath;
 /*!
@@ -95,7 +94,6 @@
 
 /*!
 	@functiongroup Internal Use Only
- 
 */
 
 -(void)initializeArrays;
@@ -116,7 +114,6 @@
 
 	/*!
 	@functiongroup Handle Information
-	 
 	 */
 /*!
   @method refresh
@@ -135,7 +132,6 @@
 
 	/*!
 	@functiongroup Working With Dimensions
-	 
 	 */
 
 /*!
@@ -154,13 +150,11 @@
 
 	/*!
 	@functiongroup Working With Attributes
-	 
 	 */
 -(NSMutableArray *)getGlobalAttributes;
 
 	/*!
 	@functiongroup Working With Variables
-	 
 	 */	
 /*!
   @method getVariables
@@ -177,7 +171,6 @@
 
 	/*!
 	@functiongroup Error Handling
-	 
 	 */
 
 -(NCDFErrorHandle *)theErrorHandle;
@@ -186,7 +179,6 @@
 //*****************************DIMENSIONS***********************************
 	/*!
 	@functiongroup Working With Dimensions
-	 
 	 */
 /*!
   @method createNewDimensionWithName:size:
@@ -436,10 +428,37 @@
 -(NSString *)htmlDescription;
 
 	/*!
+	@functiongroup Working With Attributes
+	 */
+	/*!
 	@method retrieveGlobalAttributeByName:
 	 @abstract Allows access to global attributes by name.
 	 @param name NSString object containing the desired name of the global attribute desired.
 	 @discussion Retrieves NCDFAttribute object that global to the netcdf file  by attribute name.
 	 */
 -(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName;
+
+	/*!
+	@functiongroup Handle Comparisons
+	 */
+	/*!
+		  @method compareUnlimitedValue:
+	 @abstract Compares 2 NCDFHandle objects based on their initial unlimited dimension value.
+	 @param object NCDFHandle 
+	 @discussion Compares the initial unlimited dimension value of "object" against the reciever.  This method is for sorting the order of NCDFHandles based on the unlimited dimension variable.  Only checks the first value.
+	 */
+-(NSComparisonResult)compareUnlimitedValue:(id)object;
+
+	/*!
+			 @method compareValue
+	 @abstract Returns the initial unlimited dimension variable's first value as an NSNUmber object.
+	 @discussion Returns the initial unlimited dimension variable's first value as an NSNUmber object.  This method is for sorting the order of NCDFHandles based on the unlimited dimension variable.
+	 */
+-(NSNumber *)compareValue;
+	/*!
+			 @method createCompareValue
+	 @abstract Private method for creating the comparison value.
+	 @discussion Private method for creating the comparison value.  The value represents the first step along the unlimited dimension.  If no unlimited dimension exists, it will create a NAN NSNumber object.
+	 */
+-(void)createCompareValue;
 @end

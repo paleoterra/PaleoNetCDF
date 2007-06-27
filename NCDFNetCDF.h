@@ -26,3 +26,4 @@
 #import "NCDFSeriesHandle.h"
 #import "NCDFSeriesDimension.h"
 #import "NCDFSeriesVariable.h"
+#import "NCDFProtocols.h"

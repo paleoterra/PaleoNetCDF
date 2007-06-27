@@ -77,7 +77,7 @@
 	// if dim count = 1, then 1 step;
 	if(dimCount != 1)
 	{
-		for (i=0;i<(dimCount -1);i++) //note that we don't count the most significant dim because we'll read all those data at once
+		for (i=(dimCount - 2);i>-1;i--) //note that we don't count the most significant dim because we'll read all those data at once
 		{
 			steps *= [[lengths objectAtIndex:i] intValue];
 		}
@@ -98,6 +98,7 @@
 		//he we need to cycle through each step, and calculate the beginning of the data read and then read the data into the mutable data object.
 		
 		readRange.location = [self startPositionForNextStepFrom:current fromStart:startPositions withLengths:lengths] * sizeof(theType);
+		//NSLog(@"size: %i, range %@",sizeof(theType),NSStringFromRange(readRange));
 		[theMutData appendData:[theData subdataWithRange:readRange]];
 		
 	}
@@ -134,6 +135,7 @@
 	int newPoint,  startPosition ;
 	int carryover;
 	startPosition = [self positionFromCoordinates:current];//we get value first and then increment by one
+	//NSLog(@"start");
 	//NSLog([current description]);
 	carryover = 1;
 	for(i=(count-2);i>-1;i--)
@@ -153,7 +155,8 @@
 	[current addObjectsFromArray:theArray];
 	//now we have all the new start positions
 	//time to get the start position in terms of value count
-	
+	//NSLog(@"end");
+	//NSLog([current description]);
 	
 	return startPosition;
 }
@@ -172,6 +175,7 @@
 			temp *= dimensionLengths[j];
 		}
 		startPosition += temp;
+		//NSLog(@"temp %i: %i",i,temp);
 	}
 	//NSLog(@"start Position: %i", startPosition);
 	return startPosition;

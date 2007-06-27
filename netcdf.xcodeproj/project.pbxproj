@@ -38,6 +38,7 @@
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
 		B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47BF28F0A9A1A2300092C22 /* libnetcdf.a */; };
+		B48946D50C2D7A26008991D4 /* NCDFProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = B48946D40C2D7A26008991D4 /* NCDFProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4B033720A9F5533008D45E9 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4326AC1090F2F8B000B7357 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4B033730A9F5549008D45E9 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = F59DFCF7021B0C04018B4C67 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4B033740A9F554B008D45E9 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F5865CD503816861018B4C9C /* NCDFDataTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,6 +126,7 @@
 		B46DE09E091B0BD1001A5988 /* netcdf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = netcdf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "netcdf-Info.plist"; sourceTree = "<group>"; };
 		B47BF28F0A9A1A2300092C22 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/currentbuild/libnetcdf.a; sourceTree = "<group>"; };
+		B48946D40C2D7A26008991D4 /* NCDFProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDFProtocols.h; sourceTree = "<group>"; };
 		B4D5BE140C2343E3002ACAA6 /* NCDFSeriesHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDFSeriesHandle.h; sourceTree = "<group>"; };
 		B4D5BE150C2343E3002ACAA6 /* NCDFSeriesHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDFSeriesHandle.m; sourceTree = "<group>"; };
 		B4E1C853092424D00014A0B6 /* UC.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UC.config; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				B460D26C0C246B9A0043F5E8 /* NCDFSeriesDimension.m */,
 				B460D4240C248A580043F5E8 /* NCDFSeriesVariable.h */,
 				B460D4250C248A580043F5E8 /* NCDFSeriesVariable.m */,
+				B48946D40C2D7A26008991D4 /* NCDFProtocols.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				B4D5BE160C2343E3002ACAA6 /* NCDFSeriesHandle.h in Headers */,
 				B460D26D0C246B9A0043F5E8 /* NCDFSeriesDimension.h in Headers */,
 				B460D4260C248A580043F5E8 /* NCDFSeriesVariable.h in Headers */,
+				B48946D50C2D7A26008991D4 /* NCDFProtocols.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

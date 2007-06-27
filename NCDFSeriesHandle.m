@@ -76,6 +76,9 @@
 	return nil;
 }
 
+
+
+
 -(id)initWithSeriesFileAtPath:(NSString *)path
 {
 	return [self initWithSeriesFileAtURL:[NSURL fileURLWithPath:path]];
@@ -119,6 +122,114 @@
 		[self seedArrays];
 	}
 	return self;
+}
+
+
+-(id)initWithUnorderedPathSeries:(NSArray *)paths sorted:(BOOL *)sorted
+{
+	NSMutableArray *newURL = [[[NSMutableArray alloc] init] autorelease];
+	int i;
+	for(i=0;i<[paths count];i++)
+	{
+		[newURL addObject:[NSURL fileURLWithPath:[paths objectAtIndex:i]]];
+	}
+	return [self initWithUnorderedURLSeries:[NSArray arrayWithArray:newURL] sorted:sorted];
+}
+
+-(id)initWithUnorderedURLSeries:(NSArray *)urls sorted:(BOOL *)sorted
+{
+	[super init];
+	if(self)
+	{
+		BOOL isValid = YES;
+		int i;
+		NCDFHandle *aHandle;
+		NSString *dirPath;
+		_isSingleDirectory = YES;
+		NSMutableArray *tempArray = [[[NSMutableArray alloc] init] autorelease];
+	
+		for(i=0;i<[urls count];i++)
+		{
+			if(i==0)
+			{
+				dirPath = [[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent];
+			}
+		
+			if(![[NSFileManager defaultManager] fileExistsAtPath:[[urls objectAtIndex:i] path]])
+			{
+				isValid = NO;
+				if(![[[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent] isEqualToString:dirPath])
+					_isSingleDirectory = NO;
+			}
+			
+			if(isValid)
+			{
+				if(aHandle = [[[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]] autorelease])
+				{
+					[tempArray addObject:aHandle];
+				}
+				else
+					isValid = NO;
+				
+			}
+			if(!isValid)
+				break;
+		}
+		
+		if(!isValid)
+		{
+			[self autorelease];
+			return nil;
+		}
+		else
+		{
+		
+			_theURLS = [[NSArray arrayWithArray:urls] retain];
+			_theHandles = [[NSArray arrayWithArray:tempArray] retain];
+			
+			*sorted = [self sortHandles];
+			
+			[self seedArrays];
+			return self;
+		}
+		
+	}
+	return nil;
+}
+
+-(BOOL)sortHandles
+{
+	NSArray *tempArray = [_theHandles sortedArrayUsingSelector:@selector(compareUnlimitedValue:)];
+	int i;
+
+	BOOL theFinalResult = YES;
+	for(i=0;i<[tempArray count]-1;i++)
+	{
+	
+		NSComparisonResult theResult = [[tempArray objectAtIndex:i] compareUnlimitedValue:[tempArray objectAtIndex:i+1]];
+		if(theResult != NSOrderedAscending)
+		{
+			theFinalResult = NO;
+		}
+	}
+
+	if(!theFinalResult)
+		return theFinalResult;
+	
+	NSMutableArray *newURLS = [[[NSMutableArray alloc] init] autorelease];
+	for(i=0;i<[tempArray count];i++)
+	{
+
+		[newURLS addObject:[_theURLS objectAtIndex:[_theHandles indexOfObject:[tempArray objectAtIndex:i]]]];
+	}
+
+	[_theURLS release];
+	_theURLS = [[NSArray arrayWithArray:newURLS] retain];
+	[_theHandles release];
+	_theHandles = [tempArray retain];
+	
+	
+	return theFinalResult;
 }
 
 -(void)dealloc

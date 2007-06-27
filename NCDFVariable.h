@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/NSPanel.h>
 #import "NCDFAttribute.h"
+#import "NCDFProtocols.h"
 
 /*!
     @defined NCDFVariablePropertyListType
@@ -71,7 +72,7 @@
  @discussion NCDFVariable objects are the primary interface for working with netcdf data sets.  The datasets are in the form of binary raster data using 0 to many dimensions.  The dimensions refered to by a variable describe the variable's data shape.  Use this class to access and write data from a netcdf file.  
  */
 
-@interface NCDFVariable : NSObject {
+@interface NCDFVariable : NSObject <NCDFImmutableVariableProtocol>{
     NSString *fileName;
     int varID;
     NSString *variableName;
@@ -429,7 +430,7 @@
 -(NCDFAttribute *)variableAttributeByName:(NSString *)name;
 
 	/*! 
-	@method htmlDescription:
+	@method htmlDescription
     @abstract Returns a description of the variable and all of its attributes in an html form.
     @discussion  This method is to provide a method to export the metadata of a netcdf file into a HTML document.
 	*/
@@ -438,6 +439,12 @@
 -(NSString *)typeDescription;
 
 -(NSString *)stringValueForSingleValueCoordinates:(NSArray *)coordinates;
+
+	/*! 
+	@method variableID
+    @abstract Returns netCDF variable ID number for the variable.  
+    @discussion  Returns netCDF variable ID number for the variable. 
+	*/
 -(int)variableID;
 -(int)attributeCount;
 -(void)updateVariableWithVariable:(NCDFVariable *)aVar;
