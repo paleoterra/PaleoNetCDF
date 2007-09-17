@@ -210,7 +210,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4F084DD0A96A45B001FA8D4 /* Build configuration list for PBXNativeTarget "netcdf-intel" */;
 			buildPhases = (
-				B4F086640A96B203001FA8D4 /* ShellScript */,
 				B4F084D80A96A43D001FA8D4 /* Headers */,
 				B4F084D90A96A43D001FA8D4 /* Sources */,
 				B4F084DA0A96A43D001FA8D4 /* Frameworks */,
@@ -230,7 +229,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91EB08733DB70010E9CD /* Build configuration list for PBXNativeTarget "netcdf-PPC" */;
 			buildPhases = (
-				B4F084F60A96A63E001FA8D4 /* ShellScript */,
 				D2AAC043055464E500DB518D /* Headers */,
 				D2AAC044055464E500DB518D /* Sources */,
 				D289987405E68DCB004EDB86 /* Frameworks */,
@@ -302,19 +300,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\n\nFRAMEWORK=${BUILT_PRODUCTS_DIR}/libnetcdf.a\nFRAMEWORKTARGET=\"$SRCROOT/currentbuild\"\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/libnetcdf.a\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/libnetcdf.a\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\nexit 0";
 		};
-		B4F084F60A96A63E001FA8D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd ../src\n\ncp config.h.ppc config.h\n\nexit 0\n";
-		};
 		B4F086520A96B1B8001FA8D4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,19 +312,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n\nlipo -create \"$BUILT_PRODUCTS_DIR\"/*/libnetcdf.a -output \"$BUILT_PRODUCTS_DIR/libnetcdf.a\"\n\n\nexit 0";
-		};
-		B4F086640A96B203001FA8D4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd ../src\n\ncp config.h.intel config.h\n\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

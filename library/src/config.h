@@ -53,6 +53,19 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
 
+#if __BIG_ENDIAN__
+/* type definition */
+#define NCBYTE_T byte
+
+/* type definition */
+#define NCSHORT_T integer*2
+
+/* type thing */
+#define NF_INT1_T byte
+
+/* type thing */
+#define NF_INT2_T integer*2
+#else
 /* type definition */
 /* #undef NCBYTE_T */
 
@@ -64,6 +77,10 @@
 
 /* type thing */
 /* #undef NF_INT2_T */
+
+
+#endif
+
 
 /* no IEEE float on this platform */
 /* #undef NO_IEEE_FLOAT */
@@ -141,8 +158,11 @@
 
 /* Define to 1 if your processor stores words with the most significant byte
    first (like Motorola and SPARC, unlike Intel and VAX). */
+#if __BIG_ENDIAN__
+#define WORDS_BIGENDIAN 1
+#else
 /* #undef WORDS_BIGENDIAN */
-
+#endif
 /* Number of bits in a file offset, on hosts where this is settable. */
 /* #undef _FILE_OFFSET_BITS */
 
