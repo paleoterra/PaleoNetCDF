@@ -44,10 +44,13 @@
 	NSEnumerator *anEnum = [[_seriesHandle handles] objectEnumerator];
 	NCDFHandle *aHandle;
 	NSMutableData *theData = [[[NSMutableData alloc] init] autorelease];
+	
 	while(aHandle = [anEnum nextObject])
 	{
+	
 		[theData appendData:[[aHandle retrieveVariableByName:_variableName] readAllVariableData]];
 	}
+	
 	return [NSData dataWithData:theData];
 }
 
@@ -268,7 +271,7 @@
 	int i;
 	for(i=0;i<[_theDims count];i++)
 	{
-		[theArray addObject:[NSNumber numberWithInt:[[_theDims objectAtIndex:i] length]]];
+		[theArray addObject:[NSNumber numberWithInt:[[_theDims objectAtIndex:i] dimLength]]];
 	}
 	return [NSArray arrayWithArray:theArray];
 }

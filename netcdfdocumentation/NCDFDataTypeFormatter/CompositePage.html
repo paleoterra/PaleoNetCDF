@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>NCDFDataTypeFormatter.h</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">NCDFDataTypeFormatter.h</font></h1><br>
+<a name="//apple_ref/doc/header/NCDFDataTypeFormatter.h" title="NCDFDataTypeFormatter.h"></a>
+<h2>Abstract</h2>
+NCDFDataTypeFormatter is a subclass of NSFormatter designed to turn nc_types into NSString objects for display.
+<h2>Discussion</h2>
+This class is a convenience class for GUI interface elements, such as NSTableViews. Instead of requiring a conversion technique for each time the nc_type needs to be displayed, this formatter can be attached to a cell and the cell can be sent an NSNumber containing the nc_type value as an integer.  It will automatically convert the number into a string: NC_BYTE, NC_CHAR, NC_SHORT, NC_INT, NC_FLOAT, and NC_DOUBLE.
+<hr><br><p>(Last Updated June 18, 2007)
+</p></body></html>

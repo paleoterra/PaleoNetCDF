@@ -16,6 +16,7 @@
 	[super init];
 	if(self) {
 		[self setData:data];
+		NSLog(@"data length %i",[data length]);
 		[self setNCType:type];
 		[self setDimensionLengths:lengths];
 	}

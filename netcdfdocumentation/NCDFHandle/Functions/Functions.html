@@ -1,0 +1,696 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1><br>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createFileAtPath:" target="doc">createFileAtPath:</a></tt></dt>
+<dd>Creates a new netcdf file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewDimensionsFromDimensionArray:" target="doc">createNewDimensionsFromDimensionArray:</a></tt></dt>
+<dd>Creates multiple new dimensions from an array of NCDFDimensions.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewDimensionWithName:size:" target="doc">createNewDimensionWithName:size:</a></tt></dt>
+<dd>Creates a new dimension in the netcdf file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewDimensionWithPropertyList:" target="doc">createNewDimensionWithPropertyList:</a></tt></dt>
+<dd>Creates a new dimension in the netcdf file from a property list.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewGlobalAttributeWithArray:" target="doc">createNewGlobalAttributeWithArray:</a></tt></dt>
+<dd>Creates global attributes from a list of attributes.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewGlobalAttributeWithName:dataType:values:" target="doc">createNewGlobalAttributeWithName:dataType:values:</a></tt></dt>
+<dd>Creates a new global attribute.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewGlobalAttributeWithPropertyList:" target="doc">createNewGlobalAttributeWithPropertyList:</a></tt></dt>
+<dd>Creates a new global attribute using a property list dictionary.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewVariableWithName:type:dimNameArray:" target="doc">createNewVariableWithName:type:dimNameArray:</a></tt></dt>
+<dd>Creates a new variable.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createNewVariableWithPropertyList:" target="doc">createNewVariableWithPropertyList:</a></tt></dt>
+<dd>Creates a new variable based on a property list.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/dealloc" target="doc">dealloc</a></tt></dt>
+<dd>Standard deallocation.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/deleteDimensionWithName:" target="doc">deleteDimensionWithName:</a></tt></dt>
+<dd>Deletes a dimension from the netcdf file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/deleteGlobalAttributeWithName:" target="doc">deleteGlobalAttributeWithName:</a></tt></dt>
+<dd>Deletes a global attribute.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/deleteVariablesWithNames:" target="doc">deleteVariablesWithNames:</a></tt></dt>
+<dd>Deletes a series of variables.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/deleteVariableWithName:" target="doc">deleteVariableWithName:</a></tt></dt>
+<dd>Deletes a variable from the netcdf file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/extendUnlimitedVariableBy:" target="doc">extendUnlimitedVariableBy:</a></tt></dt>
+<dd>Extend the length of the unlimited dimension via the dimension variable.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getDimensions" target="doc">getDimensions</a></tt></dt>
+<dd>Retrieves all NCDFDimensions.</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getGlobalAttributes" target="doc">getGlobalAttributes</a></tt></dt>
+<dd>Retrieves all NCDFAttributes for global attributes.</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getVariables" target="doc">getVariables</a></tt></dt>
+<dd>Retrieves all NCDFVariables for variables.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/handleLock" target="doc">handleLock</a></tt></dt>
+<dd>Returns an NSLock object for the handle.
+	</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/htmlDescription" target="doc">htmlDescription</a></tt></dt>
+<dd>Returns a description of the variable and all of its attributes in an html form.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initByCreatingFileAtPath:" target="doc">initByCreatingFileAtPath:</a></tt></dt>
+<dd>Creates a new empty netcdf file and initializes a new NCDFHandle for the new file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initializeArrays" target="doc">initializeArrays</a></tt></dt>
+<dd>This method initializes all the metadata arrays that hold the contents of the netcdf file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initWithFileAtPath:" target="doc">initWithFileAtPath:</a></tt></dt>
+<dd>Initializes a new NCDFHandle for an existing file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/parseNameString:" target="doc">parseNameString:</a></tt></dt>
+<dd>Parses a new name string to ensure compliance with netcdf naming standards.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/refresh" target="doc">refresh</a></tt></dt>
+<dd>Force reset of the NCDFHandle metadata.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/resizeDimensionWithName:size:" target="doc">resizeDimensionWithName:size:</a></tt></dt>
+<dd>Resizes a dimension from the netcdf file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/retrieveDimensionByIndex:" target="doc">retrieveDimensionByIndex:</a></tt></dt>
+<dd>Access to a dimension by index number.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/retrieveDimensionByName:" target="doc">retrieveDimensionByName:</a></tt></dt>
+<dd>Access a dimension by name.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/retrieveGlobalAttributeByName:" target="doc">retrieveGlobalAttributeByName:</a></tt></dt>
+<dd>Allows access to global attributes by name.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/retrieveUnlimitedDimension" target="doc">retrieveUnlimitedDimension</a></tt></dt>
+<dd>Access the unlimited dimension, if exists.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/retrieveUnlimitedVariable" target="doc">retrieveUnlimitedVariable</a></tt></dt>
+<dd>Access the unlimited dimension variable, if exists.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/retrieveVariableByName:" target="doc">retrieveVariableByName:</a></tt></dt>
+<dd>Access a variable by name.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/seedArrays:" target="doc">seedArrays:</a></tt></dt>
+<dd>This method retrieves netcdf metadata and stores the data in arrays.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/setFilePath:" target="doc">setFilePath:</a></tt></dt>
+<dd>Sets the NCDFHandle file path.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/theErrorHandle" target="doc">theErrorHandle</a></tt></dt>
+<dd>Retrieves a pointer to the default NCDFErrorHandle.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/theFilePath" target="doc">theFilePath</a></tt></dt>
+<dd>Accessor for the NCDFHandle's file path.</dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createFileAtPath:;  name=createFileAtPath: -->
+<a name="//apple_ref/c/func/createFileAtPath:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createFileAtPath:">createFileAtPath:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new netcdf file.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/createFileAtPath //apple_ref/c/cl/createFileAtPath //apple_ref/c/tdef/createFileAtPath //apple_ref/c/tag/createFileAtPath //apple_ref/c/econst/createFileAtPath //apple_ref/c/struct/createFileAtPath //apple_ref/c/clconst/createFileAtPath" --><font class="type">createFileAtPath</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/thePath //apple_ref/c/cl/thePath //apple_ref/c/tdef/thePath //apple_ref/c/tag/thePath //apple_ref/c/econst/thePath //apple_ref/c/struct/thePath //apple_ref/c/clconst/thePath" --><font class="type">thePath</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>thePath</i></code></dt><dd>path to the target file location.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This private method creates a new netcdf file at a path.  It is a convienence method.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewDimensionsFromDimensionArray:;  name=createNewDimensionsFromDimensionArray: -->
+<a name="//apple_ref/c/func/createNewDimensionsFromDimensionArray:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewDimensionsFromDimensionArray:">createNewDimensionsFromDimensionArray:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates multiple new dimensions from an array of NCDFDimensions.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewDimensionsFromDimensionArray //apple_ref/c/cl/createNewDimensionsFromDimensionArray //apple_ref/c/tdef/createNewDimensionsFromDimensionArray //apple_ref/c/tag/createNewDimensionsFromDimensionArray //apple_ref/c/econst/createNewDimensionsFromDimensionArray //apple_ref/c/struct/createNewDimensionsFromDimensionArray //apple_ref/c/clconst/createNewDimensionsFromDimensionArray" --><font class="type">createNewDimensionsFromDimensionArray</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/newDimensionArray //apple_ref/c/cl/newDimensionArray //apple_ref/c/tdef/newDimensionArray //apple_ref/c/tag/newDimensionArray //apple_ref/c/econst/newDimensionArray //apple_ref/c/struct/newDimensionArray //apple_ref/c/clconst/newDimensionArray" --><font class="type">newDimensionArray</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>newDimensionArray</i></code></dt><dd>NSArray of NCDFDimension objects.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method creates multiple dimensions.  If fails, returns a NO and creates a NCDFError.  This method will not overwrite existing dimensions.  If a dimension exists with a name of a dimension in the array, then no attempt will be made to overwrite the old dimension.  Method will resync to file on completion.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewDimensionWithName:size:;  name=createNewDimensionWithName:size: -->
+<a name="//apple_ref/c/func/createNewDimensionWithName:size:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewDimensionWithName:size:">createNewDimensionWithName:size:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new dimension in the netcdf file.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewDimensionWithName //apple_ref/c/cl/createNewDimensionWithName //apple_ref/c/tdef/createNewDimensionWithName //apple_ref/c/tag/createNewDimensionWithName //apple_ref/c/econst/createNewDimensionWithName //apple_ref/c/struct/createNewDimensionWithName //apple_ref/c/clconst/createNewDimensionWithName" --><font class="type">createNewDimensionWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/dimName //apple_ref/c/cl/dimName //apple_ref/c/tdef/dimName //apple_ref/c/tag/dimName //apple_ref/c/econst/dimName //apple_ref/c/struct/dimName //apple_ref/c/clconst/dimName" --><font class="type">dimName</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/size //apple_ref/c/cl/size //apple_ref/c/tdef/size //apple_ref/c/tag/size //apple_ref/c/econst/size //apple_ref/c/struct/size //apple_ref/c/clconst/size" --><font class="type">size</font><!-- /a -->:(
+        <font class="param">size_t</font>)<!-- a logicalPath="//apple_ref/c/cl/length //apple_ref/c/cl/length //apple_ref/c/tdef/length //apple_ref/c/tag/length //apple_ref/c/econst/length //apple_ref/c/struct/length //apple_ref/c/clconst/length" --><font class="type">length</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>dimName</i></code></dt><dd>an NSString with the dimension name.</dd>
+<dt><code><i>length</i></code></dt><dd>the length of the dimension in units.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method creates a new dimension.  If fails, returns a NO and creates a NCDFError.  If successful, the NCDFHandle resyncs to file.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewDimensionWithPropertyList:;  name=createNewDimensionWithPropertyList: -->
+<a name="//apple_ref/c/func/createNewDimensionWithPropertyList:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewDimensionWithPropertyList:">createNewDimensionWithPropertyList:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new dimension in the netcdf file from a property list.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewDimensionWithPropertyList //apple_ref/c/cl/createNewDimensionWithPropertyList //apple_ref/c/tdef/createNewDimensionWithPropertyList //apple_ref/c/tag/createNewDimensionWithPropertyList //apple_ref/c/econst/createNewDimensionWithPropertyList //apple_ref/c/struct/createNewDimensionWithPropertyList //apple_ref/c/clconst/createNewDimensionWithPropertyList" --><font class="type">createNewDimensionWithPropertyList</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSDictionary //apple_ref/c/cl/NSDictionary //apple_ref/c/tdef/NSDictionary //apple_ref/c/tag/NSDictionary //apple_ref/c/econst/NSDictionary //apple_ref/c/struct/NSDictionary //apple_ref/c/clconst/NSDictionary" --><font class="type">NSDictionary</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/propertyList //apple_ref/c/cl/propertyList //apple_ref/c/tdef/propertyList //apple_ref/c/tag/propertyList //apple_ref/c/econst/propertyList //apple_ref/c/struct/propertyList //apple_ref/c/clconst/propertyList" --><font class="type">propertyList</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>propertyList</i></code></dt><dd>a NSDictionary containing a propertylist files for a NCDFDimension.  See NCDFDimension for documentation.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method creates a new dimension.  This method calls createNewDimensionWithName and thus will generate a NCDFError and resync to file.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewGlobalAttributeWithArray:;  name=createNewGlobalAttributeWithArray: -->
+<a name="//apple_ref/c/func/createNewGlobalAttributeWithArray:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewGlobalAttributeWithArray:">createNewGlobalAttributeWithArray:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates global attributes from a list of attributes.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewGlobalAttributeWithArray //apple_ref/c/cl/createNewGlobalAttributeWithArray //apple_ref/c/tdef/createNewGlobalAttributeWithArray //apple_ref/c/tag/createNewGlobalAttributeWithArray //apple_ref/c/econst/createNewGlobalAttributeWithArray //apple_ref/c/struct/createNewGlobalAttributeWithArray //apple_ref/c/clconst/createNewGlobalAttributeWithArray" --><font class="type">createNewGlobalAttributeWithArray</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theNewAttributes //apple_ref/c/cl/theNewAttributes //apple_ref/c/tdef/theNewAttributes //apple_ref/c/tag/theNewAttributes //apple_ref/c/econst/theNewAttributes //apple_ref/c/struct/theNewAttributes //apple_ref/c/clconst/theNewAttributes" --><font class="type">theNewAttributes</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>theNewAttributes</i></code></dt><dd>NSArray of NCDFAttribute objects.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Adds multiple global attributes to a file. It does not add attributes with the same name as existing attributes.  The returned array allows you to determine which attributes were not written.
+<br><br>
+PROGRAMMING NOTES: Requires renaming, consider a new version that returns a BOOL
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewGlobalAttributeWithName:dataType:values:;  name=createNewGlobalAttributeWithName:dataType:values: -->
+<a name="//apple_ref/c/func/createNewGlobalAttributeWithName:dataType:values:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewGlobalAttributeWithName:dataType:values:">createNewGlobalAttributeWithName:dataType:values:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new global attribute.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewGlobalAttributeWithName //apple_ref/c/cl/createNewGlobalAttributeWithName //apple_ref/c/tdef/createNewGlobalAttributeWithName //apple_ref/c/tag/createNewGlobalAttributeWithName //apple_ref/c/econst/createNewGlobalAttributeWithName //apple_ref/c/struct/createNewGlobalAttributeWithName //apple_ref/c/clconst/createNewGlobalAttributeWithName" --><font class="type">createNewGlobalAttributeWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/attName //apple_ref/c/cl/attName //apple_ref/c/tdef/attName //apple_ref/c/tag/attName //apple_ref/c/econst/attName //apple_ref/c/struct/attName //apple_ref/c/clconst/attName" --><font class="type">attName</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/dataType //apple_ref/c/cl/dataType //apple_ref/c/tdef/dataType //apple_ref/c/tag/dataType //apple_ref/c/econst/dataType //apple_ref/c/struct/dataType //apple_ref/c/clconst/dataType" --><font class="type">dataType</font><!-- /a -->:(
+        <font class="param">nc_type</font>)<!-- a logicalPath="//apple_ref/c/cl/theType //apple_ref/c/cl/theType //apple_ref/c/tdef/theType //apple_ref/c/tag/theType //apple_ref/c/econst/theType //apple_ref/c/struct/theType //apple_ref/c/clconst/theType" --><font class="type">theType</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/values //apple_ref/c/cl/values //apple_ref/c/tdef/values //apple_ref/c/tag/values //apple_ref/c/econst/values //apple_ref/c/struct/values //apple_ref/c/clconst/values" --><font class="type">values</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theValues //apple_ref/c/cl/theValues //apple_ref/c/tdef/theValues //apple_ref/c/tag/theValues //apple_ref/c/econst/theValues //apple_ref/c/struct/theValues //apple_ref/c/clconst/theValues" --><font class="type">theValues</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>attName</i></code></dt><dd>NSString name of the attribute.</dd>
+<dt><code><i>dataType</i></code></dt><dd>netcdf data type (i.e., NC_BYTE, NC_CHAR, etc).</dd>
+<dt><code><i>theValues</i></code></dt><dd>A NSArray of values.  If the type is NC_CHAR, it should have only one string object.  Otherwise, it should contain 1 or more NSNumber objects</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Creates a new global variable.  If successful, the method resyncs the NCDFHandle to the file.  
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewGlobalAttributeWithPropertyList:;  name=createNewGlobalAttributeWithPropertyList: -->
+<a name="//apple_ref/c/func/createNewGlobalAttributeWithPropertyList:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewGlobalAttributeWithPropertyList:">createNewGlobalAttributeWithPropertyList:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new global attribute using a property list dictionary.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewGlobalAttributeWithPropertyList //apple_ref/c/cl/createNewGlobalAttributeWithPropertyList //apple_ref/c/tdef/createNewGlobalAttributeWithPropertyList //apple_ref/c/tag/createNewGlobalAttributeWithPropertyList //apple_ref/c/econst/createNewGlobalAttributeWithPropertyList //apple_ref/c/struct/createNewGlobalAttributeWithPropertyList //apple_ref/c/clconst/createNewGlobalAttributeWithPropertyList" --><font class="type">createNewGlobalAttributeWithPropertyList</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSDictionary //apple_ref/c/cl/NSDictionary //apple_ref/c/tdef/NSDictionary //apple_ref/c/tag/NSDictionary //apple_ref/c/econst/NSDictionary //apple_ref/c/struct/NSDictionary //apple_ref/c/clconst/NSDictionary" --><font class="type">NSDictionary</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/propertyList //apple_ref/c/cl/propertyList //apple_ref/c/tdef/propertyList //apple_ref/c/tag/propertyList //apple_ref/c/econst/propertyList //apple_ref/c/struct/propertyList //apple_ref/c/clconst/propertyList" --><font class="type">propertyList</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>propertyList</i></code></dt><dd>NSDictionary containing an attribute description.  See NCDFAttribute for field names.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Creates a new global variable.  If successful, the method resyncs the NCDFHandle to the file.  
+<br><br>
+Required Fields:
+NCDFAttributePropertyListFieldNC_TYPE
+NCDFAttributePropertyListFieldAttributeName
+NCDFAttributePropertyListFieldValues
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewVariableWithName:type:dimNameArray:;  name=createNewVariableWithName:type:dimNameArray: -->
+<a name="//apple_ref/c/func/createNewVariableWithName:type:dimNameArray:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewVariableWithName:type:dimNameArray:">createNewVariableWithName:type:dimNameArray:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new variable.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewVariableWithName //apple_ref/c/cl/createNewVariableWithName //apple_ref/c/tdef/createNewVariableWithName //apple_ref/c/tag/createNewVariableWithName //apple_ref/c/econst/createNewVariableWithName //apple_ref/c/struct/createNewVariableWithName //apple_ref/c/clconst/createNewVariableWithName" --><font class="type">createNewVariableWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/variableName //apple_ref/c/cl/variableName //apple_ref/c/tdef/variableName //apple_ref/c/tag/variableName //apple_ref/c/econst/variableName //apple_ref/c/struct/variableName //apple_ref/c/clconst/variableName" --><font class="type">variableName</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/type //apple_ref/c/cl/type //apple_ref/c/tdef/type //apple_ref/c/tag/type //apple_ref/c/econst/type //apple_ref/c/struct/type //apple_ref/c/clconst/type" --><font class="type">type</font><!-- /a -->:(
+        <font class="param">nc_type</font>)<!-- a logicalPath="//apple_ref/c/cl/theType //apple_ref/c/cl/theType //apple_ref/c/tdef/theType //apple_ref/c/tag/theType //apple_ref/c/econst/theType //apple_ref/c/struct/theType //apple_ref/c/clconst/theType" --><font class="type">theType</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/dimNameArray //apple_ref/c/cl/dimNameArray //apple_ref/c/tdef/dimNameArray //apple_ref/c/tag/dimNameArray //apple_ref/c/econst/dimNameArray //apple_ref/c/struct/dimNameArray //apple_ref/c/clconst/dimNameArray" --><font class="type">dimNameArray</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/selectedDims //apple_ref/c/cl/selectedDims //apple_ref/c/tdef/selectedDims //apple_ref/c/tag/selectedDims //apple_ref/c/econst/selectedDims //apple_ref/c/struct/selectedDims //apple_ref/c/clconst/selectedDims" --><font class="type">selectedDims</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>variableName</i></code></dt><dd>NSString of the name string.</dd>
+<dt><code><i>theType</i></code></dt><dd>The netcdf data type (NC_BYTE,NC_CHAR, etc)</dd>
+<dt><code><i>selectedDims</i></code></dt><dd>An array of NCDFDimensions in order of significance.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Basic method for creating a new variable.  Resyncs to file on completion. Also posts NCDFError if error occurs.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/createNewVariableWithPropertyList:;  name=createNewVariableWithPropertyList: -->
+<a name="//apple_ref/c/func/createNewVariableWithPropertyList:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="createNewVariableWithPropertyList:">createNewVariableWithPropertyList:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new variable based on a property list.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/createNewVariableWithPropertyList //apple_ref/c/cl/createNewVariableWithPropertyList //apple_ref/c/tdef/createNewVariableWithPropertyList //apple_ref/c/tag/createNewVariableWithPropertyList //apple_ref/c/econst/createNewVariableWithPropertyList //apple_ref/c/struct/createNewVariableWithPropertyList //apple_ref/c/clconst/createNewVariableWithPropertyList" --><font class="type">createNewVariableWithPropertyList</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSDictionary //apple_ref/c/cl/NSDictionary //apple_ref/c/tdef/NSDictionary //apple_ref/c/tag/NSDictionary //apple_ref/c/econst/NSDictionary //apple_ref/c/struct/NSDictionary //apple_ref/c/clconst/NSDictionary" --><font class="type">NSDictionary</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/propertyList //apple_ref/c/cl/propertyList //apple_ref/c/tdef/propertyList //apple_ref/c/tag/propertyList //apple_ref/c/econst/propertyList //apple_ref/c/struct/propertyList //apple_ref/c/clconst/propertyList" --><font class="type">propertyList</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>propertyList</i></code></dt><dd>NSDictionary containing a variable property list.  See NCDFVariable for fields.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Creating a new variable with property list.  Resyncs to file on completion. Also posts NCDFError if error occurs.
+<br><br>
+required fields:
+NCDFVariablePropertyListFieldDimensionNames
+NCDFVariablePropertyListFieldVariableName
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/dealloc;  name=dealloc -->
+<a name="//apple_ref/c/func/dealloc"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="dealloc">dealloc</a></h3>
+</td></tr></table><hr><dl></dl><p>Standard deallocation.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/dealloc //apple_ref/c/cl/dealloc //apple_ref/c/tdef/dealloc //apple_ref/c/tag/dealloc //apple_ref/c/econst/dealloc //apple_ref/c/struct/dealloc //apple_ref/c/clconst/dealloc" --><font class="type">dealloc</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Private method.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/deleteDimensionWithName:;  name=deleteDimensionWithName: -->
+<a name="//apple_ref/c/func/deleteDimensionWithName:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="deleteDimensionWithName:">deleteDimensionWithName:</a></h3>
+</td></tr></table><hr><dl></dl><p>Deletes a dimension from the netcdf file.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/deleteDimensionWithName //apple_ref/c/cl/deleteDimensionWithName //apple_ref/c/tdef/deleteDimensionWithName //apple_ref/c/tag/deleteDimensionWithName //apple_ref/c/econst/deleteDimensionWithName //apple_ref/c/struct/deleteDimensionWithName //apple_ref/c/clconst/deleteDimensionWithName" --><font class="type">deleteDimensionWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/dimName //apple_ref/c/cl/dimName //apple_ref/c/tdef/dimName //apple_ref/c/tag/dimName //apple_ref/c/econst/dimName //apple_ref/c/struct/dimName //apple_ref/c/clconst/dimName" --><font class="type">dimName</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>dimName</i></code></dt><dd>NSString name of the dimension.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method deletes a dimension based on a given dimension name.  If fails, returns a NO and creates a NCDFError.  This method works by creating an empty temporary netcdf file and recreating the old file within the new file minus the deleted dimension.  When complete, the new file is moved to the path of the old file.  The NCDFHandle will then resync to file.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/deleteGlobalAttributeWithName:;  name=deleteGlobalAttributeWithName: -->
+<a name="//apple_ref/c/func/deleteGlobalAttributeWithName:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="deleteGlobalAttributeWithName:">deleteGlobalAttributeWithName:</a></h3>
+</td></tr></table><hr><dl></dl><p>Deletes a global attribute.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/deleteGlobalAttributeWithName //apple_ref/c/cl/deleteGlobalAttributeWithName //apple_ref/c/tdef/deleteGlobalAttributeWithName //apple_ref/c/tag/deleteGlobalAttributeWithName //apple_ref/c/econst/deleteGlobalAttributeWithName //apple_ref/c/struct/deleteGlobalAttributeWithName //apple_ref/c/clconst/deleteGlobalAttributeWithName" --><font class="type">deleteGlobalAttributeWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/attName //apple_ref/c/cl/attName //apple_ref/c/tdef/attName //apple_ref/c/tag/attName //apple_ref/c/econst/attName //apple_ref/c/struct/attName //apple_ref/c/clconst/attName" --><font class="type">attName</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>attName</i></code></dt><dd>NSString of a global attribute name.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Deletes a global variable.  If successful, the method resyncs the NCDFHandle to the file.  
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/deleteVariablesWithNames:;  name=deleteVariablesWithNames: -->
+<a name="//apple_ref/c/func/deleteVariablesWithNames:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="deleteVariablesWithNames:">deleteVariablesWithNames:</a></h3>
+</td></tr></table><hr><dl></dl><p>Deletes a series of variables.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/deleteVariablesWithNames //apple_ref/c/cl/deleteVariablesWithNames //apple_ref/c/tdef/deleteVariablesWithNames //apple_ref/c/tag/deleteVariablesWithNames //apple_ref/c/econst/deleteVariablesWithNames //apple_ref/c/struct/deleteVariablesWithNames //apple_ref/c/clconst/deleteVariablesWithNames" --><font class="type">deleteVariablesWithNames</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/nameArray //apple_ref/c/cl/nameArray //apple_ref/c/tdef/nameArray //apple_ref/c/tag/nameArray //apple_ref/c/econst/nameArray //apple_ref/c/struct/nameArray //apple_ref/c/clconst/nameArray" --><font class="type">nameArray</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>nameArray</i></code></dt><dd>NSArray object containing NSString objects containing variable names.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Deleteing a variable by name.  Resyncs to file on completion. Also posts NCDFError if error occurs.  Method will return NO on any error.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/deleteVariableWithName:;  name=deleteVariableWithName: -->
+<a name="//apple_ref/c/func/deleteVariableWithName:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="deleteVariableWithName:">deleteVariableWithName:</a></h3>
+</td></tr></table><hr><dl></dl><p>Deletes a variable from the netcdf file.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/deleteVariableWithName //apple_ref/c/cl/deleteVariableWithName //apple_ref/c/tdef/deleteVariableWithName //apple_ref/c/tag/deleteVariableWithName //apple_ref/c/econst/deleteVariableWithName //apple_ref/c/struct/deleteVariableWithName //apple_ref/c/clconst/deleteVariableWithName" --><font class="type">deleteVariableWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/deleteVariableName //apple_ref/c/cl/deleteVariableName //apple_ref/c/tdef/deleteVariableName //apple_ref/c/tag/deleteVariableName //apple_ref/c/econst/deleteVariableName //apple_ref/c/struct/deleteVariableName //apple_ref/c/clconst/deleteVariableName" --><font class="type">deleteVariableName</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>deleteVariableName</i></code></dt><dd>NSString object with the name of the variable to be deleted.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Deleteing a variable by name.  Resyncs to file on completion. Also posts NCDFError if error occurs.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/extendUnlimitedVariableBy:;  name=extendUnlimitedVariableBy: -->
+<a name="//apple_ref/c/func/extendUnlimitedVariableBy:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="extendUnlimitedVariableBy:">extendUnlimitedVariableBy:</a></h3>
+</td></tr></table><hr><dl></dl><p>Extend the length of the unlimited dimension via the dimension variable.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/extendUnlimitedVariableBy //apple_ref/c/cl/extendUnlimitedVariableBy //apple_ref/c/tdef/extendUnlimitedVariableBy //apple_ref/c/tag/extendUnlimitedVariableBy //apple_ref/c/econst/extendUnlimitedVariableBy //apple_ref/c/struct/extendUnlimitedVariableBy //apple_ref/c/clconst/extendUnlimitedVariableBy" --><font class="type">extendUnlimitedVariableBy</font><!-- /a -->:(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/units //apple_ref/c/cl/units //apple_ref/c/tdef/units //apple_ref/c/tag/units //apple_ref/c/econst/units //apple_ref/c/struct/units //apple_ref/c/clconst/units" --><font class="type">units</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>units</i></code></dt><dd>The numbers of values to extend the unlimited dimension length.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This function provides a simple method to make all variables that are dependent on a unlimited dimension longer.  By adding to this length, all variables that use the unlimited variable with increase in size automatically.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/getDimensions;  name=getDimensions -->
+<a name="//apple_ref/c/func/getDimensions"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="getDimensions">getDimensions</a></h3>
+</td></tr></table><hr><dl></dl><p>Retrieves all NCDFDimensions.</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSMutableArray //apple_ref/c/cl/NSMutableArray //apple_ref/c/tdef/NSMutableArray //apple_ref/c/tag/NSMutableArray //apple_ref/c/econst/NSMutableArray //apple_ref/c/struct/NSMutableArray //apple_ref/c/clconst/NSMutableArray" --><font class="type">NSMutableArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/getDimensions //apple_ref/c/cl/getDimensions //apple_ref/c/tdef/getDimensions //apple_ref/c/tag/getDimensions //apple_ref/c/econst/getDimensions //apple_ref/c/struct/getDimensions //apple_ref/c/clconst/getDimensions" --><font class="type">getDimensions</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method returns all netcdf dimensions for a file in a NSMutableArray.  NSMutableArrays are used so that applications can maintain connection with this array even after the NCDFHandle makes a refresh call.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/getGlobalAttributes;  name=getGlobalAttributes -->
+<a name="//apple_ref/c/func/getGlobalAttributes"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="getGlobalAttributes">getGlobalAttributes</a></h3>
+</td></tr></table><hr><dl></dl><p>Retrieves all NCDFAttributes for global attributes.</p>
+<blockquote><pre> -(
+        <!-- a logicalPath="//apple_ref/c/cl/NSMutableArray //apple_ref/c/cl/NSMutableArray //apple_ref/c/tdef/NSMutableArray //apple_ref/c/tag/NSMutableArray //apple_ref/c/econst/NSMutableArray //apple_ref/c/struct/NSMutableArray //apple_ref/c/clconst/NSMutableArray" --><font class="type">NSMutableArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/getGlobalAttributes //apple_ref/c/cl/getGlobalAttributes //apple_ref/c/tdef/getGlobalAttributes //apple_ref/c/tag/getGlobalAttributes //apple_ref/c/econst/getGlobalAttributes //apple_ref/c/struct/getGlobalAttributes //apple_ref/c/clconst/getGlobalAttributes" --><font class="type">getGlobalAttributes</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method returns all netcdf global attributes for a file in a NSMutableArray.  NSMutableArrays are used so that applications can maintain connection with this array even after the NCDFHandle makes a refresh call. <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/getVariables;  name=getVariables -->
+<a name="//apple_ref/c/func/getVariables"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="getVariables">getVariables</a></h3>
+</td></tr></table><hr><dl></dl><p>Retrieves all NCDFVariables for variables.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSMutableArray //apple_ref/c/cl/NSMutableArray //apple_ref/c/tdef/NSMutableArray //apple_ref/c/tag/NSMutableArray //apple_ref/c/econst/NSMutableArray //apple_ref/c/struct/NSMutableArray //apple_ref/c/clconst/NSMutableArray" --><font class="type">NSMutableArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/getVariables //apple_ref/c/cl/getVariables //apple_ref/c/tdef/getVariables //apple_ref/c/tag/getVariables //apple_ref/c/econst/getVariables //apple_ref/c/struct/getVariables //apple_ref/c/clconst/getVariables" --><font class="type">getVariables</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method returns all netcdf variables for a file in a NSMutableArray.  NSMutableArrays are used so that applications can maintain connection with this array even after the NCDFHandle makes a refresh call.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/handleLock;  name=handleLock -->
+<a name="//apple_ref/c/func/handleLock"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="handleLock">handleLock</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns an NSLock object for the handle.
+	</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSLock //apple_ref/c/cl/NSLock //apple_ref/c/tdef/NSLock //apple_ref/c/tag/NSLock //apple_ref/c/econst/NSLock //apple_ref/c/struct/NSLock //apple_ref/c/clconst/NSLock" --><font class="type">NSLock</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/handleLock //apple_ref/c/cl/handleLock //apple_ref/c/tdef/handleLock //apple_ref/c/tag/handleLock //apple_ref/c/econst/handleLock //apple_ref/c/struct/handleLock //apple_ref/c/clconst/handleLock" --><font class="type">handleLock</font><!-- /a -->; </pre></blockquote>
+<dl></dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/htmlDescription;  name=htmlDescription -->
+<a name="//apple_ref/c/func/htmlDescription"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="htmlDescription">htmlDescription</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns a description of the variable and all of its attributes in an html form.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/htmlDescription //apple_ref/c/cl/htmlDescription //apple_ref/c/tdef/htmlDescription //apple_ref/c/tag/htmlDescription //apple_ref/c/econst/htmlDescription //apple_ref/c/struct/htmlDescription //apple_ref/c/clconst/htmlDescription" --><font class="type">htmlDescription</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is to provide a method to export the metadata of a netcdf file into a HTML document.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/initByCreatingFileAtPath:;  name=initByCreatingFileAtPath: -->
+<a name="//apple_ref/c/func/initByCreatingFileAtPath:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initByCreatingFileAtPath:">initByCreatingFileAtPath:</a></h3>
+</td></tr></table><hr><dl></dl><p>Creates a new empty netcdf file and initializes a new NCDFHandle for the new file.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initByCreatingFileAtPath //apple_ref/c/cl/initByCreatingFileAtPath //apple_ref/c/tdef/initByCreatingFileAtPath //apple_ref/c/tag/initByCreatingFileAtPath //apple_ref/c/econst/initByCreatingFileAtPath //apple_ref/c/struct/initByCreatingFileAtPath //apple_ref/c/clconst/initByCreatingFileAtPath" --><font class="type">initByCreatingFileAtPath</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/thePath //apple_ref/c/cl/thePath //apple_ref/c/tdef/thePath //apple_ref/c/tag/thePath //apple_ref/c/econst/thePath //apple_ref/c/struct/thePath //apple_ref/c/clconst/thePath" --><font class="type">thePath</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>thePath</i></code></dt><dd>the path requested for a netcdf file.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>An instance of NCDFHandle or nil if failed.
+</dd>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is the standard method for creating an netcdf file and a NCDFHandle. If creating the file should fail, an NCDFError will usually be created. <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/initializeArrays;  name=initializeArrays -->
+<a name="//apple_ref/c/func/initializeArrays"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initializeArrays">initializeArrays</a></h3>
+</td></tr></table><hr><dl></dl><p>This method initializes all the metadata arrays that hold the contents of the netcdf file.
+</p>
+<blockquote><pre>  -(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/initializeArrays //apple_ref/c/cl/initializeArrays //apple_ref/c/tdef/initializeArrays //apple_ref/c/tag/initializeArrays //apple_ref/c/econst/initializeArrays //apple_ref/c/struct/initializeArrays //apple_ref/c/clconst/initializeArrays" --><font class="type">initializeArrays</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This private method empties all the arrays the store all NCDFVariables, NCDFDimensions, and NCDFAttributes.  It should not be called exept by existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/initWithFileAtPath:;  name=initWithFileAtPath: -->
+<a name="//apple_ref/c/func/initWithFileAtPath:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initWithFileAtPath:">initWithFileAtPath:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializes a new NCDFHandle for an existing file.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initWithFileAtPath //apple_ref/c/cl/initWithFileAtPath //apple_ref/c/tdef/initWithFileAtPath //apple_ref/c/tag/initWithFileAtPath //apple_ref/c/econst/initWithFileAtPath //apple_ref/c/struct/initWithFileAtPath //apple_ref/c/clconst/initWithFileAtPath" --><font class="type">initWithFileAtPath</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/thePath //apple_ref/c/cl/thePath //apple_ref/c/tdef/thePath //apple_ref/c/tag/thePath //apple_ref/c/econst/thePath //apple_ref/c/struct/thePath //apple_ref/c/clconst/thePath" --><font class="type">thePath</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>thePath</i></code></dt><dd>the path to an existing netcdf file.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>An instance of NCDFHandle or nil if failed.
+</dd>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is the standard method for creating an NCDFHandle.  An example would look like:<P>NCDFHandle *newHandle = [[NCDFHandle alloc] initWithFileAtPath:filePath];<P>If the new NCDFHandle failed and returned a nil, then an NCDFError is created.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/parseNameString:;  name=parseNameString: -->
+<a name="//apple_ref/c/func/parseNameString:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="parseNameString:">parseNameString:</a></h3>
+</td></tr></table><hr><dl></dl><p>Parses a new name string to ensure compliance with netcdf naming standards.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/parseNameString //apple_ref/c/cl/parseNameString //apple_ref/c/tdef/parseNameString //apple_ref/c/tag/parseNameString //apple_ref/c/econst/parseNameString //apple_ref/c/struct/parseNameString //apple_ref/c/clconst/parseNameString" --><font class="type">parseNameString</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theString //apple_ref/c/cl/theString //apple_ref/c/tdef/theString //apple_ref/c/tag/theString //apple_ref/c/econst/theString //apple_ref/c/struct/theString //apple_ref/c/clconst/theString" --><font class="type">theString</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>theString</i></code></dt><dd>NSString of the name string.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Ensures that a name string is valid for writing to file.  This method is called whenever a new name is being written to file.  Also see NCDFNameFormatter for GUI-based formatting.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/refresh;  name=refresh -->
+<a name="//apple_ref/c/func/refresh"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="refresh">refresh</a></h3>
+</td></tr></table><hr><dl></dl><p>Force reset of the NCDFHandle metadata.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/refresh //apple_ref/c/cl/refresh //apple_ref/c/tdef/refresh //apple_ref/c/tag/refresh //apple_ref/c/econst/refresh //apple_ref/c/struct/refresh //apple_ref/c/clconst/refresh" --><font class="type">refresh</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method triggers the reset of all netcdf metadata.  This method should be called when there is reason to believe that the NCDFHandle is no longer in sync with the netcdf file.  Typically this can occur when changing the contents of a netcdf file.  Some methods will automatically call this method.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/resizeDimensionWithName:size:;  name=resizeDimensionWithName:size: -->
+<a name="//apple_ref/c/func/resizeDimensionWithName:size:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="resizeDimensionWithName:size:">resizeDimensionWithName:size:</a></h3>
+</td></tr></table><hr><dl></dl><p>Resizes a dimension from the netcdf file.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/resizeDimensionWithName //apple_ref/c/cl/resizeDimensionWithName //apple_ref/c/tdef/resizeDimensionWithName //apple_ref/c/tag/resizeDimensionWithName //apple_ref/c/econst/resizeDimensionWithName //apple_ref/c/struct/resizeDimensionWithName //apple_ref/c/clconst/resizeDimensionWithName" --><font class="type">resizeDimensionWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/resizeDimName //apple_ref/c/cl/resizeDimName //apple_ref/c/tdef/resizeDimName //apple_ref/c/tag/resizeDimName //apple_ref/c/econst/resizeDimName //apple_ref/c/struct/resizeDimName //apple_ref/c/clconst/resizeDimName" --><font class="type">resizeDimName</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/size //apple_ref/c/cl/size //apple_ref/c/tdef/size //apple_ref/c/tag/size //apple_ref/c/econst/size //apple_ref/c/struct/size //apple_ref/c/clconst/size" --><font class="type">size</font><!-- /a -->:(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/newSize //apple_ref/c/cl/newSize //apple_ref/c/tdef/newSize //apple_ref/c/tag/newSize //apple_ref/c/econst/newSize //apple_ref/c/struct/newSize //apple_ref/c/clconst/newSize" --><font class="type">newSize</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>resizeDimName</i></code></dt><dd>NSString name of the dimension.</dd>
+<dt><code><i>size</i></code></dt><dd>integer with the new size of the dimension.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method resizes a dimension based on a given dimension name.  If fails, returns a NO and creates a NCDFError.  This method works by creating an empty temporary netcdf file and recreating the old file within the new file except the dimension length is the newSize.  When complete, the new file is moved to the path of the old file.  The NCDFHandle will then resync to file.  Note, resizing an unlimited dimension may have unexpected results.  A new size to anything but 0 for an unlimited dimension may damage dependent variables.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/retrieveDimensionByIndex:;  name=retrieveDimensionByIndex: -->
+<a name="//apple_ref/c/func/retrieveDimensionByIndex:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="retrieveDimensionByIndex:">retrieveDimensionByIndex:</a></h3>
+</td></tr></table><hr><dl></dl><p>Access to a dimension by index number.
+</p>
+<blockquote><pre> -(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/retrieveDimensionByIndex //apple_ref/c/cl/retrieveDimensionByIndex //apple_ref/c/tdef/retrieveDimensionByIndex //apple_ref/c/tag/retrieveDimensionByIndex //apple_ref/c/econst/retrieveDimensionByIndex //apple_ref/c/struct/retrieveDimensionByIndex //apple_ref/c/clconst/retrieveDimensionByIndex" --><font class="type">retrieveDimensionByIndex</font><!-- /a -->:(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/index //apple_ref/c/cl/index //apple_ref/c/tdef/index //apple_ref/c/tag/index //apple_ref/c/econst/index //apple_ref/c/struct/index //apple_ref/c/clconst/index" --><font class="type">index</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The netcdf C library handles variable dimensions by index number.  The netcdf library number and the NCDFHandle index number should be the same and are interchangable.  Thus, NCDFDimensions can be retrieved by their index numbers.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/retrieveDimensionByName:;  name=retrieveDimensionByName: -->
+<a name="//apple_ref/c/func/retrieveDimensionByName:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="retrieveDimensionByName:">retrieveDimensionByName:</a></h3>
+</td></tr></table><hr><dl></dl><p>Access a dimension by name.
+</p>
+<blockquote><pre> -(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/retrieveDimensionByName //apple_ref/c/cl/retrieveDimensionByName //apple_ref/c/tdef/retrieveDimensionByName //apple_ref/c/tag/retrieveDimensionByName //apple_ref/c/econst/retrieveDimensionByName //apple_ref/c/struct/retrieveDimensionByName //apple_ref/c/clconst/retrieveDimensionByName" --><font class="type">retrieveDimensionByName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aName //apple_ref/c/cl/aName //apple_ref/c/tdef/aName //apple_ref/c/tag/aName //apple_ref/c/econst/aName //apple_ref/c/struct/aName //apple_ref/c/clconst/aName" --><font class="type">aName</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aName</i></code></dt><dd>NSString object containing a name of a dimension.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is to access an individual dimension by name.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/retrieveGlobalAttributeByName:;  name=retrieveGlobalAttributeByName: -->
+<a name="//apple_ref/c/func/retrieveGlobalAttributeByName:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="retrieveGlobalAttributeByName:">retrieveGlobalAttributeByName:</a></h3>
+</td></tr></table><hr><dl></dl><p>Allows access to global attributes by name.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFAttribute //apple_ref/c/cl/NCDFAttribute //apple_ref/c/tdef/NCDFAttribute //apple_ref/c/tag/NCDFAttribute //apple_ref/c/econst/NCDFAttribute //apple_ref/c/struct/NCDFAttribute //apple_ref/c/clconst/NCDFAttribute" --><font class="type">NCDFAttribute</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/retrieveGlobalAttributeByName //apple_ref/c/cl/retrieveGlobalAttributeByName //apple_ref/c/tdef/retrieveGlobalAttributeByName //apple_ref/c/tag/retrieveGlobalAttributeByName //apple_ref/c/econst/retrieveGlobalAttributeByName //apple_ref/c/struct/retrieveGlobalAttributeByName //apple_ref/c/clconst/retrieveGlobalAttributeByName" --><font class="type">retrieveGlobalAttributeByName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aName //apple_ref/c/cl/aName //apple_ref/c/tdef/aName //apple_ref/c/tag/aName //apple_ref/c/econst/aName //apple_ref/c/struct/aName //apple_ref/c/clconst/aName" --><font class="type">aName</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>name</i></code></dt><dd>NSString object containing the desired name of the global attribute desired.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Retrieves NCDFAttribute object that global to the netcdf file  by attribute name.
+	 </p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/retrieveUnlimitedDimension;  name=retrieveUnlimitedDimension -->
+<a name="//apple_ref/c/func/retrieveUnlimitedDimension"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="retrieveUnlimitedDimension">retrieveUnlimitedDimension</a></h3>
+</td></tr></table><hr><dl></dl><p>Access the unlimited dimension, if exists.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/retrieveUnlimitedDimension //apple_ref/c/cl/retrieveUnlimitedDimension //apple_ref/c/tdef/retrieveUnlimitedDimension //apple_ref/c/tag/retrieveUnlimitedDimension //apple_ref/c/econst/retrieveUnlimitedDimension //apple_ref/c/struct/retrieveUnlimitedDimension //apple_ref/c/clconst/retrieveUnlimitedDimension" --><font class="type">retrieveUnlimitedDimension</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is to identify and access an unlimited dimension.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/retrieveUnlimitedVariable;  name=retrieveUnlimitedVariable -->
+<a name="//apple_ref/c/func/retrieveUnlimitedVariable"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="retrieveUnlimitedVariable">retrieveUnlimitedVariable</a></h3>
+</td></tr></table><hr><dl></dl><p>Access the unlimited dimension variable, if exists.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFVariable //apple_ref/c/cl/NCDFVariable //apple_ref/c/tdef/NCDFVariable //apple_ref/c/tag/NCDFVariable //apple_ref/c/econst/NCDFVariable //apple_ref/c/struct/NCDFVariable //apple_ref/c/clconst/NCDFVariable" --><font class="type">NCDFVariable</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/retrieveUnlimitedVariable //apple_ref/c/cl/retrieveUnlimitedVariable //apple_ref/c/tdef/retrieveUnlimitedVariable //apple_ref/c/tag/retrieveUnlimitedVariable //apple_ref/c/econst/retrieveUnlimitedVariable //apple_ref/c/struct/retrieveUnlimitedVariable //apple_ref/c/clconst/retrieveUnlimitedVariable" --><font class="type">retrieveUnlimitedVariable</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is to identify and access an unlimited dimension variable.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/retrieveVariableByName:;  name=retrieveVariableByName: -->
+<a name="//apple_ref/c/func/retrieveVariableByName:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="retrieveVariableByName:">retrieveVariableByName:</a></h3>
+</td></tr></table><hr><dl></dl><p>Access a variable by name.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFVariable //apple_ref/c/cl/NCDFVariable //apple_ref/c/tdef/NCDFVariable //apple_ref/c/tag/NCDFVariable //apple_ref/c/econst/NCDFVariable //apple_ref/c/struct/NCDFVariable //apple_ref/c/clconst/NCDFVariable" --><font class="type">NCDFVariable</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/retrieveVariableByName //apple_ref/c/cl/retrieveVariableByName //apple_ref/c/tdef/retrieveVariableByName //apple_ref/c/tag/retrieveVariableByName //apple_ref/c/econst/retrieveVariableByName //apple_ref/c/struct/retrieveVariableByName //apple_ref/c/clconst/retrieveVariableByName" --><font class="type">retrieveVariableByName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aName //apple_ref/c/cl/aName //apple_ref/c/tdef/aName //apple_ref/c/tag/aName //apple_ref/c/econst/aName //apple_ref/c/struct/aName //apple_ref/c/clconst/aName" --><font class="type">aName</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aName</i></code></dt><dd>NSString object containing a name of a variable.
+<br><br></dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is to access an individual variable by name.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/seedArrays:;  name=seedArrays: -->
+<a name="//apple_ref/c/func/seedArrays:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="seedArrays:">seedArrays:</a></h3>
+</td></tr></table><hr><dl></dl><p>This method retrieves netcdf metadata and stores the data in arrays.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/seedArrays //apple_ref/c/cl/seedArrays //apple_ref/c/tdef/seedArrays //apple_ref/c/tag/seedArrays //apple_ref/c/econst/seedArrays //apple_ref/c/struct/seedArrays //apple_ref/c/clconst/seedArrays" --><font class="type">seedArrays</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/typeArrays //apple_ref/c/cl/typeArrays //apple_ref/c/tdef/typeArrays //apple_ref/c/tag/typeArrays //apple_ref/c/econst/typeArrays //apple_ref/c/struct/typeArrays //apple_ref/c/clconst/typeArrays" --><font class="type">typeArrays</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This private method places all the metadata describing NCDFAttributes, NCDFDimensions, and NCDFVariables into arrays.  Do not call this method except from existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/setFilePath:;  name=setFilePath: -->
+<a name="//apple_ref/c/func/setFilePath:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="setFilePath:">setFilePath:</a></h3>
+</td></tr></table><hr><dl></dl><p>Sets the NCDFHandle file path.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/setFilePath //apple_ref/c/cl/setFilePath //apple_ref/c/tdef/setFilePath //apple_ref/c/tag/setFilePath //apple_ref/c/econst/setFilePath //apple_ref/c/struct/setFilePath //apple_ref/c/clconst/setFilePath" --><font class="type">setFilePath</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/thePath //apple_ref/c/cl/thePath //apple_ref/c/tdef/thePath //apple_ref/c/tag/thePath //apple_ref/c/econst/thePath //apple_ref/c/struct/thePath //apple_ref/c/clconst/thePath" --><font class="type">thePath</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>thePath</i></code></dt><dd>the path of a netcdf file.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is sets the private variable for the NCDFHandle source file path.  This path should not be changed for the duration of the handle's existence and set only during initialization.  Always use a new NCDFHandle for a new path.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/theErrorHandle;  name=theErrorHandle -->
+<a name="//apple_ref/c/func/theErrorHandle"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="theErrorHandle">theErrorHandle</a></h3>
+</td></tr></table><hr><dl></dl><p>Retrieves a pointer to the default NCDFErrorHandle.
+</p>
+<blockquote><pre>  -(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFErrorHandle //apple_ref/c/cl/NCDFErrorHandle //apple_ref/c/tdef/NCDFErrorHandle //apple_ref/c/tag/NCDFErrorHandle //apple_ref/c/econst/NCDFErrorHandle //apple_ref/c/struct/NCDFErrorHandle //apple_ref/c/clconst/NCDFErrorHandle" --><font class="type">NCDFErrorHandle</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theErrorHandle //apple_ref/c/cl/theErrorHandle //apple_ref/c/tdef/theErrorHandle //apple_ref/c/tag/theErrorHandle //apple_ref/c/econst/theErrorHandle //apple_ref/c/struct/theErrorHandle //apple_ref/c/clconst/theErrorHandle" --><font class="type">theErrorHandle</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method returns the default error handle.  This can be obtained by this method and directly from the error handle itself.  <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/theFilePath;  name=theFilePath -->
+<a name="//apple_ref/c/func/theFilePath"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="theFilePath">theFilePath</a></h3>
+</td></tr></table><hr><dl></dl><p>Accessor for the NCDFHandle's file path.</p>
+<blockquote><pre> -(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theFilePath //apple_ref/c/cl/theFilePath //apple_ref/c/tdef/theFilePath //apple_ref/c/tag/theFilePath //apple_ref/c/econst/theFilePath //apple_ref/c/struct/theFilePath //apple_ref/c/clconst/theFilePath" --><font class="type">theFilePath</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method allows access to the path for the current netcdf file. <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<p>(Last Updated June 18, 2007)
+</p></body></html>

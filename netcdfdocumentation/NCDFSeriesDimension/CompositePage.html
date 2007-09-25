@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>NCDFSeriesDimension.h</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">NCDFSeriesDimension.h</font></h1><br>
+<a name="//apple_ref/doc/header/NCDFSeriesDimension.h" title="NCDFSeriesDimension.h"></a>
+<h2>Abstract</h2>
+NCDFSeriesDimension objects for defining dimensionality of data variables. 
+<h2>Discussion</h2>
+NCDFSeriesDimension is an immutable class designed to allow a programmer to access netcdf data over multiple files using standard notation.  This class allows for dimensions to span files.
+ <hr><br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/dimensionName" target="_top">dimensionName</a></tt></dt>
+<dd>Returns the receiver's dimension name.</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/dimLength" target="_top">dimLength</a></tt></dt>
+<dd>Returns the receiver's dimension length.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/initWithDimension:" target="_top">initWithDimension:</a></tt></dt>
+<dd>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/initWithDimension:%32withHandleArray:" target="_top">initWithDimension: withHandleArray:</a></tt></dt>
+<dd>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/initWithDimension:withHandleArray:" target="_top">initWithDimension:withHandleArray:</a></tt></dt>
+<dd>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/initWithUnlimitedDimension:withHandleArray:" target="_top">initWithUnlimitedDimension:withHandleArray:</a></tt></dt>
+<dd>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/isUnlimited" target="_top">isUnlimited</a></tt></dt>
+<dd>Returns a boolean whether the dimension is unlimited.</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/rangeArrayForRange:" target="_top">rangeArrayForRange:</a></tt></dt>
+<dd>Returns an array with NSRange objects for unlimited dimensions describing the start and length information for each file.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/rangeArrayForStart:andLength:" target="_top">rangeArrayForStart:andLength:</a></tt></dt>
+<dd>Returns an array with NSRange objects for unlimited dimensions describing the start and length information for each file.
+</dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/dimensionName;  name=dimensionName -->
+<a name="//apple_ref/doc/compositePage/c/func/dimensionName"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="dimensionName">dimensionName</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns the receiver's dimension name.</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/dimensionName //apple_ref/c/cl/dimensionName //apple_ref/c/tdef/dimensionName //apple_ref/c/tag/dimensionName //apple_ref/c/econst/dimensionName //apple_ref/c/struct/dimensionName //apple_ref/c/clconst/dimensionName" --><font class="type">dimensionName</font><!-- /a -->; </pre></blockquote>
+<dl></dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/dimLength;  name=dimLength -->
+<a name="//apple_ref/doc/compositePage/c/func/dimLength"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="dimLength">dimLength</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns the receiver's dimension length.
+</p>
+<blockquote><pre>-(
+        <font class="param">size_t</font>)<!-- a logicalPath="//apple_ref/c/cl/dimLength //apple_ref/c/cl/dimLength //apple_ref/c/tdef/dimLength //apple_ref/c/tag/dimLength //apple_ref/c/econst/dimLength //apple_ref/c/struct/dimLength //apple_ref/c/clconst/dimLength" --><font class="type">dimLength</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns the length of the dimension.  If the dimension is unlimited, the length will span all files.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/initWithDimension:;  name=initWithDimension: -->
+<a name="//apple_ref/doc/compositePage/c/func/initWithDimension:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initWithDimension:">initWithDimension:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initWithDimension //apple_ref/c/cl/initWithDimension //apple_ref/c/tdef/initWithDimension //apple_ref/c/tag/initWithDimension //apple_ref/c/econst/initWithDimension //apple_ref/c/struct/initWithDimension //apple_ref/c/clconst/initWithDimension" --><font class="type">initWithDimension</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aDim //apple_ref/c/cl/aDim //apple_ref/c/tdef/aDim //apple_ref/c/tag/aDim //apple_ref/c/econst/aDim //apple_ref/c/struct/aDim //apple_ref/c/clconst/aDim" --><font class="type">aDim</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aDim</i></code></dt><dd>NCDFDimension object.  Typically the root NCDFHandle from NCDFSeriesHandle.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initializes a new NCDFSeriesDimension.  This initialization method is NOT for unlimited variables - limited variables only.  This initializer will not span files.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/initWithDimension:%32withHandleArray:;  name=initWithDimension:withHandleArray: -->
+<a name="//apple_ref/doc/compositePage/c/func/initWithDimension:%32withHandleArray:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initWithDimension:%32withHandleArray:">initWithDimension: withHandleArray:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initWithDimension //apple_ref/c/cl/initWithDimension //apple_ref/c/tdef/initWithDimension //apple_ref/c/tag/initWithDimension //apple_ref/c/econst/initWithDimension //apple_ref/c/struct/initWithDimension //apple_ref/c/clconst/initWithDimension" --><font class="type">initWithDimension</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aDim //apple_ref/c/cl/aDim //apple_ref/c/tdef/aDim //apple_ref/c/tag/aDim //apple_ref/c/econst/aDim //apple_ref/c/struct/aDim //apple_ref/c/clconst/aDim" --><font class="type">aDim</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/withHandleArray //apple_ref/c/cl/withHandleArray //apple_ref/c/tdef/withHandleArray //apple_ref/c/tag/withHandleArray //apple_ref/c/econst/withHandleArray //apple_ref/c/struct/withHandleArray //apple_ref/c/clconst/withHandleArray" --><font class="type">withHandleArray</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theHandles //apple_ref/c/cl/theHandles //apple_ref/c/tdef/theHandles //apple_ref/c/tag/theHandles //apple_ref/c/econst/theHandles //apple_ref/c/struct/theHandles //apple_ref/c/clconst/theHandles" --><font class="type">theHandles</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aDim</i></code></dt><dd>NCDFDimension object.  Typically the root NCDFHandle from NCDFSeriesHandle.</dd>
+<dt><code><i>theHandles</i></code></dt><dd>An NSArray of NCDFHandles owned by the NCDFSeriesHandle object.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initializes a new NCDFSeriesDimension.  This method is for use when it is unknown whether the dimension is unlimited or limited.  If unlimited, the dimension information will be adjusted to span multiple files.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/initWithDimension:withHandleArray:;  name=initWithDimension:withHandleArray: -->
+<a name="//apple_ref/doc/compositePage/c/func/initWithDimension:withHandleArray:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initWithDimension:withHandleArray:">initWithDimension:withHandleArray:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initWithDimension //apple_ref/c/cl/initWithDimension //apple_ref/c/tdef/initWithDimension //apple_ref/c/tag/initWithDimension //apple_ref/c/econst/initWithDimension //apple_ref/c/struct/initWithDimension //apple_ref/c/clconst/initWithDimension" --><font class="type">initWithDimension</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aDim //apple_ref/c/cl/aDim //apple_ref/c/tdef/aDim //apple_ref/c/tag/aDim //apple_ref/c/econst/aDim //apple_ref/c/struct/aDim //apple_ref/c/clconst/aDim" --><font class="type">aDim</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/withHandleArray //apple_ref/c/cl/withHandleArray //apple_ref/c/tdef/withHandleArray //apple_ref/c/tag/withHandleArray //apple_ref/c/econst/withHandleArray //apple_ref/c/struct/withHandleArray //apple_ref/c/clconst/withHandleArray" --><font class="type">withHandleArray</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theHandles //apple_ref/c/cl/theHandles //apple_ref/c/tdef/theHandles //apple_ref/c/tag/theHandles //apple_ref/c/econst/theHandles //apple_ref/c/struct/theHandles //apple_ref/c/clconst/theHandles" --><font class="type">theHandles</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aDim</i></code></dt><dd>NCDFDimension object.  Typically the root NCDFHandle from NCDFSeriesHandle.</dd>
+<dt><code><i>theHandles</i></code></dt><dd>An NSArray of NCDFHandles owned by the NCDFSeriesHandle object.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initializes a new NCDFSeriesDimension.  This method is for use when it is unknown whether the dimension is unlimited or limited.  If unlimited, the dimension information will be adjusted to span multiple files.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/initWithUnlimitedDimension:withHandleArray:;  name=initWithUnlimitedDimension:withHandleArray: -->
+<a name="//apple_ref/doc/compositePage/c/func/initWithUnlimitedDimension:withHandleArray:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initWithUnlimitedDimension:withHandleArray:">initWithUnlimitedDimension:withHandleArray:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializing using a NCDFDimension exisiting in the root NCDFHandle.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initWithUnlimitedDimension //apple_ref/c/cl/initWithUnlimitedDimension //apple_ref/c/tdef/initWithUnlimitedDimension //apple_ref/c/tag/initWithUnlimitedDimension //apple_ref/c/econst/initWithUnlimitedDimension //apple_ref/c/struct/initWithUnlimitedDimension //apple_ref/c/clconst/initWithUnlimitedDimension" --><font class="type">initWithUnlimitedDimension</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aDim //apple_ref/c/cl/aDim //apple_ref/c/tdef/aDim //apple_ref/c/tag/aDim //apple_ref/c/econst/aDim //apple_ref/c/struct/aDim //apple_ref/c/clconst/aDim" --><font class="type">aDim</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/withHandleArray //apple_ref/c/cl/withHandleArray //apple_ref/c/tdef/withHandleArray //apple_ref/c/tag/withHandleArray //apple_ref/c/econst/withHandleArray //apple_ref/c/struct/withHandleArray //apple_ref/c/clconst/withHandleArray" --><font class="type">withHandleArray</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theHandles //apple_ref/c/cl/theHandles //apple_ref/c/tdef/theHandles //apple_ref/c/tag/theHandles //apple_ref/c/econst/theHandles //apple_ref/c/struct/theHandles //apple_ref/c/clconst/theHandles" --><font class="type">theHandles</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aDim</i></code></dt><dd>NCDFDimension object.  Typically the root NCDFHandle from NCDFSeriesHandle.</dd>
+<dt><code><i>theHandles</i></code></dt><dd>An NSArray of NCDFHandles owned by the NCDFSeriesHandle object.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initializes a new NCDFSeriesDimension.  This method is only for unlimited dimensions. The dimension information will be adjusted to span multiple files.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/isUnlimited;  name=isUnlimited -->
+<a name="//apple_ref/doc/compositePage/c/func/isUnlimited"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="isUnlimited">isUnlimited</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns a boolean whether the dimension is unlimited.</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/isUnlimited //apple_ref/c/cl/isUnlimited //apple_ref/c/tdef/isUnlimited //apple_ref/c/tag/isUnlimited //apple_ref/c/econst/isUnlimited //apple_ref/c/struct/isUnlimited //apple_ref/c/clconst/isUnlimited" --><font class="type">isUnlimited</font><!-- /a -->; </pre></blockquote>
+<dl></dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/rangeArrayForRange:;  name=rangeArrayForRange: -->
+<a name="//apple_ref/doc/compositePage/c/func/rangeArrayForRange:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="rangeArrayForRange:">rangeArrayForRange:</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns an array with NSRange objects for unlimited dimensions describing the start and length information for each file.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/rangeArrayForRange //apple_ref/c/cl/rangeArrayForRange //apple_ref/c/tdef/rangeArrayForRange //apple_ref/c/tag/rangeArrayForRange //apple_ref/c/econst/rangeArrayForRange //apple_ref/c/struct/rangeArrayForRange //apple_ref/c/clconst/rangeArrayForRange" --><font class="type">rangeArrayForRange</font><!-- /a -->:(
+        <font class="param">NSRange</font>)<!-- a logicalPath="//apple_ref/c/cl/aRange //apple_ref/c/cl/aRange //apple_ref/c/tdef/aRange //apple_ref/c/tag/aRange //apple_ref/c/econst/aRange //apple_ref/c/struct/aRange //apple_ref/c/clconst/aRange" --><font class="type">aRange</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aRange</i></code></dt><dd>uses a NSRange object instead of two int values in -(NSArray *)rangeArrayForStart:(int)start andLength:(int)length</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns an array with NSRange objects describing a selection for each file for later reading. This method is for unlimited dimensions only.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/rangeArrayForStart:andLength:;  name=rangeArrayForStart:andLength: -->
+<a name="//apple_ref/doc/compositePage/c/func/rangeArrayForStart:andLength:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="rangeArrayForStart:andLength:">rangeArrayForStart:andLength:</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns an array with NSRange objects for unlimited dimensions describing the start and length information for each file.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/rangeArrayForStart //apple_ref/c/cl/rangeArrayForStart //apple_ref/c/tdef/rangeArrayForStart //apple_ref/c/tag/rangeArrayForStart //apple_ref/c/econst/rangeArrayForStart //apple_ref/c/struct/rangeArrayForStart //apple_ref/c/clconst/rangeArrayForStart" --><font class="type">rangeArrayForStart</font><!-- /a -->:(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/start //apple_ref/c/cl/start //apple_ref/c/tdef/start //apple_ref/c/tag/start //apple_ref/c/econst/start //apple_ref/c/struct/start //apple_ref/c/clconst/start" --><font class="type">start</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/andLength //apple_ref/c/cl/andLength //apple_ref/c/tdef/andLength //apple_ref/c/tag/andLength //apple_ref/c/econst/andLength //apple_ref/c/struct/andLength //apple_ref/c/clconst/andLength" --><font class="type">andLength</font><!-- /a -->:(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/length //apple_ref/c/cl/length //apple_ref/c/tdef/length //apple_ref/c/tag/length //apple_ref/c/econst/length //apple_ref/c/struct/length //apple_ref/c/clconst/length" --><font class="type">length</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>start</i></code></dt><dd>start location - can be 0 to n-1</dd>
+<dt><code><i>length</i></code></dt><dd>edge length  - can be 1 to n</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns an array with NSRange objects describing a selection for each file for later reading. This method is for unlimited dimensions only.
+	</p>
+</dl>
+<p>(Last Updated June 18, 2007)
+</p></body></html>

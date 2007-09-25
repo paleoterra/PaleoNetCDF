@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1><br>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/compare:" target="doc">compare:</a></tt></dt>
+<dd>Compares two NCDFDimension object's variable ID.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/dimensionID" target="doc">dimensionID</a></tt></dt>
+<dd>Access the dimension id.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/dimensionName" target="doc">dimensionName</a></tt></dt>
+<dd>Access the dimension name.</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/dimLength" target="doc">dimLength</a></tt></dt>
+<dd>Access the dimension dimLength.</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/handleLock" target="doc">handleLock</a></tt></dt>
+<dd>Returns an NSLock object from the owning NCDFHandle object.
+	</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initNewDimWithName:length:" target="doc">initNewDimWithName:length:</a></tt></dt>
+<dd>Initializes a new NCDFDimension object.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initWithFileName:dimID:name:length:handle:" target="doc">initWithFileName:dimID:name:length:handle:</a></tt></dt>
+<dd>Initializes a new NCDFDimension for a dimension within a file.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/isEqualToDim:" target="doc">isEqualToDim:</a></tt></dt>
+<dd>Determines if two dimensions are equal.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/isUnlimited" target="doc">isUnlimited</a></tt></dt>
+<dd>Determines if a dimensions is unlimited.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/parseNameString:" target="doc">parseNameString:</a></tt></dt>
+<dd>Parses a new name string to ensure compliance with netcdf naming standards.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/propertyList" target="doc">propertyList</a></tt></dt>
+<dd>Returns a NSDictionary property list.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/renameDimension:" target="doc">renameDimension:</a></tt></dt>
+<dd>Renames a dimension.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/setDimLength:" target="doc">setDimLength:</a></tt></dt>
+<dd>Set the dimension dimLength.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/updateDimensionWithDimension:" target="doc">updateDimensionWithDimension:</a></tt></dt>
+<dd>Updates the receiver with information from a new NCDFDimension.
+</dd>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/compare:;  name=compare: -->
+<a name="//apple_ref/c/func/compare:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="compare:">compare:</a></h3>
+</td></tr></table><hr><dl></dl><p>Compares two NCDFDimension object's variable ID.
+</p>
+<blockquote><pre>-(
+        <font class="param">NSComparisonResult</font>)<!-- a logicalPath="//apple_ref/c/cl/compare //apple_ref/c/cl/compare //apple_ref/c/tdef/compare //apple_ref/c/tag/compare //apple_ref/c/econst/compare //apple_ref/c/struct/compare //apple_ref/c/clconst/compare" --><font class="type">compare</font><!-- /a -->:(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/object //apple_ref/c/cl/object //apple_ref/c/tdef/object //apple_ref/c/tag/object //apple_ref/c/econst/object //apple_ref/c/struct/object //apple_ref/c/clconst/object" --><font class="type">object</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method can be used to sort NCDFDimension objects using their variable IDs.  Returns NSOrderedAccending,NSOrderedDecending, or NSOrderedSame.
+	</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/dimensionID;  name=dimensionID -->
+<a name="//apple_ref/c/func/dimensionID"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="dimensionID">dimensionID</a></h3>
+</td></tr></table><hr><dl></dl><p>Access the dimension id.
+</p>
+<blockquote><pre>-(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/dimensionID //apple_ref/c/cl/dimensionID //apple_ref/c/tdef/dimensionID //apple_ref/c/tag/dimensionID //apple_ref/c/econst/dimensionID //apple_ref/c/struct/dimensionID //apple_ref/c/clconst/dimensionID" --><font class="type">dimensionID</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Dimension ID numbers are how variables define the shape of the datasets.  Thus a variable will refer to a series of dimension ID numbers representing each dimension in the dataset shape.  Hence, a caller cannot set the dimension ID number. 
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/dimensionName;  name=dimensionName -->
+<a name="//apple_ref/c/func/dimensionName"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="dimensionName">dimensionName</a></h3>
+</td></tr></table><hr><dl></dl><p>Access the dimension name.</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/dimensionName //apple_ref/c/cl/dimensionName //apple_ref/c/tdef/dimensionName //apple_ref/c/tag/dimensionName //apple_ref/c/econst/dimensionName //apple_ref/c/struct/dimensionName //apple_ref/c/clconst/dimensionName" --><font class="type">dimensionName</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is for accessing the dimension file name. 
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/dimLength;  name=dimLength -->
+<a name="//apple_ref/c/func/dimLength"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="dimLength">dimLength</a></h3>
+</td></tr></table><hr><dl></dl><p>Access the dimension dimLength.</p>
+<blockquote><pre>-(
+        <font class="param">size_t</font>)<!-- a logicalPath="//apple_ref/c/cl/dimLength //apple_ref/c/cl/dimLength //apple_ref/c/tdef/dimLength //apple_ref/c/tag/dimLength //apple_ref/c/econst/dimLength //apple_ref/c/struct/dimLength //apple_ref/c/clconst/dimLength" --><font class="type">dimLength</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is for accessing the dimension length.  In the case of unlimited dimensions, it will return the current length of the dimension (check if correct).  This method cannot determine whether a dimension is unlimited.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/handleLock;  name=handleLock -->
+<a name="//apple_ref/c/func/handleLock"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="handleLock">handleLock</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns an NSLock object from the owning NCDFHandle object.
+	</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSLock //apple_ref/c/cl/NSLock //apple_ref/c/tdef/NSLock //apple_ref/c/tag/NSLock //apple_ref/c/econst/NSLock //apple_ref/c/struct/NSLock //apple_ref/c/clconst/NSLock" --><font class="type">NSLock</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/handleLock //apple_ref/c/cl/handleLock //apple_ref/c/tdef/handleLock //apple_ref/c/tag/handleLock //apple_ref/c/econst/handleLock //apple_ref/c/struct/handleLock //apple_ref/c/clconst/handleLock" --><font class="type">handleLock</font><!-- /a -->; </pre></blockquote>
+<dl></dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/initNewDimWithName:length:;  name=initNewDimWithName:length: -->
+<a name="//apple_ref/c/func/initNewDimWithName:length:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initNewDimWithName:length:">initNewDimWithName:length:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializes a new NCDFDimension object.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initNewDimWithName //apple_ref/c/cl/initNewDimWithName //apple_ref/c/tdef/initNewDimWithName //apple_ref/c/tag/initNewDimWithName //apple_ref/c/econst/initNewDimWithName //apple_ref/c/struct/initNewDimWithName //apple_ref/c/clconst/initNewDimWithName" --><font class="type">initNewDimWithName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/name //apple_ref/c/cl/name //apple_ref/c/tdef/name //apple_ref/c/tag/name //apple_ref/c/econst/name //apple_ref/c/struct/name //apple_ref/c/clconst/name" --><font class="type">name</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/length //apple_ref/c/cl/length //apple_ref/c/tdef/length //apple_ref/c/tag/length //apple_ref/c/econst/length //apple_ref/c/struct/length //apple_ref/c/clconst/length" --><font class="type">length</font><!-- /a -->:(
+        <font class="param">size_t</font>)<!-- a logicalPath="//apple_ref/c/cl/aLength //apple_ref/c/cl/aLength //apple_ref/c/tdef/aLength //apple_ref/c/tag/aLength //apple_ref/c/econst/aLength //apple_ref/c/struct/aLength //apple_ref/c/clconst/aLength" --><font class="type">aLength</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>name</i></code></dt><dd>NSString with the dimension name.  If the string is not consistent with netcdf naming rules, it will be parsed.</dd>
+<dt><code><i>length</i></code></dt><dd>The length of the dimension in units.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is for creating an independent NCDFDimension, that is, one without an owning NCDFHandle object.  It's not recommended that this method is used.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/initWithFileName:dimID:name:length:handle:;  name=initWithFileName:dimID:name:length:handle: -->
+<a name="//apple_ref/c/func/initWithFileName:dimID:name:length:handle:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="initWithFileName:dimID:name:length:handle:">initWithFileName:dimID:name:length:handle:</a></h3>
+</td></tr></table><hr><dl></dl><p>Initializes a new NCDFDimension for a dimension within a file.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initWithFileName //apple_ref/c/cl/initWithFileName //apple_ref/c/tdef/initWithFileName //apple_ref/c/tag/initWithFileName //apple_ref/c/econst/initWithFileName //apple_ref/c/struct/initWithFileName //apple_ref/c/clconst/initWithFileName" --><font class="type">initWithFileName</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/thePath //apple_ref/c/cl/thePath //apple_ref/c/tdef/thePath //apple_ref/c/tag/thePath //apple_ref/c/econst/thePath //apple_ref/c/struct/thePath //apple_ref/c/clconst/thePath" --><font class="type">thePath</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/dimID //apple_ref/c/cl/dimID //apple_ref/c/tdef/dimID //apple_ref/c/tag/dimID //apple_ref/c/econst/dimID //apple_ref/c/struct/dimID //apple_ref/c/clconst/dimID" --><font class="type">dimID</font><!-- /a -->:(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/number //apple_ref/c/cl/number //apple_ref/c/tdef/number //apple_ref/c/tag/number //apple_ref/c/econst/number //apple_ref/c/struct/number //apple_ref/c/clconst/number" --><font class="type">number</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/name //apple_ref/c/cl/name //apple_ref/c/tdef/name //apple_ref/c/tag/name //apple_ref/c/econst/name //apple_ref/c/struct/name //apple_ref/c/clconst/name" --><font class="type">name</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/name //apple_ref/c/cl/name //apple_ref/c/tdef/name //apple_ref/c/tag/name //apple_ref/c/econst/name //apple_ref/c/struct/name //apple_ref/c/clconst/name" --><font class="type">name</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/length //apple_ref/c/cl/length //apple_ref/c/tdef/length //apple_ref/c/tag/length //apple_ref/c/econst/length //apple_ref/c/struct/length //apple_ref/c/clconst/length" --><font class="type">length</font><!-- /a -->:(
+        <font class="param">size_t</font>)<!-- a logicalPath="//apple_ref/c/cl/length //apple_ref/c/cl/length //apple_ref/c/tdef/length //apple_ref/c/tag/length //apple_ref/c/econst/length //apple_ref/c/struct/length //apple_ref/c/clconst/length" --><font class="type">length</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/handle //apple_ref/c/cl/handle //apple_ref/c/tdef/handle //apple_ref/c/tag/handle //apple_ref/c/econst/handle //apple_ref/c/struct/handle //apple_ref/c/clconst/handle" --><font class="type">handle</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFHandle //apple_ref/c/cl/NCDFHandle //apple_ref/c/tdef/NCDFHandle //apple_ref/c/tag/NCDFHandle //apple_ref/c/econst/NCDFHandle //apple_ref/c/struct/NCDFHandle //apple_ref/c/clconst/NCDFHandle" --><font class="type">NCDFHandle</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/handle //apple_ref/c/cl/handle //apple_ref/c/tdef/handle //apple_ref/c/tag/handle //apple_ref/c/econst/handle //apple_ref/c/struct/handle //apple_ref/c/clconst/handle" --><font class="type">handle</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>thePath</i></code></dt><dd>the path to an existing netcdf file.</dd>
+<dt><code><i>number</i></code></dt><dd>the dimension identification number.  This should be handled by NCDFHandle.</dd>
+<dt><code><i>name</i></code></dt><dd>NSString with the dimension name.  If the string is not consistent with netcdf naming rules, it will be parsed.</dd>
+<dt><code><i>length</i></code></dt><dd>The length of the dimension in units.</dd>
+<dt><code><i>handle</i></code></dt><dd>The owning NCDFHandle.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This is the standard method for creating a NCDFDimension from a dimension in an existing file.  This method should only be invoked by a parent NCDFHandle.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/isEqualToDim:;  name=isEqualToDim: -->
+<a name="//apple_ref/c/func/isEqualToDim:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="isEqualToDim:">isEqualToDim:</a></h3>
+</td></tr></table><hr><dl></dl><p>Determines if two dimensions are equal.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/isEqualToDim //apple_ref/c/cl/isEqualToDim //apple_ref/c/tdef/isEqualToDim //apple_ref/c/tag/isEqualToDim //apple_ref/c/econst/isEqualToDim //apple_ref/c/struct/isEqualToDim //apple_ref/c/clconst/isEqualToDim" --><font class="type">isEqualToDim</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aDimension //apple_ref/c/cl/aDimension //apple_ref/c/tdef/aDimension //apple_ref/c/tag/aDimension //apple_ref/c/econst/aDimension //apple_ref/c/struct/aDimension //apple_ref/c/clconst/aDimension" --><font class="type">aDimension</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>aDimension</i></code></dt><dd></dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The reciever checks whether aDimension has an identical name string and dimension length.  If they do, the method returns YES, otherwise returns NO.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/isUnlimited;  name=isUnlimited -->
+<a name="//apple_ref/c/func/isUnlimited"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="isUnlimited">isUnlimited</a></h3>
+</td></tr></table><hr><dl></dl><p>Determines if a dimensions is unlimited.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/isUnlimited //apple_ref/c/cl/isUnlimited //apple_ref/c/tdef/isUnlimited //apple_ref/c/tag/isUnlimited //apple_ref/c/econst/isUnlimited //apple_ref/c/struct/isUnlimited //apple_ref/c/clconst/isUnlimited" --><font class="type">isUnlimited</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The reciever checks whether it represents an unlimited dimension.  An unlimited dimension is one that is allowed to lengthen automattically as data is appended to the file.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/parseNameString:;  name=parseNameString: -->
+<a name="//apple_ref/c/func/parseNameString:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="parseNameString:">parseNameString:</a></h3>
+</td></tr></table><hr><dl></dl><p>Parses a new name string to ensure compliance with netcdf naming standards.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/parseNameString //apple_ref/c/cl/parseNameString //apple_ref/c/tdef/parseNameString //apple_ref/c/tag/parseNameString //apple_ref/c/econst/parseNameString //apple_ref/c/struct/parseNameString //apple_ref/c/clconst/parseNameString" --><font class="type">parseNameString</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theString //apple_ref/c/cl/theString //apple_ref/c/tdef/theString //apple_ref/c/tag/theString //apple_ref/c/econst/theString //apple_ref/c/struct/theString //apple_ref/c/clconst/theString" --><font class="type">theString</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>theString</i></code></dt><dd>NSString of the name string.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Ensures that a name string is valid for writing to file.  This method is called whenever a new name is being written to file.  Also see NCDFNameFormatter for GUI-based formatting.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/propertyList;  name=propertyList -->
+<a name="//apple_ref/c/func/propertyList"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="propertyList">propertyList</a></h3>
+</td></tr></table><hr><dl></dl><p>Returns a NSDictionary property list.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSDictionary //apple_ref/c/cl/NSDictionary //apple_ref/c/tdef/NSDictionary //apple_ref/c/tag/NSDictionary //apple_ref/c/econst/NSDictionary //apple_ref/c/struct/NSDictionary //apple_ref/c/clconst/NSDictionary" --><font class="type">NSDictionary</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/propertyList //apple_ref/c/cl/propertyList //apple_ref/c/tdef/propertyList //apple_ref/c/tag/propertyList //apple_ref/c/econst/propertyList //apple_ref/c/struct/propertyList //apple_ref/c/clconst/propertyList" --><font class="type">propertyList</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Returns a NSDictionary representation that can contains only propertyList compatible objects.  A property list will have the following items:
+Fields:<P>
+NCDFDimensionPropertyListFieldFileName<P>
+NCDFDimensionPropertyListFieldDimensionID<P>
+NCDFDimensionPropertyListFieldDimensionName<P>
+NCDFDimensionPropertyListFieldLength<P>
+<br><br>
+Note: Using this method to create a new dimension in a file can have unexpected results when working with unlimited dimensions.  Since length represents the actual length of a dimension, using a property list to create the same dimension elsewhere will cause the dimension to be LIMITED in length.  Reset to 0 if unlimited.
+<br><br>
+In future versions, a new field will be added to determine if unlimited.
+<P>
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/renameDimension:;  name=renameDimension: -->
+<a name="//apple_ref/c/func/renameDimension:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="renameDimension:">renameDimension:</a></h3>
+</td></tr></table><hr><dl></dl><p>Renames a dimension.
+</p>
+<blockquote><pre>-(
+        <font class="param">BOOL</font>)<!-- a logicalPath="//apple_ref/c/cl/renameDimension //apple_ref/c/cl/renameDimension //apple_ref/c/tdef/renameDimension //apple_ref/c/tag/renameDimension //apple_ref/c/econst/renameDimension //apple_ref/c/struct/renameDimension //apple_ref/c/clconst/renameDimension" --><font class="type">renameDimension</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSString //apple_ref/c/cl/NSString //apple_ref/c/tdef/NSString //apple_ref/c/tag/NSString //apple_ref/c/econst/NSString //apple_ref/c/struct/NSString //apple_ref/c/clconst/NSString" --><font class="type">NSString</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/newName //apple_ref/c/cl/newName //apple_ref/c/tdef/newName //apple_ref/c/tag/newName //apple_ref/c/econst/newName //apple_ref/c/struct/newName //apple_ref/c/clconst/newName" --><font class="type">newName</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Dimensions can be renamed using a NSString object that complies with the netcdf naming standards.  If the string does not meet those standards, the string will be parsed in order to comply 
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/setDimLength:;  name=setDimLength: -->
+<a name="//apple_ref/c/func/setDimLength:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="setDimLength:">setDimLength:</a></h3>
+</td></tr></table><hr><dl></dl><p>Set the dimension dimLength.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/setDimLength //apple_ref/c/cl/setDimLength //apple_ref/c/tdef/setDimLength //apple_ref/c/tag/setDimLength //apple_ref/c/econst/setDimLength //apple_ref/c/struct/setDimLength //apple_ref/c/clconst/setDimLength" --><font class="type">setDimLength</font><!-- /a -->:(
+        <font class="param">size_t</font>)<!-- a logicalPath="//apple_ref/c/cl/newLength //apple_ref/c/cl/newLength //apple_ref/c/tdef/newLength //apple_ref/c/tag/newLength //apple_ref/c/econst/newLength //apple_ref/c/struct/newLength //apple_ref/c/clconst/newLength" --><font class="type">newLength</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>newLength</i></code></dt><dd>Length in units.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method will change the length of the dimension.  In some cases, it may be possible to set the dimension as unlimited by setting the length to 0.  In this case, no unlimited dimensions can exist in the file prior to setting a dimension to unlimited length.
+<br><br>
+VALIDATION NOTES: Tested extensively and appears to function as expected.
+</p>
+</dl>
+<hr><!-- headerDoc=func;  uid=//apple_ref/c/func/updateDimensionWithDimension:;  name=updateDimensionWithDimension: -->
+<a name="//apple_ref/c/func/updateDimensionWithDimension:"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="updateDimensionWithDimension:">updateDimensionWithDimension:</a></h3>
+</td></tr></table><hr><dl></dl><p>Updates the receiver with information from a new NCDFDimension.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/updateDimensionWithDimension //apple_ref/c/cl/updateDimensionWithDimension //apple_ref/c/tdef/updateDimensionWithDimension //apple_ref/c/tag/updateDimensionWithDimension //apple_ref/c/econst/updateDimensionWithDimension //apple_ref/c/struct/updateDimensionWithDimension //apple_ref/c/clconst/updateDimensionWithDimension" --><font class="type">updateDimensionWithDimension</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NCDFDimension //apple_ref/c/cl/NCDFDimension //apple_ref/c/tdef/NCDFDimension //apple_ref/c/tag/NCDFDimension //apple_ref/c/econst/NCDFDimension //apple_ref/c/struct/NCDFDimension //apple_ref/c/clconst/NCDFDimension" --><font class="type">NCDFDimension</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/aDim //apple_ref/c/cl/aDim //apple_ref/c/tdef/aDim //apple_ref/c/tag/aDim //apple_ref/c/econst/aDim //apple_ref/c/struct/aDim //apple_ref/c/clconst/aDim" --><font class="type">aDim</font><!-- /a -->; </pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method replaces all the information in a dimension with the information in aDim, generally used for updated the object from file.  This method should be considered a private method.
+	</p>
+</dl>
+<p>(Last Updated June 18, 2007)
+</p></body></html>

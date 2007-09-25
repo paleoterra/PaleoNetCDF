@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>NCDFSlab.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">NCDFSlab.h</font></h1>
+<br><a name="//apple_ref/doc/header/NCDFSlab.h" title="NCDFSlab.h"></a><h2>Abstract</h2>
+<p>
+NCDFSlab is a class for storage of netcdf data in memory and accessable via standard dimentional notation.
+</p>
+<h2>Discussion</h2>
+<p>
+NCDFSlab is an immutable class designed for storage of netcdf data in memory.  This class is for the convenience of accessing in-memory netcdf data, which is particularly useful for threaded applications or other applications that would otherwise repeatedly access the file on disk.  
+ </p>
+<hr>
+<br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/data" target="_top">data</a></tt></dt>
+<dd>Returns all of the receiver's data
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/dimensionLengths" target="_top">dimensionLengths</a></tt></dt>
+<dd>Returns the lengths of each dimension in steps in significance order
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/initSlabWithData:withType:withLengths:" target="_top">initSlabWithData:withType:withLengths:</a></tt></dt>
+<dd>Initialize a new NCDFSlab using a NSData object and NCDFVariable information.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/positionFromCoordinates:" target="_top">positionFromCoordinates:</a></tt></dt>
+<dd>Private method for determining a position within a NSData object.
+	</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setData:" target="_top">setData:</a></tt></dt>
+<dd>Private method to set the data.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setDimensionLengths:" target="_top">setDimensionLengths:</a></tt></dt>
+<dd>Sets the dimension lengths, in steps, for each dimension in significance order.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setNCType:" target="_top">setNCType:</a></tt></dt>
+<dd>Private method to set the nc_type of the data.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/startPositionForNextStepFrom:fromStart:withLengths:" target="_top">startPositionForNextStepFrom:fromStart:withLengths:</a></tt></dt>
+<dd>Private method for determining a position within a NSData object.
+	</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/subSlabStart:lengths:" target="_top">subSlabStart:lengths:</a></tt></dt>
+<dd>Returns a subset of the slab's data using standard netcdf notation.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/type" target="_top">type</a></tt></dt>
+<dd>Returns the nc_type of the receiver.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/data;  name=data --><a name="//apple_ref/doc/compositePage/c/func/data"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="data">data</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Returns all of the receiver's data
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSData //apple_ref/c/cl/NSData //apple_ref/c/tdef/NSData //apple_ref/c/tag/NSData //apple_ref/c/econst/NSData //apple_ref/c/struct/NSData //apple_ref/c/clconst/NSData" --><font class="type">NSData</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/data //apple_ref/c/cl/data //apple_ref/c/tdef/data //apple_ref/c/tag/data //apple_ref/c/econst/data //apple_ref/c/struct/data //apple_ref/c/clconst/data" --><font class="type">data</font><!-- /a -->; </pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Returns the entire data slab stored in the receiver.
+	</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/dimensionLengths;  name=dimensionLengths --><a name="//apple_ref/doc/compositePage/c/func/dimensionLengths"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="dimensionLengths">dimensionLengths</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Returns the lengths of each dimension in steps in significance order
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/dimensionLengths //apple_ref/c/cl/dimensionLengths //apple_ref/c/tdef/dimensionLengths //apple_ref/c/tag/dimensionLengths //apple_ref/c/econst/dimensionLengths //apple_ref/c/struct/dimensionLengths //apple_ref/c/clconst/dimensionLengths" --><font class="type">dimensionLengths</font><!-- /a -->; </pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>The returned array describes the shape, in length, of the data object.  Use this array to choose subsets of the slab.
+	</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/initSlabWithData:withType:withLengths:;  name=initSlabWithData:withType:withLengths: --><a name="//apple_ref/doc/compositePage/c/func/initSlabWithData:withType:withLengths:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="initSlabWithData:withType:withLengths:">initSlabWithData:withType:withLengths:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Initialize a new NCDFSlab using a NSData object and NCDFVariable information.
+</p>
+<blockquote><pre>-(
+        <font class="param">id</font>)<!-- a logicalPath="//apple_ref/c/cl/initSlabWithData //apple_ref/c/cl/initSlabWithData //apple_ref/c/tdef/initSlabWithData //apple_ref/c/tag/initSlabWithData //apple_ref/c/econst/initSlabWithData //apple_ref/c/struct/initSlabWithData //apple_ref/c/clconst/initSlabWithData" --><font class="type">initSlabWithData</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSData //apple_ref/c/cl/NSData //apple_ref/c/tdef/NSData //apple_ref/c/tag/NSData //apple_ref/c/econst/NSData //apple_ref/c/struct/NSData //apple_ref/c/clconst/NSData" --><font class="type">NSData</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/data //apple_ref/c/cl/data //apple_ref/c/tdef/data //apple_ref/c/tag/data //apple_ref/c/econst/data //apple_ref/c/struct/data //apple_ref/c/clconst/data" --><font class="type">data</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/withType //apple_ref/c/cl/withType //apple_ref/c/tdef/withType //apple_ref/c/tag/withType //apple_ref/c/econst/withType //apple_ref/c/struct/withType //apple_ref/c/clconst/withType" --><font class="type">withType</font><!-- /a -->:(
+        <font class="param">nc_type</font>)<!-- a logicalPath="//apple_ref/c/cl/type //apple_ref/c/cl/type //apple_ref/c/tdef/type //apple_ref/c/tag/type //apple_ref/c/econst/type //apple_ref/c/struct/type //apple_ref/c/clconst/type" --><font class="type">type</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/withLengths //apple_ref/c/cl/withLengths //apple_ref/c/tdef/withLengths //apple_ref/c/tag/withLengths //apple_ref/c/econst/withLengths //apple_ref/c/struct/withLengths //apple_ref/c/clconst/withLengths" --><font class="type">withLengths</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/lengths //apple_ref/c/cl/lengths //apple_ref/c/tdef/lengths //apple_ref/c/tag/lengths //apple_ref/c/econst/lengths //apple_ref/c/struct/lengths //apple_ref/c/clconst/lengths" --><font class="type">lengths</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>data</i></code></dt>
+<dd>NSData object obtained through NCDFVariable or NCDFSeriesVariable object.</dd>
+<dt><code><i>type</i></code></dt>
+<dd>nc_type of the data.  NC_BYTE,NC_CHAR,NC_SHORT, etc.</dd>
+<dt><code><i>lengths</i></code></dt>
+<dd>Lengths along each dimension in significance order.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Initializes a new NCDFSlab object.  The lengths describe the shape of the data and the netcdf data type of the data.
+</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/positionFromCoordinates:;  name=positionFromCoordinates: --><a name="//apple_ref/doc/compositePage/c/func/positionFromCoordinates:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="positionFromCoordinates:">positionFromCoordinates:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Private method for determining a position within a NSData object.
+	</p>
+<blockquote><pre>-(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/positionFromCoordinates //apple_ref/c/cl/positionFromCoordinates //apple_ref/c/tdef/positionFromCoordinates //apple_ref/c/tag/positionFromCoordinates //apple_ref/c/econst/positionFromCoordinates //apple_ref/c/struct/positionFromCoordinates //apple_ref/c/clconst/positionFromCoordinates" --><font class="type">positionFromCoordinates</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/coordinates //apple_ref/c/cl/coordinates //apple_ref/c/tdef/coordinates //apple_ref/c/tag/coordinates //apple_ref/c/econst/coordinates //apple_ref/c/struct/coordinates //apple_ref/c/clconst/coordinates" --><font class="type">coordinates</font><!-- /a -->; </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setData:;  name=setData: --><a name="//apple_ref/doc/compositePage/c/func/setData:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setData:">setData:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Private method to set the data.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/setData //apple_ref/c/cl/setData //apple_ref/c/tdef/setData //apple_ref/c/tag/setData //apple_ref/c/econst/setData //apple_ref/c/struct/setData //apple_ref/c/clconst/setData" --><font class="type">setData</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSData //apple_ref/c/cl/NSData //apple_ref/c/tdef/NSData //apple_ref/c/tag/NSData //apple_ref/c/econst/NSData //apple_ref/c/struct/NSData //apple_ref/c/clconst/NSData" --><font class="type">NSData</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/data //apple_ref/c/cl/data //apple_ref/c/tdef/data //apple_ref/c/tag/data //apple_ref/c/econst/data //apple_ref/c/struct/data //apple_ref/c/clconst/data" --><font class="type">data</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>data</i></code></dt>
+<dd>NSData object representing the data.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Sets the  data. Should not be called outside of NCDFSlab.
+	</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setDimensionLengths:;  name=setDimensionLengths: --><a name="//apple_ref/doc/compositePage/c/func/setDimensionLengths:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setDimensionLengths:">setDimensionLengths:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Sets the dimension lengths, in steps, for each dimension in significance order.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/setDimensionLengths //apple_ref/c/cl/setDimensionLengths //apple_ref/c/tdef/setDimensionLengths //apple_ref/c/tag/setDimensionLengths //apple_ref/c/econst/setDimensionLengths //apple_ref/c/struct/setDimensionLengths //apple_ref/c/clconst/setDimensionLengths" --><font class="type">setDimensionLengths</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/theLengths //apple_ref/c/cl/theLengths //apple_ref/c/tdef/theLengths //apple_ref/c/tag/theLengths //apple_ref/c/econst/theLengths //apple_ref/c/struct/theLengths //apple_ref/c/clconst/theLengths" --><font class="type">theLengths</font><!-- /a -->; </pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>THis method is private and should be be accessed outside of NCDFSlab
+	</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setNCType:;  name=setNCType: --><a name="//apple_ref/doc/compositePage/c/func/setNCType:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setNCType:">setNCType:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Private method to set the nc_type of the data.
+</p>
+<blockquote><pre>-(
+        <font class="param">void</font>)<!-- a logicalPath="//apple_ref/c/cl/setNCType //apple_ref/c/cl/setNCType //apple_ref/c/tdef/setNCType //apple_ref/c/tag/setNCType //apple_ref/c/econst/setNCType //apple_ref/c/struct/setNCType //apple_ref/c/clconst/setNCType" --><font class="type">setNCType</font><!-- /a -->:(
+        <font class="param">nc_type</font>)<!-- a logicalPath="//apple_ref/c/cl/type //apple_ref/c/cl/type //apple_ref/c/tdef/type //apple_ref/c/tag/type //apple_ref/c/econst/type //apple_ref/c/struct/type //apple_ref/c/clconst/type" --><font class="type">type</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>type</i></code></dt>
+<dd>nc_type of the data.  NC_BYTE,NC_CHAR,NC_SHORT, etc.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Sets the nc_type of the data. Should not be called outside of NCDFSlab.
+	</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/startPositionForNextStepFrom:fromStart:withLengths:;  name=startPositionForNextStepFrom:fromStart:withLengths: --><a name="//apple_ref/doc/compositePage/c/func/startPositionForNextStepFrom:fromStart:withLengths:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="startPositionForNextStepFrom:fromStart:withLengths:">startPositionForNextStepFrom:fromStart:withLengths:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Private method for determining a position within a NSData object.
+	</p>
+<blockquote><pre>-(
+        <font class="param">int</font>)<!-- a logicalPath="//apple_ref/c/cl/startPositionForNextStepFrom //apple_ref/c/cl/startPositionForNextStepFrom //apple_ref/c/tdef/startPositionForNextStepFrom //apple_ref/c/tag/startPositionForNextStepFrom //apple_ref/c/econst/startPositionForNextStepFrom //apple_ref/c/struct/startPositionForNextStepFrom //apple_ref/c/clconst/startPositionForNextStepFrom" --><font class="type">startPositionForNextStepFrom</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSMutableArray //apple_ref/c/cl/NSMutableArray //apple_ref/c/tdef/NSMutableArray //apple_ref/c/tag/NSMutableArray //apple_ref/c/econst/NSMutableArray //apple_ref/c/struct/NSMutableArray //apple_ref/c/clconst/NSMutableArray" --><font class="type">NSMutableArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/current //apple_ref/c/cl/current //apple_ref/c/tdef/current //apple_ref/c/tag/current //apple_ref/c/econst/current //apple_ref/c/struct/current //apple_ref/c/clconst/current" --><font class="type">current</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/fromStart //apple_ref/c/cl/fromStart //apple_ref/c/tdef/fromStart //apple_ref/c/tag/fromStart //apple_ref/c/econst/fromStart //apple_ref/c/struct/fromStart //apple_ref/c/clconst/fromStart" --><font class="type">fromStart</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/startCoords //apple_ref/c/cl/startCoords //apple_ref/c/tdef/startCoords //apple_ref/c/tag/startCoords //apple_ref/c/econst/startCoords //apple_ref/c/struct/startCoords //apple_ref/c/clconst/startCoords" --><font class="type">startCoords</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/withLengths //apple_ref/c/cl/withLengths //apple_ref/c/tdef/withLengths //apple_ref/c/tag/withLengths //apple_ref/c/econst/withLengths //apple_ref/c/struct/withLengths //apple_ref/c/clconst/withLengths" --><font class="type">withLengths</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/lengths //apple_ref/c/cl/lengths //apple_ref/c/tdef/lengths //apple_ref/c/tag/lengths //apple_ref/c/econst/lengths //apple_ref/c/struct/lengths //apple_ref/c/clconst/lengths" --><font class="type">lengths</font><!-- /a -->; </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/subSlabStart:lengths:;  name=subSlabStart:lengths: --><a name="//apple_ref/doc/compositePage/c/func/subSlabStart:lengths:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="subSlabStart:lengths:">subSlabStart:lengths:</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Returns a subset of the slab's data using standard netcdf notation.
+</p>
+<blockquote><pre>-(
+        <!-- a logicalPath="//apple_ref/c/cl/NSData //apple_ref/c/cl/NSData //apple_ref/c/tdef/NSData //apple_ref/c/tag/NSData //apple_ref/c/econst/NSData //apple_ref/c/struct/NSData //apple_ref/c/clconst/NSData" --><font class="type">NSData</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/subSlabStart //apple_ref/c/cl/subSlabStart //apple_ref/c/tdef/subSlabStart //apple_ref/c/tag/subSlabStart //apple_ref/c/econst/subSlabStart //apple_ref/c/struct/subSlabStart //apple_ref/c/clconst/subSlabStart" --><font class="type">subSlabStart</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/startPositions //apple_ref/c/cl/startPositions //apple_ref/c/tdef/startPositions //apple_ref/c/tag/startPositions //apple_ref/c/econst/startPositions //apple_ref/c/struct/startPositions //apple_ref/c/clconst/startPositions" --><font class="type">startPositions</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/lengths //apple_ref/c/cl/lengths //apple_ref/c/tdef/lengths //apple_ref/c/tag/lengths //apple_ref/c/econst/lengths //apple_ref/c/struct/lengths //apple_ref/c/clconst/lengths" --><font class="type">lengths</font><!-- /a -->:(
+        <!-- a logicalPath="//apple_ref/c/cl/NSArray //apple_ref/c/cl/NSArray //apple_ref/c/tdef/NSArray //apple_ref/c/tag/NSArray //apple_ref/c/econst/NSArray //apple_ref/c/struct/NSArray //apple_ref/c/clconst/NSArray" --><font class="type">NSArray</font><!-- /a --> <font class="type">*</font>)<!-- a logicalPath="//apple_ref/c/cl/lengths //apple_ref/c/cl/lengths //apple_ref/c/tdef/lengths //apple_ref/c/tag/lengths //apple_ref/c/econst/lengths //apple_ref/c/struct/lengths //apple_ref/c/clconst/lengths" --><font class="type">lengths</font><!-- /a -->; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code><i>startPositions</i></code></dt>
+<dd>Start locations for each dimension in significance order.</dd>
+<dt><code><i>lengths</i></code></dt>
+<dd>Edge lengths desired along each dimension in significance order.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Returns a subset of data stored in the slab.  All starts and lengths should be relative to the slab, and not the original variable.
+	</p>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/type;  name=type --><a name="//apple_ref/doc/compositePage/c/func/type"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="type">type</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Returns the nc_type of the receiver.
+</p>
+<blockquote><pre>-(
+        <font class="param">nc_type</font>)<!-- a logicalPath="//apple_ref/c/cl/type //apple_ref/c/cl/type //apple_ref/c/tdef/type //apple_ref/c/tag/type //apple_ref/c/econst/type //apple_ref/c/struct/type //apple_ref/c/clconst/type" --><font class="type">type</font><!-- /a -->; </pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Returns  nc_type of the data.  NC_BYTE,NC_CHAR,NC_SHORT, etc.
+	</p>
+</dl>
+<p>(Last Updated June 18, 2007)
+</p>
+</body>
+</html>
