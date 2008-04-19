@@ -45,7 +45,7 @@
   @result An instance of NCDFHandle or nil if failed.
   @discussion This method is the standard method for creating an NCDFHandle.  An example would look like:<P>NCDFHandle *newHandle = [[NCDFHandle alloc] initWithFileAtPath:filePath];<P>If the new NCDFHandle failed and returned a nil, then an NCDFError is created.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
--(id)initWithFileAtPath:(NSString *)thePath;
+-(id)initWithFileAtPath:(NSString *)thePath __attribute__ ((deprecated));;
 
 /*!
   @method initByCreatingFileAtPath
