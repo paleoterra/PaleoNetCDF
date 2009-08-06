@@ -28,6 +28,11 @@
     return self;
 }
 
+-(void)finalize
+{
+	[super finalize];
+}
+
 -(id)initWithName:(NSString *)theName length:(size_t)dataLength type:(nc_type)theType valueArray:(NSArray *)newValues
 {
 #ifdef DEBUG_NCDFAttribute

@@ -31,6 +31,12 @@
 	[super dealloc];
 }
 
+-(void)finalize
+{
+	free(dimensionLengths);
+	[super finalize];
+}
+
 -(void)setNCType:(nc_type)type
 {
 	theType = type;

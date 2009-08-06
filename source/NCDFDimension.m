@@ -11,6 +11,8 @@
 
 @implementation NCDFDimension
 
+
+
 -(id)initWithFileName:(NSString *)thePath dimID:(int)number name:(NSString *)name length:(size_t)aLength handle:(NCDFHandle *)handle
 {
     [super init];
@@ -50,6 +52,11 @@
     }
     else
         return nil;
+}
+
+-(void)finalize
+{
+	[super finalize];
 }
 
 -(void)dealloc

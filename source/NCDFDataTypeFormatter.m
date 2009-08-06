@@ -11,6 +11,11 @@
 
 @implementation NCDFDataTypeFormatter
 
+-(void)finalize
+{
+	[super finalize];
+}
+
 -(NSString *)stringForObjectValue:(id)anObject
 {
     if(![anObject isKindOfClass:[NSNumber class]])

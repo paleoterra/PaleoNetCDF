@@ -232,6 +232,12 @@
 	return theFinalResult;
 }
 
+-(void)finalize
+{
+	[super finalize];
+}
+
+
 -(void)dealloc
 {
 	[_theURLS release];

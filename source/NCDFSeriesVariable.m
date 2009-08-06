@@ -36,7 +36,10 @@
 	}
 	return self;
 }
-
+-(void)finalize
+{
+	[super finalize];
+}
 
 //reading
 -(NSData *)readAllVariableData
@@ -166,7 +169,7 @@
 		}
 		
 		
-		[aPool release];
+		[aPool drain];
 	}
 	return  theData;
 }

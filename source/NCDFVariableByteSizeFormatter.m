@@ -11,7 +11,10 @@
 
 
 @implementation NCDFVariableByteSizeFormatter
-
+-(void)finalize
+{
+	[super finalize];
+}
 -(NSString *)stringForObjectValue:(id)anObject
 {
     int size = 1;

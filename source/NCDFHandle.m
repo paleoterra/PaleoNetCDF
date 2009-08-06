@@ -378,6 +378,11 @@
     [super dealloc];
 }
 
+-(void)finalize
+{
+	[super finalize];
+}
+
 #pragma mark *** Simple Accessing Methods ***
 
 -(NSMutableArray *)getDimensions

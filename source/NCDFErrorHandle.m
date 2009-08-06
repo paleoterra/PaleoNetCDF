@@ -27,6 +27,11 @@ NCDFErrorHandle *theDefaultErrorHandle;
     [super dealloc];
 }
 
+-(void)finalize
+{
+	[super finalize];
+}
+
 +(id)defaultErrorHandle
 {
     if(theDefaultErrorHandle)

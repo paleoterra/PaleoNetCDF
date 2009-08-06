@@ -51,6 +51,11 @@
 	return self;
 }
 
+-(void)finalize
+{
+	[super finalize];
+}
+
 -(id)initWithDimension:(NCDFDimension *)aDim withHandleArray:(NSArray *)theHandles
 {
 	if([aDim isUnlimited])

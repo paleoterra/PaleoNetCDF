@@ -46,6 +46,11 @@
         [_errorSourceObjectName release];
     [super dealloc];
 }
+
+-(void)finalize
+{
+	[super finalize];
+}
 //Accessors
 
 -(NSString *)errorSourceObjectName

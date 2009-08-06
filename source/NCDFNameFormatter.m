@@ -82,4 +82,9 @@
     error = &err;
     return result;
 }
+
+-(void)finalize
+{
+	[super finalize];
+}
 @end

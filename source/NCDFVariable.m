@@ -47,6 +47,11 @@
     [super dealloc];
 }
 
+-(void)finalize
+{
+	[super finalize];
+}
+
 -(NSLock *)handleLock
 {
 	return [theHandle handleLock];
