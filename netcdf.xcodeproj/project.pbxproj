@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B426AE2E0A8ACC6E00E21A64 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B426AE2D0A8ACC6E00E21A64 /* libnetcdf.a */; };
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
 		B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47BF28F0A9A1A2300092C22 /* libnetcdf.a */; };
@@ -87,27 +86,6 @@
 			remoteGlobalIDString = B46DE09D091B0BD1001A5988;
 			remoteInfo = netcdf;
 		};
-		B4F086EE0A96D465001FA8D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC046055464E500DB518D;
-			remoteInfo = "netcdf-PPC";
-		};
-		B4F086F00A96D465001FA8D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B4F084DC0A96A43D001FA8D4;
-			remoteInfo = "netcdf-intel";
-		};
-		B4F086F60A96D5EB001FA8D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B4F084E20A96A482001FA8D4;
-			remoteInfo = universal;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -116,7 +94,6 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08FB77B4FE84181DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		B426AE2D0A8ACC6E00E21A64 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/build/Release/libnetcdf.a; sourceTree = "<group>"; };
 		B4326AC1090F2F8B000B7357 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
 		B469DE120ACCA2A700E414C0 /* License_NetCDFFramework.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = License_NetCDFFramework.txt; sourceTree = "<group>"; };
 		B46DE09E091B0BD1001A5988 /* netcdf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = netcdf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +132,6 @@
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
-		B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = netcdf.xcodeproj; path = library/netcdf/netcdf.xcodeproj; sourceTree = "<group>"; };
 		F577E7E902F58D3D01EA6D6B /* NCDFHandleTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NCDFHandleTest.h; sourceTree = "<group>"; };
 		F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NCDFHandleTest.m; sourceTree = "<group>"; };
 		F577E7F402F7319701EA6D6B /* NCDFError.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = NCDFError.strings; path = English.lproj/NCDFError.strings; sourceTree = "<group>"; };
@@ -179,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */,
-				B426AE2E0A8ACC6E00E21A64 /* libnetcdf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +183,6 @@
 				B469DE120ACCA2A700E414C0 /* License_NetCDFFramework.txt */,
 				B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */,
 				B4E5463B093D432000794457 /* UnitTests-Info.plist */,
-				B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */,
 			);
 			name = netcdf;
 			sourceTree = "<group>";
@@ -290,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				B4326AC1090F2F8B000B7357 /* netcdf.h */,
-				B426AE2D0A8ACC6E00E21A64 /* libnetcdf.a */,
 			);
 			name = netcdf;
 			sourceTree = "<group>";
@@ -302,15 +275,6 @@
 				B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */,
 			);
 			name = "API Documentation";
-			sourceTree = "<group>";
-		};
-		B4F086E60A96D465001FA8D4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B4F086EF0A96D465001FA8D4 /* libnetcdf.a */,
-				B4F086F10A96D465001FA8D4 /* libnetcdf.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F577E7E602F58A3301EA6D6B /* Tests */ = {
@@ -370,7 +334,6 @@
 				B46DE0A5091B0BDA001A5988 /* PBXBuildRule */,
 			);
 			dependencies = (
-				B4F086F70A96D5EB001FA8D4 /* PBXTargetDependency */,
 			);
 			name = netcdf;
 			productName = netcdf;
@@ -407,12 +370,6 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* netcdf */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B4F086E60A96D465001FA8D4 /* Products */;
-					ProjectRef = B4F086E50A96D465001FA8D4 /* netcdf.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B46DE09D091B0BD1001A5988 /* netcdf */,
@@ -421,23 +378,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B4F086EF0A96D465001FA8D4 /* libnetcdf.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libnetcdf.a;
-			remoteRef = B4F086EE0A96D465001FA8D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B4F086F10A96D465001FA8D4 /* libnetcdf.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libnetcdf.a;
-			remoteRef = B4F086F00A96D465001FA8D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B46DE09A091B0BD1001A5988 /* Resources */ = {
@@ -538,11 +478,6 @@
 			isa = PBXTargetDependency;
 			target = B46DE09D091B0BD1001A5988 /* netcdf */;
 			targetProxy = B4E54641093D432600794457 /* PBXContainerItemProxy */;
-		};
-		B4F086F70A96D5EB001FA8D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = universal;
-			targetProxy = B4F086F60A96D5EB001FA8D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
