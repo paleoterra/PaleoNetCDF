@@ -9,6 +9,134 @@
 #import "NCDFNetCDF.h"
 
 
+@interface NCDFHandle (PrivateMethods)
+/*!
+ @method seedArrays
+ @abstract This method retrieves netcdf metadata and stores the data in arrays.
+ @discussion This private method places all the metadata describing NCDFAttributes, NCDFDimensions, and NCDFVariables into arrays.  Do not call this method except from existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+ */
+-(void)seedArrays:(NSArray *)typeArrays;
+@end
+
+@implementation NCDFHandle (PrivateMethods)
+
+-(void)seedArrays:(NSArray *)typeArrays
+{
+    /*Populates NCDFDimension,NCDFAttribute,and NCDFVariable objects based on an existing netcdf file.  This method should only be invoked by subclasses of any of the above objects when the objects values were changed in the file.  However, changing these values will release objects held by the handle.*/
+    /*Initialization*/
+    char *theCPath;
+    int ncid,status,numberDims,numberVariables,numberGlobalAtts,numberUnlimited;
+    int i;
+#ifdef DEBUG_NCDFHandle
+    NSLog(@"NCDFHandle: seedArrays");
+#endif
+    if(!filePath)
+        return;
+    theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
+    [filePath getCString:theCPath];
+    //NSLog(@"%s",theCPath);
+    status = nc_open(theCPath,NC_NOWRITE,&ncid);
+    if(status!=NC_NOERR)
+    {
+        [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Opening netCDF file" errorCode:status];
+        //NSLog(@"seedArrays: error open");
+        return;
+    }
+    status = nc_inq(ncid,&numberDims,&numberVariables,&numberGlobalAtts,&numberUnlimited);
+	//NSLog(@"dims, %i,variable count %i, globalatts %i",numberDims,numberVariables,numberGlobalAtts);
+    if(status!=NC_NOERR)
+    {
+        [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring netCDF file" errorCode:status];
+        //NSLog(@"seedArrays: error nc_inq");
+        return;
+    }
+    //NSLog(@"m dim");
+    for(i=0;i<numberDims;i++)
+    {
+        char name[NC_MAX_NAME];
+        NSString *cocoaName;
+        size_t length;
+        NCDFDimension *theDim;
+        status = nc_inq_dim(ncid,i,name,&length);
+        if(status!=NC_NOERR)
+        {
+            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring DIMS in netCDF file" errorCode:status];
+            //NSLog(@"seedArrays: error nc_inq_dim");
+            return;
+        }
+        cocoaName = [NSString stringWithCString:name];
+        //if([cocoaName isEqualToString:@"time"])
+		//NSLog(@"time value = %i",length);
+        theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
+        [[typeArrays objectAtIndex:0] addObject:theDim];
+        if(theDim)
+            [theDim release];
+		
+    }
+    //NSLog(@"m ga");
+    for(i=0;i<numberGlobalAtts;i++)
+    {
+        char name[NC_MAX_NAME];
+        nc_type attributeType;
+        size_t length;
+        NCDFAttribute *theAtt;
+        status = nc_inq_attname(ncid, NC_GLOBAL,i, name);
+        
+        if(status!=NC_NOERR)
+        {
+            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute by name in netCDF file" errorCode:status];
+            //NSLog(@"seedArrays: error nc_inq_attname");
+            return;
+        }
+        status = nc_inq_att ( ncid, NC_GLOBAL, name,
+							 &attributeType, &length);
+        if(status!=NC_NOERR)
+        {
+            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute in netCDF file" errorCode:status];
+            //NSLog(@"seedArrays: error nc_inq_att");
+            return;
+        }
+        theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name] variableID:NC_GLOBAL length:length type:attributeType handle:self];
+        [[typeArrays objectAtIndex:1] addObject:theAtt];
+        [theAtt release];
+        
+    }
+    //NSLog(@"m var");
+    for(i=0;i<numberVariables;i++)
+    {
+        char name[NC_MAX_NAME];
+        nc_type theType;
+        int numberOfDims,j;
+        int dimIDs[NC_MAX_VAR_DIMS];
+        int numberOfAttributes;
+        NSMutableArray *theDimList;
+        NCDFVariable *theVar;
+    	status = nc_inq_var (ncid,i,name,&theType,&numberOfDims,dimIDs,&numberOfAttributes);
+        if(status!=NC_NOERR)
+        {
+            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring variable in netCDF file" errorCode:status];
+            //NSLog(@"seedArrays: error nc_inq_var");
+            return;
+        }
+        theDimList = [[NSMutableArray alloc] init];
+        for(j=0;j<numberOfDims;j++)
+        {
+            [theDimList addObject:[NSNumber numberWithInt:dimIDs[j]]];
+        }
+        theVar = [[NCDFVariable alloc] initWithPath:filePath variableName:[NSString stringWithCString:name] variableID:i type:theType theDims:theDimList attributeCount:numberOfAttributes handle:self];
+        [[typeArrays objectAtIndex:2] addObject:theVar];
+        [theVar release];
+        [theDimList release];
+    }
+    //NSLog(@"close");
+    nc_close(ncid);
+    free(theCPath);
+    //NSLog(@"end");
+}
+
+
+@end
+
 @implementation NCDFHandle
 
 #pragma mark *** Initilization methods ***
@@ -118,119 +246,6 @@
 	return handleLock;
 }
 
--(void)seedArrays:(NSArray *)typeArrays
-{
-    /*Populates NCDFDimension,NCDFAttribute,and NCDFVariable objects based on an existing netcdf file.  This method should only be invoked by subclasses of any of the above objects when the objects values were changed in the file.  However, changing these values will release objects held by the handle.*/
-    /*Initialization*/
-    char *theCPath;
-    int ncid,status,numberDims,numberVariables,numberGlobalAtts,numberUnlimited;
-    int i;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: seedArrays");
-#endif
-    if(!filePath)
-        return;
-    theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
-    [filePath getCString:theCPath];
-    //NSLog(@"%s",theCPath);
-    status = nc_open(theCPath,NC_NOWRITE,&ncid);
-    if(status!=NC_NOERR)
-    {
-        [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Opening netCDF file" errorCode:status];
-        //NSLog(@"seedArrays: error open");
-        return;
-    }
-    status = nc_inq(ncid,&numberDims,&numberVariables,&numberGlobalAtts,&numberUnlimited);
-	//NSLog(@"dims, %i,variable count %i, globalatts %i",numberDims,numberVariables,numberGlobalAtts);
-    if(status!=NC_NOERR)
-    {
-        [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring netCDF file" errorCode:status];
-        //NSLog(@"seedArrays: error nc_inq");
-        return;
-    }
-    //NSLog(@"m dim");
-    for(i=0;i<numberDims;i++)
-    {
-        char name[NC_MAX_NAME];
-        NSString *cocoaName;
-        size_t length;
-        NCDFDimension *theDim;
-        status = nc_inq_dim(ncid,i,name,&length);
-        if(status!=NC_NOERR)
-        {
-            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring DIMS in netCDF file" errorCode:status];
-            //NSLog(@"seedArrays: error nc_inq_dim");
-            return;
-        }
-        cocoaName = [NSString stringWithCString:name];
-        //if([cocoaName isEqualToString:@"time"])
-            //NSLog(@"time value = %i",length);
-        theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
-        [[typeArrays objectAtIndex:0] addObject:theDim];
-        if(theDim)
-            [theDim release];
-    
-    }
-    //NSLog(@"m ga");
-    for(i=0;i<numberGlobalAtts;i++)
-    {
-        char name[NC_MAX_NAME];
-        nc_type attributeType;
-        size_t length;
-        NCDFAttribute *theAtt;
-        status = nc_inq_attname(ncid, NC_GLOBAL,i, name);
-        
-        if(status!=NC_NOERR)
-        {
-            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute by name in netCDF file" errorCode:status];
-            //NSLog(@"seedArrays: error nc_inq_attname");
-            return;
-        }
-        status = nc_inq_att ( ncid, NC_GLOBAL, name,
-&attributeType, &length);
-        if(status!=NC_NOERR)
-        {
-            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute in netCDF file" errorCode:status];
-            //NSLog(@"seedArrays: error nc_inq_att");
-            return;
-        }
-        theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name] variableID:NC_GLOBAL length:length type:attributeType handle:self];
-        [[typeArrays objectAtIndex:1] addObject:theAtt];
-        [theAtt release];
-        
-    }
-    //NSLog(@"m var");
-    for(i=0;i<numberVariables;i++)
-    {
-        char name[NC_MAX_NAME];
-        nc_type theType;
-        int numberOfDims,j;
-        int dimIDs[NC_MAX_VAR_DIMS];
-        int numberOfAttributes;
-        NSMutableArray *theDimList;
-        NCDFVariable *theVar;
-    	status = nc_inq_var (ncid,i,name,&theType,&numberOfDims,dimIDs,&numberOfAttributes);
-        if(status!=NC_NOERR)
-        {
-            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring variable in netCDF file" errorCode:status];
-            //NSLog(@"seedArrays: error nc_inq_var");
-            return;
-        }
-        theDimList = [[NSMutableArray alloc] init];
-        for(j=0;j<numberOfDims;j++)
-        {
-            [theDimList addObject:[NSNumber numberWithInt:dimIDs[j]]];
-        }
-        theVar = [[NCDFVariable alloc] initWithPath:filePath variableName:[NSString stringWithCString:name] variableID:i type:theType theDims:theDimList attributeCount:numberOfAttributes handle:self];
-        [[typeArrays objectAtIndex:2] addObject:theVar];
-        [theVar release];
-        [theDimList release];
-    }
-    //NSLog(@"close");
-    nc_close(ncid);
-    free(theCPath);
-    //NSLog(@"end");
-}
 
 
 -(void)createFileAtPath:(NSString *)thePath
@@ -1609,3 +1624,5 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	\
 }
 @end
+
+

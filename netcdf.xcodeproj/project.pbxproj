@@ -23,8 +23,9 @@
 /* Begin PBXBuildFile section */
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
-		B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47BF28F0A9A1A2300092C22 /* libnetcdf.a */; };
-		B4B033720A9F5533008D45E9 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4326AC1090F2F8B000B7357 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4CCA718102BE7E200E6E2C1 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4CCA716102BE7E200E6E2C1 /* netcdf.h */; };
+		B4CCA72A102BE82500E6E2C1 /* libnetcdf4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */; };
+		B4CCA74F102BE9FD00E6E2C1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CCA74E102BE9FD00E6E2C1 /* libz.dylib */; };
 		B4E0D28F0C9EE4B10029D494 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D2900C9EE4B10029D494 /* NCDFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D2740C9EE4B10029D494 /* NCDFAttribute.m */; };
 		B4E0D2910C9EE4B10029D494 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D2750C9EE4B10029D494 /* NCDFDataTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,9 +55,6 @@
 		B4E0D2A90C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D28D0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D2AA0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D28E0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m */; };
 		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
-		B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */; };
-		B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */; };
-		B4E546FA093D4D8700794457 /* NCDFErrorHandleTester.m in Sources */ = {isa = PBXBuildFile; fileRef = F577E7FF02F8761A01EA6D6B /* NCDFErrorHandleTester.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -94,11 +92,15 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08FB77B4FE84181DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		B4326AC1090F2F8B000B7357 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
 		B469DE120ACCA2A700E414C0 /* License_NetCDFFramework.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = License_NetCDFFramework.txt; sourceTree = "<group>"; };
 		B46DE09E091B0BD1001A5988 /* netcdf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = netcdf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "netcdf-Info.plist"; sourceTree = "<group>"; };
-		B47BF28F0A9A1A2300092C22 /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetcdf.a; path = library/netcdf/currentbuild/libnetcdf.a; sourceTree = "<group>"; };
+		B4CCA716102BE7E200E6E2C1 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
+		B4CCA717102BE7E200E6E2C1 /* netcdf3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netcdf3.h; sourceTree = "<group>"; };
+		B4CCA71A102BE7F400E6E2C1 /* hdf5_hl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdf5_hl.h; sourceTree = "<group>"; };
+		B4CCA71C102BE80200E6E2C1 /* hdf5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdf5.h; sourceTree = "<group>"; };
+		B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnetcdf4.a; sourceTree = "<group>"; };
+		B4CCA74E102BE9FD00E6E2C1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = "<absolute>"; };
 		B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFAttribute.h; path = source/NCDFAttribute.h; sourceTree = "<group>"; };
 		B4E0D2740C9EE4B10029D494 /* NCDFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = NCDFAttribute.m; path = source/NCDFAttribute.m; sourceTree = "<group>"; };
 		B4E0D2750C9EE4B10029D494 /* NCDFDataTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFDataTypeFormatter.h; path = source/NCDFDataTypeFormatter.h; sourceTree = "<group>"; };
@@ -132,13 +134,7 @@
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
-		F577E7E902F58D3D01EA6D6B /* NCDFHandleTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NCDFHandleTest.h; sourceTree = "<group>"; };
-		F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NCDFHandleTest.m; sourceTree = "<group>"; };
 		F577E7F402F7319701EA6D6B /* NCDFError.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = NCDFError.strings; path = English.lproj/NCDFError.strings; sourceTree = "<group>"; };
-		F577E7F602F73B1801EA6D6B /* NCDFErrorTester.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NCDFErrorTester.h; sourceTree = "<group>"; };
-		F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NCDFErrorTester.m; sourceTree = "<group>"; };
-		F577E7FE02F8761A01EA6D6B /* NCDFErrorHandleTester.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NCDFErrorHandleTester.h; sourceTree = "<group>"; };
-		F577E7FF02F8761A01EA6D6B /* NCDFErrorHandleTester.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NCDFErrorHandleTester.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B47BF2900A9A1A2300092C22 /* libnetcdf.a in Frameworks */,
+				B4CCA72A102BE82500E6E2C1 /* libnetcdf4.a in Frameworks */,
+				B4CCA74F102BE9FD00E6E2C1 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +170,7 @@
 		0867D691FE84028FC02AAC07 /* netcdf */ = {
 			isa = PBXGroup;
 			children = (
+				B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */,
 				B4E1C852092424980014A0B6 /* API Documentation */,
 				B4326ABE090F2F57000B7357 /* netcdf */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
@@ -190,7 +188,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				B47BF28F0A9A1A2300092C22 /* libnetcdf.a */,
+				B4CCA74E102BE9FD00E6E2C1 /* libz.dylib */,
 				B4E5467F093D483A00794457 /* SenTestingKit.framework */,
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
@@ -263,7 +261,10 @@
 		B4326ABE090F2F57000B7357 /* netcdf */ = {
 			isa = PBXGroup;
 			children = (
-				B4326AC1090F2F8B000B7357 /* netcdf.h */,
+				B4CCA716102BE7E200E6E2C1 /* netcdf.h */,
+				B4CCA717102BE7E200E6E2C1 /* netcdf3.h */,
+				B4CCA71A102BE7F400E6E2C1 /* hdf5_hl.h */,
+				B4CCA71C102BE80200E6E2C1 /* hdf5.h */,
 			);
 			name = netcdf;
 			sourceTree = "<group>";
@@ -280,12 +281,6 @@
 		F577E7E602F58A3301EA6D6B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F577E7E902F58D3D01EA6D6B /* NCDFHandleTest.h */,
-				F577E7EA02F58D3D01EA6D6B /* NCDFHandleTest.m */,
-				F577E7F602F73B1801EA6D6B /* NCDFErrorTester.h */,
-				F577E7F702F73B1801EA6D6B /* NCDFErrorTester.m */,
-				F577E7FE02F8761A01EA6D6B /* NCDFErrorHandleTester.h */,
-				F577E7FF02F8761A01EA6D6B /* NCDFErrorHandleTester.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -297,7 +292,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4B033720A9F5533008D45E9 /* netcdf.h in Headers */,
 				B4E0D28F0C9EE4B10029D494 /* NCDFAttribute.h in Headers */,
 				B4E0D2910C9EE4B10029D494 /* NCDFDataTypeFormatter.h in Headers */,
 				B4E0D2930C9EE4B10029D494 /* NCDFDimension.h in Headers */,
@@ -313,6 +307,7 @@
 				B4E0D2A50C9EE4B10029D494 /* NCDFSlab.h in Headers */,
 				B4E0D2A70C9EE4B10029D494 /* NCDFVariable.h in Headers */,
 				B4E0D2A90C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h in Headers */,
+				B4CCA718102BE7E200E6E2C1 /* netcdf.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,9 +460,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4E546F8093D4D8700794457 /* NCDFHandleTest.m in Sources */,
-				B4E546F9093D4D8700794457 /* NCDFErrorTester.m in Sources */,
-				B4E546FA093D4D8700794457 /* NCDFErrorHandleTester.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +513,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Development;
 		};
@@ -545,7 +537,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Deployment;
 		};
@@ -569,7 +561,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = test;
 		};
@@ -593,7 +585,7 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Default;
 		};
@@ -616,11 +608,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -664,11 +658,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -707,11 +703,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -750,11 +748,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
