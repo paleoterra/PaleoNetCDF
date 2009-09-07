@@ -10,6 +10,34 @@
 
 
 @interface NCDFHandle (PrivateMethods)
+
+
+/*!
+ @method createFileAtPath:
+ @abstract Creates a new netcdf file.
+ @param thePath path to the target file location.
+ @discussion This private method creates a new netcdf file at a path.  It is a convienence method.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+ */
+-(void)createFileAtPath:(NSString *)thePath withSettings:(int)settings;
+
+/*!
+ @method setFilePath:
+ @abstract Sets the NCDFHandle file path.
+ @param thePath the path of a netcdf file.
+ @discussion This method is sets the private variable for the NCDFHandle source file path.  This path should not be changed for the duration of the handle's existence and set only during initialization.  Always use a new NCDFHandle for a new path.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+ */
+-(void)setFilePath:(NSString *)thePath;
+/*!
+ @method initializeArrays
+ @abstract This method initializes all the metadata arrays that hold the contents of the netcdf file.
+ @discussion This private method empties all the arrays the store all NCDFVariables, NCDFDimensions, and NCDFAttributes.  It should not be called exept by existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
+ */
+
+/*!
+ @functiongroup Internal Use Only
+ */
+
+-(void)initializeArrays;
 /*!
  @method seedArrays
  @abstract This method retrieves netcdf metadata and stores the data in arrays.
@@ -19,6 +47,43 @@
 @end
 
 @implementation NCDFHandle (PrivateMethods)
+
+-(void)setFilePath:(NSString *)thePath
+{
+    /*Sets the path to the netcdf file.  This method should not be invoked.  This 
+	 method does not check for valid paths.*/
+    /*Initialization*/
+#ifdef DEBUG_NCDFHandle
+    NSLog(@"NCDFHandle: setFilePath");
+#endif
+    if(filePath)
+        [filePath release];
+    if(thePath)
+        filePath = [thePath copy];
+    else
+        filePath = [[NSString alloc] init];
+}
+
+
+-(void)initializeArrays
+{
+    /*This method releases all the dimension, attribute and variable data currently held by a NCDFHandle object.  This method should preceed seedArrays.*/
+    /*Initialization*/
+#ifdef DEBUG_NCDFHandle
+    NSLog(@"NCDFHandle: initializeArrays");
+#endif
+    if(theVariables)
+        [theVariables autorelease];
+    if(theGlobalAttributes)
+        [theGlobalAttributes autorelease];
+    if(theDimensions)
+        [theDimensions autorelease];
+    theVariables = [[NSMutableArray alloc] init];
+    theGlobalAttributes = [[NSMutableArray alloc] init];
+    theDimensions = [[NSMutableArray alloc] init];
+	[self seedArrays:[NSArray arrayWithObjects:theDimensions,theGlobalAttributes,theVariables,nil]];
+}
+
 
 -(void)seedArrays:(NSArray *)typeArrays
 {
@@ -33,7 +98,7 @@
     if(!filePath)
         return;
     theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
-    [filePath getCString:theCPath];
+    [filePath getCString:theCPath maxLength:[filePath length]+1 encoding:NSUTF8StringEncoding];
     //NSLog(@"%s",theCPath);
     status = nc_open(theCPath,NC_NOWRITE,&ncid);
     if(status!=NC_NOERR)
@@ -135,6 +200,35 @@
 }
 
 
+-(void)createFileAtPath:(NSString *)thePath withSettings:(int)settings
+{
+    /*Creates a new netcdf file at path.  This method should not be invoked.*/
+    /*Initialization*/
+	
+	//FORMATS
+	/*quoting from manual: The creation mode flag. The following flags are available: NC NOCLOBBER,
+	 NC SHARE, NC 64BIT OFFSET, NC NETCDF4, NC CLASSIC MODEL.
+	 Setting NC NOCLOBBER means you do not want to clobber (overwrite) an
+	 existing dataset; an error (NC EEXIST) is returned if the specified dataset
+	 already exists.
+	 The NC SHARE*/
+    int status;
+    int ncid;
+#ifdef DEBUG_NCDFHandle
+    NSLog(@"NCDFHandle: createFileAtPath");
+#endif
+    [self setFilePath:thePath];
+    status = nc_create([thePath UTF8String],settings,&ncid);
+    if(status!=NC_NOERR)
+    {
+		[theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createFileAtPath" subMethod:@"Creating new file" errorCode:status];
+		//NSLog(@"seedArrays: error nc_create");
+		return;
+	}
+    nc_close(ncid);
+}
+
+
 @end
 
 @implementation NCDFHandle
@@ -168,7 +262,7 @@
         return self;
 }
 
--(id)initByCreatingFileAtPath:(NSString *)thePath
+-(id)initByCreatingFileAtPath:(NSString *)thePath withSettings:(int)settings
 {
     /*Creates a NCDFHandle and netcdf file at thePath.  This file is empty and must be populated with dimensions, attributes, and variables*/
     /*Initialization*/
@@ -180,7 +274,7 @@
     //added 0.2.1d1
     theErrorHandle =[[NCDFErrorHandle alloc] init];
     errorCount = [theErrorHandle errorCount];
-    [self createFileAtPath:thePath];
+    [self createFileAtPath:thePath withSettings:settings];
     if(errorCount<[theErrorHandle errorCount])
     {
         [self release];
@@ -199,46 +293,72 @@
     return self;
 }
 
+-(id)initByCreatingFileAtPath:(NSString *)thePath //retained for compatibility
+{
+	/*Creates a NCDFHandle and netcdf file at thePath.  This file is empty and must be populated with dimensions, attributes, and variables*/
+    /*Initialization*/
+    int errorCount;
+#ifdef DEBUG_NCDFHandle
+    NSLog(@"NCDFHandle: initByCreatingFileAtPath");
+#endif
+    [super init];
+    //added 0.2.1d1
+    theErrorHandle =[[NCDFErrorHandle alloc] init];
+    errorCount = [theErrorHandle errorCount];
+    [self createFileAtPath:thePath withSettings:NC_CLOBBER];
+    if(errorCount<[theErrorHandle errorCount])
+    {
+        [self release];
+        return nil;
+    }
+    [self setFilePath:thePath];
+    [self initializeArrays];
+	handleLock = [[NSLock alloc] init];
+    if(errorCount<[theErrorHandle errorCount])
+    {
+        [self release];
+        return nil;
+    }
+    else
+        return self;
+    return self;
+}
+
++(id)handleWithNewFileAtPath:(NSString *)thePath
+{
+	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:NC_CLOBBER];
+	return [aHandle autorelease];
+}
+
++(id)handleWithNew64BitFileAtPath:(NSString *)thePath
+{
+	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_64BIT_OFFSET)];
+	return [aHandle autorelease];
+}
+
++(id)handleWithNewNetCDF4FileAtPath:(NSString *)thePath
+{
+	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_NETCDF4)];
+	return [aHandle autorelease];
+}
+
++(id)handleWithNewClassicNetCDF4FileAtPath:(NSString *)thePath
+{
+	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_NETCDF4|NC_CLASSIC_MODEL)];
+	return [aHandle autorelease];
+}
+
+
+
+
+
 #pragma mark *** Setup methods ***
 
--(void)setFilePath:(NSString *)thePath
-{
-    /*Sets the path to the netcdf file.  This method should not be invoked.  This 
-    method does not check for valid paths.*/
-    /*Initialization*/
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: setFilePath");
-#endif
-    if(filePath)
-        [filePath release];
-    if(thePath)
-        filePath = [thePath copy];
-    else
-        filePath = [[NSString alloc] init];
-}
+
 
 -(NSString *)theFilePath
 {
     return filePath;
-}
-
--(void)initializeArrays
-{
-    /*This method releases all the dimension, attribute and variable data currently held by a NCDFHandle object.  This method should preceed seedArrays.*/
-    /*Initialization*/
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: initializeArrays");
-#endif
-    if(theVariables)
-        [theVariables autorelease];
-    if(theGlobalAttributes)
-        [theGlobalAttributes autorelease];
-    if(theDimensions)
-        [theDimensions autorelease];
-    theVariables = [[NSMutableArray alloc] init];
-    theGlobalAttributes = [[NSMutableArray alloc] init];
-    theDimensions = [[NSMutableArray alloc] init];
-	[self seedArrays:[NSArray arrayWithObjects:theDimensions,theGlobalAttributes,theVariables,nil]];
 }
 
 -(NSLock *)handleLock
@@ -247,26 +367,6 @@
 }
 
 
-
--(void)createFileAtPath:(NSString *)thePath
-{
-    /*Creates a new netcdf file at path.  This method should not be invoked.*/
-    /*Initialization*/
-    int status;
-    int ncid;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createFileAtPath");
-#endif
-    [self setFilePath:thePath];
-    status = nc_create([thePath cString],NC_CLOBBER,&ncid);
-    if(status!=NC_NOERR)
-    {
-            [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createFileAtPath" subMethod:@"Creating new file" errorCode:status];
-            //NSLog(@"seedArrays: error nc_create");
-            return;
-        }
-    nc_close(ncid);
-}
 
 
 -(void)refresh
@@ -450,7 +550,7 @@
     NSLog(dimName);
 #endif
     theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
-    [filePath getCString:theCPath];
+    [filePath getCString:theCPath maxLength:[filePath length]+1 encoding:NSUTF8StringEncoding];
     status = nc_open(theCPath,NC_WRITE,&ncid);
     free(theCPath);
     if(status!=NC_NOERR)
@@ -465,7 +565,7 @@
         return NO;
     }
     theCName = (char *)malloc(sizeof(char)*[dimName length]+1);
-    [dimName getCString:theCName];
+	[dimName getCString:theCName maxLength:[dimName length]+1 encoding:NSUTF8StringEncoding];
     status = nc_def_dim(ncid,theCName,length,&newID);
     free(theCName);
     if(status!=NC_NOERR)
@@ -538,7 +638,7 @@
     
     
     theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
-    [filePath getCString:theCPath];
+	[filePath getCString:theCPath maxLength:[filePath length]+1 encoding:NSUTF8StringEncoding];
     status = nc_open(theCPath,NC_WRITE,&ncid);
     free(theCPath);
     if(status!=NC_NOERR)
@@ -564,7 +664,8 @@
 #endif
         length = [[newDimensionArray objectAtIndex:i]dimLength];
         theCName = (char *)malloc(sizeof(char)*[dimName length]+1);
-        [dimName getCString:theCName];
+       
+		[dimName getCString:theCPath maxLength:[dimName length]+1 encoding:NSUTF8StringEncoding];
         status = nc_def_dim(ncid,theCName,length,&newID);
         if(status!=NC_NOERR)
         {
@@ -750,8 +851,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     attName = [self parseNameString:attName];
 
     theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
-    [filePath getCString:theCPath];
-
+	[filePath getCString:theCPath maxLength:[filePath length]+1 encoding:NSUTF8StringEncoding];
     status = nc_open(theCPath,NC_WRITE,&ncid);
     free(theCPath);
     if(status!=NC_NOERR)
@@ -774,7 +874,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             unsigned char *theText;
             theText = (unsigned char *)malloc(sizeof(unsigned char)*[(NSData *)[theValues objectAtIndex:0]length]);
             [[theValues objectAtIndex:0] getBytes:theText];
-            status = nc_put_att_uchar (ncid,NC_GLOBAL,[attName cString],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
+            status = nc_put_att_uchar (ncid,NC_GLOBAL,[attName UTF8String],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
             free(theText);
             if(status==NC_NOERR)
                 dataWritten = YES;
@@ -786,7 +886,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         }
         case NC_CHAR:
         {
-            status = nc_put_att_text (ncid,NC_GLOBAL,[attName cString],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cString]);
+            status = nc_put_att_text (ncid,NC_GLOBAL,[attName UTF8String],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] UTF8String]);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -802,7 +902,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             array = (short *)malloc(sizeof(short)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] shortValue];
-            status = nc_put_att_short (ncid,NC_GLOBAL,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_short (ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -819,7 +919,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             array = (int *)malloc(sizeof(int)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] intValue];
-            status = nc_put_att_int (ncid,NC_GLOBAL,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_int (ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -836,7 +936,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             array = (float *)malloc(sizeof(float)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] floatValue];
-            status = nc_put_att_float(ncid,NC_GLOBAL,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_float(ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -853,7 +953,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             array = (double *)malloc(sizeof(double)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] doubleValue];
-            status = nc_put_att_double(ncid,NC_GLOBAL,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_double(ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -936,7 +1036,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: deleteGlobalAttributeWithName");
 #endif
-    status = nc_open([filePath cString],NC_WRITE,&ncid);
+    status = nc_open([filePath UTF8String],NC_WRITE,&ncid);
     if(status != NC_NOERR)
     {
         return NO;
@@ -947,7 +1047,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
     nc_redef(ncid);
     
-    status = nc_del_att(ncid,NC_GLOBAL,[attName cString]);
+    status = nc_del_att(ncid,NC_GLOBAL,[attName UTF8String]);
     nc_close(ncid);
     if(status==NC_NOERR)
     {
@@ -1003,7 +1103,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: createVariableWithName");
 #endif
-    status = nc_open([filePath cString],NC_WRITE,&ncid);
+    status = nc_open([filePath UTF8String],NC_WRITE,&ncid);
 
     if(status != NC_NOERR)
     {
@@ -1023,7 +1123,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     //parse variableName
     theName = [self parseNameString:varName];
 
-    status = nc_def_var(ncid,[theName cString],theType,[theVariableDims count],theDimNumbers,&varID);
+    status = nc_def_var(ncid,[theName UTF8String],theType,[theVariableDims count],theDimNumbers,&varID);
     free(theDimNumbers);
     if(status != NC_NOERR)
     {
@@ -1166,7 +1266,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
     //step 4.  I think we have everything, let's create.
     
-    status = nc_open([filePath cString],NC_WRITE,&ncid);
+    status = nc_open([filePath UTF8String],NC_WRITE,&ncid);
     
     if(status != NC_NOERR)
     {
@@ -1179,7 +1279,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewVariableWithName" subMethod:@"Redefine Mode" errorCode:status];
         return NO;
     }
-    status = nc_def_var(ncid,[variableName cString],theType,[selectedDims count],selectedDimIDs,&vid);
+    status = nc_def_var(ncid,[variableName UTF8String],theType,[selectedDims count],selectedDimIDs,&vid);
     free(selectedDimIDs);
     if(status != NC_NOERR)
     {

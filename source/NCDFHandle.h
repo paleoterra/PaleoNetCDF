@@ -6,7 +6,7 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-
+// to deprecate methods, use __attribute__ ((deprecated));
 
 #import <Foundation/Foundation.h>
 
@@ -29,6 +29,7 @@
 	//for multithreading, NSLock
 	NSLock *handleLock;
 	NSNumber *_theCompareValue;
+	int netcdfVersion;
 }
 
 
@@ -45,7 +46,7 @@
   @result An instance of NCDFHandle or nil if failed.
   @discussion This method is the standard method for creating an NCDFHandle.  An example would look like:<P>NCDFHandle *newHandle = [[NCDFHandle alloc] initWithFileAtPath:filePath];<P>If the new NCDFHandle failed and returned a nil, then an NCDFError is created.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
--(id)initWithFileAtPath:(NSString *)thePath __attribute__ ((deprecated));;
+-(id)initWithFileAtPath:(NSString *)thePath ;
 
 /*!
   @method initByCreatingFileAtPath
@@ -55,6 +56,15 @@
   @discussion This method is the standard method for creating an netcdf file and a NCDFHandle. If creating the file should fail, an NCDFError will usually be created. <P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(id)initByCreatingFileAtPath:(NSString *)thePath;
+
+-(id)initByCreatingFileAtPath:(NSString *)thePath withSettings:(int)settings;
+
+
++(id)handleWithNewFileAtPath:(NSString *)thePath;
++(id)handleWithNew64BitFileAtPath:(NSString *)thePath;
++(id)handleWithNewNetCDF4FileAtPath:(NSString *)thePath;
++(id)handleWithNewClassicNetCDF4FileAtPath:(NSString *)thePath;
+
 
 /*!
   @method dealloc
@@ -68,13 +78,7 @@
 */
 
 //*****************************SETUP METHODS***********************************
-/*!
-  @method setFilePath:
-  @abstract Sets the NCDFHandle file path.
-  @param thePath the path of a netcdf file.
-  @discussion This method is sets the private variable for the NCDFHandle source file path.  This path should not be changed for the duration of the handle's existence and set only during initialization.  Always use a new NCDFHandle for a new path.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
-*/
--(void)setFilePath:(NSString *)thePath;
+
 /*!
   @method theFilePath
   @abstract Accessor for the NCDFHandle's file path.
@@ -86,26 +90,9 @@
 	@functiongroup Handle Information
 	 */
 -(NSString *)theFilePath;
-/*!
-  @method initializeArrays
-  @abstract This method initializes all the metadata arrays that hold the contents of the netcdf file.
-  @discussion This private method empties all the arrays the store all NCDFVariables, NCDFDimensions, and NCDFAttributes.  It should not be called exept by existing initialization methods.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
-*/
-
-/*!
-	@functiongroup Internal Use Only
-*/
-
--(void)initializeArrays;
 
 
-/*!
-  @method createFileAtPath:
-  @abstract Creates a new netcdf file.
-  @param thePath path to the target file location.
-  @discussion This private method creates a new netcdf file at a path.  It is a convienence method.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
-*/
--(void)createFileAtPath:(NSString *)thePath;
+
 
 	/*!
 	@functiongroup Handle Information

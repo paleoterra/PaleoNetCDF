@@ -23,7 +23,7 @@
 /* Begin PBXBuildFile section */
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
-		B4CCA718102BE7E200E6E2C1 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4CCA716102BE7E200E6E2C1 /* netcdf.h */; };
+		B4CCA718102BE7E200E6E2C1 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4CCA716102BE7E200E6E2C1 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4CCA72A102BE82500E6E2C1 /* libnetcdf4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */; };
 		B4CCA74F102BE9FD00E6E2C1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CCA74E102BE9FD00E6E2C1 /* libz.dylib */; };
 		B4E0D28F0C9EE4B10029D494 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
