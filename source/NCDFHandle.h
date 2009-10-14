@@ -30,6 +30,9 @@
 	NSLock *handleLock;
 	NSNumber *_theCompareValue;
 	int netcdfVersion;
+	//int _NCDFNcid;
+	//int _NCDFNcidHoldCount;
+	//int _NCDFNcidOpenType;
 }
 
 
@@ -443,4 +446,9 @@
 	 @discussion Private method for creating the comparison value.  The value represents the first step along the unlimited dimension.  If no unlimited dimension exists, it will create a NAN NSNumber object.
 	 */
 -(void)createCompareValue;
+
+
+-(int)ncidForReadOnly;
+-(void)closeNCID:(int)ncid;
+-(int)ncidWithOpenMode:(int)openMode status:(int *)status;
 @end

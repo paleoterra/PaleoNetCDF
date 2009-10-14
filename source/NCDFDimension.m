@@ -95,15 +95,14 @@
     int ncid;
     int status;
     
-    char *theCPath;
     char *theCName;
+    
     if(theErrorHandle==nil)
         theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
-    theCPath = (char *)malloc(sizeof(char)*[fileName length]+1);
-    [fileName getCString:theCPath];
-    status = nc_open(theCPath,NC_WRITE,&ncid);
-    free(theCPath);
+    
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
+    
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFDimension" methodName:@"renameDimension" subMethod:@"Opening netCDF file" errorCode:status];
@@ -116,7 +115,7 @@
         return NO;
     }
     theCName = (char *)malloc(sizeof(char)*[newName length]+1);
-    [newName getCString:theCName];
+	[newName getCString:theCName maxLength:[newName length]+1 encoding:NSUTF8StringEncoding];
     status = nc_rename_dim(ncid,dimID,theCName);
     free(theCName);
     if(status!=NC_NOERR)
@@ -126,7 +125,7 @@
     }
     [dimName release];
     dimName = [newName copy];
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
 	[theHandle refresh];
     return YES;
 }
@@ -178,7 +177,7 @@
     int ncid,pid,status;
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
-    status = nc_open([fileName cString],NC_NOWRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFDimension" methodName:@"isUnlimited" subMethod:@"Opening netCDF file" errorCode:status];
@@ -190,7 +189,7 @@
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFDimension" methodName:@"isUnlimited" subMethod:@"Is dimension unlimited?" errorCode:status];
         return NO;
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     if(dimID==pid)
         return YES;
     return NO;

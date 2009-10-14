@@ -23,8 +23,9 @@
     type = theType;
     length = dataLength;
     //need to load values
-    [self loadValues];
+    
     theHandle = handle;
+	[self loadValues];
     return self;
 }
 
@@ -96,13 +97,16 @@
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: loadValues");
 #endif
+	//NSLog(@"%s %i",__FUNCTION__,__LINE__);
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
     if(theValues)
         [theValues release];
     tempValues = [[NSMutableArray alloc] init];
-    status = nc_open([fileName cString],NC_NOWRITE,&ncid);
-    if(status!=NC_NOERR)
+	//NSLog(@"%s %i ncid %@ ",__FUNCTION__,__LINE__,[theHandle description]);
+	ncid = [theHandle ncidWithOpenMode:NC_SHARE status:&status];
+	//NSLog(@"%s %i ncid %i ",__FUNCTION__,__LINE__,ncid);
+	if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"loadValues" subMethod:@"Opening netCDF file" errorCode:status];
         return;
@@ -113,7 +117,7 @@
             unsigned char *theText;
             NSData *theData;
             theText = (unsigned char *)malloc(sizeof(unsigned char)*length);
-            status = nc_get_att_uchar (ncid,variableID,[attName cString],theText);
+            status = nc_get_att_uchar (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theText);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"loadValues" subMethod:@"Fail to read byte data" errorCode:status];
@@ -130,7 +134,8 @@
             char *theText;
             NSString *theString;
             theText = (char *)malloc(sizeof(char)*length+1);
-            status = nc_get_att_text (ncid,variableID,[attName cString],theText);
+			//NSLog(@"%s %i length %i",__FUNCTION__,__LINE__,length);
+            status = nc_get_att_text (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theText);
             if(status!=NC_NOERR)
             {
                 free(theText);
@@ -139,7 +144,8 @@
             }
 
             theText[length] = '\0';
-            theString = [NSString stringWithCString:theText];
+			theString = [NSString stringWithCString:theText encoding:NSUTF8StringEncoding];
+           
             [tempValues addObject:theString];
             free(theText);
             break;
@@ -149,7 +155,7 @@
             int i;
             short *array;
             array = (short *)malloc(sizeof(short)*length);
-            status = nc_get_att_short (ncid,variableID,[attName cString],array);
+            status = nc_get_att_short (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
             if(status!=NC_NOERR)
             {
                 free(array);
@@ -167,7 +173,7 @@
             int i;
             int *array;
             array = (int *)malloc(sizeof(int)*length);
-            status = nc_get_att_int (ncid,variableID,[attName cString],array);
+            status = nc_get_att_int (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
             if(status!=NC_NOERR)
             {
                 free(array);
@@ -184,7 +190,7 @@
             int i;
             float *array;
             array = (float *)malloc(sizeof(float)*length);
-            status = nc_get_att_float (ncid,variableID,[attName cString],array);
+            status = nc_get_att_float (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
             if(status!=NC_NOERR)
             {
                 free(array);
@@ -201,7 +207,7 @@
             int i;
             double *array;
             array = (double *)malloc(sizeof(double)*length);
-            status = nc_get_att_double (ncid,variableID,[attName cString],array);
+            status = nc_get_att_double (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
             if(status!=NC_NOERR)
             {
                 free(array);
@@ -218,10 +224,13 @@
             [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"loadValues" subMethod:@"Case NC_Nat not hanlded" errorCode:status];
         }
     }
-    
+    //NSLog(@"tempValues %@",[tempValues description]);
     theValues = [tempValues copy];
+	
     [tempValues release];
-    nc_close(ncid);
+
+	//NSLog(@"%@",[theValues description]);
+    [theHandle closeNCID:ncid];
     
     //NSLog(@"theValues count:%i",[theValues count]);
 }
@@ -368,7 +377,8 @@
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+	ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
+    
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"renameAttribute" subMethod:@"Open netCDF failed" errorCode:status];
@@ -378,17 +388,17 @@
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"renameAttribute" subMethod:@"Redefine mode failed" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
-    status = nc_rename_att(ncid,variableID,[attName cString],[newName cString]);
+    status = nc_rename_att(ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],[newName cStringUsingEncoding:NSUTF8StringEncoding]);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"renameAttribute" subMethod:@"Rename attribute failed" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
 	[theHandle refresh];
     return YES;
     

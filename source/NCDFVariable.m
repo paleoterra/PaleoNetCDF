@@ -75,7 +75,7 @@
     
     size_t total_values;
     int ncid,result;
-    NSData *theData;
+    NSMutableData *theData;
 /*#ifndef NOEXCEPTIONHANDLE
     NS_DURING  //Exception Handling
 #endif*/
@@ -90,7 +90,7 @@
     }
     //theCPath = (char *)malloc(sizeof(char)*[fileName length]+1);
     //[fileName getCString:theCPath];
-    result = nc_open([fileName cString],NC_NOWRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&result];
     //free(theCPath);
     if(result!=NC_NOERR)
     {
@@ -158,7 +158,8 @@
         case NC_FLOAT:
         {
             float *array;
-            array = (float *)malloc(sizeof(float)*total_values);
+			theData = [[NSMutableData dataWithLength:sizeof(float)*total_values] retain];
+            array = (float *)[theData bytes];
             //NSLog(@"total values %i",total_values);
             result = nc_get_var_float(ncid,varID,array);
             if(result!=NC_NOERR)
@@ -166,8 +167,8 @@
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Read NC_Float" errorCode:result];
                 return nil;
             }
-            theData = [[NSData dataWithBytes:array length:(sizeof(float)*total_values)] retain];
-            free(array);
+            //theData = [[NSData dataWithBytes:array length:(sizeof(float)*total_values)] retain];
+            //free(array);
             break;
         }
         case NC_DOUBLE:
@@ -191,7 +192,7 @@
                 return nil;
             }
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     //NSLog(@"Variable Retain count: %i",[theData retainCount]);
     return [theData autorelease];
 }
@@ -283,7 +284,7 @@
         total_values *= [[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
     }
    
-    result = nc_open([fileName cString],NC_WRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&result];
     
     
     if(result!=NC_NOERR)
@@ -411,7 +412,7 @@
         }
     }
     //NSLog(@"end");
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
 }
 
 -(BOOL)createNewVariableAttributeWithName:(NSString *)attName dataType:(nc_type)theType values:(NSArray *)theValues
@@ -435,7 +436,7 @@
         theErrorHandle = [theHandle theErrorHandle];
 	
     
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
    
 
     if(status!=NC_NOERR)
@@ -448,7 +449,7 @@
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Open file" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
 	
@@ -460,7 +461,7 @@
             //assumes object is an NSData object
             theText = (unsigned char *)malloc(sizeof(unsigned char)*[(NSData *)[theValues objectAtIndex:0]length]);
             [[theValues objectAtIndex:0] getBytes:theText];
-            status = nc_put_att_uchar (ncid,varID,[attName cString],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
+            status = nc_put_att_uchar (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
             free(theText);
             if(status!=NC_NOERR)
             {
@@ -474,7 +475,7 @@
         {
             //now assuming that the object at index is a NSData object
 	
-            status = nc_put_att_text (ncid,varID,[attName cString],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cString]);
+            status = nc_put_att_text (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cStringUsingEncoding:NSUTF8StringEncoding]);
      
 			if(status!=NC_NOERR)
             {
@@ -492,7 +493,7 @@
             array = (short *)malloc(sizeof(short)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] shortValue];
-            status = nc_put_att_short (ncid,varID,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_short (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Write NC_SHORT" errorCode:status];
@@ -509,7 +510,7 @@
             array = (int *)malloc(sizeof(int)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] intValue];
-            status = nc_put_att_int (ncid,varID,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_int (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Write NC_INT" errorCode:status];
@@ -526,7 +527,7 @@
             array = (float *)malloc(sizeof(float)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] floatValue];
-            status = nc_put_att_float(ncid,varID,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_float(ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Write NC_FLOAT" errorCode:status];
@@ -543,7 +544,7 @@
             array = (double *)malloc(sizeof(double)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] doubleValue];
-            status = nc_put_att_double(ncid,varID,[attName cString],theType,(size_t)[theValues count],array);
+            status = nc_put_att_double(ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"createNewVariableAttributeWithName" subMethod:@"Write NC_DOUBLE" errorCode:status];
@@ -559,7 +560,7 @@
         }
     }
 
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     if(!dataWritten)
         return NO;
 
@@ -595,7 +596,7 @@
     
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
-    status = nc_open([fileName cString],NC_NOWRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getVariableAttributes" subMethod:@"Open file" errorCode:status];
@@ -622,14 +623,14 @@
             [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getVariableAttributes" subMethod:@"nc_inq_att" errorCode:status];
         }
         
-        theAtt = [[NCDFAttribute alloc] initWithPath:fileName name:[NSString stringWithCString:name] variableID:varID length:length type:attributeType handle:theHandle];
+        theAtt = [[NCDFAttribute alloc] initWithPath:fileName name:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:varID length:length type:attributeType handle:theHandle];
         [theAttArray addObject:theAtt];
         [theAtt release];
         
     }
     theFinal = [[NSArray arrayWithArray:theAttArray] retain];
     [theAttArray autorelease];
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     return [theFinal autorelease];
 }
 
@@ -642,7 +643,7 @@
     
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"deleteVariableAttributeByName" subMethod:@"Open file" errorCode:status];
@@ -652,17 +653,17 @@
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"deleteVariableAttributeByName" subMethod:@"nc_redef" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
-    status = nc_del_att(ncid,varID,[name cString]);
+    status = nc_del_att(ncid,varID,[name cStringUsingEncoding:NSUTF8StringEncoding]);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"deleteVariableAttributeByName" subMethod:@"nc_del_att" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
 	[theHandle refresh];
     numberOfAttributes--;
     return YES;
@@ -718,7 +719,7 @@
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"renameVariable" subMethod:@"Open file" errorCode:status];
@@ -728,17 +729,17 @@
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"renameVariable" subMethod:@"nc_redef" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
-    status = nc_rename_var(ncid,varID,[newName cString]);
+    status = nc_rename_var(ncid,varID,[newName cStringUsingEncoding:NSUTF8StringEncoding]);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"renameVariable" subMethod:@"nc_rename_var" errorCode:status];
-        nc_close(ncid);
+        [theHandle closeNCID:ncid];
         return NO;
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
 	[theHandle refresh];
     return YES;
     
@@ -794,7 +795,7 @@
     {
         index[i] = [[coordinates objectAtIndex:i] intValue];
     }
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Open file" errorCode:status];
@@ -812,7 +813,7 @@
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_BYTE" errorCode:status];
                 free(index);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             }
             break;
@@ -821,14 +822,14 @@
         {
             char *theText;
             theText = (char *)malloc(sizeof(char)*2);
-            [value getCString:theText];
+			[value getCString:theText maxLength:sizeof(char)*2 encoding:NSUTF8StringEncoding];
             status = nc_put_var1_text(ncid,varID,index,&theText[0]);
             if(status!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_CHAR" errorCode:status];
                 free(index);
                 free(theText);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             }
             
@@ -844,7 +845,7 @@
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_SHORT" errorCode:status];
                 free(index);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             }
             break;
@@ -858,7 +859,7 @@
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_INT" errorCode:status];
                 free(index);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             }
             break;
@@ -872,7 +873,7 @@
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_FLOAT" errorCode:status];
                 free(index);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             }
             break;
@@ -886,7 +887,7 @@
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_DOUBLE" errorCode:status];
                 free(index);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             }
             break;
@@ -896,13 +897,13 @@
             
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"writeSingleValue" subMethod:@"Write NC_NAT" errorCode:status];
                 free(index);
-                nc_close(ncid);
+                [theHandle closeNCID:ncid];
                 return NO;
             
         }
     }
     free(index);
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     return YES;
 }
 
@@ -936,7 +937,7 @@
         edges[i] = (size_t)[[edgeLengths objectAtIndex:i] intValue];
         
     }
-    status = nc_open([fileName cString],NC_WRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
     isError = NO;
     if(status!=NC_NOERR)
     {
@@ -1048,7 +1049,7 @@
     free(edges);
     if(isError)
         return NO;
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     return YES;
 }
 
@@ -1080,7 +1081,7 @@
     {
         index[i] = [[coordinates objectAtIndex:i] intValue];
     }
-    status = nc_open([fileName cString],NC_NOWRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];
     if(status!=NC_NOERR)
     {
         free(index);
@@ -1107,7 +1108,7 @@
             char theChar;
             status = nc_get_var1_text(ncid,varID,index,&theChar);
             theText[0] = theChar;
-            theObject = [NSString stringWithCString:theText];
+            theObject = [NSString stringWithCString:theText encoding:NSUTF8StringEncoding];
             if(status!=NC_NOERR)
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getSingleValue" subMethod:@"Read NC_CHAR" errorCode:status];
             break;
@@ -1153,7 +1154,7 @@
             [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getSingleValue" subMethod:@"Read NC_NAT" errorCode:status];
         }
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     if(errorCount == [theErrorHandle errorCount])
         return theObject;
     else
@@ -1195,7 +1196,7 @@
         else
             unitSize *= (size_t)[[edgeLengths objectAtIndex:i] intValue];
     }
-    status = nc_open([fileName cString],NC_NOWRITE,&ncid);
+    ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];;
     if(status!=NC_NOERR)
     {
         free(index);
@@ -1286,7 +1287,7 @@
             theData = nil;
             break;
     }
-    nc_close(ncid);
+    [theHandle closeNCID:ncid];
     free(index);
     free(edges);
     if(errorCount == [theErrorHandle errorCount])
@@ -2056,7 +2057,7 @@
 {
 	NSData *theTempData = [self getValueArrayAtLocation:startCoordinates edgeLengths:edgeLengths];
 	NCDFSlab *theSlab = [[[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:edgeLengths] autorelease];
-	return [theSlab autorelease];
+	return theSlab;
 }
 
 

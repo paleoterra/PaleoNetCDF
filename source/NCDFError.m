@@ -148,7 +148,7 @@
 -(NSString *)localizedStringForErrorCode
 {
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
-    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode)];
+    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSString *theLocalizedString = 
     [[theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"] retain];
     return [theLocalizedString autorelease];
@@ -157,14 +157,14 @@
 //Logging
 -(void)logString
 {
-    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode)];
+    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSLog(@"Error: %@\nFile: %@\nClass: %@\nMethod %@\nSub-Method %@\nCode: %i\n",theErrorString,_errorSourceObjectName,_errorClass,_errorMethod,_errorSubMethod,_errorNCDFCode);
 }
 
 //Arrays of strings to populate Alert Panels.
 -(NSArray *)alertArray
 {
-    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode)];
+    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSArray *theArray = [[NSArray arrayWithObjects:theErrorString,
                                                 _errorSourceObjectName,
                                                  _errorClass,
@@ -178,7 +178,7 @@
 -(NSArray *)localizedAlertArray
 {
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
-    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode)];
+    NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSString *theLocalizedString = 
     [[theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"] retain];
     NSArray *theArray = [[NSArray arrayWithObjects:theLocalizedString,

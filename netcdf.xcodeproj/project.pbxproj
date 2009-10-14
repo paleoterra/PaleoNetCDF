@@ -100,7 +100,7 @@
 		B4CCA71A102BE7F400E6E2C1 /* hdf5_hl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdf5_hl.h; sourceTree = "<group>"; };
 		B4CCA71C102BE80200E6E2C1 /* hdf5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdf5.h; sourceTree = "<group>"; };
 		B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnetcdf4.a; sourceTree = "<group>"; };
-		B4CCA74E102BE9FD00E6E2C1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = "<absolute>"; };
+		B4CCA74E102BE9FD00E6E2C1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = ../../../usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFAttribute.h; path = source/NCDFAttribute.h; sourceTree = "<group>"; };
 		B4E0D2740C9EE4B10029D494 /* NCDFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = NCDFAttribute.m; path = source/NCDFAttribute.m; sourceTree = "<group>"; };
 		B4E0D2750C9EE4B10029D494 /* NCDFDataTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFDataTypeFormatter.h; path = source/NCDFDataTypeFormatter.h; sourceTree = "<group>"; };
@@ -322,7 +322,6 @@
 				B46DE09A091B0BD1001A5988 /* Resources */,
 				B46DE09B091B0BD1001A5988 /* Sources */,
 				B46DE09C091B0BD1001A5988 /* Frameworks */,
-				B47BF29C0A9A1AB800092C22 /* ShellScript */,
 			);
 			buildRules = (
 				B46DE0A6091B0BE3001A5988 /* PBXBuildRule */,
@@ -394,19 +393,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B47BF29C0A9A1AB800092C22 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\nFRAMEWORKNAME=netcdf.framework\nFRAMEWORK=${BUILT_PRODUCTS_DIR}/${FRAMEWORKNAME}\nFRAMEWORKTARGET=${BUILD_ROOT}/currentbuild\n\n\nif [ ! -f \"$FRAMEWORKTARGET\" ]\nthen\n\tmkdir \"$FRAMEWORKTARGET\"\nfi\n\nif [ -f \"$FRAMEWORKTARGET/$FRAMEWORKNAME\" ] \nthen\n\trm -Rf \"$FRAMEWORKTARGET/$FRAMEWORKNAME\"\nfi\n\ncp -R \"$FRAMEWORK\" \"$FRAMEWORKTARGET\"\n\nexit 0";
-		};
 		B4E1C859092425F90014A0B6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,15 +482,15 @@
 		B4244EB408F4659B0030396F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_ENABLE_OBJC_GC = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_x86_64 = 10.6;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -513,22 +499,22 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Development;
 		};
 		B4244EB508F4659B0030396F /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				GCC_ENABLE_OBJC_GC = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_x86_64 = 10.6;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -544,15 +530,15 @@
 		B4244EB608F4659B0030396F /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_ENABLE_OBJC_GC = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_x86_64 = 10.6;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -561,22 +547,22 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = test;
 		};
 		B4244EB708F4659B0030396F /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_ENABLE_OBJC_GC = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.6;
+				MACOSX_DEPLOYMENT_TARGET_x86_64 = 10.6;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -585,13 +571,15 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Default;
 		};
 		B46DE0A1091B0BD2001A5988 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -638,10 +626,8 @@
 		B46DE0A2091B0BD2001A5988 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				COPY_PHASE_STRIP = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -688,6 +674,8 @@
 		B46DE0A3091B0BD2001A5988 /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -733,6 +721,8 @@
 		B46DE0A4091B0BD2001A5988 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
