@@ -830,8 +830,8 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     switch (theType){
         case NC_BYTE:
         {
-            unsigned char *theText;
-            theText = (unsigned char *)malloc(sizeof(unsigned char)*[(NSData *)[theValues objectAtIndex:0]length]);
+            uint8 *theText;
+            theText = (uint8 *)malloc(sizeof(uint8)*[(NSData *)[theValues objectAtIndex:0]length]);
             [[theValues objectAtIndex:0] getBytes:theText];
             status = nc_put_att_uchar (ncid,NC_GLOBAL,[attName UTF8String],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
             free(theText);
@@ -858,7 +858,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         {
             int i;
             short *array;
-            array = (short *)malloc(sizeof(short)*[theValues count]);
+            array = (int16_t *)malloc(sizeof(int16_t)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] shortValue];
             status = nc_put_att_short (ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);

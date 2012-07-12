@@ -42,7 +42,7 @@ information to a programmer and end user.
 -(id)init;
 -(id)initErrorFromSourceName:(NSString *)sourceName theClass:(NSString *)theClass fromMethod:(NSString *)theMethod fromSubmethod:(NSString *)subMethod withError:(int)theError;
 
--(void)dealloc;
+
 //Accessors
 -(NSString *)errorSourceObjectName;
 -(void)setErrorSourceObjectName:(NSString *)newName;

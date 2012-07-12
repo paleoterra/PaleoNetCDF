@@ -93,9 +93,9 @@
     switch (type){
         case NC_BYTE:
         {
-            unsigned char *theText;
+            uint8 *theText;
             NSData *theData;
-            theText = (unsigned char *)malloc(sizeof(unsigned char)*length);
+            theText = (uint8 *)malloc(sizeof(uint8)*length);
             status = nc_get_att_uchar (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theText);
             if(status!=NC_NOERR)
             {
@@ -132,8 +132,8 @@
         case NC_SHORT:
         {
             int i;
-            short *array;
-            array = (short *)malloc(sizeof(short)*length);
+            int16_t *array;
+            array = (int16_t *)malloc(sizeof(int16_t)*length);
             status = nc_get_att_short (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
             if(status!=NC_NOERR)
             {
@@ -219,9 +219,9 @@
     NSLog(@"NCDFAttribute: setValueArray");
 #endif
     if(anArray)
-        theValues = [anArray copy];
+        theValues = [NSMutableArray arrayWithArray:anArray];
     else
-        theValues = [[NSArray alloc] init];
+        theValues = [[NSMutableArray alloc] init];
 }
 
 -(NSString *)attributeName
@@ -269,7 +269,7 @@
     switch (type){
         case NC_BYTE:
         {	
-            unsigned char *theByteData = (unsigned char *)malloc([(NSData *)object length]);
+            uint8 *theByteData = (uint8 *)malloc([(NSData *)object length]);
             int i;
             NSMutableString *mutString = [[NSMutableString alloc] init];
             [(NSData *)object getBytes:theByteData];

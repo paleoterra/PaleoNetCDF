@@ -28,7 +28,6 @@ information to a programmer and end user.
 }
 
 -(id)init;
--(void)dealloc;
 +(id)defaultErrorHandle;
 -(void)addError:(NCDFError *)anError;
 -(void)addErrorFromSource:(NSString *)sourceFile className:(NSString *)className methodName:(NSString *)methodName subMethod:(NSString *)subMethod errorCode:(int)errorCode;

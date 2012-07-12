@@ -112,14 +112,14 @@
         case NC_SHORT:
         {
             short *array;
-            array = (short *)malloc(sizeof(short)*total_values);
+            array = (int16_t *)malloc(sizeof(int16_t)*total_values);
             result = nc_get_var_short(ncid,varID,array);
             if(result!=NC_NOERR)
             {
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Read NC_Short" errorCode:result];
                 return nil;
             }
-            theData = [NSData dataWithBytes:array length:(sizeof(short)*total_values)];
+            theData = [NSData dataWithBytes:array length:(sizeof(int16_t)*total_values)];
             free(array);
             break;
         }
@@ -313,11 +313,11 @@
         }
         case NC_SHORT:
         {
-            short *array;
-            //NSLog(@"short");
+            int16_t *array;
+            //NSLog(@"int16_t");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length]/2;
-            array = (short *)malloc(sizeof(short)*total_values);
+            array = (int16_t *)malloc(sizeof(int16_t)*total_values);
             [dataForWriting getBytes:array];
             result = nc_put_var_short(ncid,varID,array);
             if(result!=NC_NOERR)
@@ -439,9 +439,9 @@
     switch (theType){
         case NC_BYTE:
         {
-            unsigned char *theText;
+            uint8 *theText;
             //assumes object is an NSData object
-            theText = (unsigned char *)malloc(sizeof(unsigned char)*[(NSData *)[theValues objectAtIndex:0]length]);
+            theText = (uint8 *)malloc(sizeof(uint8)*[(NSData *)[theValues objectAtIndex:0]length]);
             [[theValues objectAtIndex:0] getBytes:theText];
             status = nc_put_att_uchar (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
             free(theText);
@@ -471,8 +471,8 @@
         case NC_SHORT:
         {
             int i;
-            short *array;
-            array = (short *)malloc(sizeof(short)*[theValues count]);
+            int16_t *array;
+            array = (int16_t *)malloc(sizeof(int16_t)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] shortValue];
             status = nc_put_att_short (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
@@ -786,7 +786,7 @@
     {
         case NC_BYTE:
         {
-            unsigned char theText;
+            uint8 theText;
             [value getBytes:&theText];
             status = nc_put_var1_uchar(ncid,varID,index,&theText);
             if(status!=NC_NOERR)
@@ -818,7 +818,7 @@
         }
         case NC_SHORT:
         {
-            short theNumber;
+            int16_t theNumber;
             theNumber = [value shortValue];
             status = nc_put_var1_short(ncid,varID,index,&theNumber);
             if(status!=NC_NOERR)
@@ -931,8 +931,8 @@
     {
         case NC_BYTE:
         {
-            unsigned char *theText;
-            theText = (unsigned char *)malloc(sizeof(unsigned char) *[dataObject length]);
+            uint8 *theText;
+            theText = (uint8 *)malloc(sizeof(uint8) *[dataObject length]);
             [dataObject getBytes:theText];
             status = nc_put_vara_uchar(ncid,varID,index,edges,theText);
             if(status!=NC_NOERR)
@@ -960,8 +960,8 @@
         }
         case NC_SHORT:
         {
-            short *theNumber;
-            theNumber = (short *)malloc([dataObject length]);
+            int16_t *theNumber;
+            theNumber = (int16_t *)malloc([dataObject length]);
             [dataObject getBytes:theNumber];
             status = nc_put_vara_short(ncid,varID,index,edges,theNumber);
             if(status!=NC_NOERR)
@@ -1072,7 +1072,7 @@
     {
         case NC_BYTE:
         {
-            unsigned char theText;
+            uint8 theText;
             status = nc_get_var1_uchar(ncid,varID,index,&theText);
             theObject = [NSData dataWithBytes:&theText length:1];
             if(status!=NC_NOERR)
@@ -1095,7 +1095,7 @@
         }
         case NC_SHORT:
         {
-            short theNumber;
+            int16_t theNumber;
             status = nc_get_var1_short(ncid,varID,index,&theNumber);
             theObject = [NSNumber numberWithShort:theNumber];
             if(status!=NC_NOERR)
@@ -1188,11 +1188,11 @@
     {
         case NC_BYTE:
         {
-            unsigned char *theText;
-            theText = (unsigned char *)malloc(sizeof(unsigned char) *unitSize);
+            uint8 *theText;
+            theText = (uint8 *)malloc(sizeof(uint8) *unitSize);
             
             status = nc_get_vara_uchar(ncid,varID,index,edges,theText);
-            theData = [NSData dataWithBytes:theText length:(sizeof(unsigned char) *unitSize)];
+            theData = [NSData dataWithBytes:theText length:(sizeof(uint8) *unitSize)];
             if(status!=NC_NOERR)
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getValueArrayAtLocation" subMethod:@"Read NC_BYTE" errorCode:status];
             free(theText);
@@ -1213,10 +1213,10 @@
         }
         case NC_SHORT:
         {
-            short *theNumber;
-            theNumber = (short *)malloc(sizeof(short)*unitSize);
+            int16_t *theNumber;
+            theNumber = (int16_t *)malloc(sizeof(int16_t)*unitSize);
             status = nc_get_vara_short(ncid,varID,index,edges,theNumber);
-            theData = [NSData dataWithBytes:theNumber length:(sizeof(short) *unitSize)];
+            theData = [NSData dataWithBytes:theNumber length:(sizeof(int16_t) *unitSize)];
             if(status!=NC_NOERR)
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getValueArrayAtLocation" subMethod:@"Read NC_SHORT" errorCode:status];
             free(theNumber);

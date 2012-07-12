@@ -69,12 +69,7 @@
 +(id)handleWithNewClassicNetCDF4FileAtPath:(NSString *)thePath;
 
 
-/*!
-  @method dealloc
-  @abstract Standard deallocation.
-  @discussion Private method.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
-*/
--(void)dealloc;
+
 
 /*!
 	@functiongroup Internal Use Only
