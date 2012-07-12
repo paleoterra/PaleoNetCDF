@@ -59,8 +59,6 @@ static NSLock *fileDatabaseLock;
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: setFilePath");
 #endif
-    if(filePath)
-        [filePath release];
     if(thePath)
         filePath = [thePath copy];
     else
@@ -75,12 +73,10 @@ static NSLock *fileDatabaseLock;
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: initializeArrays");
 #endif
-    if(theVariables)
-        [theVariables autorelease];
-    if(theGlobalAttributes)
-        [theGlobalAttributes autorelease];
-    if(theDimensions)
-        [theDimensions autorelease];
+
+    theVariables = nil;
+    theDimensions = nil;
+    theGlobalAttributes = nil;
     theVariables = [[NSMutableArray alloc] init];
     theGlobalAttributes = [[NSMutableArray alloc] init];
     theDimensions = [[NSMutableArray alloc] init];
@@ -134,8 +130,6 @@ static NSLock *fileDatabaseLock;
 		//NSLog(@"time value = %i",length);
         theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
         [[typeArrays objectAtIndex:0] addObject:theDim];
-        if(theDim)
-            [theDim release];
 		
     }
     //NSLog(@"m ga");
@@ -171,7 +165,6 @@ static NSLock *fileDatabaseLock;
         }
         theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:NC_GLOBAL length:length type:attributeType handle:self];
         [[typeArrays objectAtIndex:1] addObject:theAtt];
-        [theAtt release];
 		free(name);
 									
         
@@ -200,8 +193,6 @@ static NSLock *fileDatabaseLock;
         }
         theVar = [[NCDFVariable alloc] initWithPath:filePath variableName:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:i type:theType theDims:theDimList attributeCount:numberOfAttributes handle:self];
         [[typeArrays objectAtIndex:2] addObject:theVar];
-        [theVar release];
-        [theDimList release];
     }
     //NSLog(@"close");
     [self closeNCID:ncid];
@@ -276,7 +267,6 @@ static NSLock *fileDatabaseLock;
     if(errorCount<[theErrorHandle errorCount])
     {
 		[theErrorHandle logAllErrors];
-        [self release];
         return nil;
     }
     else
@@ -291,14 +281,13 @@ static NSLock *fileDatabaseLock;
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: initByCreatingFileAtPath");
 #endif
-    [super init];
+    self = [super init];
     //added 0.2.1d1
     theErrorHandle =[[NCDFErrorHandle alloc] init];
     errorCount = [theErrorHandle errorCount];
     [self createFileAtPath:thePath withSettings:settings];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self release];
         return nil;
     }
     [self setFilePath:thePath];
@@ -306,7 +295,6 @@ static NSLock *fileDatabaseLock;
 	handleLock = [[NSLock alloc] init];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self release];
         return nil;
     }
     else
@@ -322,14 +310,13 @@ static NSLock *fileDatabaseLock;
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: initByCreatingFileAtPath");
 #endif
-    [super init];
+    self = [super init];
     //added 0.2.1d1
     theErrorHandle =[[NCDFErrorHandle alloc] init];
     errorCount = [theErrorHandle errorCount];
     [self createFileAtPath:thePath withSettings:NC_CLOBBER];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self release];
         return nil;
     }
     [self setFilePath:thePath];
@@ -337,7 +324,6 @@ static NSLock *fileDatabaseLock;
 	handleLock = [[NSLock alloc] init];
     if(errorCount<[theErrorHandle errorCount])
     {
-        [self release];
         return nil;
     }
     else
@@ -348,25 +334,25 @@ static NSLock *fileDatabaseLock;
 +(id)handleWithNewFileAtPath:(NSString *)thePath
 {
 	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:NC_CLOBBER];
-	return [aHandle autorelease];
+	return aHandle;
 }
 
 +(id)handleWithNew64BitFileAtPath:(NSString *)thePath
 {
 	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_64BIT_OFFSET)];
-	return [aHandle autorelease];
+	return aHandle;
 }
 
 +(id)handleWithNewNetCDF4FileAtPath:(NSString *)thePath
 {
 	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_NETCDF4)];
-	return [aHandle autorelease];
+	return aHandle;
 }
 
 +(id)handleWithNewClassicNetCDF4FileAtPath:(NSString *)thePath
 {
 	NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_NETCDF4|NC_CLASSIC_MODEL)];
-	return [aHandle autorelease];
+	return aHandle;
 }
 
 
@@ -399,9 +385,9 @@ static NSLock *fileDatabaseLock;
 #endif
     //[self initializeArrays];
     //[self seedArrays];
-	NSMutableArray *tempDim = [[[NSMutableArray alloc] init] autorelease];
-	NSMutableArray *tempAtt = [[[NSMutableArray alloc] init] autorelease];
-	NSMutableArray *tempVar = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *tempDim = [[NSMutableArray alloc] init];
+	NSMutableArray *tempAtt = [[NSMutableArray alloc] init];
+	NSMutableArray *tempVar = [[NSMutableArray alloc] init];
 	[self seedArrays:[NSArray arrayWithObjects:tempDim,tempAtt,tempVar,nil]];
 	//temp arrays are seeded.  Now we need to update,add, and delete.
 	
@@ -424,7 +410,6 @@ static NSLock *fileDatabaseLock;
 	NSEnumerator *anEnuma = [theDimsLeft objectEnumerator];
 	while(aDim = [anEnuma nextObject])
 	{
-		[[aDim retain] autorelease];
 		[theDimensions removeObject:aDim];
 	}
 	[theDimsLeft removeAllObjects];
@@ -451,7 +436,6 @@ static NSLock *fileDatabaseLock;
 	NSEnumerator *anEnum1a = [theAttsLeft objectEnumerator];
 	while(anAtt = [anEnum1a nextObject])
 	{
-		[[anAtt retain] autorelease];
 		[theGlobalAttributes removeObject:anAtt];
 	}
 	[theAttsLeft removeAllObjects];
@@ -478,45 +462,10 @@ static NSLock *fileDatabaseLock;
 	NSEnumerator *anEnum2a = [theVarsLeft objectEnumerator];
 	while(aVar = [anEnum2a nextObject])
 	{
-		[[aVar retain] autorelease];
 		[theVariables removeObject:aVar];
 	}
 	[theVarsLeft removeAllObjects];
 	//NSLog(@"the count here is %i",[theVariables count]);
-}
-
-#pragma mark *** Deallocation methods ***
--(void)dealloc
-{
-    /*Releases all arrays held by the handle*/
-    /*Deallocation*/
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: dealloc");
-#endif
-    if(theVariables)
-        [theVariables release];
-   
-    if(theGlobalAttributes)
-        [theGlobalAttributes release];
-    
-    if(theDimensions)
-        [theDimensions release];
-    
-    if(filePath)
-        [filePath release];
-	
-	if(theErrorHandle)
-		[theErrorHandle release]; 
-    if(handleLock)
-		[handleLock release];
-	if(_theCompareValue)
-		[_theCompareValue release];
-    [super dealloc];
-}
-
--(void)finalize
-{
-	[super finalize];
 }
 
 #pragma mark *** Simple Accessing Methods ***
@@ -661,13 +610,13 @@ static NSLock *fileDatabaseLock;
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewDimensionsFromDimensionArray" subMethod:@"Opening file" errorCode:status];
-        return NO;
+        return nil;
     }
     status = nc_redef(ncid);
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewDimensionsFromDimensionArray" subMethod:@"Set redefine mode" errorCode:status];
-        return NO;
+        return nil;
     }
     
     //cycle through dims
@@ -694,9 +643,8 @@ static NSLock *fileDatabaseLock;
         }
     }
     [self closeNCID:ncid];
-    [validDim release];
     [self refresh];
-    return [NSArray arrayWithArray:[returnDims autorelease]];
+    return [NSArray arrayWithArray:returnDims];
 
 }
 
@@ -737,7 +685,6 @@ static NSLock *fileDatabaseLock;
     if(errorCount<[theErrorHandle errorCount])
     {
 		[theManager removeItemAtPath:tempPath error:nil];
-		[newHandle release];
         return NO;
     }
     else
@@ -745,7 +692,6 @@ static NSLock *fileDatabaseLock;
         [theManager removeItemAtPath:filePath error:nil];
 		[theManager moveItemAtPath:tempPath toPath:filePath error:nil];
         [self refresh];
-        [newHandle release];
         return YES;
     }
 }
@@ -833,7 +779,6 @@ static NSLock *fileDatabaseLock;
     if(errorCount<[theErrorHandle errorCount])
     {
         [theManager removeItemAtPath:tempPath error:nil];
-        [newHandle release];
         return NO;
     }
     else
@@ -841,7 +786,6 @@ static NSLock *fileDatabaseLock;
         [theManager removeItemAtPath:filePath error:nil];
 		[theManager moveItemAtPath:tempPath toPath:filePath error:nil];
         [self refresh];
-        [newHandle release];
         return YES;
     }
 }
@@ -1039,7 +983,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [existingAttributes addObject:[theNewAttributes objectAtIndex:i]];
     }
     
-    return [NSArray arrayWithArray:[existingAttributes autorelease]];
+    return [NSArray arrayWithArray:existingAttributes];
 }
 
 -(BOOL)deleteGlobalAttributeWithName:(NSString *)attName
@@ -1187,7 +1131,6 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
 
     [self refresh];
-    [newDimIDs release];
     return result;
 }
 
@@ -1222,7 +1165,6 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         if([theNativeDimensionArray count]==[[[theNewVariables objectAtIndex:i] variableDimensions] count])
         {
         [self createVariableWithName:[[theNewVariables objectAtIndex:i] variableName] type:[[theNewVariables objectAtIndex:i]variableNC_TYPE] dimArray:theNativeDimensionArray];
-        [theNativeDimensionArray release];
         }
         else
         {
@@ -1230,7 +1172,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         }
     }
     
-    return [NSArray arrayWithArray:[variablesNotAdded autorelease]];
+    return [NSArray arrayWithArray:variablesNotAdded];
 }
 
 -(BOOL)createNewVariableWithName:(NSString *)variableName type:(nc_type)theType dimNameArray:(NSArray *)selectedDims
@@ -1340,7 +1282,6 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     if(errorCount<[theErrorHandle errorCount])
     {
         [theManager removeItemAtPath:tempPath error:nil];
-        [newHandle release];
         return NO;
     }
     else
@@ -1348,7 +1289,6 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theManager removeItemAtPath:filePath error:nil];
 		[theManager moveItemAtPath:tempPath toPath:filePath error:nil];
         [self refresh];
-        [newHandle release];
         return YES;
     }
 }
@@ -1396,13 +1336,12 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         if(Valid)
         {
             //NSLog(@"creating");
-            NSDictionary *aTempDict = [[[theVariables objectAtIndex:i] propertyList] retain];
+            NSDictionary *aTempDict = [[theVariables objectAtIndex:i] propertyList];
             //NSLog(@"creating 1");
             [newHandle refresh];
             //NSLog(@"creating 2");
             [newHandle createNewVariableWithPropertyList:aTempDict];
             //NSLog(@"creating 3");
-            [aTempDict release];
             //NSLog(@"end creating");
         }
         //NSLog(@"%i of %i",i,[theVariables count]);
@@ -1411,7 +1350,6 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     if(errorCount<[theErrorHandle errorCount])
     {
         [theManager removeItemAtPath:tempPath error:nil];
-        [newHandle release];
         return NO;
     }
     else
@@ -1419,7 +1357,6 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theManager removeItemAtPath:filePath error:nil];
 		[theManager moveItemAtPath:tempPath toPath:filePath error:nil];
         [self refresh];
-        [newHandle release];
         return YES;
     }
 }
@@ -1561,7 +1498,7 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	 NSMutableArray *theGlobalAttributes;
 	 NSMutableArray *theDimensions
 	 */
-	NSMutableString *theString = [[[NSMutableString alloc] init] autorelease];
+	NSMutableString *theString = [[NSMutableString alloc] init];
 	//Step 1. Header
 	[theString appendString:@"<html>\n"];
 	[theString appendString:@"<head>\n"];
@@ -1723,13 +1660,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 		NCDFVariable *theVar = [self retrieveUnlimitedVariable];
 		if(theVar)
 		{
-			_theCompareValue = [[theVar getSingleValue:[NSArray arrayWithObject:[NSNumber numberWithInt:0]]] retain];
+			_theCompareValue = [theVar getSingleValue:[NSArray arrayWithObject:[NSNumber numberWithInt:0]]];
 			if(!_theCompareValue)
-				_theCompareValue = [[NSNumber numberWithFloat:NAN] retain];
+				_theCompareValue = [NSNumber numberWithFloat:NAN];
 		}
 		else
 		{
-			_theCompareValue = [[NSNumber numberWithFloat:NAN] retain];
+			_theCompareValue = [NSNumber numberWithFloat:NAN];
 		}
 	}
 	\

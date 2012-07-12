@@ -13,10 +13,10 @@
 
 -(id)initWithDimension:(NCDFDimension *)aDim
 {
-	[super init];
+	self = [super init];
 	if(self)
 	{
-		_dimName = [[aDim dimensionName] retain];
+		_dimName = [aDim dimensionName];
 		_length = [aDim dimLength];
 		_unlimitedLengthArray = nil;
 		_isUnlimited = NO;
@@ -26,11 +26,11 @@
 
 -(id)initWithUnlimitedDimension:(NCDFDimension *)aDim withHandleArray:(NSArray *)theHandles
 {
-	[super init];
+	self = [super init];
 	
 	if(self)
 	{
-		_dimName = [[aDim dimensionName] retain];
+		_dimName = [aDim dimensionName];
 		NSEnumerator *anEnum = [theHandles objectEnumerator];
 		NCDFHandle *aHandle;
 		size_t aLength;
@@ -51,10 +51,6 @@
 	return self;
 }
 
--(void)finalize
-{
-	[super finalize];
-}
 
 -(id)initWithDimension:(NCDFDimension *)aDim withHandleArray:(NSArray *)theHandles
 {
@@ -91,7 +87,7 @@
 	NSEnumerator *anEnum = [_unlimitedLengthArray objectEnumerator];
 	NSRange valueRange,intersectRange;
 	NSValue *aValue;
-	NSMutableArray *resultArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultArray = [[NSMutableArray alloc] init];
 	while(aValue = [anEnum nextObject])
 	{
 		valueRange = [aValue rangeValue];
@@ -107,7 +103,7 @@
 
 -(NSString *)description
 {
-	NSMutableString *aString = [[[NSMutableString alloc] init] autorelease];
+	NSMutableString *aString = [[NSMutableString alloc] init];
 	
 	[aString appendFormat:@"NCDFSeriesDimension: \t\t %@\n",_dimName];
 	if([self isUnlimited])

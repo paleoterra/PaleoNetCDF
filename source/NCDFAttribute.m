@@ -16,7 +16,7 @@
     NSLog(@"NCDFAttribute: initWithPath");
 #endif
 
-    [super init];
+    self = [super init];
     fileName = [thePath copy];
     attName = [theName copy];
     variableID = theID;
@@ -29,17 +29,13 @@
     return self;
 }
 
--(void)finalize
-{
-	[super finalize];
-}
 
 -(id)initWithName:(NSString *)theName length:(size_t)dataLength type:(nc_type)theType valueArray:(NSArray *)newValues
 {
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: initWithName");
 #endif
-    [super init];
+    self = [super init];
     fileName = nil;
     attName = [theName copy];
     variableID = -1;
@@ -56,7 +52,7 @@
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: initWithAttribute");
 #endif
-    [super init];
+    self = [super init];
     fileName = nil;
     attName = [[anAttribute attributeName] copy];
     variableID = -1;
@@ -73,21 +69,6 @@
 	return [theHandle handleLock];
 }
 
--(void)dealloc
-{
-#ifdef DEBUG_NCDFAttribute
-    NSLog(@"NCDFAttribute: dealloc");
-#endif
-    if(fileName)
-        [fileName release];
-    if(attName)
-        [attName release];
-    if(theValues)
-        [theValues release];
-    
-    [super dealloc];
-    
-}
 
 -(void)loadValues
 {
@@ -100,8 +81,6 @@
 	//NSLog(@"%s %i",__FUNCTION__,__LINE__);
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
-    if(theValues)
-        [theValues release];
     tempValues = [[NSMutableArray alloc] init];
 	//NSLog(@"%s %i ncid %@ ",__FUNCTION__,__LINE__,[theHandle description]);
 	ncid = [theHandle ncidWithOpenMode:NC_SHARE status:&status];
@@ -227,7 +206,6 @@
     //NSLog(@"tempValues %@",[tempValues description]);
     theValues = [tempValues copy];
 	
-    [tempValues release];
 
 	//NSLog(@"%@",[theValues description]);
     [theHandle closeNCID:ncid];
@@ -240,8 +218,6 @@
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: setValueArray");
 #endif
-    if(theValues)
-        [theValues release];
     if(anArray)
         theValues = [anArray copy];
     else
@@ -280,7 +256,7 @@
     
     }
     
-    return [NSString stringWithString:[initial autorelease]];
+    return [NSString stringWithString:initial];
 }
 
 -(NSString *)stringFromObject:(id)object
@@ -301,33 +277,32 @@
             {
                 [mutString appendFormat:@"%u ",theByteData[i]];
             }
-            theString = [[NSString stringWithString:mutString] retain];
-            [mutString release];
+            theString = [NSString stringWithString:mutString];
             break;
         }
         case NC_CHAR:
         {
-            theString = [[NSString stringWithString:object] retain];
+            theString = [NSString stringWithString:object];
             break;
         }
         case NC_SHORT:
         {
-            theString = [[NSString stringWithFormat:@"%i ",[object intValue]] retain];
+            theString = [NSString stringWithFormat:@"%i ",[object intValue]];
             break;
         }
         case NC_INT:
         {
-            theString = [[NSString stringWithFormat:@"%i ",[object intValue]] retain];
+            theString = [NSString stringWithFormat:@"%i ",[object intValue]];
             break;
         }
         case NC_FLOAT:
         {
-            theString = [[NSString stringWithFormat:@"%f ",[object floatValue]] retain];
+            theString = [NSString stringWithFormat:@"%f ",[object floatValue]];
             break;
         }
         case NC_DOUBLE:
         {
-            theString = [[NSString stringWithFormat:@"%f ",[object floatValue]] retain];
+            theString = [NSString stringWithFormat:@"%f ",[object floatValue]];
             break;
         }
         case NC_NAT:
@@ -336,7 +311,7 @@
         }
     }
     
-	return [theString autorelease];
+	return theString;
     
 }
 
@@ -363,8 +338,8 @@
         [mutString replaceCharactersInRange:theRange withString:@"_"];
         }
     }
-    newString = [[NSString stringWithString:mutString] retain];
-    return [newString autorelease];
+    newString = [NSString stringWithString:mutString];
+    return newString;
 }
 
 -(BOOL)renameAttribute:(NSString *)newName
@@ -465,9 +440,8 @@
     [theTemp setObject:[NSNumber numberWithInt:(int)type] forKey:@"nc_type"];
     [theTemp setObject:[NSNumber numberWithInt:(int)length] forKey:@"length"];
     [theTemp setObject:[NSArray arrayWithArray:theValues] forKey:@"values"];
-    thePropertyList = [[NSDictionary dictionaryWithDictionary:theTemp] retain];
-    [theTemp release];
-    return [thePropertyList autorelease];
+    thePropertyList = [NSDictionary dictionaryWithDictionary:theTemp];
+    return thePropertyList;
 
 }
 

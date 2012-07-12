@@ -20,17 +20,7 @@ NCDFErrorHandle *theDefaultErrorHandle;
     return self;
 }
 
--(void)dealloc
-{
-    if(theErrors)
-        [theErrors release];
-    [super dealloc];
-}
 
--(void)finalize
-{
-	[super finalize];
-}
 
 +(id)defaultErrorHandle
 {
@@ -53,7 +43,7 @@ NCDFErrorHandle *theDefaultErrorHandle;
 
 -(void)addErrorFromSource:(NSString *)sourceFile className:(NSString *)className methodName:(NSString *)methodName subMethod:(NSString *)subMethod errorCode:(int)errorCode
 {
-    [theErrors addObject:[[[NCDFError alloc] initErrorFromSourceName:sourceFile theClass:className fromMethod:methodName fromSubmethod:subMethod withError:errorCode] autorelease]];
+    [theErrors addObject:[[NCDFError alloc] initErrorFromSourceName:sourceFile theClass:className fromMethod:methodName fromSubmethod:subMethod withError:errorCode]];
 #ifdef Debug_NCDFErrorHandle
     [self logLastError];
 #endif

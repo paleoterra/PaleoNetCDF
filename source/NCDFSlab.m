@@ -13,7 +13,7 @@
 
 -(id)initSlabWithData:(NSData *)data withType:(nc_type)type withLengths:(NSArray *)lengths
 {
-	[super init];
+	self = [super init];
 	if(self) {
 		[self setData:data];
 		NSLog(@"data length %i",[data length]);
@@ -26,16 +26,9 @@
 -(void)dealloc
 {
 	//NSLog(@"deallocing slab");
-	[theData release];
 	free(dimensionLengths);
-	[super dealloc];
 }
 
--(void)finalize
-{
-	free(dimensionLengths);
-	[super finalize];
-}
 
 -(void)setNCType:(nc_type)type
 {
@@ -51,7 +44,6 @@
 {
 	if(theData)
 	{
-		[theData release];
 		theData = nil;
 	}
 	theData = [data copy];
@@ -95,8 +87,8 @@
 	
 	readRange.length = sizeof(theType) * [[lengths lastObject] intValue];
 	
-	NSMutableData *theMutData = [[[NSMutableData alloc] init] autorelease];
-	NSMutableArray *current = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableData *theMutData = [[NSMutableData alloc] init];
+	NSMutableArray *current = [[NSMutableArray alloc] init];
 	[current addObjectsFromArray:startPositions];
 	//NSLog(@"current before sending");
 	//NSLog([current description]);
@@ -114,7 +106,7 @@
 
 -(NSArray *)dimensionLengths
 {
-	NSMutableArray *theArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *theArray = [[NSMutableArray alloc] init];
 	int i;
 	for(i=0;i<dimCount;i++)
 	{
@@ -137,7 +129,7 @@
 -(int)startPositionForNextStepFrom:(NSMutableArray *)current fromStart:(NSArray *)startCoords withLengths:(NSArray *)lengths
 {
 	int count = [current count];
-	NSMutableArray *theArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *theArray = [[NSMutableArray alloc] init];
 	int i;
 	int newPoint,  startPosition ;
 	int carryover;

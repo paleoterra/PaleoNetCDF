@@ -38,8 +38,8 @@
         if(theRange.location!=[theString length])
             [mutString replaceCharactersInRange:theRange withString:@"_"];
     }
-    newString = [[NSString stringWithString:mutString] retain];
-    return [newString autorelease];
+    newString = [NSString stringWithString:mutString];
+    return newString;
 }
 
 - (BOOL)getObjectValue:(id *)anObject forString:(NSString *)string errorDescription:(NSString **)error
@@ -55,7 +55,7 @@
         result = NO;
     *anObject = aString;
 
-    error = &err;
+    *error = err;
 
     return result;
 }
@@ -79,12 +79,8 @@
         //newString = &aString;
         result = NO;
     }
-    error = &err;
+    *error = err;
     return result;
 }
 
--(void)finalize
-{
-	[super finalize];
-}
 @end

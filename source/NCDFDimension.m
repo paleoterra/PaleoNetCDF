@@ -15,7 +15,7 @@
 
 -(id)initWithFileName:(NSString *)thePath dimID:(int)number name:(NSString *)name length:(size_t)aLength handle:(NCDFHandle *)handle
 {
-    [super init];
+    self = [super init];
     fileName = [thePath copy];
     dimID = number;
     dimName = [name copy];
@@ -26,7 +26,7 @@
 
 -(id)initNewDimWithName:(NSString *)name length:(size_t)aLength
 {
-    [super init];
+    self = [super init];
     fileName = nil;
     dimID = -1;
     dimName = [name copy];
@@ -39,7 +39,7 @@
 {
     if(aDim)
     {
-        [super init];
+        self = [super init];
         fileName = nil;
         dimID = -1;
         dimName = [[aDim dimensionName] copy];
@@ -54,19 +54,7 @@
         return nil;
 }
 
--(void)finalize
-{
-	[super finalize];
-}
 
--(void)dealloc
-{
-    if(fileName)
-        [fileName release];
-    if(dimName)
-        [dimName release];
-    [super dealloc];
-}
 
 -(NSLock *)handleLock
 {
@@ -123,7 +111,6 @@
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFDimension" methodName:@"renameDimension" subMethod:@"Renaming dimension" errorCode:status];
         return NO;
     }
-    [dimName release];
     dimName = [newName copy];
     [theHandle closeNCID:ncid];
 	[theHandle refresh];
@@ -149,8 +136,8 @@
         [mutString replaceCharactersInRange:theRange withString:@"_"];
         }
     }
-    newString = [[NSString stringWithString:mutString] retain];
-    return [newString autorelease];
+    newString = [NSString stringWithString:mutString];
+    return newString;
 }
 
 -(int)dimensionID
@@ -207,9 +194,8 @@
         [theTemp setObject:[NSNumber numberWithInt:0] forKey:@"length"];
     else
         [theTemp setObject:[NSNumber numberWithInt:(int)length] forKey:@"length"];
-    thePropertyList = [[NSDictionary dictionaryWithDictionary:theTemp]retain];
-    [theTemp release];
-    return [thePropertyList autorelease];
+    thePropertyList = [NSDictionary dictionaryWithDictionary:theTemp];
+    return thePropertyList;
 }
 
 -(void)updateDimensionWithDimension:(NCDFDimension *)aDim

@@ -11,10 +11,6 @@
 
 @implementation NCDFDataTypeFormatter
 
--(void)finalize
-{
-	[super finalize];
-}
 
 -(NSString *)stringForObjectValue:(id)anObject
 {

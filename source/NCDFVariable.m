@@ -21,7 +21,7 @@
     /*Initialization*/
     /*Validated*/
     
-    [super init];
+    self = [super init];
     fileName = [thePath copy];
     variableName = [theName copy];
     varID = theID;
@@ -32,25 +32,7 @@
     return self;
 }
 
--(void)dealloc
-{
-    /*Dealloc the reciever.*/
-    /*Deallocation*/
-    if(fileName)
-        [fileName release];
-    if(variableName)
-        [variableName release];
-    if(dimIDs)
-        [dimIDs release];
-    if(attributes)
-        [attributes release];
-    [super dealloc];
-}
 
--(void)finalize
-{
-	[super finalize];
-}
 
 -(NSLock *)handleLock
 {
@@ -109,7 +91,7 @@
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Read NC_Byte" errorCode:result];
                 return nil;
             }
-            theData = [[NSData dataWithBytes:theText length:total_values] retain];
+            theData = [NSData dataWithBytes:theText length:total_values];
             free(theText);
             break;
         }
@@ -123,7 +105,7 @@
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Read NC_Char" errorCode:result];
                 return nil;
             }
-            theData = [[NSData dataWithBytes:theText length:total_values+1] retain];
+            theData = [NSData dataWithBytes:theText length:total_values+1];
             free(theText);
             break;
         }
@@ -137,7 +119,7 @@
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Read NC_Short" errorCode:result];
                 return nil;
             }
-            theData = [[NSData dataWithBytes:array length:(sizeof(short)*total_values)] retain];
+            theData = [NSData dataWithBytes:array length:(sizeof(short)*total_values)];
             free(array);
             break;
         }
@@ -151,14 +133,14 @@
                 [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"readAllVariableData" subMethod:@"Read NC_Int" errorCode:result];
                 return nil;
             }
-            theData = [[NSData dataWithBytes:array length:(sizeof(int)*total_values)] retain];
+            theData = [NSData dataWithBytes:array length:(sizeof(int)*total_values)];
             free(array);
             break;
         }
         case NC_FLOAT:
         {
             float *array;
-			theData = [[NSMutableData dataWithLength:sizeof(float)*total_values] retain];
+			theData = [NSMutableData dataWithLength:sizeof(float)*total_values];
             array = (float *)[theData bytes];
             //NSLog(@"total values %i",total_values);
             result = nc_get_var_float(ncid,varID,array);
@@ -182,7 +164,7 @@
                 return nil;
             }
 
-            theData = [[NSData dataWithBytes:array length:(sizeof(double)*total_values)] retain];
+            theData = [NSData dataWithBytes:array length:(sizeof(double)*total_values)];
             free(array);
             break;
         }
@@ -194,7 +176,7 @@
     }
     [theHandle closeNCID:ncid];
     //NSLog(@"Variable Retain count: %i",[theData retainCount]);
-    return [theData autorelease];
+    return theData;
 }
 
 -(NSString *)variableType
@@ -625,13 +607,12 @@
         
         theAtt = [[NCDFAttribute alloc] initWithPath:fileName name:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:varID length:length type:attributeType handle:theHandle];
         [theAttArray addObject:theAtt];
-        [theAtt release];
         
     }
-    theFinal = [[NSArray arrayWithArray:theAttArray] retain];
-    [theAttArray autorelease];
+    theFinal = [NSArray arrayWithArray:theAttArray];
+    theAttArray = nil;
     [theHandle closeNCID:ncid];
-    return [theFinal autorelease];
+    return theFinal;
 }
 
 -(BOOL)deleteVariableAttributeByName:(NSString *)name
@@ -691,15 +672,14 @@
             theString = [theString stringByAppendingString:@","];
     }
     theString = [theString stringByAppendingString:@"]"];
-    [theString retain];
-    return [theString autorelease];
+    return theString;
 }
 
 -(NSString *)dataTypeWithDimDescription
 {
     NSString *aString;
-    aString = [[NSString stringWithFormat:@"%@ %@",[self variableType],[self variableDimDescription]] retain];
-    return [aString autorelease];
+    aString = [NSString stringWithFormat:@"%@ %@",[self variableType],[self variableDimDescription]];
+    return aString;
 }
 
 -(nc_type)variableNC_TYPE
@@ -765,8 +745,8 @@
         [mutString replaceCharactersInRange:theRange withString:@"_"];
         }
     }
-    newString = [[NSString stringWithString:mutString] retain];
-    return [newString autorelease];
+    newString = [NSString stringWithString:mutString];
+    return newString;
 }
 
 -(BOOL)writeSingleValue:(NSArray *)coordinates withValue:(id)value
@@ -1074,7 +1054,7 @@
     errorCount = [theErrorHandle errorCount];
     if([dimIDs count]!=[coordinates count])
     {
-        return NO;
+        return nil;
     }
     index = (size_t *)malloc(sizeof(size_t)*[coordinates count]);
     for(i=0;i<[coordinates count];i++)
@@ -1086,7 +1066,7 @@
     {
         free(index);
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFVariable" methodName:@"getSingleValue" subMethod:@"Open File" errorCode:status];
-        return NO;
+        return nil;
     }
     switch(dataType)
     {
@@ -1183,7 +1163,7 @@
     errorCount = [theErrorHandle errorCount];
     if(([dimIDs count]!=[startCoordinates count])||([dimIDs count]!=[edgeLengths count]))
     {
-        return NO;
+        return nil;
     }
     index = (size_t *)malloc(sizeof(size_t)*[startCoordinates count]);
     edges = (size_t *)malloc(sizeof(size_t)*[edgeLengths count]);
@@ -1451,7 +1431,7 @@
         }
     }
     
-    return [theLengths autorelease];
+    return theLengths;
 }
 
 -(BOOL)isUnlimited
@@ -1478,8 +1458,8 @@
         return NO;
     if([self sizeUnitVariable]!=[aVar sizeUnitVariable])
         return NO;
-    dimLengths1 = [[NSMutableArray arrayWithArray:[self lengthArray]] retain];
-    dimLengths2 = [[NSMutableArray arrayWithArray:[aVar lengthArray]] retain];
+    dimLengths1 = [NSMutableArray arrayWithArray:[self lengthArray]];
+    dimLengths2 = [NSMutableArray arrayWithArray:[aVar lengthArray]];
     if([self isUnlimited])
     {	
         [dimLengths1 removeObjectAtIndex:0];
@@ -1490,8 +1470,6 @@
     }
     if([dimLengths1 count]!=[dimLengths2 count])
     {
-        [dimLengths1 release];
-        [dimLengths2 release];
         return NO;
     }
     for(i=0;i<[dimLengths1 count];i++)
@@ -1499,8 +1477,6 @@
         if([[dimLengths1 objectAtIndex:i] intValue]!=[[dimLengths2 objectAtIndex:i] intValue])
         {
             i = [dimLengths1 count];
-            [dimLengths1 release];
-            [dimLengths2 release];
             return NO;
         }
         
@@ -1566,10 +1542,8 @@
         [attributeDictionaries addObject:[[originalAtts objectAtIndex:i] propertyList]];
     }
     [theTemp setObject:[NSArray arrayWithArray:attributeDictionaries]  forKey:@"attributes"];
-    thePropertyList = [[NSDictionary dictionaryWithDictionary:theTemp] retain];
-    [theTemp release];
-    [attributeDictionaries release];
-    return [thePropertyList autorelease];
+    thePropertyList = [NSDictionary dictionaryWithDictionary:theTemp];
+    return thePropertyList;
 }
 
 -(NSArray *)dimensionNames
@@ -1582,9 +1556,8 @@
     {
         [temp addObject:[[theHandle retrieveDimensionByIndex:[[dimIDs objectAtIndex:i] intValue]] dimensionName]];
     }
-    names = [[NSArray arrayWithArray:temp] retain];
-    [temp release];
-    return [names autorelease];
+    names = [NSArray arrayWithArray:temp];
+    return names;
 
 }
 
@@ -1598,18 +1571,16 @@
     {
         [temp addObject:[theHandle retrieveDimensionByIndex:[[dimIDs objectAtIndex:i] intValue]]];
     }
-    names = [[NSArray arrayWithArray:temp] retain];
-    [temp release];
-    return [names autorelease];
+    names = [NSArray arrayWithArray:temp];
+    return names;
 }
 
 -(BOOL)reverseAndStoreDataAlongDimensionName:(NSString *)theDimName
 {
-    NSData *theData = [[self reverseDataAlongDimensionName:theDimName] retain];
+    NSData *theData = [self reverseDataAlongDimensionName:theDimName];
     if(theData != NULL)
     {
         [self writeAllVariableData:theData];
-        [theData release];
         return YES;
     }
     else
@@ -1638,7 +1609,7 @@
             flippedDim = i;
     }
     if(flippedDim == -1)
-        return NO;
+        return nil;
         
     //estimate new lengths from theLengths - lengths for each dim
     //here what we want to do is figure the minimum unit that needs flipping.  We also want to know about how that will work with other dimensions.
@@ -1712,26 +1683,23 @@
         {
             [theFinalData appendData:[theArrayOfData objectAtIndex:j]];
         }
-        [theArrayOfData release];
         
         
     }
     //[self writeAllVariableData:[NSData dataWithData:theFinalData]];
     //NSLog([[[NSString alloc]  initWithData:theFinalData encoding:NSASCIIStringEncoding] autorelease]);
     //NSLog([theFinalData description]);
-    returnData = [[NSData dataWithData:theFinalData] retain];
-    [theFinalData release];
-    return [returnData autorelease];
+    returnData = [NSData dataWithData:theFinalData];
+    return returnData;
     
 }
 
 -(BOOL)shiftAndStoreDataAlongDimensionName:(NSString *)theDimName shift:(int)theShift
 {
-        NSData *theData = [[self shiftDataAlongDimensionName:theDimName shift:theShift] retain];
+        NSData *theData = [self shiftDataAlongDimensionName:theDimName shift:theShift];
     if(theData != NULL)
     {
         [self writeAllVariableData:theData];
-        [theData release];
         return YES;
     }
     else
@@ -1759,7 +1727,7 @@
             flippedDim = i;
     }
     if(flippedDim == -1)
-        return NO;
+        return nil;
         
     //estimate new lengths from theLengths - lengths for each dim
     //here what we want to do is figure the minimum unit that needs flipping.  We also want to know about how that will work with other dimensions.
@@ -1846,10 +1814,9 @@
             NSData *someData;
             for(j=0;j<theShift;j++)
             {
-                someData = [[theArrayOfData lastObject]retain];
+                someData = [theArrayOfData lastObject];
                 [theArrayOfData removeLastObject];
                 [theArrayOfData insertObject:someData atIndex:0];
-                [someData release];
             }
         }
         else if(theShift<0)
@@ -1858,10 +1825,9 @@
             theShift *= -1;
             for(j=0;j<theShift;j++)
             {
-                someData = [[theArrayOfData objectAtIndex:0]retain];
+                someData = [theArrayOfData objectAtIndex:0];
                 [theArrayOfData removeObjectAtIndex:0];
                 [theArrayOfData addObject:someData];
-                [someData release];
             }
         }
         //load into a new data object
@@ -1869,16 +1835,14 @@
         {
             [theFinalData appendData:[theArrayOfData objectAtIndex:j]];
         }
-        [theArrayOfData release];
         
         
     }
     //[self writeAllVariableData:[NSData dataWithData:theFinalData]];
     //NSLog([[[NSString alloc]  initWithData:theFinalData encoding:NSASCIIStringEncoding] autorelease]);
     //NSLog([theFinalData description]);
-    returnData = [[NSData dataWithData:theFinalData] retain];
-    [theFinalData release];
-    return [returnData autorelease];
+    returnData = [NSData dataWithData:theFinalData];
+    return returnData;
     
 }
 
@@ -1896,7 +1860,7 @@
 
 -(NSString *)htmlDescription
 {
-	NSMutableString *theString = [[[NSMutableString alloc] init]autorelease];
+	NSMutableString *theString = [[NSMutableString alloc] init];
 	NSArray *theCurrentDims = [self allVariableDimInformation];
 	NSArray *theCurrentAtts = [self getVariableAttributes];
 	//Step 1.  Add variable name and internal link
@@ -2018,15 +1982,15 @@
 
 -(void)updateVariableWithVariable:(NCDFVariable *)aVar
 {
-	NSString *temp = [variableName retain];
+	NSString *temp = variableName;
     variableName = [[aVar variableName] copy];
-	[temp autorelease];
+	temp = nil;
 	
     varID = [aVar variableID];
     dataType = [aVar variableNC_TYPE];
-	NSArray *tempDim = [dimIDs retain];
+	NSArray *tempDim = dimIDs;
     dimIDs = [[aVar variableDimensions] copy];
-	[tempDim autorelease];
+	tempDim = nil;
     numberOfAttributes = [aVar attributeCount];
 }
 
@@ -2056,7 +2020,7 @@
 -(NCDFSlab *)getSlabForStartCoordinates:(NSArray *)startCoordinates edgeLengths:(NSArray *)edgeLengths
 {
 	NSData *theTempData = [self getValueArrayAtLocation:startCoordinates edgeLengths:edgeLengths];
-	NCDFSlab *theSlab = [[[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:edgeLengths] autorelease];
+	NCDFSlab *theSlab = [[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:edgeLengths];
 	return theSlab;
 }
 
@@ -2064,7 +2028,7 @@
 -(NCDFSlab *)getAllDataInSlab
 {
 	NSData *theTempData = [self readAllVariableData];
-	NCDFSlab *theSlab = [[[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:[self lengthArray]] autorelease];
+	NCDFSlab *theSlab = [[NCDFSlab alloc] initSlabWithData:theTempData withType:[self variableNC_TYPE] withLengths:[self lengthArray]];
 	return theSlab;
 }
 @end

@@ -14,7 +14,7 @@
 //Initialization
 -(id)init
 {
-    [super init];
+    self = [super init];
     [self setErrorClass:nil];
     [self setErrorMethod:nil];
     [self setSubMethod:nil];
@@ -25,7 +25,7 @@
 
 -(id)initErrorFromSourceName:(NSString *)sourceName theClass:(NSString *)theClass fromMethod:(NSString *)theMethod fromSubmethod:(NSString *)subMethod withError:(int)theError;
 {
-    [super init];
+    self = [super init];
     [self setErrorSourceObjectName:sourceName];
     [self setErrorClass:theClass];
     [self setErrorMethod:theMethod];
@@ -34,23 +34,7 @@
     return self;
 }
 
--(void)dealloc
-{
-    if(_errorClass)
-        [_errorClass release];
-    if(_errorMethod)
-        [_errorMethod release];
-    if(_errorSubMethod)
-        [_errorSubMethod release];
-    if(_errorSourceObjectName)
-        [_errorSourceObjectName release];
-    [super dealloc];
-}
 
--(void)finalize
-{
-	[super finalize];
-}
 //Accessors
 
 -(NSString *)errorSourceObjectName
@@ -60,10 +44,8 @@
 
 -(void)setErrorSourceObjectName:(NSString *)newName
 {
-    if(_errorSourceObjectName)
-        [_errorSourceObjectName release];
     if(newName)
-        _errorSourceObjectName = [newName retain];
+        _errorSourceObjectName = newName;
     else
         _errorSourceObjectName = [[NSString alloc] init];
 
@@ -76,10 +58,8 @@
 
 -(void)setErrorClass:(NSString *)newClass
 {
-    if(_errorClass)
-        [_errorClass release];
     if(newClass)
-        _errorClass = [newClass retain];
+        _errorClass = newClass;
     else
         _errorClass = [[NSString alloc] init];
 }
@@ -91,10 +71,8 @@
 
 -(void)setErrorMethod:(NSString *)newMethod
 {
-    if(_errorMethod)
-        [_errorMethod release];
     if(newMethod)
-        _errorMethod = [newMethod retain];
+        _errorMethod = newMethod;
     else
         _errorMethod = [[NSString alloc] init];
 }
@@ -106,10 +84,8 @@
 
 -(void)setSubMethod:(NSString *)newSubMethod
 {
-    if(_errorSubMethod)
-        [_errorSubMethod release];
     if(newSubMethod)
-        _errorSubMethod = [newSubMethod retain];
+        _errorSubMethod = newSubMethod;
     else
         _errorSubMethod = [[NSString alloc] init];
 }
@@ -150,8 +126,8 @@
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
     NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSString *theLocalizedString = 
-    [[theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"] retain];
-    return [theLocalizedString autorelease];
+    [theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"];
+    return theLocalizedString;
 }
 
 //Logging
@@ -165,14 +141,14 @@
 -(NSArray *)alertArray
 {
     NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
-    NSArray *theArray = [[NSArray arrayWithObjects:theErrorString,
+    NSArray *theArray = [NSArray arrayWithObjects:theErrorString,
                                                 _errorSourceObjectName,
                                                  _errorClass,
                                                  _errorMethod,
                                                  _errorSubMethod,
                                                  [NSNumber numberWithInt:_errorNCDFCode],
-                                                 nil] retain];
-    return [theArray autorelease];
+                                                 nil];
+    return theArray;
 }
 
 -(NSArray *)localizedAlertArray
@@ -180,15 +156,15 @@
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
     NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSString *theLocalizedString = 
-    [[theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"] retain];
-    NSArray *theArray = [[NSArray arrayWithObjects:theLocalizedString,
+    [theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"];
+    NSArray *theArray = [NSArray arrayWithObjects:theLocalizedString,
                                                 _errorSourceObjectName,
                                                  _errorClass,
                                                  _errorMethod,
                                                  _errorSubMethod,
                                                  [NSNumber numberWithInt:_errorNCDFCode],
-                                                 nil] retain];
-    return [theArray autorelease];
+                                                 nil];
+    return theArray;
 }
 
 @end

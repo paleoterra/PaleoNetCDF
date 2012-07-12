@@ -14,7 +14,7 @@
 
 -(id)initWithOrderedPathSeries:(NSArray *)paths
 {
-	NSMutableArray *newURL = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *newURL = [[NSMutableArray alloc] init];
 	int i;
 	for(i=0;i<[paths count];i++)
 	{
@@ -25,7 +25,7 @@
 
 -(id)initWithOrderedURLSeries:(NSArray *)urls
 {
-	[super init];
+	self = [super init];
 	if(self)
 	{
 		BOOL isValid = YES;
@@ -33,7 +33,7 @@
 		NCDFHandle *aHandle;
 		NSString *dirPath;
 		_isSingleDirectory = YES;
-		NSMutableArray *tempArray = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 		for(i=0;i<[urls count];i++)
 		{
 			if(i==0)
@@ -48,7 +48,7 @@
 			}
 			if(isValid)
 			{
-				if(aHandle = [[[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]] autorelease])
+				if((aHandle = [[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]]))
 				{
 					[tempArray addObject:aHandle];
 				}
@@ -61,13 +61,12 @@
 		}
 		if(!isValid)
 		{
-			[self autorelease];
 			return nil;
 		}
 		else
 		{
-			_theURLS = [[NSArray arrayWithArray:urls] retain];
-			_theHandles = [[NSArray arrayWithArray:tempArray] retain];
+			_theURLS = [NSArray arrayWithArray:urls];
+			_theHandles = [NSArray arrayWithArray:tempArray];
 			[self seedArrays];
 			return self;
 		}
@@ -86,12 +85,12 @@
 
 -(id)initWithSeriesFileAtURL:(NSURL *)url
 {
-	[super init];
+	self = [super init];
 	if(self)
 	{
 		NSDictionary *theDict = [NSDictionary dictionaryWithContentsOfURL:url];
 		NSArray *theFiles = [theDict objectForKey:@"files"];
-		NSMutableArray *tempURLs = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray *tempURLs = [[NSMutableArray alloc] init];
 		int i;
 		if([[theDict objectForKey:@"isSingleDirectory"] isEqualToString:@"YES"])
 		{
@@ -111,14 +110,14 @@
 				[tempURLs addObject:[NSURL fileURLWithPath:[theFiles objectAtIndex:i]]];
 			}
 		}
-		_theURLS = [[NSArray arrayWithArray:tempURLs] retain];
-		NSMutableArray *theHandleTemp = [[[NSMutableArray alloc] init] autorelease];
+		_theURLS = [NSArray arrayWithArray:tempURLs];
+		NSMutableArray *theHandleTemp = [[NSMutableArray alloc] init];
 		for(i=0;i<[_theURLS count];i++)
 		{
 			NCDFHandle *theHandle = [[NCDFHandle alloc] initWithFileAtPath:[[_theURLS objectAtIndex:i] path]];
-			[theHandleTemp addObject:[theHandle autorelease]];
+			[theHandleTemp addObject:theHandle];
 		}
-		_theHandles = [[NSArray arrayWithArray:theHandleTemp] retain];
+		_theHandles = [NSArray arrayWithArray:theHandleTemp];
 		[self seedArrays];
 	}
 	return self;
@@ -127,7 +126,7 @@
 
 -(id)initWithUnorderedPathSeries:(NSArray *)paths sorted:(BOOL *)sorted
 {
-	NSMutableArray *newURL = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *newURL = [[NSMutableArray alloc] init];
 	int i;
 	for(i=0;i<[paths count];i++)
 	{
@@ -138,7 +137,7 @@
 
 -(id)initWithUnorderedURLSeries:(NSArray *)urls sorted:(BOOL *)sorted
 {
-	[super init];
+	self = [super init];
 	if(self)
 	{
 		BOOL isValid = YES;
@@ -146,7 +145,7 @@
 		NCDFHandle *aHandle;
 		NSString *dirPath;
 		_isSingleDirectory = YES;
-		NSMutableArray *tempArray = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 	
 		for(i=0;i<[urls count];i++)
 		{
@@ -164,7 +163,7 @@
 			
 			if(isValid)
 			{
-				if(aHandle = [[[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]] autorelease])
+				if((aHandle = [[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]]))
 				{
 					[tempArray addObject:aHandle];
 				}
@@ -178,14 +177,13 @@
 		
 		if(!isValid)
 		{
-			[self autorelease];
 			return nil;
 		}
 		else
 		{
 		
-			_theURLS = [[NSArray arrayWithArray:urls] retain];
-			_theHandles = [[NSArray arrayWithArray:tempArray] retain];
+			_theURLS = [NSArray arrayWithArray:urls];
+			_theHandles = [NSArray arrayWithArray:tempArray];
 			
 			*sorted = [self sortHandles];
 			
@@ -216,34 +214,22 @@
 	if(!theFinalResult)
 		return theFinalResult;
 	
-	NSMutableArray *newURLS = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *newURLS = [[NSMutableArray alloc] init];
 	for(i=0;i<[tempArray count];i++)
 	{
 
 		[newURLS addObject:[_theURLS objectAtIndex:[_theHandles indexOfObject:[tempArray objectAtIndex:i]]]];
 	}
 
-	[_theURLS release];
-	_theURLS = [[NSArray arrayWithArray:newURLS] retain];
-	[_theHandles release];
-	_theHandles = [tempArray retain];
+	_theURLS = [NSArray arrayWithArray:newURLS];
+	_theHandles = tempArray;
 	
 	
 	return theFinalResult;
 }
 
--(void)finalize
-{
-	[super finalize];
-}
 
 
--(void)dealloc
-{
-	[_theURLS release];
-	[_theHandles release];
-	[super dealloc];
-}
 
 //*WRITING OUT SERIES INFO
 -(BOOL)writeSeriesToFile:(NSString *)path
@@ -257,13 +243,13 @@
 	//two possibilities for storage
 	// 1. If every file is within the same directory, save as a relative path (and save the directory path in case the file moves or the save file is located elsewhere)
 	// 2. If nc files located in multiple directories, save all paths as full paths
-	NSMutableDictionary *aDict = [[[NSMutableDictionary alloc] init] autorelease];
+	NSMutableDictionary *aDict = [[NSMutableDictionary alloc] init];
 	int i;
 	if(_isSingleDirectory)
 	{
 		[aDict setObject:@"YES" forKey:@"isSingleDirectory"];
 		[aDict setObject:[[[_theURLS objectAtIndex:0] path] stringByDeletingLastPathComponent] forKey:@"directoryPath"];
-		NSMutableArray *anArray = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray *anArray = [[NSMutableArray alloc] init];
 		for(i=0;i<[_theURLS count];i++)
 		{
 			[anArray addObject:[[[_theURLS objectAtIndex:i] path] lastPathComponent]];
@@ -273,7 +259,7 @@
 	else
 	{
 		[aDict setObject:@"NO" forKey:@"isSingleDirectory"];
-		NSMutableArray *anArray = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray *anArray = [[NSMutableArray alloc] init];
 		for(i=0;i<[_theURLS count];i++)
 		{
 			[anArray addObject:[[_theURLS objectAtIndex:i] path]];
@@ -293,24 +279,24 @@
 {
 	NCDFDimension *aDim;
 	NSEnumerator *theEnum = [[self getRootDimensions] objectEnumerator];
-	NSMutableArray *_tempDim = [[[NSMutableArray alloc] init] autorelease];;
+	NSMutableArray *_tempDim = [[NSMutableArray alloc] init];;
 	while(aDim = [theEnum nextObject])
 	{
-		[_tempDim addObject:[[[NCDFSeriesDimension alloc] initWithDimension:aDim withHandleArray:_theHandles] autorelease]];
+		[_tempDim addObject:[[NCDFSeriesDimension alloc] initWithDimension:aDim withHandleArray:_theHandles]];
 	}
-	_theDimensions = [[NSArray arrayWithArray:_tempDim] retain];
+	_theDimensions = [NSArray arrayWithArray:_tempDim];
 }
 
 -(void)seedVariables
 {
 	NCDFVariable *aVar;
 	NSEnumerator *theEnum = [[self getRootVariables] objectEnumerator];
-	NSMutableArray *_tempVar = [[[NSMutableArray alloc] init] autorelease];;
+	NSMutableArray *_tempVar = [[NSMutableArray alloc] init];;
 	while(aVar = [theEnum nextObject])
 	{
-		[_tempVar addObject:[[[NCDFSeriesVariable alloc] initWithVariable:aVar fromHandle:self] autorelease]];
+		[_tempVar addObject:[[NCDFSeriesVariable alloc] initWithVariable:aVar fromHandle:self]];
 	}
-	_theVariables = [[NSArray arrayWithArray:_tempVar] retain];
+	_theVariables = [NSArray arrayWithArray:_tempVar];
 }
 
 //**** ACCESSORS
@@ -359,7 +345,7 @@
 {
 	NSArray *allVars = [self getRootVariables];
 	NSEnumerator *theEnum = [allVars objectEnumerator];
-	NSMutableArray *tempArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 	NCDFVariable *aVar;
 	while(aVar = [theEnum nextObject])
 	{

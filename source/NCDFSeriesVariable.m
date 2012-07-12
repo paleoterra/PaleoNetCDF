@@ -14,17 +14,17 @@
 
 -(id)initWithVariable:(NCDFVariable *)aVar fromHandle:(NCDFSeriesHandle *)aHandle
 {
-	[super init];
+	self = [super init];
 	if(self)
 	{
 		int i = 0;
-		_variableName = [[aVar variableName] retain];
+		_variableName = [aVar variableName];
 		_dataType = [aVar variableNC_TYPE]; 
-		_typeName = [[aVar variableType] retain] ;
+		_typeName = [aVar variableType] ;
 		_seriesHandle = aHandle;
 		NSEnumerator *temp = [[aVar dimensionNames] objectEnumerator];
 		NSString *tempString;
-		NSMutableArray *tempDims = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray *tempDims = [[NSMutableArray alloc] init];
 		while(tempString=[temp nextObject])
 		{
 			[tempDims addObject:[aHandle retrieveDimensionByName:tempString]];
@@ -32,13 +32,9 @@
 				_unlimitedDimLocation = i;
 			i++;
 		}
-		_theDims = [[NSArray arrayWithArray:tempDims] retain];
+		_theDims = [NSArray arrayWithArray:tempDims];
 	}
 	return self;
-}
--(void)finalize
-{
-	[super finalize];
 }
 
 //reading
@@ -46,7 +42,7 @@
 {
 	NSEnumerator *anEnum = [[_seriesHandle handles] objectEnumerator];
 	NCDFHandle *aHandle;
-	NSMutableData *theData = [[[NSMutableData alloc] init] autorelease];
+	NSMutableData *theData = [[NSMutableData alloc] init];
 	
 	while(aHandle = [anEnum nextObject])
 	{
@@ -84,16 +80,15 @@
             theString = [theString stringByAppendingString:@","];
     }
     theString = [theString stringByAppendingString:@"]"];
-    [theString retain];
-    return [theString autorelease];
+    return theString;
 }
 
 
 -(NSString *)dataTypeWithDimDescription
 {
     NSString *aString;
-    aString = [[NSString stringWithFormat:@"%@ %@",[self variableType],[self variableDimDescription]] retain];
-    return [aString autorelease];
+    aString = [NSString stringWithFormat:@"%@ %@",[self variableType],[self variableDimDescription]];
+    return aString;
 }
 
 -(NSArray *)getVariableAttributes
@@ -120,7 +115,7 @@
 	}
 	//so I is the file, and range is the position.  
 	//create new coordinates
-	NSMutableArray  *newCoor = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray  *newCoor = [[NSMutableArray alloc] init];
 	for(i=0;i<[coordinates count];i++)
 	{
 		if(i==_unlimitedDimLocation)
@@ -137,39 +132,35 @@
 	unlimRange.location = [[startCoordinates objectAtIndex:_unlimitedDimLocation] intValue];
 	unlimRange.length = [[edgeLengths objectAtIndex:_unlimitedDimLocation] intValue];
 	NSArray *theResultRanges = [[_theDims objectAtIndex:_unlimitedDimLocation] rangeArrayForRange:unlimRange];
-	NSMutableData *theData = [[[NSMutableData alloc] init] autorelease];
+	NSMutableData *theData = [[NSMutableData alloc] init];
 	int i,j;
 	for(i=0;i<[theResultRanges count];i++)
 	{
-		NSAutoreleasePool *aPool = [[NSAutoreleasePool alloc] init];
-		NSRange aRange = [[theResultRanges objectAtIndex:i] rangeValue];
-		
-		if(aRange.length > 0)
-		{
-			NSMutableArray *newStartArray = [[[NSMutableArray alloc] init] autorelease];
-			NSMutableArray *newLengthArray = [[[NSMutableArray alloc] init] autorelease];
-			for(j=0;j<[startCoordinates count];j++)
+		@autoreleasepool {
+			NSRange aRange = [[theResultRanges objectAtIndex:i] rangeValue];
+			if(aRange.length > 0)
 			{
-				
-				if(j==_unlimitedDimLocation)
+				NSMutableArray *newStartArray = [[NSMutableArray alloc] init];
+				NSMutableArray *newLengthArray = [[NSMutableArray alloc] init];
+				for(j=0;j<[startCoordinates count];j++)
 				{
-					[newStartArray addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:i] rangeValue].location]];
-					[newLengthArray addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:i] rangeValue].length]];
+					if(j==_unlimitedDimLocation)
+					{
+						[newStartArray addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:i] rangeValue].location]];
+						[newLengthArray addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:i] rangeValue].length]];
+					}
+					else
+					{
+						[newStartArray addObject:[startCoordinates objectAtIndex:j]];
+						[newLengthArray addObject:[edgeLengths objectAtIndex:j]];
+					}
 				}
-				else
-				{
-					[newStartArray addObject:[startCoordinates objectAtIndex:j]];
-					[newLengthArray addObject:[edgeLengths objectAtIndex:j]];
-				}
+				//now we have the new coordinate array for file.  Load data.
+				[theData appendData:[[[[_seriesHandle handles] objectAtIndex:i] retrieveVariableByName:_variableName] getValueArrayAtLocation:newStartArray edgeLengths:newLengthArray]];
 			}
-			//now we have the new coordinate array for file.  Load data.
-			
-			[theData appendData:[[[[_seriesHandle handles] objectAtIndex:i] retrieveVariableByName:_variableName] getValueArrayAtLocation:newStartArray edgeLengths:newLengthArray]];
-			
+		
+		
 		}
-		
-		
-		[aPool drain];
 	}
 	return  theData;
 }
@@ -270,7 +261,7 @@
 
 -(NSArray *)lengthArray
 {
-	NSMutableArray *theArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *theArray = [[NSMutableArray alloc] init];
 	int i;
 	for(i=0;i<[_theDims count];i++)
 	{
@@ -303,7 +294,7 @@
 
 -(NSArray *)dimensionNames
 {
-	NSMutableArray *anArray = [[[NSMutableArray alloc] init]autorelease];
+	NSMutableArray *anArray = [[NSMutableArray alloc] init];
 	int i;
 	for(i=0;i<[_theDims count];i++)
 	{
@@ -359,13 +350,13 @@
 {
 	NSData *theTempData = [self getValueArrayAtLocation:startCoordinates edgeLengths:edgeLengths];
 	NCDFSlab *theSlab = [[NCDFSlab alloc] initSlabWithData:theTempData withType:_dataType withLengths:edgeLengths] ;
-	return [theSlab autorelease];
+	return theSlab;
 }
 
 -(NCDFSlab *)getAllDataInSlab
 {
 	NSData *theTempData = [self readAllVariableData];
-	NCDFSlab *theSlab = [[[NCDFSlab alloc] initSlabWithData:theTempData withType:_dataType withLengths:[self lengthArray]] autorelease];
+	NCDFSlab *theSlab = [[NCDFSlab alloc] initSlabWithData:theTempData withType:_dataType withLengths:[self lengthArray]];
 	return theSlab;
 }
 
