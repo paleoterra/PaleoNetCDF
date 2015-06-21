@@ -111,7 +111,7 @@ NCDFErrorHandle *theDefaultErrorHandle;
 
 -(void)logAllErrors
 {
-    int i;
+    int32_t i;
     for(i=0;i<[theErrors count];i++)
     {
         [[theErrors objectAtIndex:i] logString];

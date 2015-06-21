@@ -13,7 +13,7 @@
 @implementation NCDFVariableByteSizeFormatter
 -(NSString *)stringForObjectValue:(id)anObject
 {
-    int size = 1;
+    int32_t size = 1;
     float finalSize;
     float base = 1024.0;
     if(![anObject isKindOfClass:[NSNumber class]])

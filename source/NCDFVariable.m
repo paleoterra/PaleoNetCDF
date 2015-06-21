@@ -52,11 +52,11 @@
     /*Accessor*/
     /*Validated Types:
         */
-    int i;
+    int32_t i;
     NSArray *theDims;
     
     size_t total_values;
-    int ncid,result;
+    int32_t ncid,result;
     NSMutableData *theData;
 /*#ifndef NOEXCEPTIONHANDLE
     NS_DURING  //Exception Handling
@@ -125,8 +125,8 @@
         }
         case NC_INT:
         {
-            int *array;
-            array = (int *)malloc(sizeof(int)*total_values);
+            int32_t *array;
+            array = (int32_t *)malloc(sizeof(int)*total_values);
             result = nc_get_var_int(ncid,varID,array);
             if(result!=NC_NOERR)
             {
@@ -195,41 +195,41 @@
     {
         case NC_BYTE:
         {
-            return [NSString stringWithString:@"NC_BYTE"];
+            return @"NC_BYTE";
             break;
         }
         case NC_CHAR:
         {
-            return [NSString stringWithString:@"NC_CHAR"];
+            return @"NC_CHAR";
             break;
         }
         case NC_SHORT:
         {
-            return [NSString stringWithString:@"NC_SHORT"];
+            return @"NC_SHORT";
             break;
         }
         case NC_INT:
         {
-            return [NSString stringWithString:@"NC_INT"];
+            return @"NC_INT";
             break;
         }
         case NC_FLOAT:
         {
-            return [NSString stringWithString:@"NC_FLOAT"];
+            return @"NC_FLOAT";
             break;
         }
         case NC_DOUBLE:
         {
-            return [NSString stringWithString:@"NC_DOUBLE"];
+            return @"NC_DOUBLE";
             break;
         }
         case NC_NAT:
         {
-            return [NSString stringWithString:@"NC_NAT"];
+            return @"NC_NAT";
             break;
         }
     }
-    return [NSString stringWithString:@"Not Valid"];
+    return @"Not Valid";
 }
 
 -(void)writeAllVariableData:(NSData *)dataForWriting
@@ -244,11 +244,11 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int i;
+    int32_t i;
     NSArray *theDims;
  
     size_t total_values;
-    int ncid,result;
+    int32_t ncid,result;
     BOOL usesUnlimitedDim;
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
@@ -330,12 +330,12 @@
         }
         case NC_INT:
         {
-            int *array;
+            int32_t *array;
             //NSLog(@"int");
             if(usesUnlimitedDim==YES)
             	total_values = [dataForWriting length]/4;
-            array = (int *)malloc(sizeof(int)*total_values);
-            [dataForWriting getBytes:array];
+            array = (int32_t *)malloc(sizeof(int)*total_values);
+            [dataForWriting getBytes:array length:sizeof(int)*total_values];
             result = nc_put_var_int(ncid,varID,array);
             if(result!=NC_NOERR)
             {
@@ -409,8 +409,8 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int ncid;
-    int status;
+    int32_t ncid;
+    int32_t status;
    
     BOOL dataWritten;
     
@@ -470,7 +470,7 @@
         }
         case NC_SHORT:
         {
-            int i;
+            int32_t i;
             int16_t *array;
             array = (int16_t *)malloc(sizeof(int16_t)*[theValues count]);
             for(i=0;i<[theValues count];i++)
@@ -487,9 +487,9 @@
         }
         case NC_INT:
         {
-            int i;
-            int *array;
-            array = (int *)malloc(sizeof(int)*[theValues count]);
+            int32_t i;
+            int32_t *array;
+            array = (int32_t *)malloc(sizeof(int)*[theValues count]);
             for(i=0;i<[theValues count];i++)
                 array[i] = [[theValues objectAtIndex:i] intValue];
             status = nc_put_att_int (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
@@ -504,7 +504,7 @@
         }
         case NC_FLOAT:
         {
-            int i;
+            int32_t i;
             float *array;
             array = (float *)malloc(sizeof(float)*[theValues count]);
             for(i=0;i<[theValues count];i++)
@@ -521,7 +521,7 @@
         }
         case NC_DOUBLE:
         {
-            int i;
+            int32_t i;
             double *array;
             array = (double *)malloc(sizeof(double)*[theValues count]);
             for(i=0;i<[theValues count];i++)
@@ -570,9 +570,9 @@
     /*Returns an array containing all the attributes for the variable.  This method should not be called on from any variable that is not attached to a NCDFHandle.*/
     /*Accessor: Attributes*/
     
-    int i;
-    int ncid;
-    int status;
+    int32_t i;
+    int32_t ncid;
+    int32_t status;
     NSMutableArray *theAttArray;
     NSArray *theFinal;
     
@@ -619,8 +619,8 @@
 {
     /*Deletes the reciever's attribute of name.*/
     /*Edit: Attributes*/
-    int ncid;
-    int status;
+    int32_t ncid;
+    int32_t status;
     
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
@@ -662,9 +662,9 @@
 {
     NSArray *theWorkingDims;
     NSString *theString;
-    int i;
+    int32_t i;
     theWorkingDims = [theHandle getDimensions];
-    theString = [NSString stringWithString:@"["];
+    theString = @"[";
     for(i=0;i<[dimIDs count];i++)
     {
         theString = [theString stringByAppendingString:[[theWorkingDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimensionName]];
@@ -693,8 +693,8 @@
 {
     /*Changes the name of the variable.*/
     /*Edit: Variable Information*/
-    int status;
-    int ncid;
+    int32_t status;
+    int32_t ncid;
     
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
@@ -761,7 +761,7 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int ncid,status, i;
+    int32_t ncid,status, i;
     size_t *index;
     
     if(theErrorHandle == nil)
@@ -832,7 +832,7 @@
         }
         case NC_INT:
         {
-            int theNumber;
+            int32_t theNumber;
             theNumber = [value intValue];
             status = nc_put_var1_int(ncid,varID,index,&theNumber);
             if(status!=NC_NOERR)
@@ -889,7 +889,7 @@
 
 -(BOOL)writeValueArrayAtLocation:(NSArray *)startCoordinates edgeLengths:(NSArray *)edgeLengths withValue:(NSData *)dataObject
 {
-    /*Writes an array for values.  Start coordinates represents the start point in the data field.  Edge lengths is the lengths to be read for each dimension.  Data object must be an NSData object. */
+    /*Writes an array for values.  Start coordinates represents the start point32_t in the data field.  Edge lengths is the lengths to be read for each dimension.  Data object must be an NSData object. */
     /*Edit: Write Values*/
     /*Validated For:
         BYTE = NO
@@ -899,7 +899,7 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int ncid,status, i;
+    int32_t ncid,status, i;
     BOOL isError;
     size_t *index,*edges;
     if(theErrorHandle == nil)
@@ -974,8 +974,8 @@
         }
         case NC_INT:
         {
-            int *theNumber;
-            theNumber = (int *)malloc([dataObject length]);
+            int32_t *theNumber;
+            theNumber = (int32_t *)malloc([dataObject length]);
             [dataObject getBytes:theNumber];
             status = nc_put_vara_int(ncid,varID,index,edges,theNumber);
             if(status!=NC_NOERR)
@@ -1045,7 +1045,7 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int ncid,status, i,errorCount;
+    int32_t ncid,status, i,errorCount;
     id theObject;
     size_t *index;
     theObject = nil;
@@ -1104,7 +1104,7 @@
         }
         case NC_INT:
         {
-            int theNumber;
+            int32_t theNumber;
             status = nc_get_var1_int(ncid,varID,index,&theNumber);
             theObject = [NSNumber numberWithInt:theNumber];
             if(status!=NC_NOERR)
@@ -1154,7 +1154,7 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int ncid,status, i,errorCount;
+    int32_t ncid,status, i,errorCount;
     size_t *index,*edges,unitSize;
     NSData *theData;
     unitSize = 0;
@@ -1224,8 +1224,8 @@
         }
         case NC_INT:
         {
-            int *theNumber;
-            theNumber = (int *)malloc(sizeof(int)*unitSize);
+            int32_t *theNumber;
+            theNumber = (int32_t *)malloc(sizeof(int)*unitSize);
             status = nc_get_vara_int(ncid,varID,index,edges,theNumber);
             theData = [NSData dataWithBytes:theNumber length:(sizeof(int) *unitSize)];
             
@@ -1293,8 +1293,8 @@
 -(int)sizeUnitVariable
 {
     NSMutableArray *theDims = [theHandle getDimensions];
-    int i;
-    int theSize,aLength;
+    int32_t i;
+    int32_t theSize,aLength;
     
     theSize = 1;
     for(i=0;i<[dimIDs count];i++)
@@ -1308,7 +1308,7 @@
 
 -(int)sizeUnitVariableForType
 {
-   int size;
+   int32_t size;
    
    size = [self sizeUnitVariable];
    switch(dataType)
@@ -1338,8 +1338,8 @@
 -(int)currentVariableSize
 {
     NSMutableArray *theDims = [theHandle getDimensions];
-    int i;
-    int theSize,aLength;
+    int32_t i;
+    int32_t theSize,aLength;
     
     theSize = 1;
     for(i=0;i<[dimIDs count];i++)
@@ -1352,7 +1352,7 @@
 
 -(int)currentVariableByteSize
 {
-    int size = [self currentVariableSize];
+    int32_t size = [self currentVariableSize];
     switch(dataType)
     {
         case NC_BYTE:
@@ -1416,8 +1416,8 @@
 {
     NSMutableArray *theDims = [theHandle getDimensions];
     NSMutableArray *theLengths = [[NSMutableArray alloc] init];
-    int i;
-    int theSize,aLength;
+    int32_t i;
+    int32_t theSize,aLength;
     
     theSize = 1;
     for(i=0;i<[dimIDs count];i++)
@@ -1436,7 +1436,7 @@
 
 -(BOOL)isUnlimited
 {
-    int i;
+    int32_t i;
     BOOL unlim;
     unlim = NO;
     for(i=0;i<[dimIDs count];i++)
@@ -1451,7 +1451,7 @@
 {
     //check one, see if the data types are consistent
     NSMutableArray *dimLengths1,*dimLengths2;
-    int i;
+    int32_t i;
     if(!aVar)
         return NO;
     if(dataType!=[aVar variableNC_TYPE])
@@ -1486,7 +1486,7 @@
 
 -(BOOL)doesVariableUseDimensionName:(NSString *)aDimName
 {
-    int tempID,i;
+    int32_t tempID,i;
     
     tempID = [[theHandle retrieveDimensionByName:aDimName] dimensionID];
     for(i=0;i<[dimIDs count];i++)
@@ -1499,7 +1499,7 @@
 
 -(BOOL)doesVariableUseDimensionID:(int)aDimID
 {
-    int i;
+    int32_t i;
     
     for(i=0;i<[dimIDs count];i++)
     {
@@ -1511,7 +1511,7 @@
 
 -(BOOL)createAttributesFromAttributeArray:(NSArray *)newAttributes
 {
-    int i;
+    int32_t i;
     
     for(i=0;i<[newAttributes count];i++)
     {
@@ -1527,7 +1527,7 @@
     NSMutableDictionary *theTemp;
     NSMutableArray *attributeDictionaries;
     NSArray *originalAtts;
-    int i;
+    int32_t i;
     theTemp = [[NSMutableDictionary alloc] init];
     [theTemp setObject:fileName forKey:@"fileName"];
     [theTemp setObject:[NSNumber numberWithInt:varID] forKey:@"variableID"];
@@ -1550,7 +1550,7 @@
 {
     NSMutableArray *temp;
     NSArray *names;
-    int i;
+    int32_t i;
     temp = [[NSMutableArray alloc] init];
     for(i=0;i<[dimIDs count];i++)
     {
@@ -1565,7 +1565,7 @@
 {
     NSMutableArray *temp;
     NSArray *names;
-    int i;
+    int32_t i;
     temp = [[NSMutableArray alloc] init];
     for(i=0;i<[dimIDs count];i++)
     {
@@ -1593,12 +1593,12 @@
     /*QA tested for shifts of 5 for 1, 2, and 3d cases.*/
     NSArray *theVarDims = [self allVariableDimInformation];
     NSArray *theLengths = [self lengthArray];
-    int i,j,flippedDim,bytes;
+    int32_t i,j,flippedDim,bytes;
     NSMutableArray *theResetLengths = [[NSMutableArray alloc] init];
     NSData *theData = [self readAllVariableData];
     NSMutableData *theFinalData = [[NSMutableData alloc] initWithCapacity:[theData length]];
     NSRange theRange;
-    int unitSize,unitCount,totalUnits;
+    int32_t unitSize,unitCount,totalUnits;
     NSData *returnData;
     flippedDim = -1;
     bytes = 0;
@@ -1616,7 +1616,7 @@
     for(i=0;i<[theLengths count];i++)
     {
         
-        int newValue = 1;
+        int32_t newValue = 1;
         for(j=i+1;j<[theLengths count];j++)
         {
             newValue *= [[theLengths objectAtIndex:j] intValue];
@@ -1660,7 +1660,7 @@
             bytes = 1;
             break;
     }
-    //int unitSize,unitCount,totalUnits;
+    //int32_t unitSize,unitCount,totalUnits;
     unitSize = bytes * [[theResetLengths objectAtIndex:flippedDim] intValue];
     unitCount = [[theLengths objectAtIndex:flippedDim] intValue];
     totalUnits = [theData length]/(unitSize * unitCount);
@@ -1711,12 +1711,12 @@
     /*QA tested for shifts of 5 for 1, 2, and 3d cases.*/
     NSArray *theVarDims = [self allVariableDimInformation];
     NSArray *theLengths = [self lengthArray];
-    int i,j,flippedDim,bytes;
+    int32_t i,j,flippedDim,bytes;
     NSMutableArray *theResetLengths = [[NSMutableArray alloc] init];
     NSData *theData = [self readAllVariableData];
     NSMutableData *theFinalData = [[NSMutableData alloc] initWithCapacity:[theData length]];
     NSRange theRange;
-    int unitSize,unitCount,totalUnits;
+    int32_t unitSize,unitCount,totalUnits;
     NSData *returnData;
     flippedDim = -1;
     bytes = 0;
@@ -1734,7 +1734,7 @@
     for(i=0;i<[theLengths count];i++)
     {
         
-        int newValue = 1;
+        int32_t newValue = 1;
         for(j=i+1;j<[theLengths count];j++)
         {
             newValue *= [[theLengths objectAtIndex:j] intValue];
@@ -1778,7 +1778,7 @@
             bytes = 1;
             break;
     }
-    //int unitSize,unitCount,totalUnits;
+    //int32_t unitSize,unitCount,totalUnits;
     unitSize = bytes * [[theResetLengths objectAtIndex:flippedDim] intValue];
     unitCount = [[theLengths objectAtIndex:flippedDim] intValue];
     totalUnits = [theData length]/(unitSize * unitCount);
@@ -1797,7 +1797,7 @@
             theRange.location = (i*unitSize*unitCount) + j *unitSize;
             [theArrayOfData addObject:[theData subdataWithRange:theRange]];
         }
-        //recalculate shift point - eliminates the possibility of emptying theArrayOfData
+        //recalculate shift point32_t - eliminates the possibility of emptying theArrayOfData
         if(theShift>0)
         {
             while(theShift>=unitCount)
@@ -1848,7 +1848,7 @@
 
 -(NCDFAttribute *)variableAttributeByName:(NSString *)name
 {
-    int i;
+    int32_t i;
     NSArray *theCurrentAtts = [self getVariableAttributes];
     for(i=0;i<[theCurrentAtts count];i++)
     {
@@ -1883,7 +1883,7 @@
 					[theString appendFormat:@"%@",[aDim dimensionName]];
 				[theString appendString:@"</td>\n"];
 				[theString appendString:@"<td>\n"];
-					[theString appendFormat:@"%i",[aDim dimLength]];
+					[theString appendFormat:@"%zi",[aDim dimLength]];
 				[theString appendString:@"</td>\n"];
 			 [theString appendString:@"</tr>\n"];
 			 
@@ -1930,25 +1930,25 @@
 	switch([self variableNC_TYPE])
 	{
 		case NC_BYTE:
-			return [NSString stringWithString:@"BYTE"];
+			return @"BYTE";
 			break;
 		case NC_CHAR:
-			return [NSString stringWithString:@"CHAR"];
+			return @"CHAR";
 			break;
 		case NC_SHORT:
-			return [NSString stringWithString:@"SHORT INTEGER"];
+			return @"SHORT INTEGER";
 			break;
 		case NC_INT:
-			return [NSString stringWithString:@"INTEGER"];
+			return @"INTEGER";
 			break;
 		case NC_FLOAT:
-			return [NSString stringWithString:@"FLOAT"];
+			return @"FLOAT";
 			break;
 		case NC_DOUBLE:
-			return [NSString stringWithString:@"DOUBLE"];
+			return @"DOUBLE";
 			break;
 		default:
-			return [NSString stringWithString:@"UNKNOWN"];
+			return @"UNKNOWN";
 	}
 }
 

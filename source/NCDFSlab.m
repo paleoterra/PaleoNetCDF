@@ -56,23 +56,23 @@
 -(NSData *)subSlabStart:(NSArray *)startPositions lengths:(NSArray *)lengths
 {
 	//I'll use a lot of error checking with asserts here.  Make sure that I don't have any overruns.
-	NSAssert(([startPositions count] == dimCount), ([NSString stringWithFormat:@"Incorrect startPositions dimensions count: %i instead of %i",[startPositions count],dimCount]));
-	NSAssert(([lengths count] == dimCount), ([NSString stringWithFormat:@"Incorrect lengths dimensions count: %i instead of %i",[lengths count],dimCount]));
-	int i, temp;
+	NSAssert(([startPositions count] == dimCount), ([NSString stringWithFormat:@"Incorrect startPositions dimensions count: %li instead of %i",[startPositions count],dimCount]));
+	NSAssert(([lengths count] == dimCount), ([NSString stringWithFormat:@"Incorrect lengths dimensions count: %li instead of %i",[lengths count],dimCount]));
+	int32_t i, temp;
 	for(i=0;i<dimCount;i++)
 	{
 		temp = [[startPositions objectAtIndex:i] intValue];
-		NSAssert(( temp < dimensionLengths[i]), ([NSString stringWithFormat:@"startPositions out of range: dim %i, %i of %i",i,temp,dimensionLengths[i]]));
+		NSAssert(( temp < dimensionLengths[i]), ([NSString stringWithFormat:@"startPositions out of range: dim %i, %i of %zi",i,temp,dimensionLengths[i]]));
 		NSAssert(( [[lengths objectAtIndex:i] intValue] > 0), ([NSString stringWithFormat:@"length for dim %i, is zero",i]));
 		temp = temp + [[lengths objectAtIndex:i] intValue] ;//problem line
-		NSAssert(( temp <= dimensionLengths[i]), ([NSString stringWithFormat:@"lengths out of range: dim %i, max value %i of %i",i,temp,dimensionLengths[i]]));
+		NSAssert(( temp <= dimensionLengths[i]), ([NSString stringWithFormat:@"lengths out of range: dim %i, max value %i of %zi",i,temp,dimensionLengths[i]]));
 	}
 	//assertion checks should be done at this point.  If we got to here we have ensured that:
 	//	1. start values are all within the range of the data set
 	//	2. that start values coupled with lengths are within the range for each dimension
 	
 	//determin total number of steps for reading.
-	int steps = 1;
+	int32_t steps = 1;
 	// if dim count = 1, then 1 step;
 	if(dimCount != 1)
 	{
@@ -107,7 +107,7 @@
 -(NSArray *)dimensionLengths
 {
 	NSMutableArray *theArray = [[NSMutableArray alloc] init];
-	int i;
+	int32_t i;
 	for(i=0;i<dimCount;i++)
 	{
 		[theArray addObject:[NSNumber numberWithInt:dimensionLengths[i]]];
@@ -118,7 +118,7 @@
 -(void)setDimensionLengths:(NSArray *)theLengths
 {
 	dimensionLengths = (size_t *)malloc(sizeof(size_t)*[theLengths count]);
-	int i;
+	int32_t i;
 	dimCount = [theLengths count];
 	for(i=0;i<dimCount;i++)
 	{
@@ -128,11 +128,11 @@
 
 -(int)startPositionForNextStepFrom:(NSMutableArray *)current fromStart:(NSArray *)startCoords withLengths:(NSArray *)lengths
 {
-	int count = [current count];
+	int32_t count = [current count];
 	NSMutableArray *theArray = [[NSMutableArray alloc] init];
-	int i;
-	int newPoint,  startPosition ;
-	int carryover;
+	int32_t i;
+	int32_t newPoint,  startPosition ;
+	int32_t carryover;
 	startPosition = [self positionFromCoordinates:current];//we get value first and then increment by one
 	//NSLog(@"start");
 	//NSLog([current description]);
@@ -162,9 +162,9 @@
 
 -(int)positionFromCoordinates:(NSArray *)coordinates
 {
-	int i,j;
-	int temp = 0;
-	int startPosition = 0;
+	int32_t i,j;
+	int32_t temp = 0;
+	int32_t startPosition = 0;
 	for(i=0;i<[coordinates count];i++)
 	{
 		

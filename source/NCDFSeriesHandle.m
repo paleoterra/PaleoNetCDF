@@ -15,7 +15,7 @@
 -(id)initWithOrderedPathSeries:(NSArray *)paths
 {
 	NSMutableArray *newURL = [[NSMutableArray alloc] init];
-	int i;
+	int32_t i;
 	for(i=0;i<[paths count];i++)
 	{
 		[newURL addObject:[NSURL fileURLWithPath:[paths objectAtIndex:i]]];
@@ -29,7 +29,7 @@
 	if(self)
 	{
 		BOOL isValid = YES;
-		int i;
+		int32_t i;
 		NCDFHandle *aHandle;
 		NSString *dirPath;
 		_isSingleDirectory = YES;
@@ -91,7 +91,7 @@
 		NSDictionary *theDict = [NSDictionary dictionaryWithContentsOfURL:url];
 		NSArray *theFiles = [theDict objectForKey:@"files"];
 		NSMutableArray *tempURLs = [[NSMutableArray alloc] init];
-		int i;
+		int32_t i;
 		if([[theDict objectForKey:@"isSingleDirectory"] isEqualToString:@"YES"])
 		{
 			_isSingleDirectory = YES;
@@ -127,7 +127,7 @@
 -(id)initWithUnorderedPathSeries:(NSArray *)paths sorted:(BOOL *)sorted
 {
 	NSMutableArray *newURL = [[NSMutableArray alloc] init];
-	int i;
+	int32_t i;
 	for(i=0;i<[paths count];i++)
 	{
 		[newURL addObject:[NSURL fileURLWithPath:[paths objectAtIndex:i]]];
@@ -141,7 +141,7 @@
 	if(self)
 	{
 		BOOL isValid = YES;
-		int i;
+		int32_t i;
 		NCDFHandle *aHandle;
 		NSString *dirPath;
 		_isSingleDirectory = YES;
@@ -198,7 +198,7 @@
 -(BOOL)sortHandles
 {
 	NSArray *tempArray = [_theHandles sortedArrayUsingSelector:@selector(compareUnlimitedValue:)];
-	int i;
+	int32_t i;
 
 	BOOL theFinalResult = YES;
 	for(i=0;i<[tempArray count]-1;i++)
@@ -244,7 +244,7 @@
 	// 1. If every file is within the same directory, save as a relative path (and save the directory path in case the file moves or the save file is located elsewhere)
 	// 2. If nc files located in multiple directories, save all paths as full paths
 	NSMutableDictionary *aDict = [[NSMutableDictionary alloc] init];
-	int i;
+	int32_t i;
 	if(_isSingleDirectory)
 	{
 		[aDict setObject:@"YES" forKey:@"isSingleDirectory"];

@@ -29,7 +29,7 @@
 	//for multithreading, NSLock
 	NSLock *handleLock;
 	NSNumber *_theCompareValue;
-	int netcdfVersion;
+	int32_t netcdfVersion;
 	//int _NCDFNcid;
 	//int _NCDFNcidHoldCount;
 	//int _NCDFNcidOpenType;
@@ -65,9 +65,10 @@
 
 +(id)handleWithNewFileAtPath:(NSString *)thePath;
 +(id)handleWithNew64BitFileAtPath:(NSString *)thePath;
+#ifdef DNCDF4
 +(id)handleWithNewNetCDF4FileAtPath:(NSString *)thePath;
 +(id)handleWithNewClassicNetCDF4FileAtPath:(NSString *)thePath;
-
+#endif
 
 
 
@@ -445,5 +446,5 @@
 
 -(int)ncidForReadOnly;
 -(void)closeNCID:(int)ncid;
--(int)ncidWithOpenMode:(int)openMode status:(int *)status;
+-(int)ncidWithOpenMode:(int)openMode status:(int32_t *)status;
 @end

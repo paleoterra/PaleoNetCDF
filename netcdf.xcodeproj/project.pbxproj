@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -20,11 +20,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		B43528C015AE59F000098C4A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B43528BF15AE59F000098C4A /* libz.dylib */; };
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
-		B4CCA718102BE7E200E6E2C1 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4CCA716102BE7E200E6E2C1 /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4CCA72A102BE82500E6E2C1 /* libnetcdf4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */; };
+		B47D4D45176E02E7002051CD /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47D4D44176E02E7002051CD /* libnetcdf.a */; };
+		B47D4D46176E02E7002051CD /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47D4D44176E02E7002051CD /* libnetcdf.a */; };
+		B47D4D4B176E1E21002051CD /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B47D4D4A176E1E21002051CD /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D28F0C9EE4B10029D494 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D2900C9EE4B10029D494 /* NCDFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D2740C9EE4B10029D494 /* NCDFAttribute.m */; };
 		B4E0D2910C9EE4B10029D494 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D2750C9EE4B10029D494 /* NCDFDataTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,15 +91,11 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08FB77B4FE84181DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		B43528BF15AE59F000098C4A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.dylib; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		B469DE120ACCA2A700E414C0 /* License_NetCDFFramework.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = License_NetCDFFramework.txt; sourceTree = "<group>"; };
 		B46DE09E091B0BD1001A5988 /* netcdf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = netcdf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "netcdf-Info.plist"; sourceTree = "<group>"; };
-		B4CCA716102BE7E200E6E2C1 /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
-		B4CCA717102BE7E200E6E2C1 /* netcdf3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netcdf3.h; sourceTree = "<group>"; };
-		B4CCA71A102BE7F400E6E2C1 /* hdf5_hl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdf5_hl.h; sourceTree = "<group>"; };
-		B4CCA71C102BE80200E6E2C1 /* hdf5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdf5.h; sourceTree = "<group>"; };
-		B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnetcdf4.a; sourceTree = "<group>"; };
+		B47D4D44176E02E7002051CD /* libnetcdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnetcdf.a; sourceTree = "<group>"; };
+		B47D4D4A176E1E21002051CD /* netcdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netcdf.h; sourceTree = "<group>"; };
 		B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFAttribute.h; path = source/NCDFAttribute.h; sourceTree = "<group>"; };
 		B4E0D2740C9EE4B10029D494 /* NCDFAttribute.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = NCDFAttribute.m; path = source/NCDFAttribute.m; sourceTree = "<group>"; };
 		B4E0D2750C9EE4B10029D494 /* NCDFDataTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFDataTypeFormatter.h; path = source/NCDFDataTypeFormatter.h; sourceTree = "<group>"; };
@@ -132,7 +128,7 @@
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F577E7F402F7319701EA6D6B /* NCDFError.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = NCDFError.strings; path = English.lproj/NCDFError.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,8 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B43528C015AE59F000098C4A /* libz.dylib in Frameworks */,
-				B4CCA72A102BE82500E6E2C1 /* libnetcdf4.a in Frameworks */,
+				B47D4D45176E02E7002051CD /* libnetcdf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */,
+				B47D4D46176E02E7002051CD /* libnetcdf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,8 +182,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				B43528BF15AE59F000098C4A /* libz.dylib */,
-				B4CCA729102BE82500E6E2C1 /* libnetcdf4.a */,
+				B47D4D44176E02E7002051CD /* libnetcdf.a */,
 				B4E5467F093D483A00794457 /* SenTestingKit.framework */,
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
@@ -260,10 +255,7 @@
 		B4326ABE090F2F57000B7357 /* netcdf */ = {
 			isa = PBXGroup;
 			children = (
-				B4CCA716102BE7E200E6E2C1 /* netcdf.h */,
-				B4CCA717102BE7E200E6E2C1 /* netcdf3.h */,
-				B4CCA71A102BE7F400E6E2C1 /* hdf5_hl.h */,
-				B4CCA71C102BE80200E6E2C1 /* hdf5.h */,
+				B47D4D4A176E1E21002051CD /* netcdf.h */,
 			);
 			name = netcdf;
 			sourceTree = "<group>";
@@ -297,6 +289,7 @@
 				B4E0D2950C9EE4B10029D494 /* NCDFError.h in Headers */,
 				B4E0D2970C9EE4B10029D494 /* NCDFErrorHandle.h in Headers */,
 				B4E0D2990C9EE4B10029D494 /* NCDFHandle.h in Headers */,
+				B47D4D4B176E1E21002051CD /* netcdf.h in Headers */,
 				B4E0D29B0C9EE4B10029D494 /* NCDFNameFormatter.h in Headers */,
 				B4E0D29D0C9EE4B10029D494 /* NCDFNetCDF.h in Headers */,
 				B4E0D29E0C9EE4B10029D494 /* NCDFProtocols.h in Headers */,
@@ -306,7 +299,6 @@
 				B4E0D2A50C9EE4B10029D494 /* NCDFSlab.h in Headers */,
 				B4E0D2A70C9EE4B10029D494 /* NCDFVariable.h in Headers */,
 				B4E0D2A90C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h in Headers */,
-				B4CCA718102BE7E200E6E2C1 /* netcdf.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,8 +349,11 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = B4244EB308F4659B0030396F /* Build configuration list for PBXProject "netcdf" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -472,9 +467,8 @@
 		B4244EB408F4659B0030396F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
-				GCC_ENABLE_OBJC_GC = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -496,9 +490,8 @@
 		B4244EB508F4659B0030396F /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				GCC_ENABLE_OBJC_GC = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -513,16 +506,15 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Deployment;
 		};
 		B4244EB608F4659B0030396F /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
-				GCC_ENABLE_OBJC_GC = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -544,9 +536,8 @@
 		B4244EB708F4659B0030396F /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
-				GCC_ENABLE_OBJC_GC = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -568,20 +559,22 @@
 		B46DE0A1091B0BD2001A5988 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1 = x86_64;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_GC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -590,6 +583,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
+					/opt/local/lib,
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
@@ -597,6 +593,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -605,10 +602,10 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx10.7;
 				SECTORDER_FLAGS = "";
+				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -620,20 +617,22 @@
 		B46DE0A2091B0BD2001A5988 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1 = x86_64;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_GC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -642,6 +641,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
+					/opt/local/lib,
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
@@ -649,6 +651,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -657,10 +660,10 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx10.7;
 				SECTORDER_FLAGS = "";
+				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -672,19 +675,21 @@
 		B46DE0A3091B0BD2001A5988 /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1 = x86_64;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_GC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -693,6 +698,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
+					/opt/local/lib,
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
@@ -700,6 +708,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -708,10 +717,10 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx10.7;
 				SECTORDER_FLAGS = "";
+				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -723,19 +732,21 @@
 		B46DE0A4091B0BD2001A5988 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_64_BIT_PRE_XCODE_3_1 = x86_64;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_GC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -744,6 +755,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
+					/opt/local/lib,
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
@@ -751,6 +765,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -759,10 +774,10 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx10.7;
 				SECTORDER_FLAGS = "";
+				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
@@ -774,43 +789,57 @@
 		B4E1C8620924260C0014A0B6 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=macosx10.7][arch=x86_64]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = API;
+				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
 			};
 			name = Development;
 		};
 		B4E1C8630924260C0014A0B6 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=macosx10.7][arch=x86_64]" = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = API;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
-				ZERO_LINK = NO;
+				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
 			};
 			name = Deployment;
 		};
 		B4E1C8640924260C0014A0B6 /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = API;
+				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
 			};
 			name = test;
 		};
 		B4E1C8650924260C0014A0B6 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=macosx10.7][arch=x86_64]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = API;
+				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
 			};
 			name = Default;
 		};
 		B4E5463D093D432100794457 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS)",
@@ -818,19 +847,20 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
@@ -840,8 +870,8 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -850,24 +880,26 @@
 		B4E5463E093D432100794457 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
@@ -877,8 +909,8 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -887,22 +919,24 @@
 		B4E5463F093D432100794457 /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
@@ -912,8 +946,8 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -922,22 +956,24 @@
 		B4E54640093D432100794457 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"\"$(SRCROOT)\"",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
@@ -947,8 +983,8 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};

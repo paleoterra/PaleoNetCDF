@@ -111,7 +111,7 @@
 		[aString appendString:@"\tisUnlimited:\t\t YES\n"];
 		NSEnumerator *anEnum = [_unlimitedLengthArray objectEnumerator];
 		NSValue *aValue;
-		[aString appendFormat:@"\ttotal length:\t\t%i\n",_length];
+		[aString appendFormat:@"\ttotal length:\t\t%zi\n",_length];
 		[aString appendString:@"\tFile Ranges:\n"];
 		while(aValue = [anEnum nextObject])
 		{
@@ -121,7 +121,7 @@
 	else
 	{
 		[aString appendString:@"\tisUnlimited:\t\t NO\n"];
-		[aString appendFormat:@"\tlength:\t\t%i\n",_length];
+		[aString appendFormat:@"\tlength:\t\t%zi\n",_length];
 	}
 	return [NSString stringWithString:aString];
 }

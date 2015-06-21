@@ -46,7 +46,7 @@
 {
     BOOL result = NO;
     NSString *aString;
-    NSString *err = [NSString stringWithString:@"Name Not Properly Formatted"];
+    NSString *err = @"Name Not Properly Formatted";
 
     aString = [self parseNameString:string];
     if([aString isEqualToString:string])
@@ -64,7 +64,7 @@
 {
     BOOL result = NO;
     NSString *aString;
-    NSString *err = [NSString stringWithString:@"Name Not Properly Formatted"];
+    NSString *err = @"Name Not Properly Formatted";
     //NSLog(@"I'm here");
     aString = [self parseNameString:partialString];
     //NSLog(@"I'm here 2");

@@ -51,7 +51,7 @@
  */
 @interface NCDFDimension : NSObject <NCDFImmutableDimensionProtocol>{
     NSString *fileName;
-    int dimID;
+    int32_t dimID;
     NSString *dimName;
     size_t length;
     NCDFHandle *theHandle;

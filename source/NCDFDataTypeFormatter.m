@@ -7,7 +7,7 @@
 //
 
 #import "NCDFDataTypeFormatter.h"
-#import "netcdf.h"
+#import <netcdf.h>
 
 @implementation NCDFDataTypeFormatter
 
@@ -19,22 +19,22 @@
     switch([anObject intValue])
     {
         case NC_BYTE:
-            return [NSString stringWithString:@"NC_BYTE"];
+            return @"NC_BYTE";
             break;
         case NC_CHAR:
-            return [NSString stringWithString:@"NC_CHAR"];
+            return @"NC_CHAR";
             break;
         case NC_SHORT:
-            return [NSString stringWithString:@"NC_SHORT"];
+            return @"NC_SHORT";
             break;
         case NC_INT:
-            return [NSString stringWithString:@"NC_INT"];
+            return @"NC_INT";
             break;
         case NC_FLOAT:
-            return [NSString stringWithString:@"NC_FLOAT"];
+            return @"NC_FLOAT";
             break;
         case NC_DOUBLE:
-            return [NSString stringWithString:@"NC_DOUBLE"];
+            return @"NC_DOUBLE";
             break;
         default:
             return nil;

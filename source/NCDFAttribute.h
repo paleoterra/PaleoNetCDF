@@ -9,7 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "netcdf.h"
+#import <netcdf.h>
 
 /*!
     @defined NCDFAttributePropertyListType
@@ -63,7 +63,7 @@
  */
 @interface NCDFAttribute : NSObject {
     NSString *fileName;
-    int variableID;
+    int32_t variableID;
     NSString *attName;
     nc_type type;
     size_t length;

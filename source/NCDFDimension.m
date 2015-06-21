@@ -80,8 +80,8 @@
 // Writing functions
 -(BOOL)renameDimension:(NSString *)newName
 {
-    int ncid;
-    int status;
+    int32_t ncid;
+    int32_t status;
     
     char *theCName;
     
@@ -161,7 +161,7 @@
 
 -(BOOL)isUnlimited
 {
-    int ncid,pid,status;
+    int32_t ncid,pid,status;
     if(theErrorHandle == nil)
         theErrorHandle = [theHandle theErrorHandle];
     ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];
@@ -207,7 +207,7 @@
 
 -(NSString *)description
 {
-	return [NSString stringWithFormat:@"NCDFDimension: %@\nID: %i\nLength: %i\n",[self dimensionName],[self dimLength],[self dimensionID]];
+	return [NSString stringWithFormat:@"NCDFDimension: %@\nID: %zi\nLength: %i\n",[self dimensionName],[self dimLength],[self dimensionID]];
 }
 
 -(NSComparisonResult)compare:(id)object

@@ -20,7 +20,7 @@
 	NSString *_typeName;
     NCDFSeriesHandle *_seriesHandle;
 	NSArray *_theDims;
-	int _unlimitedDimLocation;
+	int32_t _unlimitedDimLocation;
 }
 
 

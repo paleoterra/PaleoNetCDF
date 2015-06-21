@@ -72,8 +72,8 @@
 
 -(void)loadValues
 {
-    int ncid;
-    int status;
+    int32_t ncid;
+    int32_t status;
     NSMutableArray *tempValues;
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: loadValues");
@@ -131,7 +131,7 @@
         }
         case NC_SHORT:
         {
-            int i;
+            int32_t i;
             int16_t *array;
             array = (int16_t *)malloc(sizeof(int16_t)*length);
             status = nc_get_att_short (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
@@ -149,9 +149,9 @@
         }
         case NC_INT:
         {
-            int i;
-            int *array;
-            array = (int *)malloc(sizeof(int)*length);
+            int32_t i;
+            int32_t *array;
+            array = (int32_t *)malloc(sizeof(int)*length);
             status = nc_get_att_int (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
             if(status!=NC_NOERR)
             {
@@ -166,7 +166,7 @@
         }
         case NC_FLOAT:
         {
-            int i;
+            int32_t i;
             float *array;
             array = (float *)malloc(sizeof(float)*length);
             status = nc_get_att_float (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
@@ -183,7 +183,7 @@
         }
         case NC_DOUBLE:
         {
-            int i;
+            int32_t i;
             double *array;
             array = (double *)malloc(sizeof(double)*length);
             status = nc_get_att_double (ncid,variableID,[attName cStringUsingEncoding:NSUTF8StringEncoding],array);
@@ -244,7 +244,7 @@
         FLOAT = NO
         DOUBLE = NO
         */
-    int i;
+    int32_t i;
     NSMutableString *initial;
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: contentDescription");
@@ -270,7 +270,7 @@
         case NC_BYTE:
         {	
             uint8 *theByteData = (uint8 *)malloc([(NSData *)object length]);
-            int i;
+            int32_t i;
             NSMutableString *mutString = [[NSMutableString alloc] init];
             [(NSData *)object getBytes:theByteData];
             for(i=0;i<[(NSData *)object length];i++)
@@ -344,8 +344,8 @@
 
 -(BOOL)renameAttribute:(NSString *)newName
 {
-    int status;
-    int ncid;
+    int32_t status;
+    int32_t ncid;
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: renameAttribute");
 #endif
@@ -407,7 +407,7 @@
 {
     NSArray *theArray;
     if(variableID == NC_GLOBAL)
-        return [NSString stringWithString:@"Global"];
+        return @"Global";
     else
     {
         theArray = [theHandle getVariables];

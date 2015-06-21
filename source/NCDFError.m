@@ -7,7 +7,7 @@
 //
 
 #import "NCDFError.h"
-#import "netcdf.h"
+#import <netcdf.h>
 
 @implementation NCDFError
 

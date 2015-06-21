@@ -14,12 +14,12 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import "netcdf.h"
+#import <netcdf.h>
 
 @interface NCDFSlab : NSObject {
 	nc_type theType;
 	size_t *dimensionLengths;
-	int dimCount;
+	int32_t dimCount;
 	NSData *theData;
 }
 

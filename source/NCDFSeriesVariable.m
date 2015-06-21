@@ -17,7 +17,7 @@
 	self = [super init];
 	if(self)
 	{
-		int i = 0;
+		int32_t i = 0;
 		_variableName = [aVar variableName];
 		_dataType = [aVar variableNC_TYPE]; 
 		_typeName = [aVar variableType] ;
@@ -70,8 +70,8 @@
 
 -(NSString *)variableDimDescription
 {
-	int i;
-    NSString *theString = [NSString stringWithString:@"["];
+	int32_t i;
+    NSString *theString = @"[";
 	
     for(i=0;i<[_theDims count];i++)
     {
@@ -103,7 +103,7 @@
 	aRange.location = [unlim intValue];
 	aRange.length = 1;
 	NSArray *theResultRanges = [[_theDims objectAtIndex:_unlimitedDimLocation] rangeArrayForRange:aRange];
-	int i,fileid;
+	int32_t i,fileid;
 	for(i=0;i<[theResultRanges count];i++)
 	{
 		aRange = [[theResultRanges objectAtIndex:i] rangeValue];
@@ -133,7 +133,7 @@
 	unlimRange.length = [[edgeLengths objectAtIndex:_unlimitedDimLocation] intValue];
 	NSArray *theResultRanges = [[_theDims objectAtIndex:_unlimitedDimLocation] rangeArrayForRange:unlimRange];
 	NSMutableData *theData = [[NSMutableData alloc] init];
-	int i,j;
+	int32_t i,j;
 	for(i=0;i<[theResultRanges count];i++)
 	{
 		@autoreleasepool {
@@ -173,8 +173,8 @@
 -(int)sizeUnitVariable
 {
 	
-    int i;
-    int theSize,aLength;
+    int32_t i;
+    int32_t theSize,aLength;
     
     theSize = 1;
     for(i=0;i<[_theDims count];i++)
@@ -188,7 +188,7 @@
 
 -(int)sizeUnitVariableForType
 {
-	int size;
+	int32_t size;
 	
 	size = [self sizeUnitVariable];
 	switch(_dataType)
@@ -217,8 +217,8 @@
 
 -(int)currentVariableSize
 {
-	int i;
-    int theSize,aLength;
+	int32_t i;
+    int32_t theSize,aLength;
     
     theSize = 1;
     for(i=0;i<[_theDims count];i++)
@@ -231,7 +231,7 @@
 
 -(int)currentVariableByteSize
 {
-    int size = [self currentVariableSize];
+    int32_t size = [self currentVariableSize];
     switch(_dataType)
     {
         case NC_BYTE:
@@ -262,7 +262,7 @@
 -(NSArray *)lengthArray
 {
 	NSMutableArray *theArray = [[NSMutableArray alloc] init];
-	int i;
+	int32_t i;
 	for(i=0;i<[_theDims count];i++)
 	{
 		[theArray addObject:[NSNumber numberWithInt:[[_theDims objectAtIndex:i] dimLength]]];
@@ -277,7 +277,7 @@
 
 -(BOOL)doesVariableUseDimensionName:(NSString *)aDimName
 {
-	int i;
+	int32_t i;
 	BOOL result = NO;
 	for(i=0;i<[_theDims count];i++)
 	{
@@ -295,7 +295,7 @@
 -(NSArray *)dimensionNames
 {
 	NSMutableArray *anArray = [[NSMutableArray alloc] init];
-	int i;
+	int32_t i;
 	for(i=0;i<[_theDims count];i++)
 	{
 		[anArray addObject:[[_theDims objectAtIndex:i] dimensionName]];

@@ -12,7 +12,7 @@
   Default header for the netcdf.framework
 */
 
-#import "netcdf.h"
+#import <netcdf.h>
 #import "NCDFDimension.h"
 #import "NCDFAttribute.h"
 #import "NCDFVariable.h"

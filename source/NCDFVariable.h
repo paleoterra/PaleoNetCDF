@@ -74,11 +74,11 @@
 
 @interface NCDFVariable : NSObject <NCDFImmutableVariableProtocol>{
     NSString *fileName;
-    int varID;
+    int32_t varID;
     NSString *variableName;
     nc_type dataType;
     NSArray *dimIDs;
-    int numberOfAttributes;
+    int32_t numberOfAttributes;
     NSArray *attributes;//NCDFAttributes
     NCDFHandle *theHandle;
     NCDFErrorHandle *theErrorHandle;
