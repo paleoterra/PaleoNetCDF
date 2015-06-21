@@ -27,7 +27,9 @@
 -(id)initWithUnlimitedDimension:(NCDFDimension *)aDim withHandleArray:(NSArray *)theHandles
 {
 	self = [super init];
-	
+
+
+
 	if(self)
 	{
 		_dimName = [aDim dimensionName];
@@ -45,7 +47,11 @@
 			_length += aLength;
 			[_unlimitedLengthArray addObject:[NSValue valueWithRange:aRange]];
 		}
-		
+
+
+
+
+
 		_isUnlimited = YES;
 	}
 	return self;
@@ -104,7 +110,9 @@
 -(NSString *)description
 {
 	NSMutableString *aString = [[NSMutableString alloc] init];
-	
+
+
+
 	[aString appendFormat:@"NCDFSeriesDimension: \t\t %@\n",_dimName];
 	if([self isUnlimited])
 	{
@@ -126,6 +134,10 @@
 	return [NSString stringWithString:aString];
 }
 
-
+-(void)dealloc
+{
+    _dimName = nil;
+    _unlimitedLengthArray = nil;
+}
 
 @end

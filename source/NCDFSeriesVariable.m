@@ -19,7 +19,9 @@
 	{
 		int32_t i = 0;
 		_variableName = [aVar variableName];
-		_dataType = [aVar variableNC_TYPE]; 
+		_dataType = [aVar variableNC_TYPE];
+
+
 		_typeName = [aVar variableType] ;
 		_seriesHandle = aHandle;
 		NSEnumerator *temp = [[aVar dimensionNames] objectEnumerator];
@@ -43,13 +45,19 @@
 	NSEnumerator *anEnum = [[_seriesHandle handles] objectEnumerator];
 	NCDFHandle *aHandle;
 	NSMutableData *theData = [[NSMutableData alloc] init];
-	
+
+
+
 	while(aHandle = [anEnum nextObject])
 	{
-	
+
+
+
 		[theData appendData:[[aHandle retrieveVariableByName:_variableName] readAllVariableData]];
 	}
-	
+
+
+
 	return [NSData dataWithData:theData];
 }
 
@@ -72,7 +80,9 @@
 {
 	int32_t i;
     NSString *theString = @"[";
-	
+
+
+
     for(i=0;i<[_theDims count];i++)
     {
         theString = [theString stringByAppendingString:[[_theDims objectAtIndex:i] dimensionName]];
@@ -103,7 +113,7 @@
 	aRange.location = [unlim intValue];
 	aRange.length = 1;
 	NSArray *theResultRanges = [[_theDims objectAtIndex:_unlimitedDimLocation] rangeArrayForRange:aRange];
-	int32_t i,fileid;
+	int32_t i,fileid = 0;
 	for(i=0;i<[theResultRanges count];i++)
 	{
 		aRange = [[theResultRanges objectAtIndex:i] rangeValue];
@@ -113,7 +123,11 @@
 			break;
 		}
 	}
-	//so I is the file, and range is the position.  
+	//so I is the file, and range is the position.
+
+
+
+
 	//create new coordinates
 	NSMutableArray  *newCoor = [[NSMutableArray alloc] init];
 	for(i=0;i<[coordinates count];i++)
@@ -158,8 +172,16 @@
 				//now we have the new coordinate array for file.  Load data.
 				[theData appendData:[[[[_seriesHandle handles] objectAtIndex:i] retrieveVariableByName:_variableName] getValueArrayAtLocation:newStartArray edgeLengths:newLengthArray]];
 			}
-		
-		
+
+
+
+
+
+
+
+
+
+
 		}
 	}
 	return  theData;
@@ -172,10 +194,18 @@
 
 -(int)sizeUnitVariable
 {
-	
+
+
+
     int32_t i;
     int32_t theSize,aLength;
-    
+
+
+
+
+
+
+
     theSize = 1;
     for(i=0;i<[_theDims count];i++)
     {
@@ -189,7 +219,9 @@
 -(int)sizeUnitVariableForType
 {
 	int32_t size;
-	
+
+
+
 	size = [self sizeUnitVariable];
 	switch(_dataType)
 	{
@@ -219,7 +251,13 @@
 {
 	int32_t i;
     int32_t theSize,aLength;
-    
+
+
+
+
+
+
+
     theSize = 1;
     for(i=0;i<[_theDims count];i++)
     {
@@ -255,7 +293,13 @@
         default:
             return -1;
             break;
-			
+
+
+
+
+
+
+
     }
 }
 
@@ -284,7 +328,7 @@
 		if([[[_theDims objectAtIndex:i] dimensionName] isEqualToString:aDimName])
 			result = YES;
 	}
-	return YES;
+	return result;
 }
 
 -(int)unlimitedVariableLength
@@ -363,5 +407,14 @@
 -(int)variableID
 {
 	return [[[_seriesHandle rootHandle] retrieveVariableByName:_variableName] variableID];
+}
+
+-(void)dealloc
+{
+    _variableName = nil;
+    _typeName = nil;
+    _seriesHandle = nil;
+    _theDims = nil;
+
 }
 @end

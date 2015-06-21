@@ -26,7 +26,8 @@
 -(void)dealloc
 {
 	//NSLog(@"deallocing slab");
-	free(dimensionLengths);
+    free(dimensionLengths);
+    theData = nil;
 }
 
 
@@ -70,7 +71,9 @@
 	//assertion checks should be done at this point.  If we got to here we have ensured that:
 	//	1. start values are all within the range of the data set
 	//	2. that start values coupled with lengths are within the range for each dimension
-	
+
+
+
 	//determin total number of steps for reading.
 	int32_t steps = 1;
 	// if dim count = 1, then 1 step;
@@ -81,12 +84,18 @@
 			steps *= [[lengths objectAtIndex:i] intValue];
 		}
 	}
-	
+
+
+
 	//now we know the total count of steps;
 	NSRange readRange;
-	
+
+
+
 	readRange.length = sizeof(theType) * [[lengths lastObject] intValue];
-	
+
+
+
 	NSMutableData *theMutData = [[NSMutableData alloc] init];
 	NSMutableArray *current = [[NSMutableArray alloc] init];
 	[current addObjectsFromArray:startPositions];
@@ -95,11 +104,19 @@
 	for(i=0;i<steps;i++)
 	{
 		//he we need to cycle through each step, and calculate the beginning of the data read and then read the data into the mutable data object.
-		
+
+
+
+
+
 		readRange.location = [self startPositionForNextStepFrom:current fromStart:startPositions withLengths:lengths] * sizeof(theType);
 		//NSLog(@"size: %i, range %@",sizeof(theType),NSStringFromRange(readRange));
 		[theMutData appendData:[theData subdataWithRange:readRange]];
-		
+
+
+
+
+
 	}
 	return [NSData dataWithData:theMutData];
 }
@@ -156,7 +173,9 @@
 	//time to get the start position in terms of value count
 	//NSLog(@"end");
 	//NSLog([current description]);
-	
+
+
+
 	return startPosition;
 }
 
@@ -167,7 +186,11 @@
 	int32_t startPosition = 0;
 	for(i=0;i<[coordinates count];i++)
 	{
-		
+
+
+
+
+
 		temp = [[coordinates objectAtIndex:i] intValue];
 		for(j=i+1;j<[coordinates count];j++)
 		{

@@ -53,7 +53,9 @@ static NSLock *fileDatabaseLock;
 
 -(void)setFilePath:(NSString *)thePath
 {
-    /*Sets the path to the netcdf file.  This method should not be invoked.  This 
+    /*Sets the path to the netcdf file.  This method should not be invoked.  This
+
+
 	 method does not check for valid paths.*/
     /*Initialization*/
 #ifdef DEBUG_NCDFHandle
@@ -88,7 +90,13 @@ static NSLock *fileDatabaseLock;
 {
     /*Populates NCDFDimension,NCDFAttribute,and NCDFVariable objects based on an existing netcdf file.  This method should only be invoked by subclasses of any of the above objects when the objects values were changed in the file.  However, changing these values will release objects held by the handle.*/
     /*Initialization*/
-    
+
+
+
+
+
+
+
     int32_t ncid,status,numberDims,numberVariables,numberGlobalAtts,numberUnlimited;
     int32_t i;
 #ifdef DEBUG_NCDFHandle
@@ -96,7 +104,9 @@ static NSLock *fileDatabaseLock;
 #endif
     if(!filePath)
         return;
-	
+
+
+
     ncid = [self ncidWithOpenMode:NC_SHARE status:&status];
     if(status!=NC_NOERR)
     {
@@ -130,7 +140,11 @@ static NSLock *fileDatabaseLock;
 		//NSLog(@"time value = %i",length);
         theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
         [[typeArrays objectAtIndex:0] addObject:theDim];
-		
+
+
+
+
+
     }
     //NSLog(@"m ga");
 	status = nc_inq_natts(ncid, &numberGlobalAtts);
@@ -166,8 +180,9 @@ static NSLock *fileDatabaseLock;
         theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:NC_GLOBAL length:length type:attributeType handle:self];
         [[typeArrays objectAtIndex:1] addObject:theAtt];
 		free(name);
-									
-        
+
+
+
     }
     //NSLog(@"m var");
     for(i=0;i<numberVariables;i++)
@@ -196,7 +211,13 @@ static NSLock *fileDatabaseLock;
     }
     //NSLog(@"close");
     [self closeNCID:ncid];
-    
+
+
+
+
+
+
+
     //NSLog(@"end");
 }
 
@@ -205,7 +226,9 @@ static NSLock *fileDatabaseLock;
 {
     /*Creates a new netcdf file at path.  This method should not be invoked.*/
     /*Initialization*/
-	
+
+
+
 	//FORMATS
 	/*quoting from manual: The creation mode flag. The following flags are available: NC NOCLOBBER,
 	 NC SHARE, NC 64BIT OFFSET, NC NETCDF4, NC CLASSIC MODEL.
@@ -262,7 +285,13 @@ static NSLock *fileDatabaseLock;
     errorCount = [theErrorHandle errorCount];
     [self setFilePath:thePath];
     [self initializeArrays];
-    
+
+
+
+
+
+
+
 	//NSLog(@"errorCount %i handle %i",errorCount,[theErrorHandle errorCount]);
     if(errorCount<[theErrorHandle errorCount])
     {
@@ -391,7 +420,9 @@ static NSLock *fileDatabaseLock;
 	NSMutableArray *tempVar = [[NSMutableArray alloc] init];
 	[self seedArrays:[NSArray arrayWithObjects:tempDim,tempAtt,tempVar,nil]];
 	//temp arrays are seeded.  Now we need to update,add, and delete.
-	
+
+
+
 	//How to do the dims
 	NSMutableArray *theDimsLeft = [NSMutableArray arrayWithArray:theDimensions] ;
 	NCDFDimension *aDim,*mainDim;
@@ -416,11 +447,15 @@ static NSLock *fileDatabaseLock;
 	[theDimsLeft removeAllObjects];
 	[theDimensions sortUsingSelector:@selector(compare:)];
 
-	
+
+
+
 	//global attributes
 	NCDFAttribute *anAtt,*mainAtt;
 	NSEnumerator *anEnum1 = [tempAtt objectEnumerator];
-	
+
+
+
 	NSMutableArray *theAttsLeft = [NSMutableArray arrayWithArray:theGlobalAttributes] ;
 	while(anAtt = [anEnum1 nextObject])
 	{
@@ -511,7 +546,13 @@ static NSLock *fileDatabaseLock;
     int32_t ncid;
     int32_t status;
     int32_t newID;
-    
+
+
+
+
+
+
+
     char *theCName;
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: createNewDimensionWithName");
@@ -521,7 +562,13 @@ static NSLock *fileDatabaseLock;
     NSLog(dimName);
 #endif
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
-    
+
+
+
+
+
+
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewDimensionWithName" subMethod:@"Opening file" errorCode:status];
@@ -569,7 +616,13 @@ static NSLock *fileDatabaseLock;
     int32_t ncid;
     int32_t status;
     int32_t newID;
-    
+
+
+
+
+
+
+
     char *theCName;
     int32_t i,j;
     size_t length;
@@ -585,7 +638,13 @@ static NSLock *fileDatabaseLock;
         valid = YES;
         for(j=0;j<[theDimensions count];j++)
         {
-            
+
+
+
+
+
+
+
             if([[newDimensionArray objectAtIndex:i] isEqualToDim:[theDimensions objectAtIndex:i]])
             {
                 valid = NO;
@@ -600,14 +659,44 @@ static NSLock *fileDatabaseLock;
         {
             [validDim addObject:[NSNumber numberWithInt:0]];
             [returnDims addObject:[newDimensionArray objectAtIndex:i]];
-            
+
+
+
+
+
+
+
         }
     }
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
-    
+
+
+
+
+
+
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewDimensionsFromDimensionArray" subMethod:@"Opening file" errorCode:status];
@@ -619,7 +708,13 @@ static NSLock *fileDatabaseLock;
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewDimensionsFromDimensionArray" subMethod:@"Set redefine mode" errorCode:status];
         return nil;
     }
-    
+
+
+
+
+
+
+
     //cycle through dims
     for(i=0;i<[newDimensionArray count];i++)
     {
@@ -631,7 +726,13 @@ static NSLock *fileDatabaseLock;
 #endif
         length = [[newDimensionArray objectAtIndex:i]dimLength];
         theCName = (char *)malloc(sizeof(char)*[dimName length]+1);
-       
+
+
+
+
+
+
+
 		[dimName getCString:theCName maxLength:[dimName length]+1 encoding:NSUTF8StringEncoding];
         status = nc_def_dim(ncid,theCName,length,&newID);
         if(status!=NC_NOERR)
@@ -656,25 +757,49 @@ static NSLock *fileDatabaseLock;
     NSString *tempPath = [filePath stringByAppendingString:@"_.nc"];
 
     int32_t i, errorCount;
-    
+
+
+
+
+
+
+
     errorCount = [theErrorHandle errorCount];
     while([theManager fileExistsAtPath:tempPath])
     {
         tempPath = [tempPath stringByAppendingString:@"_.nc"];
     }
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
-    
+
+
+
+
+
+
+
     for(i=0;i<[theGlobalAttributes count];i++)
     {
         [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
     }
-    
+
+
+
+
+
+
+
     for(i=0;i<[theDimensions count];i++)
     {
         if(![[[theDimensions objectAtIndex:i] dimensionName] isEqualToString:deleteDimName])
         [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
     }
-    
+
+
+
+
+
+
+
     for(i=0;i<[theVariables count];i++)
     {
         if(![[theVariables objectAtIndex:i] doesVariableUseDimensionName:deleteDimName])
@@ -682,7 +807,13 @@ static NSLock *fileDatabaseLock;
         [newHandle createNewVariableWithPropertyList:[[theVariables objectAtIndex:i] propertyList]];
         }
     }
-    
+
+
+
+
+
+
+
     if(errorCount<[theErrorHandle errorCount])
     {
 		[theManager removeItemAtPath:tempPath error:nil];
@@ -705,14 +836,26 @@ static NSLock *fileDatabaseLock;
     NSString *tempPath = [filePath stringByAppendingString:@"_.nc"];
 
     int32_t i, errorCount;
-    
+
+
+
+
+
+
+
     errorCount = [theErrorHandle errorCount];
     while([theManager fileExistsAtPath:tempPath])
     {
         tempPath = [tempPath stringByAppendingString:@"_.nc"];
     }
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
-    
+
+
+
+
+
+
+
     for(i=0;i<[theGlobalAttributes count];i++)
     {
         [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
@@ -744,7 +887,13 @@ static NSLock *fileDatabaseLock;
                 else
                     newSize *= newSize;
             }
-            
+
+
+
+
+
+
+
             switch ([[theVariables objectAtIndex:i] variableNC_TYPE])
             {
                 case NC_BYTE:
@@ -773,7 +922,13 @@ static NSLock *fileDatabaseLock;
             propertyList = [NSMutableDictionary dictionaryWithDictionary:[[theVariables objectAtIndex:i] propertyList]];
             [propertyList setObject:[NSData dataWithData:newData] forKey:@"data"];
             [newHandle createNewVariableWithPropertyList:[NSDictionary dictionaryWithDictionary:propertyList]];
-            
+
+
+
+
+
+
+
         }
     }
     //NSLog(@"finished making");
@@ -792,7 +947,11 @@ static NSLock *fileDatabaseLock;
 }
 /*additional methods needed
 1) create dimensions via dimension array and variable array - minimize work
-X2) rename dimensions (possibly in NCDFDimension).  
+X2) rename dimensions (possibly in NCDFDimension).
+
+
+
+
 x3) need to check if removing a dim will change the numbers.  If not, some modifications are needed.  Ruled out since you can't delete a dimension.
 X4) Modify existing methods to handle the creation of dimension variables automatically - blank values.  THis is ruled out since variables require more information than just a yes or no.*/
 
@@ -805,7 +964,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     /*Modify netcdf: Global Attributes*/
     int32_t ncid;
     int32_t status;
-    
+
+
+
+
+
+
+
     BOOL dataWritten;
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: createNewGlobalAttributeWithName");
@@ -813,7 +978,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     attName = [self parseNameString:attName];
 
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
-    
+
+
+
+
+
+
+
     if(status!=NC_NOERR)
     {
         //NSLog(@"Failed to open");
@@ -928,12 +1099,24 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             NSLog(@"createNewGlobalAttributeWithName: Case NC_NAT not handled");
         }
     }
-    
+
+
+
+
+
+
+
     [self closeNCID:ncid];
     if(!dataWritten)
         return NO;
 
-    
+
+
+
+
+
+
+
     [self refresh];
     return YES;
 
@@ -958,7 +1141,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     NSMutableArray *existingAttributes = [[NSMutableArray alloc] init];
 #ifdef DEBUG_NCDFHandle
     NSLog(@"NCDFHandle: createNewGlobalAttributeWithArray");
-#endif    
+#endif
+
+
+
+
+
+
     for(i=0;i<[theNewAttributes count];i++)
     {
         BOOL valid,result;
@@ -983,7 +1172,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         else
         [existingAttributes addObject:[theNewAttributes objectAtIndex:i]];
     }
-    
+
+
+
+
+
+
+
     return [NSArray arrayWithArray:existingAttributes];
 }
 
@@ -1006,7 +1201,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"deleteGlobalAttributeWithName" subMethod:@"Open file" errorCode:status];
     }
     nc_redef(ncid);
-    
+
+
+
+
+
+
+
     status = nc_del_att(ncid,NC_GLOBAL,[attName UTF8String]);
     [self closeNCID:ncid];
     if(status==NC_NOERR)
@@ -1027,7 +1228,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 {
     /*This method ensures that a name for creation or renaming of an netcdf object does not contain white spaces.  All white spaces are replaced with "_" values.*/
     /*Validation*/
-    
+
+
+
+
+
+
+
     NSMutableString *mutString;
     NSRange theRange;
     NSScanner *theScanner = [NSScanner scannerWithString:theString];
@@ -1040,11 +1247,23 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     while(![theScanner isAtEnd])
     {
         [theScanner scanUpToCharactersFromSet:theSet intoString:nil];
-        theRange.location = [theScanner scanLocation];       
+        theRange.location = [theScanner scanLocation];
+
+
+
+
+
+
         if(![theScanner isAtEnd])
             [mutString replaceCharactersInRange:theRange withString:@"_"];
     }
-    
+
+
+
+
+
+
+
     return [NSString stringWithString:mutString];
 }
 
@@ -1068,7 +1287,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     if(status != NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createVariableWithName" subMethod:@"Open File" errorCode:status];
-    
+
+
+
+
+
+
+
         return NO;
     }
     status = nc_redef(ncid);
@@ -1079,7 +1304,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     {
         theDimNumbers[i] = [[theVariableDims objectAtIndex:i] dimensionID];
     }
-    
+
+
+
+
+
+
+
     //parse variableName
     theName = [self parseNameString:varName];
 
@@ -1092,12 +1323,24 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
     [self closeNCID:ncid];
 
-    
+
+
+
+
+
+
+
 
     [self refresh];
 
     return YES;
-    
+
+
+
+
+
+
+
 }
 
 -(BOOL)createNewVariableWithPropertyList:(NSDictionary *)propertyList
@@ -1116,17 +1359,37 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     for(i=0;i<[newDimNames count];i++)
     {
         NCDFDimension *aDim = [self retrieveDimensionByName:[newDimNames objectAtIndex:i]];
-            
-        [newDimIDs addObject:aDim]; 
+
+
+
+
+
+
+
+        [newDimIDs addObject:aDim];
+
+
     }
-    
+
+
+
+
+
+
+
     i = [[propertyList objectForKey:@"nc_type"] intValue];
     result = [self createVariableWithName:[propertyList objectForKey:@"variableName"]  type:(nc_type)i dimArray:newDimIDs];
     if([propertyList objectForKey:@"data"]!=nil)
     {
         aVar = nil;
         aVar = [self retrieveVariableByName:[propertyList objectForKey:@"variableName"] ];
-        
+
+
+
+
+
+
+
         [aVar writeAllVariableData:[propertyList objectForKey:@"data"]];
 
     }
@@ -1150,9 +1413,21 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         for(j=0;j<[[[theNewVariables objectAtIndex:i] variableDimensions] count];j++)
         {
             NCDFDimension *theWorkingDim;
-            
+
+
+
+
+
+
+
             theWorkingDim = [[[theNewVariables objectAtIndex:i] variableDimensions] objectAtIndex:j];
-            
+
+
+
+
+
+
+
             for(k=0;k<[theDimensions count];k++)
             {
                 if([theWorkingDim isEqualToDim:[theDimensions objectAtIndex:k]])
@@ -1161,7 +1436,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
                     k = [theDimensions count];
                 }
             }
-        
+
+
+
+
+
+
+
         }
         if([theNativeDimensionArray count]==[[[theNewVariables objectAtIndex:i] variableDimensions] count])
         {
@@ -1172,7 +1453,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             [variablesNotAdded addObject:[theNewVariables objectAtIndex:i]];
         }
     }
-    
+
+
+
+
+
+
+
     return [NSArray arrayWithArray:variablesNotAdded];
 }
 
@@ -1209,28 +1496,30 @@ X4) Modify existing methods to handle the creation of dimension variables automa
                 selectedDimIDs[j] = [[theCurrentDims objectAtIndex:i] dimensionID];
             }
 
-                
         }
-        
+
     }
     if(selectedDimIDs[[selectedDims count]-1]==-1)
     {
         NSLog(@"Missing dim");
+        free(selectedDimIDs);
         return NO;
     }
     //step 4.  I think we have everything, let's create.
-    
+
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
-    
+
     if(status != NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewVariableWithName" subMethod:@"Open File" errorCode:status];
+        free(selectedDimIDs);
         return NO;
     }
     status = nc_redef(ncid);
     if(status != NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewVariableWithName" subMethod:@"Redefine Mode" errorCode:status];
+        free(selectedDimIDs);
         return NO;
     }
     status = nc_def_var(ncid,[variableName UTF8String],theType,[selectedDims count],selectedDimIDs,&vid);
@@ -1242,7 +1531,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     }
 	[self closeNCID:ncid];
     [self refresh];
-    
+
+
+
+
+
+
+
     return YES;
 }
 
@@ -1253,25 +1548,55 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     NSString *tempPath = [filePath stringByAppendingString:@"_.nc"];
 
     int32_t i, errorCount;
-    
+
+
+
+
+
+
+
     errorCount = [theErrorHandle errorCount];
     while([theManager fileExistsAtPath:tempPath])
     {
         tempPath = [tempPath stringByAppendingString:@"_.nc"];
     }
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
-    
+
+
+
+
+
+
+
     for(i=0;i<[theGlobalAttributes count];i++)
     {
         [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
     }
-    
+
+
+
+
+
+
+
     for(i=0;i<[theDimensions count];i++)
     {
-        
+
+
+
+
+
+
+
         [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
     }
-    
+
+
+
+
+
+
+
     for(i=0;i<[theVariables count];i++)
     {
         if(![[[theVariables objectAtIndex:i] variableName] isEqualToString:deleteVariableName])
@@ -1279,7 +1604,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         [newHandle createNewVariableWithPropertyList:[[theVariables objectAtIndex:i] propertyList]];
         }
     }
-    
+
+
+
+
+
+
+
     if(errorCount<[theErrorHandle errorCount])
     {
         [theManager removeItemAtPath:tempPath error:nil];
@@ -1316,7 +1647,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
     //NSLog(@"theDimensions");
     for(i=0;i<[theDimensions count];i++)
     {
-        
+
+
+
+
+
+
+
         [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
     }
     //NSLog(@"theVariables");
@@ -1405,7 +1742,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
             return [theGlobalAttributes objectAtIndex:i];
     }
     return nil;
-	
+
+
+
 }
 
 -(NCDFDimension *)retrieveUnlimitedDimension
@@ -1477,12 +1816,24 @@ X4) Modify existing methods to handle the creation of dimension variables automa
         else
         {
             [endCoords addObject:[NSNumber numberWithInt:[[self retrieveDimensionByIndex:[[varDimIDs objectAtIndex:i] intValue]] dimLength]]];
-            
+
+
+
+
+
+
+
         }
     }
     dataSize *= [aVar sizeUnitVariableForType];
     emptyObject = [NSData dataWithData:[NSMutableData dataWithLength:dataSize]];
-    
+
+
+
+
+
+
+
     result  = [aVar writeValueArrayAtLocation:startCoords edgeLengths:endCoords withValue:emptyObject];
     [self refresh];
     if(!result)
@@ -1506,13 +1857,19 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	[theString appendFormat:@"<title>NetCDF File Description: %@</title>\n",[[self theFilePath] lastPathComponent]];
 	[theString appendString:@"</head>\n"];
 	[theString appendString:@"<body>\n"];
-	
+
+
+
 	[theString appendFormat:@"<center><H1>NetCDF File Description: %@</H1></center>\n<BR>",[[self theFilePath] lastPathComponent]];
-	
+
+
+
 	//create quick links for each value
 	[theString appendString:@"Quicklinks:<P>\n"];
 	[theString appendString:@"\n<table width=\"600\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\">\n"];
-	
+
+
+
 	[theString appendString:@"<tr>\n"];
 	[theString appendString:@"<td width=\"200\">"];
 	[theString appendString:@"Global Attributes:<BR>"];
@@ -1524,9 +1881,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	[theString appendString:@"Variables:<BR>\n"];
 	[theString appendString:@"</td>"];
 	[theString appendString:@"</tr>\n"];
-	
+
+
+
 	[theString appendString:@"<tr>\n"];
-	
+
+
+
 	[theString appendString:@"<td valign=\"top\" width=\"200\">"];
 	if([theGlobalAttributes count] >0)
 	{
@@ -1539,7 +1900,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	}
 	[theString appendString:@"<P>"];
 	[theString appendString:@"</td>"];
-	
+
+
+
 	[theString appendString:@"<td valign=\"top\" width=\"200\">"];
 	if([theDimensions count] >0)
 	{
@@ -1552,7 +1915,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	}
 	[theString appendString:@"<P>"];
 	[theString appendString:@"</td>"];
-	
+
+
+
 	[theString appendString:@"<td valign=\"top\" width=\"200\">"];
 	if([theVariables count] >0)
 	{
@@ -1567,18 +1932,36 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	[theString appendString:@"</tr>\n"];
 	[theString appendString:@"</table>\n"];
 	[theString appendString:@"<P>"];
-	
+
+
+
 	[theString appendString:@"<hr>"];
-	
+
+
+
 	//at this point, I'm ready to build all technical information for the document.
-	
-	
-	//part 1. attributes.  Attributes don't self-generate HTML.  This is becuase they're likely to be in a table.  
+
+
+
+
+
+
+	//part 1. attributes.  Attributes don't self-generate HTML.  This is becuase they're likely to be in a table.
+
+
+
+
 	//in this case, 1 table per attribute.
-	
-	
+
+
+
+
+
+
 	//[theString appendString:@"\n<table width=\"500\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\">\n"];
-	
+
+
+
 	if([theGlobalAttributes count] >0)
 	{
 		[theString appendString:@"<H2> Global Attributes:<H2><BR>\n"];
@@ -1597,7 +1980,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 			[theString appendString:@"</table>"];
 		}
 	}
-	
+
+
+
 	//part 2. dims.  make individual tables like the atts.
 	if([theDimensions count] >0)
 	{
@@ -1617,7 +2002,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 			[theString appendString:@"</table>"];
 		}
 	}
-	
+
+
+
 	//part 2. dims.  make individual tables like the atts.
 	if([theVariables count] >0)
 	{
@@ -1639,9 +2026,13 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 {
 	if(!_theCompareValue)
 		[self createCompareValue];
-	
+
+
+
 	NSComparisonResult result = [_theCompareValue compare:[object compareValue]];
-	
+
+
+
 	return result;
 }
 
@@ -1687,7 +2078,9 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	}
 
 	return ncid;
-	
+
+
+
 
 }
 
@@ -1696,19 +2089,29 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 	int32_t ncid;
 	//char *theCPath = (char *)calloc([filePath length]+1,sizeof(char));
 	[fileDatabaseLock lock];
-	
+
+
+
 	if(openMode	== NC_WRITE)
 		openMode = NC_WRITE|NC_SHARE;
 	else if(openMode == NC_NOWRITE)
 		openMode = NC_SHARE;
-	
+
+
+
 	*status = nc_open([filePath cStringUsingEncoding:NSUTF8StringEncoding],openMode,&ncid);
 	[fileDatabaseLock unlock];
-	
+
+
+
 	return ncid;
-	
+
+
+
 	/*NSLog(@"%s %i",__FUNCTION__,__LINE__);
-	
+
+
+
 	if((_NCDFNcidHoldCount>0)&&(_NCDFNcid>0))
 	{
 		//here we have an open and valid file.
@@ -1722,12 +2125,20 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 		char *theCPath = (char *)malloc(sizeof(char)*[filePath length]+1);
 		[filePath getCString:theCPath maxLength:[filePath length]+1 encoding:NSUTF8StringEncoding];
 		[fileDatabaseLock lock];
-		
+
+
+
+
+
 		if(openMode	== NC_WRITE)
 			openMode = NC_WRITE|NC_SHARE;
 		else if(openMode == NC_NOWRITE)
 			openMode = NC_SHARE;
-		
+
+
+
+
+
 		*status = nc_open(theCPath,openMode,&ncid);
 		[fileDatabaseLock unlock];
 		free(theCPath);
@@ -1741,14 +2152,26 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 		}
 		NSLog(@"%s %i id %i",__FUNCTION__,__LINE__,_NCDFNcid);
 		NSLog(@"%s %i hold %i",__FUNCTION__,__LINE__,_NCDFNcidHoldCount);
-			
+
+
+
+
+
+
+
 	}
 
-	
-	
+
+
+
+
+
+
 	NSLog(@"%s %i id %i",__FUNCTION__,__LINE__,_NCDFNcid);
 	return _NCDFNcid;*/
-	
+
+
+
 }
 
 -(void)closeNCID:(int)ncid
@@ -1779,11 +2202,26 @@ X4) Modify existing methods to handle the creation of dimension variables automa
 		}
 
 	}
-	
+
+
+
 	*/
 
 }
 
+-(void)dealloc
+{
+    theVariables = nil;
+    theGlobalAttributes = nil;
+    theDimensions = nil;
+    filePath = nil;
+    //added in version 0.2.1d1
+    theErrorHandle = nil;
+    //for multithreading, NSLock
+    handleLock = nil;
+    _theCompareValue = nil;
+
+}
 
 @end
 

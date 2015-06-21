@@ -82,15 +82,39 @@
 {
     int32_t ncid;
     int32_t status;
-    
+
+
+
+
+
+
+
     char *theCName;
-    
+
+
+
+
+
+
+
     if(theErrorHandle==nil)
         theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
-    
+
+
+
+
+
+
+
     ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
-    
+
+
+
+
+
+
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFDimension" methodName:@"renameDimension" subMethod:@"Opening netCDF file" errorCode:status];
@@ -221,5 +245,13 @@
 	}
 	else
 		return NSOrderedSame;
+}
+
+-(void)dealloc
+{
+    fileName = nil;
+    dimName = nil;
+    theHandle = nil;
+    theErrorHandle = nil;
 }
 @end

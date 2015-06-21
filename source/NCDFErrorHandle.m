@@ -53,7 +53,9 @@ NCDFErrorHandle *theDefaultErrorHandle;
 {
     if([theErrors count]<1)
         return nil;
-    else 
+    else
+
+
         return [theErrors lastObject];
 }
 
@@ -118,4 +120,8 @@ NCDFErrorHandle *theDefaultErrorHandle;
     }
 }
 
+-(void)dealloc
+{
+    theErrors = nil;
+}
 @end

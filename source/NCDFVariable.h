@@ -69,7 +69,11 @@
 @header
  @class NCDFVariable
  @abstract NCDFVariable objects handle data sets within netcdf files.
- @discussion NCDFVariable objects are the primary interface for working with netcdf data sets.  The datasets are in the form of binary raster data using 0 to many dimensions.  The dimensions refered to by a variable describe the variable's data shape.  Use this class to access and write data from a netcdf file.  
+ @discussion NCDFVariable objects are the primary interface for working with netcdf data sets.  The datasets are in the form of binary raster data using 0 to many dimensions.  The dimensions refered to by a variable describe the variable's data shape.  Use this class to access and write data from a netcdf file.
+
+
+
+
  */
 
 @interface NCDFVariable : NSObject <NCDFImmutableVariableProtocol>{
@@ -85,7 +89,9 @@
 }
 
 
-/*! 
+/*!
+
+
     @method initWithPath:variableName:variableID:type:theDims:attributeCount:handle:
     @abstract Initialize a new NCDFVariable object.
     @param thePath NSString object containing the path to the parent netcdf file
@@ -99,7 +105,9 @@
 */
 -(id)initWithPath:(NSString *)thePath variableName:(NSString *)theName variableID:(int)theID type:(nc_type)theType theDims:(NSArray *)theDims attributeCount:(int)nAtt handle:(NCDFHandle *)handle;
 
-	/*! 
+	/*!
+
+
     @method handleLock
     @abstract Returns an NSLock object from the owning NCDFHandle object.
 	*/
@@ -107,14 +115,18 @@
 
 -(NSData *)readAllVariableData;
 
-/*! 
+/*!
+
+
     @method variableName:
     @abstract Get variable name.
     @discussion Retrieves the variable name and returns an NSString object.
 */
 -(NSString *)variableName;
 
-/*! 
+/*!
+
+
     @method renameVariable:
     @param newName NSString with a new variable name
     @abstract Rename a variable.
@@ -123,21 +135,27 @@
 -(BOOL)renameVariable:(NSString *)newName;
 
 
-/*! 
+/*!
+
+
     @method variableType
     @abstract Identify the nc_type used by the variable.
     @discussion Returns the receiver's nc_type in a NSString object form.
 */
 -(NSString *)variableType;
 
-/*! 
+/*!
+
+
     @method variableNC_TYPE
     @abstract Identify the nc_type used by the variable.
     @discussion Returns the receiver's nc_type.
 */
 -(nc_type)variableNC_TYPE;
 
-/*! 
+/*!
+
+
     @method writeAllVariableData:
     @param dataForWriting NSData object for writing
     @abstract Completely replace an NCDFVariable's data object in file..
@@ -145,43 +163,69 @@
 */
 -(void)writeAllVariableData:(NSData *)dataForWriting;
 
-/*! 
+/*!
+
+
     @method variableDimensions
     @abstract Returns a list of dimensions used by the variable.
     @discussion Returns a NSArray object containing NSNumber objects that hold the dimension ID numbers of each dimension used, in significance order.
 */
 -(NSArray *)variableDimensions;
 
-/*! 
+/*!
+
+
     @method variableDimDescription
     @abstract Creates a summary description of the dimension information.
     @discussion Returns a NSString object containing a string version of the list of dimensions, in significance order, using the standard bracketed format, e.g. [time, lat, lon]
 */
 -(NSString *)variableDimDescription;
 
-/*! 
+/*!
+
+
     @method dataTypeWithDimDescription
     @abstract Creates a summary description of the dimension and nc_type information.
     @discussion Returns a NSString object containing a string version of the nc_type with a list of dimensions, in significance order, using the standard bracketed format, e.g. [timen, lat, lon]
 */
 -(NSString *)dataTypeWithDimDescription;
 
-/*! 
+/*!
+
+
     @method createNewVariableAttributeWithName:dataType:values
     @abstract Creates a new variable attribute.
     @param attName NSString with the new attribute name
     @param theType nc_type of the values
     @param theValues an Array of values 1 NSString object if NC_CHAR, otherwise multiple NSNumber objects as needed.
-    @discussion Creates a new attribute owned by the receiver.  
+    @discussion Creates a new attribute owned by the receiver.
+
+
+
+
 */
 -(BOOL)createNewVariableAttributeWithName:(NSString *)attName dataType:(nc_type)theType values:(NSArray *)theValues;
 
-/*! 
+/*!
+
+
     @method createNewVariableAttributePropertyList:
     @abstract Creates a new variable attribute.
     @discussion Creates a new attribute owned by the receiver.  Uses the standard property list format defined in NCDFAttribute.
-    
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Required fields:<P>
     NCDFAttributePropertyListFieldAttributeName<P>
     NCDFAttributePropertyListFieldNC_TYPE<P>
@@ -189,16 +233,26 @@
 */
 -(BOOL)createNewVariableAttributePropertyList:(NSDictionary *)propertyList;
 
-/*! 
+/*!
+
+
     @method getVariableAttributes
     @abstract Returns an array of attributes.
     @discussion Returns an array of NCDFAttributes owned by the receiver.
 
-    
+
+
+
+
+
+
+
 */
 -(NSArray *)getVariableAttributes;
 
-/*! 
+/*!
+
+
     @method deleteVariableAttributeByName:
     @param name a NSString object containing the name of the variable
     @abstract Delete a variable attribute.
@@ -206,14 +260,18 @@
 */
 -(BOOL)deleteVariableAttributeByName:(NSString *)name;
 
-/*! 
+/*!
+
+
     @method parseNameString:
     @param theString a NSString object
     @abstract Parses the string for compliance to netcdf attribute, dimension, and variable naming rules.  If the string does not comply, it is converted to a compatible string.
 */
 -(NSString *)parseNameString:(NSString *)theString;
 
-/*! 
+/*!
+
+
     @method writeSingleValue:withValue
     @abstract Write a single value of variable data.
     @param coordinates An integer array with an NSNumber objects representing the position along each dimension in significance order of a datum.
@@ -222,7 +280,9 @@
 */
 -(BOOL)writeSingleValue:(NSArray *)coordinates withValue:(id)value;
 
-/*! 
+/*!
+
+
     @method writeValueArrayAtLocation:edgeLengths:
     @abstract Write a subset of variable data.
     @param startCoordinates An integer array with an NSNumber object representing the start position along each dimension in significance order.
@@ -232,7 +292,9 @@
 */
 -(BOOL)writeValueArrayAtLocation:(NSArray *)startCoordinates edgeLengths:(NSArray *)edgeLengths withValue:(NSData *)dataObject;
 
-/*! 
+/*!
+
+
     @method getSingleValue:
     @abstract Access a single value of variable data.
     @param coordinates An integer array with an NSNumber objects representing the position along each dimension in significance order of a datum.
@@ -242,7 +304,9 @@
 -(id)getSingleValue:(NSArray *)coordinates;
 
 
-/*! 
+/*!
+
+
     @method getValueArrayAtLocation:edgeLengths:
     @abstract Access a subset of variable data.
     @param startCoordinates An integer array with an NSNumber object representing the start position along each dimension in significance order.
@@ -253,7 +317,9 @@
 -(NSData *)getValueArrayAtLocation:(NSArray *)startCoordinates edgeLengths:(NSArray *)edgeLengths;
 
 
-/*! 
+/*!
+
+
     @method isDimensionVariable:
     @abstract Returns whether a receiver is a dimension variable.
     @discussion A dimension variable is a variable that has the same name as a dimension.  If the variable name matches that of any dimension, the method returns YES.  Otherwise returns NO.
@@ -261,51 +327,73 @@
 */
 -(BOOL)isDimensionVariable;
 
-/*! 
+/*!
+
+
     @method sizeUnitVariable:
     @abstract Get the NCDFVariables data unit size in units.
-    @discussion Returns the unit size in units for the receiver.  A "unit size" includes a value count based on all dimensions except for any unlimited dimension.  
+    @discussion Returns the unit size in units for the receiver.  A "unit size" includes a value count based on all dimensions except for any unlimited dimension.
+
+
+
+
 
 */
 -(int)sizeUnitVariable;
 
-/*! 
+/*!
+
+
     @method sizeUnitVariableForType:
     @abstract Get the NCDFVariables data unit size in bytes.
-    @discussion Returns the unit size in bytes for the receiver.  A "unit size" includes a value count based on all dimensions except for any unlimited dimension.  
+    @discussion Returns the unit size in bytes for the receiver.  A "unit size" includes a value count based on all dimensions except for any unlimited dimension.
+
+
+
+
 
 */
 -(int)sizeUnitVariableForType;
 
-/*! 
+/*!
+
+
     @method currentVariableSize:
     @abstract Get the NCDFVariables data size in units.
 
 */
 -(int)currentVariableSize;
 
-/*! 
+/*!
+
+
     @method currentVariableByteSize:
     @abstract Get the NCDFVariables data size in bytes.
 
 */
 -(int)currentVariableByteSize;
 
-/*! 
+/*!
+
+
     @method lengthArray:
     @abstract Find the dimension lengths used by the variable.
     @discussion This method returns a NSArray containing dimension lengths in significance order as NSNumber objects.
 */
 -(NSArray *)lengthArray;
 
-/*! 
+/*!
+
+
     @method isUnlimited:
     @abstract Determine if the NCDFVariable data structure uses an unlimited dimension.
     @discussion  This method determines if the receiver uses an unlimited dimension.  Returns YES if true.
 */
 -(BOOL)isUnlimited;
 
-/*! 
+/*!
+
+
     @method isCompatibleWithVariable:
     @param aVar A NCDFVariable object
     @abstract Examine whether a receiver's data shape is the same as another NCDFVariable object.
@@ -313,7 +401,9 @@
 */
 -(BOOL)isCompatibleWithVariable:(NCDFVariable *)aVar;
 
-/*! 
+/*!
+
+
     @method doesVariableUseDimensionName:
     @param aDimNae A NSString representing a dimension name
     @abstract Query a NCDFVariable if it uses a dimension.
@@ -321,7 +411,9 @@
 */
 -(BOOL)doesVariableUseDimensionName:(NSString *)aDimName;
 
-/*! 
+/*!
+
+
     @method doesVariableUseDimensionID:
     @param aDimID An integer representing a dimension ID number
     @abstract Query a NCDFVariable if it uses a dimension.
@@ -329,7 +421,9 @@
 */
 -(BOOL)doesVariableUseDimensionID:(int)aDimID;
 
-/*! 
+/*!
+
+
     @method createAttributesFromAttributeArray:
     @param newAttributes an array of NCDFAttributes
     @abstract Creates new attributes from an NSArray.
@@ -339,7 +433,9 @@
 */
 -(BOOL)createAttributesFromAttributeArray:(NSArray *)newAttributes;
 
-/*! 
+/*!
+
+
     @method unlimitedVariableLength
     @abstract Returns the current length of an unlimited variable.
     @discussion  This method returns the current length of the unlimited Dimension variable.  If the receiver is NOT the dimension variable, then it will return -1.
@@ -347,11 +443,19 @@
 */
 -(int)unlimitedVariableLength;
 
-/*! 
+/*!
+
+
     @method propertyList
     @abstract Returns an NSDictionary object with the NCDFVariable information stored in property list-compatible objects.
     @discussion  Returns a property list dictionary for the NCDFVariable.
-    
+
+
+
+
+
+
+
     Fields:<P>
     NCDFVariablePropertyListFieldFileName - NSString containing the path of the parent file.<P>
     NCDFVariablePropertyListFieldVariableID - variable ID number<P>
@@ -360,13 +464,21 @@
     NCDFVariablePropertyListFieldDimensionNames - An NSArray containing only the NSDimension names (in significance order)<P>
     NCDFVariablePropertyListFieldData - NSData containing all variable data<P>
     NCDFVariablePropertyListFieldAttributes - An NSArray of NCDFAttribute property lists<P>
-    
+
+
+
+
+
+
+
 
 */
 -(NSDictionary *)propertyList;
 
 
-/*! 
+/*!
+
+
     @method dimensionNames
     @abstract Returns an array of NCDFDimension names as NSStrings.
     @discussion  Returns an array of NCDFDimension names used by the NCDFVariable.  The order within the array represents the dimension significance.  A dim at position 0 will have the highest significance.
@@ -374,7 +486,9 @@
 */
 -(NSArray *)dimensionNames;
 
-/*! 
+/*!
+
+
     @method allVariableDimInformation
     @abstract Returns an array of NCDFDimensions.
     @discussion  Returns an array of NCDFDimensions used by the NCDFVariable.  The order within the array represents the dimension significance.  A dim at position 0 will have the highest significance.
@@ -382,7 +496,9 @@
 */
 -(NSArray *)allVariableDimInformation;
 
-/*! 
+/*!
+
+
     @method reverseAndStoreDataAlongDimensionName:
     @param theDimName NSString object with an dimension name
     @abstract Reverses data along a dimension and writes to file.
@@ -391,7 +507,9 @@
 */
 -(BOOL)reverseAndStoreDataAlongDimensionName:(NSString *)theDimName;
 
-/*! 
+/*!
+
+
     @method reverseDataAlongDimensionName:
     @param theDimName NSString object with an dimension name
     @abstract Reverses data along a dimension.
@@ -400,7 +518,9 @@
 */
 -(NSData *)reverseDataAlongDimensionName:(NSString *)theDimName;
 
-/*! 
+/*!
+
+
     @method shiftAndStoreDataAlongDimensionName:shift
     @param theDimName NSString object with an dimension name
     @param theShift A int value desribing the direction and count of the shift
@@ -410,7 +530,9 @@
 */
 -(BOOL)shiftAndStoreDataAlongDimensionName:(NSString *)theDimName shift:(int)theShift;
 
-/*! 
+/*!
+
+
     @method shiftDataAlongDimensionName:shift
     @param theDimName NSString object with an dimension name
     @param theShift A int value desribing the direction and count of the shift
@@ -420,7 +542,9 @@
 */
 -(NSData *)shiftDataAlongDimensionName:(NSString *)theDimName shift:(int)theShift;
 
-/*! 
+/*!
+
+
     @method variableAttributeByName:
     @param name NSString object with an attribute name
     @abstract Access a NCDFVariable's attribute by name.
@@ -429,7 +553,9 @@
 */
 -(NCDFAttribute *)variableAttributeByName:(NSString *)name;
 
-	/*! 
+	/*!
+
+
 	@method htmlDescription
     @abstract Returns a description of the variable and all of its attributes in an html form.
     @discussion  This method is to provide a method to export the metadata of a netcdf file into a HTML document.
@@ -440,10 +566,18 @@
 
 -(NSString *)stringValueForSingleValueCoordinates:(NSArray *)coordinates;
 
-	/*! 
+	/*!
+
+
 	@method variableID
-    @abstract Returns netCDF variable ID number for the variable.  
-    @discussion  Returns netCDF variable ID number for the variable. 
+    @abstract Returns netCDF variable ID number for the variable.
+
+
+
+
+    @discussion  Returns netCDF variable ID number for the variable.
+
+
 	*/
 -(int)variableID;
 -(int)attributeCount;

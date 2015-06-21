@@ -125,7 +125,9 @@
 {
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
     NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
-    NSString *theLocalizedString = 
+    NSString *theLocalizedString =
+
+
     [theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"];
     return theLocalizedString;
 }
@@ -155,7 +157,9 @@
 {
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
     NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
-    NSString *theLocalizedString = 
+    NSString *theLocalizedString =
+
+
     [theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"];
     NSArray *theArray = [NSArray arrayWithObjects:theLocalizedString,
                                                 _errorSourceObjectName,
@@ -167,4 +171,11 @@
     return theArray;
 }
 
+-(void)dealloc
+{
+    _errorClass = nil;
+    _errorMethod = nil;
+    _errorSubMethod = nil;
+    _errorSourceObjectName = nil;
+}
 @end

@@ -23,7 +23,7 @@
     type = theType;
     length = dataLength;
     //need to load values
-    
+
     theHandle = handle;
 	[self loadValues];
     return self;
@@ -124,7 +124,7 @@
 
             theText[length] = '\0';
 			theString = [NSString stringWithCString:theText encoding:NSUTF8StringEncoding];
-           
+
             [tempValues addObject:theString];
             free(theText);
             break;
@@ -205,11 +205,10 @@
     }
     //NSLog(@"tempValues %@",[tempValues description]);
     theValues = [tempValues copy];
-	
 
 	//NSLog(@"%@",[theValues description]);
     [theHandle closeNCID:ncid];
-    
+
     //NSLog(@"theValues count:%i",[theValues count]);
 }
 
@@ -253,9 +252,21 @@
     for(i=0;i<[theValues count];i++)
     {
         [initial appendString:[self stringFromObject:[theValues objectAtIndex:i]]];
-    
+
+
+
+
+
+
+
     }
-    
+
+
+
+
+
+
+
     return [NSString stringWithString:initial];
 }
 
@@ -265,10 +276,18 @@
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: stringFromObject");
 #endif
-    
+
+
+
+
+
+
+
     switch (type){
         case NC_BYTE:
-        {	
+        {
+
+
             uint8 *theByteData = (uint8 *)malloc([(NSData *)object length]);
             int32_t i;
             NSMutableString *mutString = [[NSMutableString alloc] init];
@@ -278,6 +297,7 @@
                 [mutString appendFormat:@"%u ",theByteData[i]];
             }
             theString = [NSString stringWithString:mutString];
+            free(theByteData);
             break;
         }
         case NC_CHAR:
@@ -310,9 +330,21 @@
             NSLog(@"Case NC_NAT not handled");
         }
     }
-    
+
+
+
+
+
+
+
 	return theString;
-    
+
+
+
+
+
+
+
 }
 
 
@@ -334,7 +366,7 @@
         if(![theScanner isAtEnd])
         {
         theRange.location = [theScanner scanLocation];
-        
+
         [mutString replaceCharactersInRange:theRange withString:@"_"];
         }
     }
@@ -353,7 +385,13 @@
         theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
 	ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
-    
+
+
+
+
+
+
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"renameAttribute" subMethod:@"Open netCDF failed" errorCode:status];
@@ -376,7 +414,13 @@
     [theHandle closeNCID:ncid];
 	[theHandle refresh];
     return YES;
-    
+
+
+
+
+
+
+
 }
 
 -(NSArray *)getAttributeValueArray
@@ -472,5 +516,14 @@
 	}
 	else
 		return NSOrderedSame;
+}
+
+-(void)dealloc
+{
+    fileName = nil;
+    attName = nil;
+    theValues = nil;
+    theHandle = nil;
+    theErrorHandle = nil;
 }
 @end

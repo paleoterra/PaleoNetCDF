@@ -103,7 +103,9 @@
 */
 -(void)refresh;
 
-	/*! 
+	/*!
+
+
     @method handleLock
     @abstract Returns an NSLock object for the handle.
 	*/
@@ -136,13 +138,17 @@
 
 	/*!
 	@functiongroup Working With Variables
-	 */	
+	 */
+
+
 /*!
   @method getVariables
   @abstract Retrieves all NCDFVariables for variables.
   @discussion This method returns all netcdf variables for a file in a NSMutableArray.  NSMutableArrays are used so that applications can maintain connection with this array even after the NCDFHandle makes a refresh call.<P>VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
-	
+
+
+
 -(NSMutableArray *)getVariables;
 /*!
   @method theErrorHandle
@@ -167,7 +173,13 @@
   @param dimName an NSString with the dimension name.
   @param length the length of the dimension in units.
   @discussion This method creates a new dimension.  If fails, returns a NO and creates a NCDFError.  If successful, the NCDFHandle resyncs to file.
-    
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)createNewDimensionWithName:(NSString *)dimName size:(size_t)length;
@@ -176,7 +188,13 @@
   @abstract Creates a new dimension in the netcdf file from a property list.
   @param propertyList a NSDictionary containing a propertylist files for a NCDFDimension.  See NCDFDimension for documentation.
   @discussion This method creates a new dimension.  This method calls createNewDimensionWithName and thus will generate a NCDFError and resync to file.
-    
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 
@@ -186,7 +204,13 @@
   @abstract Creates multiple new dimensions from an array of NCDFDimensions.
   @param newDimensionArray NSArray of NCDFDimension objects.
   @discussion This method creates multiple dimensions.  If fails, returns a NO and creates a NCDFError.  This method will not overwrite existing dimensions.  If a dimension exists with a name of a dimension in the array, then no attempt will be made to overwrite the old dimension.  Method will resync to file on completion.
-    
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(NSArray *)createNewDimensionsFromDimensionArray:(NSArray *)newDimensionArray;
@@ -196,7 +220,13 @@
   @abstract Deletes a dimension from the netcdf file.
   @param dimName NSString name of the dimension.
   @discussion This method deletes a dimension based on a given dimension name.  If fails, returns a NO and creates a NCDFError.  This method works by creating an empty temporary netcdf file and recreating the old file within the new file minus the deleted dimension.  When complete, the new file is moved to the path of the old file.  The NCDFHandle will then resync to file.
-    
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)deleteDimensionWithName:(NSString *)dimName;
@@ -207,7 +237,13 @@
   @param resizeDimName NSString name of the dimension.
   @param size integer with the new size of the dimension.
   @discussion This method resizes a dimension based on a given dimension name.  If fails, returns a NO and creates a NCDFError.  This method works by creating an empty temporary netcdf file and recreating the old file within the new file except the dimension length is the newSize.  When complete, the new file is moved to the path of the old file.  The NCDFHandle will then resync to file.  Note, resizing an unlimited dimension may have unexpected results.  A new size to anything but 0 for an unlimited dimension may damage dependent variables.
-    
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)resizeDimensionWithName:(NSString *)resizeDimName size:(int)newSize;
@@ -224,8 +260,18 @@
   @param attName NSString name of the attribute.
   @param dataType netcdf data type (i.e., NC_BYTE, NC_CHAR, etc).
   @param theValues A NSArray of values.  If the type is NC_CHAR, it should have only one string object.  Otherwise, it should contain 1 or more NSNumber objects
-  @discussion Creates a new global variable.  If successful, the method resyncs the NCDFHandle to the file.  
-    
+  @discussion Creates a new global variable.  If successful, the method resyncs the NCDFHandle to the file.
+
+
+
+
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)createNewGlobalAttributeWithName:(NSString *)attName dataType:(nc_type)theType values:(NSArray *)theValues;
@@ -233,13 +279,25 @@
   @method createNewGlobalAttributeWithPropertyList:
   @abstract Creates a new global attribute using a property list dictionary.
   @param propertyList NSDictionary containing an attribute description.  See NCDFAttribute for field names.
-  @discussion Creates a new global variable.  If successful, the method resyncs the NCDFHandle to the file.  
-  
+  @discussion Creates a new global variable.  If successful, the method resyncs the NCDFHandle to the file.
+
+
+
+
+
+
+
+
+
   Required Fields:
     NCDFAttributePropertyListFieldNC_TYPE
     NCDFAttributePropertyListFieldAttributeName
     NCDFAttributePropertyListFieldValues
-  
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 
@@ -248,7 +306,11 @@
   @method deleteGlobalAttributeWithName:
   @abstract Deletes a global attribute.
   @param attName NSString of a global attribute name.
-  @discussion Deletes a global variable.  If successful, the method resyncs the NCDFHandle to the file.  
+  @discussion Deletes a global variable.  If successful, the method resyncs the NCDFHandle to the file.
+
+
+
+
 
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
@@ -259,7 +321,11 @@
   @abstract Creates global attributes from a list of attributes.
   @param theNewAttributes NSArray of NCDFAttribute objects.
   @discussion Adds multiple global attributes to a file. It does not add attributes with the same name as existing attributes.  The returned array allows you to determine which attributes were not written.
-  
+
+
+
+
+
   PROGRAMMING NOTES: Requires renaming, consider a new version that returns a BOOL
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
@@ -293,7 +359,11 @@
   @param theType The netcdf data type (NC_BYTE,NC_CHAR, etc)
   @param selectedDims An array of NCDFDimensions in order of significance.
   @discussion Basic method for creating a new variable.  Resyncs to file on completion. Also posts NCDFError if error occurs.
-  
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)createNewVariableWithName:(NSString *)variableName type:(nc_type)theType dimNameArray:(NSArray *)selectedDims;
@@ -303,11 +373,21 @@
   @abstract Creates a new variable based on a property list.
   @param propertyList NSDictionary containing a variable property list.  See NCDFVariable for fields.
   @discussion Creating a new variable with property list.  Resyncs to file on completion. Also posts NCDFError if error occurs.
-  
+
+
+
+
+
   required fields:
         NCDFVariablePropertyListFieldDimensionNames
         NCDFVariablePropertyListFieldVariableName
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)createNewVariableWithPropertyList:(NSDictionary *)propertyList;
@@ -316,7 +396,13 @@
   @abstract Deletes a variable from the netcdf file.
   @param deleteVariableName NSString object with the name of the variable to be deleted.
   @discussion Deleteing a variable by name.  Resyncs to file on completion. Also posts NCDFError if error occurs.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)deleteVariableWithName:(NSString *)deleteVariableName;
@@ -326,7 +412,13 @@
   @abstract Deletes a series of variables.
   @param nameArray NSArray object containing NSString objects containing variable names.
   @discussion Deleteing a variable by name.  Resyncs to file on completion. Also posts NCDFError if error occurs.  Method will return NO on any error.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)deleteVariablesWithNames:(NSArray *)nameArray;
@@ -337,7 +429,13 @@
   @param aName NSString object containing a name of a variable.
 
   @discussion This method is to access an individual variable by name.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(NCDFVariable *)retrieveVariableByName:(NSString *)aName;
@@ -347,7 +445,13 @@
   @abstract Access a dimension by name.
   @param aName NSString object containing a name of a dimension.
   @discussion This method is to access an individual dimension by name.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 
@@ -360,7 +464,13 @@
   @method retrieveUnlimitedDimension
   @abstract Access the unlimited dimension, if exists.
   @discussion This method is to identify and access an unlimited dimension.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(NCDFDimension *)retrieveUnlimitedDimension;
@@ -369,7 +479,13 @@
   @method retrieveUnlimitedVariable
   @abstract Access the unlimited dimension variable, if exists.
   @discussion This method is to identify and access an unlimited dimension variable.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(NCDFVariable *)retrieveUnlimitedVariable;
@@ -378,7 +494,13 @@
   @method retrieveDimensionByIndex:
   @abstract Access to a dimension by index number.
   @discussion The netcdf C library handles variable dimensions by index number.  The netcdf library number and the NCDFHandle index number should be the same and are interchangable.  Thus, NCDFDimensions can be retrieved by their index numbers.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 
@@ -392,7 +514,13 @@
   @abstract Extend the length of the unlimited dimension via the dimension variable.
   @param units The numbers of values to extend the unlimited dimension length.
   @discussion This function provides a simple method to make all variables that are dependent on a unlimited dimension longer.  By adding to this length, all variables that use the unlimited variable with increase in size automatically.
-        
+
+
+
+
+
+
+
   VALIDATION NOTES: Tested extensively and appears to function as expected.
 */
 -(BOOL)extendUnlimitedVariableBy:(int)units;
@@ -400,7 +528,9 @@
 	/*!
 	@functiongroup Exporting Metadata
 	 */
-	/*! 
+	/*!
+
+
 		 @method htmlDescription
     @abstract Returns a description of the variable and all of its attributes in an html form.
     @discussion  This method is to provide a method to export the metadata of a netcdf file into a HTML document.
@@ -425,7 +555,9 @@
 	/*!
 		  @method compareUnlimitedValue:
 	 @abstract Compares 2 NCDFHandle objects based on their initial unlimited dimension value.
-	 @param object NCDFHandle 
+	 @param object NCDFHandle
+
+
 	 @discussion Compares the initial unlimited dimension value of "object" against the reciever.  This method is for sorting the order of NCDFHandles based on the unlimited dimension variable.  Only checks the first value.
 	 */
 -(NSComparisonResult)compareUnlimitedValue:(id)object;

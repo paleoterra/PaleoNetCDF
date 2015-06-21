@@ -7,7 +7,9 @@ One limitation of the netCDF libary is that it doesn't allow for localized error
 that make sense to the end user.  So, this method stores netCDF error codes that an application
 can use in order to present error information to the user.
 
-This class is an error object that stores enough information about an error to provide 
+This class is an error object that stores enough information about an error to provide
+
+
 information to a programmer and end user.
 */
 //  Created by Tom Moore on Tue Jul 30 2002.
@@ -23,8 +25,14 @@ information to a programmer and end user.
 that make sense to the end user.  So, this method stores netCDF error codes that an application
 can use in order to present error information to the user.
 
-This class is an error object that stores enough information about an error to provide 
-information to a programmer and end user.  
+This class is an error object that stores enough information about an error to provide
+
+
+information to a programmer and end user.
+
+
+
+
 */
 
 #import <Cocoa/Cocoa.h>

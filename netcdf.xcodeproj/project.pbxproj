@@ -53,7 +53,6 @@
 		B4E0D2A80C9EE4B10029D494 /* NCDFVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D28C0C9EE4B10029D494 /* NCDFVariable.m */; };
 		B4E0D2A90C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D28D0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D2AA0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D28E0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m */; };
-		B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E5467F093D483A00794457 /* SenTestingKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -128,7 +127,6 @@
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
 		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		B4E5467F093D483A00794457 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F577E7F402F7319701EA6D6B /* NCDFError.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = NCDFError.strings; path = English.lproj/NCDFError.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +143,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4E54694093D483A00794457 /* SenTestingKit.framework in Frameworks */,
 				B47D4D46176E02E7002051CD /* libnetcdf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				B47D4D44176E02E7002051CD /* libnetcdf.a */,
-				B4E5467F093D483A00794457 /* SenTestingKit.framework */,
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
 			);
@@ -342,7 +338,7 @@
 			name = UnitTests;
 			productName = UnitTests;
 			productReference = B4E5463A093D432000794457 /* UnitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -350,7 +346,8 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastTestingUpgradeCheck = 0630;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = B4244EB308F4659B0030396F /* Build configuration list for PBXProject "netcdf" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -467,7 +464,6 @@
 		B4244EB408F4659B0030396F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -483,14 +479,13 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+				SDKROOT = macosx;
 			};
 			name = Development;
 		};
 		B4244EB508F4659B0030396F /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -506,14 +501,13 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx;
 			};
 			name = Deployment;
 		};
 		B4244EB608F4659B0030396F /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -529,14 +523,13 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+				SDKROOT = macosx;
 			};
 			name = test;
 		};
 		B4244EB708F4659B0030396F /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -552,14 +545,13 @@
 					"-seg1addr",
 					0x00010000,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+				SDKROOT = macosx;
 			};
 			name = Default;
 		};
 		B46DE0A1091B0BD2001A5988 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -578,12 +570,6 @@
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
 					/opt/local/lib,
 					"\"$(SRCROOT)\"",
 				);
@@ -592,7 +578,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				MACOSX_DEPLOYMENT_TARGET = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -603,7 +589,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = netcdf;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
@@ -617,7 +603,6 @@
 		B46DE0A2091B0BD2001A5988 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
@@ -636,12 +621,6 @@
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
 					/opt/local/lib,
 					"\"$(SRCROOT)\"",
 				);
@@ -650,7 +629,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				MACOSX_DEPLOYMENT_TARGET = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -661,7 +640,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = netcdf;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
@@ -675,7 +654,6 @@
 		B46DE0A3091B0BD2001A5988 /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -693,12 +671,6 @@
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
 					/opt/local/lib,
 					"\"$(SRCROOT)\"",
 				);
@@ -707,7 +679,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				MACOSX_DEPLOYMENT_TARGET = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -718,7 +690,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = netcdf;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
@@ -732,7 +704,6 @@
 		B46DE0A4091B0BD2001A5988 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -750,12 +721,6 @@
 				INFOPLIST_FILE = "netcdf-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/netcdf4-ezjslobgievzocctgsfanxcyrkbd/Build/Products/Debug\"",
 					/opt/local/lib,
 					"\"$(SRCROOT)\"",
 				);
@@ -764,7 +729,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/library/netcdf/build/Release\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_4 = "\"$(SRCROOT)/library/netcdf/currentbuild\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				MACOSX_DEPLOYMENT_TARGET = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
@@ -775,7 +740,7 @@
 				);
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = netcdf;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = /opt/netcdf/3.6.2/include/;
 				WARNING_CFLAGS = (
@@ -845,6 +810,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+					"$(inherited)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -867,12 +833,9 @@
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
-					"-framework",
-					SenTestingKit,
 				);
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = Development;
@@ -886,6 +849,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+					"$(inherited)",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -906,12 +870,9 @@
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
-					"-framework",
-					SenTestingKit,
 				);
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = Deployment;
@@ -924,6 +885,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+					"$(inherited)",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
@@ -943,12 +905,9 @@
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
-					"-framework",
-					SenTestingKit,
 				);
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = test;
@@ -961,6 +920,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
 					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+					"$(inherited)",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
@@ -980,12 +940,9 @@
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
-					"-framework",
-					SenTestingKit,
 				);
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = Default;
