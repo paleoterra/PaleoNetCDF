@@ -6,24 +6,10 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		B4E1C85A092425F90014A0B6 /* API */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B4E1C8610924260C0014A0B6 /* Build configuration list for PBXAggregateTarget "API" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = API;
-			productName = API;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		B46DE0BF091B0C4D001A5988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		B46DE0C0091B0C4D001A5988 /* NCDFError.strings in Resources */ = {isa = PBXBuildFile; fileRef = F577E7F302F7319701EA6D6B /* NCDFError.strings */; };
 		B47D4D45176E02E7002051CD /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47D4D44176E02E7002051CD /* libnetcdf.a */; };
-		B47D4D46176E02E7002051CD /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B47D4D44176E02E7002051CD /* libnetcdf.a */; };
 		B47D4D4B176E1E21002051CD /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B47D4D4A176E1E21002051CD /* netcdf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D28F0C9EE4B10029D494 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D2730C9EE4B10029D494 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D2900C9EE4B10029D494 /* NCDFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D2740C9EE4B10029D494 /* NCDFAttribute.m */; };
@@ -53,6 +39,8 @@
 		B4E0D2A80C9EE4B10029D494 /* NCDFVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D28C0C9EE4B10029D494 /* NCDFVariable.m */; };
 		B4E0D2A90C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E0D28D0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4E0D2AA0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E0D28E0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m */; };
+		B4E15F3D1FF31C180075DA9C /* NetCDF_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E15F3C1FF31C180075DA9C /* NetCDF_Tests.m */; };
+		B4E15F3F1FF31C180075DA9C /* netcdf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B46DE09E091B0BD1001A5988 /* netcdf.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -75,7 +63,7 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		B4E54641093D432600794457 /* PBXContainerItemProxy */ = {
+		B4E15F401FF31C180075DA9C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -123,9 +111,11 @@
 		B4E0D28C0C9EE4B10029D494 /* NCDFVariable.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = NCDFVariable.m; path = source/NCDFVariable.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B4E0D28D0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NCDFVariableByteSizeFormatter.h; path = source/NCDFVariableByteSizeFormatter.h; sourceTree = "<group>"; };
 		B4E0D28E0C9EE4B10029D494 /* NCDFVariableByteSizeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = NCDFVariableByteSizeFormatter.m; path = source/NCDFVariableByteSizeFormatter.m; sourceTree = "<group>"; };
+		B4E15F3A1FF31C180075DA9C /* NetCDF Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NetCDF Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4E15F3C1FF31C180075DA9C /* NetCDF_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetCDF_Tests.m; sourceTree = "<group>"; };
+		B4E15F3E1FF31C180075DA9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4E1C853092424D00014A0B6 /* UC.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UC.config; sourceTree = "<group>"; };
 		B4E1C88D09242AFA0014A0B6 /* netcdf.hdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = netcdf.hdoc; sourceTree = "<group>"; };
-		B4E5463A093D432000794457 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E5463B093D432000794457 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		F577E7F402F7319701EA6D6B /* NCDFError.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = NCDFError.strings; path = English.lproj/NCDFError.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,11 +129,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4E54637093D432000794457 /* Frameworks */ = {
+		B4E15F371FF31C180075DA9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B47D4D46176E02E7002051CD /* libnetcdf.a in Frameworks */,
+				B4E15F3F1FF31C180075DA9C /* netcdf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				B46DE09E091B0BD1001A5988 /* netcdf.framework */,
-				B4E5463A093D432000794457 /* UnitTests.octest */,
+				B4E15F3A1FF31C180075DA9C /* NetCDF Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,6 +158,7 @@
 				F577E7E602F58A3301EA6D6B /* Tests */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				B4E15F3B1FF31C180075DA9C /* NetCDF Tests */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				B469DE120ACCA2A700E414C0 /* License_NetCDFFramework.txt */,
 				B46DE09F091B0BD1001A5988 /* netcdf-Info.plist */,
@@ -256,6 +247,15 @@
 			name = netcdf;
 			sourceTree = "<group>";
 		};
+		B4E15F3B1FF31C180075DA9C /* NetCDF Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B4E15F3C1FF31C180075DA9C /* NetCDF_Tests.m */,
+				B4E15F3E1FF31C180075DA9C /* Info.plist */,
+			);
+			path = "NetCDF Tests";
+			sourceTree = "<group>";
+		};
 		B4E1C852092424980014A0B6 /* API Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,23 +321,22 @@
 			productReference = B46DE09E091B0BD1001A5988 /* netcdf.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B4E54639093D432000794457 /* UnitTests */ = {
+		B4E15F391FF31C180075DA9C /* NetCDF Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4E5463C093D432100794457 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildConfigurationList = B4E15F421FF31C180075DA9C /* Build configuration list for PBXNativeTarget "NetCDF Tests" */;
 			buildPhases = (
-				B4E54635093D432000794457 /* Resources */,
-				B4E54636093D432000794457 /* Sources */,
-				B4E54637093D432000794457 /* Frameworks */,
-				B4E54638093D432000794457 /* ShellScript */,
+				B4E15F361FF31C180075DA9C /* Sources */,
+				B4E15F371FF31C180075DA9C /* Frameworks */,
+				B4E15F381FF31C180075DA9C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B4E54642093D432600794457 /* PBXTargetDependency */,
+				B4E15F411FF31C180075DA9C /* PBXTargetDependency */,
 			);
-			name = UnitTests;
-			productName = UnitTests;
-			productReference = B4E5463A093D432000794457 /* UnitTests.octest */;
+			name = "NetCDF Tests";
+			productName = "NetCDF Tests";
+			productReference = B4E15F3A1FF31C180075DA9C /* NetCDF Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -347,7 +346,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0630;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0920;
+				TargetAttributes = {
+					B4E15F391FF31C180075DA9C = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = Y5R65N2GLX;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = B4244EB308F4659B0030396F /* Build configuration list for PBXProject "netcdf" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -362,8 +368,7 @@
 			projectRoot = "";
 			targets = (
 				B46DE09D091B0BD1001A5988 /* netcdf */,
-				B4E1C85A092425F90014A0B6 /* API */,
-				B4E54639093D432000794457 /* UnitTests */,
+				B4E15F391FF31C180075DA9C /* NetCDF Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -378,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4E54635093D432000794457 /* Resources */ = {
+		B4E15F381FF31C180075DA9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,22 +391,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B4E54638093D432000794457 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B46DE09B091B0BD1001A5988 /* Sources */ = {
@@ -424,20 +413,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4E54636093D432000794457 /* Sources */ = {
+		B4E15F361FF31C180075DA9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4E15F3D1FF31C180075DA9C /* NetCDF_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B4E54642093D432600794457 /* PBXTargetDependency */ = {
+		B4E15F411FF31C180075DA9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B46DE09D091B0BD1001A5988 /* netcdf */;
-			targetProxy = B4E54641093D432600794457 /* PBXContainerItemProxy */;
+			targetProxy = B4E15F401FF31C180075DA9C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -464,6 +454,7 @@
 		B4244EB408F4659B0030396F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -471,6 +462,7 @@
 				MACOSX_DEPLOYMENT_TARGET_i386 = 10.6;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.6;
 				MACOSX_DEPLOYMENT_TARGET_x86_64 = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -588,6 +580,7 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paleoterra.netcdf;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
@@ -639,6 +632,7 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paleoterra.netcdf;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
@@ -689,6 +683,7 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paleoterra.netcdf;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
@@ -739,6 +734,7 @@
 					AppKit,
 				);
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.paleoterra.netcdf;
 				PRODUCT_NAME = netcdf;
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
@@ -751,199 +747,234 @@
 			};
 			name = Default;
 		};
-		B4E1C8620924260C0014A0B6 /* Development */ = {
+		B4E15F431FF31C180075DA9C /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"ARCHS[sdk=macosx10.7][arch=x86_64]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				PRODUCT_NAME = API;
-				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "NetCDF Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "PaleoTerra.NetCDF-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Development;
 		};
-		B4E1C8630924260C0014A0B6 /* Deployment */ = {
+		B4E15F441FF31C180075DA9C /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"ARCHS[sdk=macosx10.7][arch=x86_64]" = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				PRODUCT_NAME = API;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
-				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
-			};
-			name = Deployment;
-		};
-		B4E1C8640924260C0014A0B6 /* test */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				PRODUCT_NAME = API;
-				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
-			};
-			name = test;
-		};
-		B4E1C8650924260C0014A0B6 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"ARCHS[sdk=macosx10.7][arch=x86_64]" = "$(ARCHS_STANDARD_32_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				PRODUCT_NAME = API;
-				ZERO_LINK = "$(ARCHS_STANDARD_64_BIT)";
-			};
-			name = Default;
-		};
-		B4E5463D093D432100794457 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(FRAMEWORK_SEARCH_PATHS)",
-					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
-					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
-					"$(inherited)",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "UnitTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"\"$(SRCROOT)\"",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-				);
-				PRODUCT_NAME = UnitTests;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "NetCDF Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "PaleoTerra.NetCDF-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				ZERO_LINK = NO;
-			};
-			name = Development;
-		};
-		B4E5463E093D432100794457 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(FRAMEWORK_SEARCH_PATHS)",
-					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
-					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
-					"$(inherited)",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "UnitTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"\"$(SRCROOT)\"",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-				);
-				PRODUCT_NAME = UnitTests;
-				SDKROOT = macosx;
-				ZERO_LINK = NO;
 			};
 			name = Deployment;
 		};
-		B4E5463F093D432100794457 /* test */ = {
+		B4E15F451FF31C180075DA9C /* test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(FRAMEWORK_SEARCH_PATHS)",
-					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
-					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
-					"$(inherited)",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "UnitTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"\"$(SRCROOT)\"",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-				);
-				PRODUCT_NAME = UnitTests;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "NetCDF Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "PaleoTerra.NetCDF-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				ZERO_LINK = NO;
 			};
 			name = test;
 		};
-		B4E54640093D432100794457 /* Default */ = {
+		B4E15F461FF31C180075DA9C /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(FRAMEWORK_SEARCH_PATHS)",
-					"$(SYSTEM_DEVELOPER_DIR)/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks",
-					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
-					"$(inherited)",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "UnitTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
-					"\"$(SRCROOT)\"",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-				);
-				PRODUCT_NAME = UnitTests;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "NetCDF Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "PaleoTerra.NetCDF-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				ZERO_LINK = NO;
 			};
 			name = Default;
 		};
@@ -972,24 +1003,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		B4E1C8610924260C0014A0B6 /* Build configuration list for PBXAggregateTarget "API" */ = {
+		B4E15F421FF31C180075DA9C /* Build configuration list for PBXNativeTarget "NetCDF Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4E1C8620924260C0014A0B6 /* Development */,
-				B4E1C8630924260C0014A0B6 /* Deployment */,
-				B4E1C8640924260C0014A0B6 /* test */,
-				B4E1C8650924260C0014A0B6 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		B4E5463C093D432100794457 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B4E5463D093D432100794457 /* Development */,
-				B4E5463E093D432100794457 /* Deployment */,
-				B4E5463F093D432100794457 /* test */,
-				B4E54640093D432100794457 /* Default */,
+				B4E15F431FF31C180075DA9C /* Development */,
+				B4E15F441FF31C180075DA9C /* Deployment */,
+				B4E15F451FF31C180075DA9C /* test */,
+				B4E15F461FF31C180075DA9C /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
