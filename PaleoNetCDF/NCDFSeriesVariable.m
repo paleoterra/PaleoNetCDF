@@ -11,7 +11,6 @@
 
 @implementation NCDFSeriesVariable
 
-
 -(id)initWithVariable:(NCDFVariable *)aVar fromHandle:(NCDFSeriesHandle *)aHandle
 {
 	self = [super init];
@@ -39,24 +38,16 @@
 	return self;
 }
 
-//reading
 -(NSData *)readAllVariableData
 {
 	NSEnumerator *anEnum = [[_seriesHandle handles] objectEnumerator];
 	NCDFHandle *aHandle;
 	NSMutableData *theData = [[NSMutableData alloc] init];
 
-
-
 	while(aHandle = [anEnum nextObject])
 	{
-
-
-
 		[theData appendData:[[aHandle retrieveVariableByName:_variableName] readAllVariableData]];
 	}
-
-
 
 	return [NSData dataWithData:theData];
 }
@@ -81,8 +72,6 @@
 	int32_t i;
     NSString *theString = @"[";
 
-
-
     for(i=0;i<[_theDims count];i++)
     {
         theString = [theString stringByAppendingString:[[_theDims objectAtIndex:i] dimensionName]];
@@ -92,7 +81,6 @@
     theString = [theString stringByAppendingString:@"]"];
     return theString;
 }
-
 
 -(NSString *)dataTypeWithDimDescription
 {
@@ -123,17 +111,12 @@
 			break;
 		}
 	}
-	//so I is the file, and range is the position.
 
-
-
-
-	//create new coordinates
 	NSMutableArray  *newCoor = [[NSMutableArray alloc] init];
 	for(i=0;i<[coordinates count];i++)
 	{
 		if(i==_unlimitedDimLocation)
-			[newCoor addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:fileid] rangeValue].location]];
+			[newCoor addObject:[NSNumber numberWithInt:(int)[[theResultRanges objectAtIndex:fileid] rangeValue].location]];
 		else
 			[newCoor addObject:[coordinates objectAtIndex:i]];
 	}
@@ -160,8 +143,8 @@
 				{
 					if(j==_unlimitedDimLocation)
 					{
-						[newStartArray addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:i] rangeValue].location]];
-						[newLengthArray addObject:[NSNumber numberWithInt:[[theResultRanges objectAtIndex:i] rangeValue].length]];
+						[newStartArray addObject:[NSNumber numberWithInt:(int)[[theResultRanges objectAtIndex:i] rangeValue].location]];
+						[newLengthArray addObject:[NSNumber numberWithInt:(int)[[theResultRanges objectAtIndex:i] rangeValue].length]];
 					}
 					else
 					{
@@ -172,16 +155,6 @@
 				//now we have the new coordinate array for file.  Load data.
 				[theData appendData:[[[[_seriesHandle handles] objectAtIndex:i] retrieveVariableByName:_variableName] getValueArrayAtLocation:newStartArray edgeLengths:newLengthArray]];
 			}
-
-
-
-
-
-
-
-
-
-
 		}
 	}
 	return  theData;
@@ -194,22 +167,12 @@
 
 -(int)sizeUnitVariable
 {
-
-
-
     int32_t i;
     int32_t theSize,aLength;
-
-
-
-
-
-
-
     theSize = 1;
     for(i=0;i<[_theDims count];i++)
     {
-        aLength = [[_theDims objectAtIndex:i] dimLength];
+        aLength = (int32_t)[[_theDims objectAtIndex:i] dimLength];
         if(![[_theDims objectAtIndex:i] isUnlimited])
             theSize *= aLength;
     }
@@ -219,9 +182,6 @@
 -(int)sizeUnitVariableForType
 {
 	int32_t size;
-
-
-
 	size = [self sizeUnitVariable];
 	switch(_dataType)
 	{
@@ -251,17 +211,10 @@
 {
 	int32_t i;
     int32_t theSize,aLength;
-
-
-
-
-
-
-
     theSize = 1;
     for(i=0;i<[_theDims count];i++)
     {
-        aLength = [[_theDims objectAtIndex:i] dimLength];
+        aLength = (int32_t)[[_theDims objectAtIndex:i] dimLength];
         theSize *= aLength;
     }
     return theSize;
@@ -293,13 +246,6 @@
         default:
             return -1;
             break;
-
-
-
-
-
-
-
     }
 }
 
@@ -309,7 +255,7 @@
 	int32_t i;
 	for(i=0;i<[_theDims count];i++)
 	{
-		[theArray addObject:[NSNumber numberWithInt:[[_theDims objectAtIndex:i] dimLength]]];
+		[theArray addObject:[NSNumber numberWithInt:(int)[[_theDims objectAtIndex:i] dimLength]]];
 	}
 	return [NSArray arrayWithArray:theArray];
 }
@@ -333,7 +279,7 @@
 
 -(int)unlimitedVariableLength
 {
-	return [[_theDims objectAtIndex:_unlimitedDimLocation] length];
+	return (int)[[_theDims objectAtIndex:_unlimitedDimLocation] length];
 }
 
 -(NSArray *)dimensionNames

@@ -1,9 +1,0 @@
-/*!
-	@framework NetCDF Framework
-	@abstract An Objective-C interface for accessing netcdf files.
-	@discussion This framework is designed to simplify accessing NetCDF files using objective-c.  It provides 4 basic classes: a handle to
-
-
-				access the file's metadata, attributes to handle descriptive metadata, dimensions for defining data set sizes, and variables that contiain data.
-				All standard netcdf c functions are included in the framework.
-*/

@@ -11,8 +11,6 @@
 
 @implementation NCDFDimension
 
-
-
 -(id)initWithFileName:(NSString *)thePath dimID:(int)number name:(NSString *)name length:(size_t)aLength handle:(NCDFHandle *)handle
 {
     self = [super init];
@@ -54,8 +52,6 @@
         return nil;
 }
 
-
-
 -(NSLock *)handleLock
 {
 	return [theHandle handleLock];
@@ -63,57 +59,23 @@
 
 -(NSString *)dimensionName
 {
-    /*Returns the name of the reciever*/
-    /*Accessor*/
-    /*Validated*/
     return dimName;
 }
 
 -(size_t)dimLength
 {
-    /*Returns the dimentional length of the reciever*/
-    /*Accessor*/
-    /*Validated*/
     return length;
 }
 
-// Writing functions
 -(BOOL)renameDimension:(NSString *)newName
 {
     int32_t ncid;
     int32_t status;
-
-
-
-
-
-
-
     char *theCName;
-
-
-
-
-
-
-
     if(theErrorHandle==nil)
         theErrorHandle = [theHandle theErrorHandle];
     newName = [self parseNameString:newName];
-
-
-
-
-
-
-
     ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
-
-
-
-
-
-
 
     if(status!=NC_NOERR)
     {

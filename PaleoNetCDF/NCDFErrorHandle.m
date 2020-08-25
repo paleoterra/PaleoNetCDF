@@ -20,8 +20,6 @@ NCDFErrorHandle *theDefaultErrorHandle;
     return self;
 }
 
-
-
 +(id)defaultErrorHandle
 {
     if(theDefaultErrorHandle)
@@ -54,14 +52,12 @@ NCDFErrorHandle *theDefaultErrorHandle;
     if([theErrors count]<1)
         return nil;
     else
-
-
         return [theErrors lastObject];
 }
 
 -(int)errorCount
 {
-    return [theErrors count];
+    return (int)[theErrors count];
 }
 
 -(NCDFError *)errorAtIndex:(int)index

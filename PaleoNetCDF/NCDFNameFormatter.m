@@ -35,12 +35,6 @@
     {
         [theScanner scanUpToCharactersFromSet:theSet intoString:nil];
         theRange.location = [theScanner scanLocation];
-
-
-
-
-
-
         if(theRange.location!=[theString length])
             [mutString replaceCharactersInRange:theRange withString:@"_"];
     }

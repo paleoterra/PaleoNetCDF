@@ -9,19 +9,13 @@
 
 /*!
 	@header
-  @class NCDFErrorHandle
-@abstract NCDFErrorHandle objects handle errors created by netcdf file operations.
+    @class NCDFErrorHandle
+    @abstract NCDFErrorHandle objects handle errors created by netcdf file operations.
     @discussion One limitation of the netCDF libary is that it doesn't allow for localized error codes
 that make sense to the end user.  So, this method stores netCDF error codes that an application
 can use in order to present error information to the user.
-
 This class is an error object that stores enough information about an error to provide
-
-
 information to a programmer and end user.
-
-
-
 
 */
 
@@ -53,8 +47,3 @@ information to a programmer and end user.
 -(void)logLastError;
 -(void)logAllErrors;
 @end
-/*
-0.2.1d1 Changes.
-
-Modified to handle the addition of _errorSourceObjectName in NCDFError.
-*/

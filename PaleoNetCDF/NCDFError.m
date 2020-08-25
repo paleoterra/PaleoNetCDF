@@ -34,7 +34,6 @@
     return self;
 }
 
-
 //Accessors
 
 -(NSString *)errorSourceObjectName
@@ -100,33 +99,11 @@
     _errorNCDFCode = newCode;
 }
 
-/*//Coder methods - for NSCopy methods
--(id)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    [coder decodeValueOfObjCType:@encode(int) at:&_errorNCDFCode];
-    _errorClass = [[coder decodeObject] retain];
-    _errorClass = [[coder decodeObject] retain];
-    _errorSubMethod = [[coder decodeObject] retain];
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder
-{
-    [super encodeWithCoder:coder];
-    [coder encodeValueOfObjCType:@encode(int) at:&_errorNCDFCode];
-    [coder encodeObject:_errorClass];
-    [coder encodeObject:_errorMethod];
-    [coder encodeObject:_errorSubMethod];
-    return;
-}*/
-
 -(NSString *)localizedStringForErrorCode
 {
     NSBundle *theBundle = [NSBundle bundleForClass:[self class]];
     NSString *theErrorString = [NSString stringWithCString:nc_strerror(_errorNCDFCode) encoding:NSUTF8StringEncoding];
     NSString *theLocalizedString =
-
 
     [theBundle localizedStringForKey:theErrorString value:@"Unknown Error" table:@"NCDFError"];
     return theLocalizedString;

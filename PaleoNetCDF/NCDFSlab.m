@@ -25,7 +25,6 @@
 
 -(void)dealloc
 {
-	//NSLog(@"deallocing slab");
     free(dimensionLengths);
     theData = nil;
 }
@@ -56,8 +55,7 @@
 
 -(NSData *)subSlabStart:(NSArray *)startPositions lengths:(NSArray *)lengths
 {
-	//I'll use a lot of error checking with asserts here.  Make sure that I don't have any overruns.
-	NSAssert(([startPositions count] == dimCount), ([NSString stringWithFormat:@"Incorrect startPositions dimensions count: %li instead of %i",[startPositions count],dimCount]));
+    NSAssert(([startPositions count] == dimCount), ([NSString stringWithFormat:@"Incorrect startPositions dimensions count: %li instead of %i",[startPositions count],dimCount]));
 	NSAssert(([lengths count] == dimCount), ([NSString stringWithFormat:@"Incorrect lengths dimensions count: %li instead of %i",[lengths count],dimCount]));
 	int32_t i, temp;
 	for(i=0;i<dimCount;i++)
@@ -68,15 +66,7 @@
 		temp = temp + [[lengths objectAtIndex:i] intValue] ;//problem line
 		NSAssert(( temp <= dimensionLengths[i]), ([NSString stringWithFormat:@"lengths out of range: dim %i, max value %i of %zi",i,temp,dimensionLengths[i]]));
 	}
-	//assertion checks should be done at this point.  If we got to here we have ensured that:
-	//	1. start values are all within the range of the data set
-	//	2. that start values coupled with lengths are within the range for each dimension
-
-
-
-	//determin total number of steps for reading.
-	int32_t steps = 1;
-	// if dim count = 1, then 1 step;
+    int32_t steps = 1;
 	if(dimCount != 1)
 	{
 		for (i=(dimCount - 2);i>-1;i--) //note that we don't count the most significant dim because we'll read all those data at once
@@ -85,38 +75,15 @@
 		}
 	}
 
-
-
-	//now we know the total count of steps;
 	NSRange readRange;
-
-
-
 	readRange.length = sizeof(theType) * [[lengths lastObject] intValue];
-
-
-
 	NSMutableData *theMutData = [[NSMutableData alloc] init];
 	NSMutableArray *current = [[NSMutableArray alloc] init];
 	[current addObjectsFromArray:startPositions];
-	//NSLog(@"current before sending");
-	//NSLog([current description]);
 	for(i=0;i<steps;i++)
 	{
-		//he we need to cycle through each step, and calculate the beginning of the data read and then read the data into the mutable data object.
-
-
-
-
-
 		readRange.location = [self startPositionForNextStepFrom:current fromStart:startPositions withLengths:lengths] * sizeof(theType);
-		//NSLog(@"size: %i, range %@",sizeof(theType),NSStringFromRange(readRange));
 		[theMutData appendData:[theData subdataWithRange:readRange]];
-
-
-
-
-
 	}
 	return [NSData dataWithData:theMutData];
 }
@@ -127,7 +94,7 @@
 	int32_t i;
 	for(i=0;i<dimCount;i++)
 	{
-		[theArray addObject:[NSNumber numberWithInt:dimensionLengths[i]]];
+		[theArray addObject:[NSNumber numberWithInt:(int)dimensionLengths[i]]];
 	}
 	return [NSArray arrayWithArray:theArray];
 }
@@ -136,7 +103,7 @@
 {
 	dimensionLengths = (size_t *)malloc(sizeof(size_t)*[theLengths count]);
 	int32_t i;
-	dimCount = [theLengths count];
+	dimCount = (int)[theLengths count];
 	for(i=0;i<dimCount;i++)
 	{
 		dimensionLengths[i] = (size_t)[[theLengths objectAtIndex:i] intValue];
@@ -145,7 +112,7 @@
 
 -(int)startPositionForNextStepFrom:(NSMutableArray *)current fromStart:(NSArray *)startCoords withLengths:(NSArray *)lengths
 {
-	int32_t count = [current count];
+	int32_t count = (int)[current count];
 	NSMutableArray *theArray = [[NSMutableArray alloc] init];
 	int32_t i;
 	int32_t newPoint,  startPosition ;
@@ -169,13 +136,6 @@
 	[theArray addObject:[startCoords lastObject]];
 	[current removeAllObjects];
 	[current addObjectsFromArray:theArray];
-	//now we have all the new start positions
-	//time to get the start position in terms of value count
-	//NSLog(@"end");
-	//NSLog([current description]);
-
-
-
 	return startPosition;
 }
 
@@ -186,20 +146,13 @@
 	int32_t startPosition = 0;
 	for(i=0;i<[coordinates count];i++)
 	{
-
-
-
-
-
 		temp = [[coordinates objectAtIndex:i] intValue];
 		for(j=i+1;j<[coordinates count];j++)
 		{
 			temp *= dimensionLengths[j];
 		}
 		startPosition += temp;
-		//NSLog(@"temp %i: %i",i,temp);
 	}
-	//NSLog(@"start Position: %i", startPosition);
 	return startPosition;
 }
 @end

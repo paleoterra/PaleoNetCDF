@@ -11,7 +11,6 @@
 
 @implementation NCDFSeriesHandle
 
-
 -(id)initWithOrderedPathSeries:(NSArray *)paths
 {
 	NSMutableArray *newURL = [[NSMutableArray alloc] init];
@@ -54,15 +53,6 @@
 				}
 				else
 					isValid = NO;
-
-
-
-
-
-
-
-
-
 			}
 			if(!isValid)
 				break;
@@ -78,17 +68,9 @@
 			[self seedArrays];
 			return self;
 		}
-
-
-
-
-
 	}
 	return nil;
 }
-
-
-
 
 -(id)initWithSeriesFileAtPath:(NSString *)path
 {
@@ -112,13 +94,6 @@
 			{
 				[tempURLs addObject:[NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:[theFiles objectAtIndex:i]]]];
 			}
-
-
-
-
-
-
-
 		}
 		else
 		{
@@ -165,8 +140,6 @@
 		_isSingleDirectory = YES;
 		NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 
-
-
 		for(i=0;i<[urls count];i++)
 		{
 			if(i==0)
@@ -174,22 +147,12 @@
 				dirPath = [[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent];
 			}
 
-
-
-
-
 			if(![[NSFileManager defaultManager] fileExistsAtPath:[[urls objectAtIndex:i] path]])
 			{
 				isValid = NO;
 				if(![[[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent] isEqualToString:dirPath])
 					_isSingleDirectory = NO;
 			}
-
-
-
-
-
-
 
 			if(isValid)
 			{
@@ -199,60 +162,24 @@
 				}
 				else
 					isValid = NO;
-
-
-
-
-
-
-
-
-
 			}
 			if(!isValid)
 				break;
 		}
-
-
-
-
-
 		if(!isValid)
 		{
 			return nil;
 		}
 		else
 		{
-
-
-
-
-
 			_theURLS = [NSArray arrayWithArray:urls];
 			_theHandles = [NSArray arrayWithArray:tempArray];
 
-
-
-
-
-
-
 			*sorted = [self sortHandles];
-
-
-
-
-
-
 
 			[self seedArrays];
 			return self;
 		}
-
-
-
-
-
 	}
 	return nil;
 }
@@ -265,9 +192,6 @@
 	BOOL theFinalResult = YES;
 	for(i=0;i<[tempArray count]-1;i++)
 	{
-
-
-
 		NSComparisonResult theResult = [[tempArray objectAtIndex:i] compareUnlimitedValue:[tempArray objectAtIndex:i+1]];
 		if(theResult != NSOrderedAscending)
 		{
@@ -277,9 +201,6 @@
 
 	if(!theFinalResult)
 		return theFinalResult;
-
-
-
 	NSMutableArray *newURLS = [[NSMutableArray alloc] init];
 	for(i=0;i<[tempArray count];i++)
 	{
@@ -289,17 +210,8 @@
 
 	_theURLS = [NSArray arrayWithArray:newURLS];
 	_theHandles = tempArray;
-
-
-
-
-
-
 	return theFinalResult;
 }
-
-
-
 
 //*WRITING OUT SERIES INFO
 -(BOOL)writeSeriesToFile:(NSString *)path
@@ -383,7 +295,7 @@
 
 -(int)handleCount
 {
-	return [_theHandles count];
+	return (int)[_theHandles count];
 }
 
 -(NCDFHandle *)handleAtIndex:(int)index
@@ -433,9 +345,6 @@
 -(NSArray *)getDimensions
 {
 	return _theDimensions;
-
-
-
 }
 
 -(NSArray *)getVariables

@@ -22,8 +22,6 @@
     variableID = theID;
     type = theType;
     length = dataLength;
-    //need to load values
-
     theHandle = handle;
 	[self loadValues];
     return self;
@@ -68,7 +66,6 @@
 {
 	return [theHandle handleLock];
 }
-
 
 -(void)loadValues
 {
@@ -203,13 +200,8 @@
             [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"loadValues" subMethod:@"Case NC_Nat not hanlded" errorCode:status];
         }
     }
-    //NSLog(@"tempValues %@",[tempValues description]);
     theValues = [tempValues copy];
-
-	//NSLog(@"%@",[theValues description]);
     [theHandle closeNCID:ncid];
-
-    //NSLog(@"theValues count:%i",[theValues count]);
 }
 
 -(void)setValueArray:(NSArray *)anArray
@@ -225,24 +217,11 @@
 
 -(NSString *)attributeName
 {
-    /*Returns the name of the reciever.*/
-    /*Accessor*/
-    /*Validated*/
     return attName;
 }
 
 -(NSString *)contentDescription
 {
-    /*Returns a NSString version of all the values stored in the attribute.  If the returned value is modified by a character, then it is either a short integer (s), integer(i), floating point value (f), or double precision floating point value (d).*/
-    /*Accessor: Values*/
-    /*Validated For:
-        BYTE = NO
-        CHAR = YES
-        SHORT = NO
-        INT = NO
-        FLOAT = NO
-        DOUBLE = NO
-        */
     int32_t i;
     NSMutableString *initial;
 #ifdef DEBUG_NCDFAttribute
@@ -252,21 +231,7 @@
     for(i=0;i<[theValues count];i++)
     {
         [initial appendString:[self stringFromObject:[theValues objectAtIndex:i]]];
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
     return [NSString stringWithString:initial];
 }
 
@@ -276,22 +241,13 @@
 #ifdef DEBUG_NCDFAttribute
     NSLog(@"NCDFAttribute: stringFromObject");
 #endif
-
-
-
-
-
-
-
     switch (type){
         case NC_BYTE:
         {
-
-
             uint8 *theByteData = (uint8 *)malloc([(NSData *)object length]);
             int32_t i;
             NSMutableString *mutString = [[NSMutableString alloc] init];
-            [(NSData *)object getBytes:theByteData];
+            [(NSData *)object getBytes:theByteData length:[(NSData *)object length]];
             for(i=0;i<[(NSData *)object length];i++)
             {
                 [mutString appendFormat:@"%u ",theByteData[i]];
@@ -330,21 +286,7 @@
             NSLog(@"Case NC_NAT not handled");
         }
     }
-
-
-
-
-
-
-
 	return theString;
-
-
-
-
-
-
-
 }
 
 
@@ -386,12 +328,6 @@
     newName = [self parseNameString:newName];
 	ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
 
-
-
-
-
-
-
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:fileName className:@"NCDFAttribute" methodName:@"renameAttribute" subMethod:@"Open netCDF failed" errorCode:status];
@@ -414,13 +350,6 @@
     [theHandle closeNCID:ncid];
 	[theHandle refresh];
     return YES;
-
-
-
-
-
-
-
 }
 
 -(NSArray *)getAttributeValueArray
