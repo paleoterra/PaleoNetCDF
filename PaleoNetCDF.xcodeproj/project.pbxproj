@@ -12,34 +12,34 @@
 		B4783B4024F5768F007A8F59 /* PaleoNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B3224F5768F007A8F59 /* PaleoNetCDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783B8C24F577C2007A8F59 /* libnetcdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4783B8A24F577C2007A8F59 /* libnetcdf.a */; };
 		B4783B8D24F577C2007A8F59 /* netcdf.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B8B24F577C2007A8F59 /* netcdf.h */; };
-		B4783BAE24F577E2007A8F59 /* NCDFSeriesHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9224F577DF007A8F59 /* NCDFSeriesHandle.h */; };
-		B4783BAF24F577E2007A8F59 /* NCDFProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9324F577E0007A8F59 /* NCDFProtocols.h */; };
+		B4783BAE24F577E2007A8F59 /* NCDFSeriesHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9224F577DF007A8F59 /* NCDFSeriesHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4783BAF24F577E2007A8F59 /* NCDFProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9324F577E0007A8F59 /* NCDFProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BB024F577E2007A8F59 /* NCDFVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9424F577E0007A8F59 /* NCDFVariable.m */; };
 		B4783BB124F577E2007A8F59 /* NCDFAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9524F577E0007A8F59 /* NCDFAttribute.m */; };
-		B4783BB224F577E2007A8F59 /* NCDFDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9624F577E0007A8F59 /* NCDFDimension.h */; };
+		B4783BB224F577E2007A8F59 /* NCDFDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9624F577E0007A8F59 /* NCDFDimension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BB324F577E2007A8F59 /* NCDFDimension.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9724F577E0007A8F59 /* NCDFDimension.m */; };
-		B4783BB424F577E2007A8F59 /* NCDFSeriesVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9824F577E0007A8F59 /* NCDFSeriesVariable.h */; };
-		B4783BB524F577E2007A8F59 /* NCDFHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9924F577E0007A8F59 /* NCDFHandle.h */; };
-		B4783BB624F577E2007A8F59 /* NCDFVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9A24F577E0007A8F59 /* NCDFVariable.h */; };
+		B4783BB424F577E2007A8F59 /* NCDFSeriesVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9824F577E0007A8F59 /* NCDFSeriesVariable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4783BB524F577E2007A8F59 /* NCDFHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9924F577E0007A8F59 /* NCDFHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4783BB624F577E2007A8F59 /* NCDFVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9A24F577E0007A8F59 /* NCDFVariable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BB724F577E2007A8F59 /* NCDFVariableByteSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9B24F577E0007A8F59 /* NCDFVariableByteSizeFormatter.m */; };
 		B4783BB824F577E2007A8F59 /* NCDFDataTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9C24F577E1007A8F59 /* NCDFDataTypeFormatter.m */; };
-		B4783BB924F577E2007A8F59 /* NCDFSeriesDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9D24F577E1007A8F59 /* NCDFSeriesDimension.h */; };
+		B4783BB924F577E2007A8F59 /* NCDFSeriesDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9D24F577E1007A8F59 /* NCDFSeriesDimension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BBA24F577E2007A8F59 /* NCDFNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9E24F577E1007A8F59 /* NCDFNameFormatter.m */; };
 		B4783BBB24F577E2007A8F59 /* NCDFNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9F24F577E1007A8F59 /* NCDFNetCDF.h */; };
 		B4783BBC24F577E2007A8F59 /* NCDFError.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA024F577E1007A8F59 /* NCDFError.m */; };
 		B4783BBD24F577E2007A8F59 /* NCDFSeriesDimension.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA124F577E1007A8F59 /* NCDFSeriesDimension.m */; };
-		B4783BBE24F577E2007A8F59 /* NCDFNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA224F577E1007A8F59 /* NCDFNameFormatter.h */; };
-		B4783BBF24F577E2007A8F59 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA324F577E1007A8F59 /* NCDFVariableByteSizeFormatter.h */; };
-		B4783BC024F577E2007A8F59 /* NCDFError.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA424F577E1007A8F59 /* NCDFError.h */; };
+		B4783BBE24F577E2007A8F59 /* NCDFNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA224F577E1007A8F59 /* NCDFNameFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4783BBF24F577E2007A8F59 /* NCDFVariableByteSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA324F577E1007A8F59 /* NCDFVariableByteSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4783BC024F577E2007A8F59 /* NCDFError.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA424F577E1007A8F59 /* NCDFError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BC124F577E2007A8F59 /* NCDFHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA524F577E1007A8F59 /* NCDFHandle.m */; };
-		B4783BC224F577E2007A8F59 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA624F577E2007A8F59 /* NCDFDataTypeFormatter.h */; };
-		B4783BC324F577E2007A8F59 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA724F577E2007A8F59 /* NCDFAttribute.h */; };
+		B4783BC224F577E2007A8F59 /* NCDFDataTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA624F577E2007A8F59 /* NCDFDataTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4783BC324F577E2007A8F59 /* NCDFAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA724F577E2007A8F59 /* NCDFAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BC424F577E2007A8F59 /* NCDFErrorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA824F577E2007A8F59 /* NCDFErrorHandle.m */; };
 		B4783BC524F577E2007A8F59 /* NCDFSeriesHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA924F577E2007A8F59 /* NCDFSeriesHandle.m */; };
 		B4783BC624F577E2007A8F59 /* NCDFSlab.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BAA24F577E2007A8F59 /* NCDFSlab.m */; };
-		B4783BC724F577E2007A8F59 /* NCDFErrorHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BAB24F577E2007A8F59 /* NCDFErrorHandle.h */; };
+		B4783BC724F577E2007A8F59 /* NCDFErrorHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BAB24F577E2007A8F59 /* NCDFErrorHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BC824F577E2007A8F59 /* NCDFSeriesVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BAC24F577E2007A8F59 /* NCDFSeriesVariable.m */; };
-		B4783BC924F577E2007A8F59 /* NCDFSlab.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BAD24F577E2007A8F59 /* NCDFSlab.h */; };
+		B4783BC924F577E2007A8F59 /* NCDFSlab.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BAD24F577E2007A8F59 /* NCDFSlab.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
