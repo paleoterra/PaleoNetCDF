@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B4783B3924F5768F007A8F59 /* PaleoNetCDF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4783B2F24F5768F007A8F59 /* PaleoNetCDF.framework */; };
+		B4783B3E24F5768F007A8F59 /* PaleoNetCDFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B3D24F5768F007A8F59 /* PaleoNetCDFTests.m */; };
+		B4783B4024F5768F007A8F59 /* PaleoNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B3224F5768F007A8F59 /* PaleoNetCDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4783B3A24F5768F007A8F59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4783B2624F5768F007A8F59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4783B2E24F5768F007A8F59;
+			remoteInfo = PaleoNetCDF;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B4783B2F24F5768F007A8F59 /* PaleoNetCDF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PaleoNetCDF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4783B3224F5768F007A8F59 /* PaleoNetCDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaleoNetCDF.h; sourceTree = "<group>"; };
+		B4783B3324F5768F007A8F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4783B3824F5768F007A8F59 /* PaleoNetCDFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaleoNetCDFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4783B3D24F5768F007A8F59 /* PaleoNetCDFTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaleoNetCDFTests.m; sourceTree = "<group>"; };
+		B4783B3F24F5768F007A8F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B4783B2C24F5768F007A8F59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4783B3524F5768F007A8F59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4783B3924F5768F007A8F59 /* PaleoNetCDF.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B4783B2524F5768F007A8F59 = {
+			isa = PBXGroup;
+			children = (
+				B4783B3124F5768F007A8F59 /* PaleoNetCDF */,
+				B4783B3C24F5768F007A8F59 /* PaleoNetCDFTests */,
+				B4783B3024F5768F007A8F59 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B4783B3024F5768F007A8F59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B4783B2F24F5768F007A8F59 /* PaleoNetCDF.framework */,
+				B4783B3824F5768F007A8F59 /* PaleoNetCDFTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B4783B3124F5768F007A8F59 /* PaleoNetCDF */ = {
+			isa = PBXGroup;
+			children = (
+				B4783B3224F5768F007A8F59 /* PaleoNetCDF.h */,
+				B4783B3324F5768F007A8F59 /* Info.plist */,
+			);
+			path = PaleoNetCDF;
+			sourceTree = "<group>";
+		};
+		B4783B3C24F5768F007A8F59 /* PaleoNetCDFTests */ = {
+			isa = PBXGroup;
+			children = (
+				B4783B3D24F5768F007A8F59 /* PaleoNetCDFTests.m */,
+				B4783B3F24F5768F007A8F59 /* Info.plist */,
+			);
+			path = PaleoNetCDFTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B4783B2A24F5768F007A8F59 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4783B4024F5768F007A8F59 /* PaleoNetCDF.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B4783B2E24F5768F007A8F59 /* PaleoNetCDF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4783B4324F5768F007A8F59 /* Build configuration list for PBXNativeTarget "PaleoNetCDF" */;
+			buildPhases = (
+				B4783B2A24F5768F007A8F59 /* Headers */,
+				B4783B2B24F5768F007A8F59 /* Sources */,
+				B4783B2C24F5768F007A8F59 /* Frameworks */,
+				B4783B2D24F5768F007A8F59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaleoNetCDF;
+			productName = PaleoNetCDF;
+			productReference = B4783B2F24F5768F007A8F59 /* PaleoNetCDF.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B4783B3724F5768F007A8F59 /* PaleoNetCDFTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4783B4624F5768F007A8F59 /* Build configuration list for PBXNativeTarget "PaleoNetCDFTests" */;
+			buildPhases = (
+				B4783B3424F5768F007A8F59 /* Sources */,
+				B4783B3524F5768F007A8F59 /* Frameworks */,
+				B4783B3624F5768F007A8F59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4783B3B24F5768F007A8F59 /* PBXTargetDependency */,
+			);
+			name = PaleoNetCDFTests;
+			productName = PaleoNetCDFTests;
+			productReference = B4783B3824F5768F007A8F59 /* PaleoNetCDFTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B4783B2624F5768F007A8F59 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Thomas Moore";
+				TargetAttributes = {
+					B4783B2E24F5768F007A8F59 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					B4783B3724F5768F007A8F59 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = B4783B2924F5768F007A8F59 /* Build configuration list for PBXProject "PaleoNetCDF" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B4783B2524F5768F007A8F59;
+			productRefGroup = B4783B3024F5768F007A8F59 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B4783B2E24F5768F007A8F59 /* PaleoNetCDF */,
+				B4783B3724F5768F007A8F59 /* PaleoNetCDFTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B4783B2D24F5768F007A8F59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4783B3624F5768F007A8F59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B4783B2B24F5768F007A8F59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4783B3424F5768F007A8F59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4783B3E24F5768F007A8F59 /* PaleoNetCDFTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4783B3B24F5768F007A8F59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4783B2E24F5768F007A8F59 /* PaleoNetCDF */;
+			targetProxy = B4783B3A24F5768F007A8F59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B4783B4124F5768F007A8F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B4783B4224F5768F007A8F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B4783B4424F5768F007A8F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PaleoNetCDF/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = paleoterra.PaleoNetCDF;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B4783B4524F5768F007A8F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PaleoNetCDF/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = paleoterra.PaleoNetCDF;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B4783B4724F5768F007A8F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				INFOPLIST_FILE = PaleoNetCDFTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = paleoterra.PaleoNetCDFTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B4783B4824F5768F007A8F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y5R65N2GLX;
+				INFOPLIST_FILE = PaleoNetCDFTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = paleoterra.PaleoNetCDFTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B4783B2924F5768F007A8F59 /* Build configuration list for PBXProject "PaleoNetCDF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4783B4124F5768F007A8F59 /* Debug */,
+				B4783B4224F5768F007A8F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4783B4324F5768F007A8F59 /* Build configuration list for PBXNativeTarget "PaleoNetCDF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4783B4424F5768F007A8F59 /* Debug */,
+				B4783B4524F5768F007A8F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4783B4624F5768F007A8F59 /* Build configuration list for PBXNativeTarget "PaleoNetCDFTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4783B4724F5768F007A8F59 /* Debug */,
+				B4783B4824F5768F007A8F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B4783B2624F5768F007A8F59 /* Project object */;
+}
