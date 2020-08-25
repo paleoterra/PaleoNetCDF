@@ -15,9 +15,9 @@
  @discussion NCDFSeriesHandle provides an interface for using multiple netcdf files.  If all the files have the same dimensions, data types, and represent a continuous sequence of data, this class provides an overall simple way to access the files without directly working with each.  Also, you may store this class to disk.
  */
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@class NCDFHandle,NCDFSeriesDimension,NCDFSeriesVariable;
+@class NCDFHandle,NCDFSeriesDimension,NCDFSeriesVariable, NCDFVariable, NCDFAttribute;
 
 /*!
 @header

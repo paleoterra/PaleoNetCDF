@@ -6,7 +6,11 @@
 //  Copyright 2007 PaleoTerra. All rights reserved.
 //
 
-#import "NCDFNetCDF.h"
+#import "NCDFSeriesDimension.h"
+#import "NCDFDimension.h"
+#import "NCDFAttribute.h"
+#import "NCDFVariable.h"
+#import "NCDFHandle.h"
 
 
 @implementation NCDFSeriesDimension

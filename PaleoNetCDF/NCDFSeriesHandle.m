@@ -7,7 +7,13 @@
 //
 
 
-#import "NCDFNetCDF.h"
+#import "NCDFSeriesHandle.h"
+#import "NCDFHandle.h"
+#import "NCDFAttribute.h"
+#import "NCDFDimension.h"
+#import "NCDFVariable.h"
+#import "NCDFSeriesDimension.h"
+#import "NCDFSeriesVariable.h"
 
 @implementation NCDFSeriesHandle
 

@@ -25,7 +25,6 @@
 		B4783BB824F577E2007A8F59 /* NCDFDataTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9C24F577E1007A8F59 /* NCDFDataTypeFormatter.m */; };
 		B4783BB924F577E2007A8F59 /* NCDFSeriesDimension.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9D24F577E1007A8F59 /* NCDFSeriesDimension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4783BBA24F577E2007A8F59 /* NCDFNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783B9E24F577E1007A8F59 /* NCDFNameFormatter.m */; };
-		B4783BBB24F577E2007A8F59 /* NCDFNetCDF.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783B9F24F577E1007A8F59 /* NCDFNetCDF.h */; };
 		B4783BBC24F577E2007A8F59 /* NCDFError.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA024F577E1007A8F59 /* NCDFError.m */; };
 		B4783BBD24F577E2007A8F59 /* NCDFSeriesDimension.m in Sources */ = {isa = PBXBuildFile; fileRef = B4783BA124F577E1007A8F59 /* NCDFSeriesDimension.m */; };
 		B4783BBE24F577E2007A8F59 /* NCDFNameFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B4783BA224F577E1007A8F59 /* NCDFNameFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,7 +73,6 @@
 		B4783B9C24F577E1007A8F59 /* NCDFDataTypeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDFDataTypeFormatter.m; sourceTree = "<group>"; };
 		B4783B9D24F577E1007A8F59 /* NCDFSeriesDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDFSeriesDimension.h; sourceTree = "<group>"; };
 		B4783B9E24F577E1007A8F59 /* NCDFNameFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDFNameFormatter.m; sourceTree = "<group>"; };
-		B4783B9F24F577E1007A8F59 /* NCDFNetCDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDFNetCDF.h; sourceTree = "<group>"; };
 		B4783BA024F577E1007A8F59 /* NCDFError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDFError.m; sourceTree = "<group>"; };
 		B4783BA124F577E1007A8F59 /* NCDFSeriesDimension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDFSeriesDimension.m; sourceTree = "<group>"; };
 		B4783BA224F577E1007A8F59 /* NCDFNameFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDFNameFormatter.h; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				B4783BA524F577E1007A8F59 /* NCDFHandle.m */,
 				B4783BA224F577E1007A8F59 /* NCDFNameFormatter.h */,
 				B4783B9E24F577E1007A8F59 /* NCDFNameFormatter.m */,
-				B4783B9F24F577E1007A8F59 /* NCDFNetCDF.h */,
 				B4783B9324F577E0007A8F59 /* NCDFProtocols.h */,
 				B4783B9D24F577E1007A8F59 /* NCDFSeriesDimension.h */,
 				B4783BA124F577E1007A8F59 /* NCDFSeriesDimension.m */,
@@ -197,7 +194,6 @@
 				B4783BBE24F577E2007A8F59 /* NCDFNameFormatter.h in Headers */,
 				B4783BB524F577E2007A8F59 /* NCDFHandle.h in Headers */,
 				B4783BC324F577E2007A8F59 /* NCDFAttribute.h in Headers */,
-				B4783BBB24F577E2007A8F59 /* NCDFNetCDF.h in Headers */,
 				B4783BC224F577E2007A8F59 /* NCDFDataTypeFormatter.h in Headers */,
 				B4783BB424F577E2007A8F59 /* NCDFSeriesVariable.h in Headers */,
 				B4783BB624F577E2007A8F59 /* NCDFVariable.h in Headers */,

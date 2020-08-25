@@ -9,6 +9,7 @@
 // to deprecate methods, use __attribute__ ((deprecated));
 
 #import <Foundation/Foundation.h>
+#import <netcdf.h>
 
 //added 0.2.1d1
 @class NCDFErrorHandle,NCDFError,NCDFDimension,NCDFAttribute,NCDFVariable;

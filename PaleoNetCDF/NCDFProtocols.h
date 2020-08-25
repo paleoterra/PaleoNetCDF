@@ -9,6 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import <netcdf.h>
 
 @class NCDFAttribute,NCDFSlab;
 @protocol NCDFImmutableVariableProtocol

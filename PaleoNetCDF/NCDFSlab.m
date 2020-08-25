@@ -8,7 +8,6 @@
 
 #import "NCDFSlab.h"
 
-
 @implementation NCDFSlab
 
 -(id)initSlabWithData:(NSData *)data withType:(nc_type)type withLengths:(NSArray *)lengths

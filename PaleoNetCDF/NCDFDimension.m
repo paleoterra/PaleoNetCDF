@@ -6,8 +6,10 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-#import "NCDFNetCDF.h"
-
+#import "NCDFDimension.h"
+#import "NCDFHandle.h"
+#import "NCDFErrorHandle.h"
+#import <netcdf.h>
 
 @implementation NCDFDimension
 

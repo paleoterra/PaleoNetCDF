@@ -6,7 +6,12 @@
 //  Copyright (c) 2002 Argonne National Laboratory. All rights reserved.
 //
 
-#import "NCDFNetCDF.h"
+#import "NCDFHandle.h"
+#import "NCDFErrorHandle.h"
+#import "NCDFDimension.h"
+#import "NCDFAttribute.h"
+#import "NCDFVariable.h"
+#import <netcdf.h>
 
 static NSLock *fileDatabaseLock;
 @interface NCDFHandle (PrivateMethods)
@@ -640,7 +645,7 @@ static NSLock *fileDatabaseLock;
                     newSize *= newSize;
             }
 
-            switch ([[theVariables objectAtIndex:i] variableNC_TYPE])
+            switch ([(NCDFVariable *)[theVariables objectAtIndex:i] variableNC_TYPE])
             {
                 case NC_BYTE:
                     newSize *= 1;
