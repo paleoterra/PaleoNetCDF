@@ -45,13 +45,8 @@ static NSLock *fileDatabaseLock;
 -(void)setFilePath:(NSString *)thePath
 {
     /*Sets the path to the netcdf file.  This method should not be invoked.  This
-
-
      method does not check for valid paths.*/
     /*Initialization*/
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: setFilePath");
-#endif
     if(thePath)
         filePath = [thePath copy];
     else
@@ -62,10 +57,6 @@ static NSLock *fileDatabaseLock;
 {
     /*This method releases all the dimension, attribute and variable data currently held by a NCDFHandle object.  This method should preceed seedArrays.*/
     /*Initialization*/
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: initializeArrays");
-#endif
-
     theVariables = nil;
     theDimensions = nil;
     theGlobalAttributes = nil;
@@ -80,9 +71,7 @@ static NSLock *fileDatabaseLock;
     /*Populates NCDFDimension,NCDFAttribute,and NCDFVariable objects based on an existing netcdf file.  This method should only be invoked by subclasses of any of the above objects when the objects values were changed in the file.  However, changing these values will release objects held by the handle.*/
     int32_t ncid,status,numberDims,numberVariables,numberGlobalAtts,numberUnlimited;
     int32_t i;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: seedArrays");
-#endif
+
     if(!filePath)
         return;
     ncid = [self ncidWithOpenMode:NC_SHARE status:&status];
@@ -92,14 +81,13 @@ static NSLock *fileDatabaseLock;
         return;
     }
     status = nc_inq(ncid,&numberDims,&numberVariables,&numberGlobalAtts,&numberUnlimited);
-    //NSLog(@"dims, %i,variable count %i, globalatts %i",numberDims,numberVariables,numberGlobalAtts);
+
     if(status!=NC_NOERR)
     {
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring netCDF file" errorCode:status];
         NSLog(@"seedArrays: error nc_inq");
         return;
     }
-    //NSLog(@"m dim");
     for(i=0;i<numberDims;i++)
     {
         char name[NC_MAX_NAME];
@@ -114,19 +102,15 @@ static NSLock *fileDatabaseLock;
             return;
         }
         cocoaName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-        //if([cocoaName isEqualToString:@"time"])
-        //NSLog(@"time value = %i",length);
         theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
         [[typeArrays objectAtIndex:0] addObject:theDim];
     }
-    //NSLog(@"m ga");
     status = nc_inq_natts(ncid, &numberGlobalAtts);
     if(status!=NC_NOERR)
     {
         NSLog(@"seedArrays: app count error");
         return;
     }
-    //NSLog(@"seed arrays: count %i file %@",numberGlobalAtts,filePath);
     for(i=0;i<numberGlobalAtts;i++)
     {
         char *name = (char *)calloc(NC_MAX_NAME, sizeof(char));
@@ -134,7 +118,6 @@ static NSLock *fileDatabaseLock;
         size_t length;
         NCDFAttribute *theAtt;
         status = nc_inq_attname(ncid, NC_GLOBAL,i, name);
-        //NSLog(@"seedArrays: %i %s %@",i, name,filePath);
         if(status!=NC_NOERR)
         {
             [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"seedArrays" subMethod:@"Inquiring attribute by name in netCDF file" errorCode:status];
@@ -193,9 +176,7 @@ static NSLock *fileDatabaseLock;
      The NC SHARE*/
     int32_t status;
     int32_t ncid;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createFileAtPath");
-#endif
+
     [self setFilePath:thePath];
     [fileDatabaseLock lock];
     status = nc_create([thePath UTF8String],settings,&ncid);
@@ -226,9 +207,7 @@ static NSLock *fileDatabaseLock;
     /*Initializes a NCDFHandle from an existing file at thePath*/
     /*Initialization*/
     int32_t errorCount;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: initWithFileAtPath");
-#endif
+
     self = [super init];
     //added 0.2.1d1
     theErrorHandle = [[NCDFErrorHandle alloc] init];
@@ -250,9 +229,7 @@ static NSLock *fileDatabaseLock;
     /*Creates a NCDFHandle and netcdf file at thePath.  This file is empty and must be populated with dimensions, attributes, and variables*/
     /*Initialization*/
     int32_t errorCount;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: initByCreatingFileAtPath");
-#endif
+
     self = [super init];
     //added 0.2.1d1
     theErrorHandle =[[NCDFErrorHandle alloc] init];
@@ -279,9 +256,7 @@ static NSLock *fileDatabaseLock;
     /*Creates a NCDFHandle and netcdf file at thePath.  This file is empty and must be populated with dimensions, attributes, and variables*/
     /*Initialization*/
     int32_t errorCount;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: initByCreatingFileAtPath");
-#endif
+
     self = [super init];
     //added 0.2.1d1
     theErrorHandle =[[NCDFErrorHandle alloc] init];
@@ -315,7 +290,7 @@ static NSLock *fileDatabaseLock;
     return aHandle;
 }
 
-#ifdef DNCDF4
+#ifdef NCDF4
 +(id)handleWithNewNetCDF4FileAtPath:(NSString *)thePath
 {
     NCDFHandle *aHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:thePath withSettings:(NC_CLOBBER|NC_NETCDF4)];
@@ -345,9 +320,7 @@ static NSLock *fileDatabaseLock;
 {
     /*This method immediately invalidates all objects held by the handle.  After invalidation, the handle reloads object information for access.*/
     /*Initialization*/
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: refresh");
-#endif
+
     NSMutableArray *tempDim = [[NSMutableArray alloc] init];
     NSMutableArray *tempAtt = [[NSMutableArray alloc] init];
     NSMutableArray *tempVar = [[NSMutableArray alloc] init];
@@ -466,13 +439,7 @@ static NSLock *fileDatabaseLock;
     int32_t newID;
 
     char *theCName;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createNewDimensionWithName");
-#endif
     dimName = [self parseNameString:dimName];
-#ifdef DEBUG_LOG
-    NSLog(dimName);
-#endif
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
     if(status!=NC_NOERR)
     {
@@ -526,9 +493,7 @@ static NSLock *fileDatabaseLock;
     NSString *dimName;
     NSMutableArray *validDim = [[NSMutableArray alloc] init];
     NSMutableArray *returnDims = [[NSMutableArray alloc] init];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createNewDimensionsFromDimensionArray");
-#endif
+
     for(i=0;i<[newDimensionArray count];i++)
     {
         BOOL valid;
@@ -736,22 +701,18 @@ static NSLock *fileDatabaseLock;
     int32_t ncid;
     int32_t status;
     BOOL dataWritten;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createNewGlobalAttributeWithName");
-#endif
+
     attName = [self parseNameString:attName];
 
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
     if(status!=NC_NOERR)
     {
-        //NSLog(@"Failed to open");
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewGlobalAttributeWithName" subMethod:@"Opening file" errorCode:status];
         return NO;
     }
     status = nc_redef(ncid);
     if(status!=NC_NOERR)
     {
-        //NSLog(@"Failed to redef");
         [theErrorHandle addErrorFromSource:filePath className:@"NCDFHandle" methodName:@"createNewGlobalAttributeWithName" subMethod:@"Redefine mode" errorCode:status];
         return NO;
     }
@@ -774,7 +735,7 @@ static NSLock *fileDatabaseLock;
         }
         case NC_CHAR:
         {
-            status = nc_put_att_text (ncid,NC_GLOBAL,[attName UTF8String],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] UTF8String]);
+            status = nc_put_att_text (ncid,NC_GLOBAL,[attName UTF8String],[(NSString *)[theValues objectAtIndex:0] length], [[theValues objectAtIndex:0] UTF8String]);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -879,9 +840,7 @@ static NSLock *fileDatabaseLock;
 {
     int32_t i,j;
     NSMutableArray *existingAttributes = [[NSMutableArray alloc] init];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createNewGlobalAttributeWithArray");
-#endif
+
     for(i=0;i<[theNewAttributes count];i++)
     {
         BOOL valid,result;
@@ -915,9 +874,7 @@ static NSLock *fileDatabaseLock;
     /*Modify netcdf: Global Attributes*/
     int32_t ncid;
     int32_t status;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: deleteGlobalAttributeWithName");
-#endif
+
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
     if(status != NC_NOERR)
     {
@@ -952,9 +909,7 @@ static NSLock *fileDatabaseLock;
     NSRange theRange;
     NSScanner *theScanner = [NSScanner scannerWithString:theString];
     NSCharacterSet *theSet = [NSCharacterSet whitespaceCharacterSet];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: parseNameString");
-#endif
+
     mutString = [NSMutableString stringWithString:theString];
     theRange.length = 1;
     while(![theScanner isAtEnd])
@@ -977,10 +932,6 @@ static NSLock *fileDatabaseLock;
     int32_t *theDimNumbers;
     int32_t i,ncid,varID;
     NSString *theName;
-    //open netcdf
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createVariableWithName");
-#endif
     ncid = [self ncidWithOpenMode:NC_WRITE status:&status];
 
     if(status != NC_NOERR)
@@ -1048,9 +999,7 @@ static NSLock *fileDatabaseLock;
     int32_t i,j,k;
     NSMutableArray *variablesNotAdded;
     variablesNotAdded = [[NSMutableArray alloc] init];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createVariablesWithArray");
-#endif
+
     for(i=0;i<[theNewVariables count];i++)
     {
         NSMutableArray *theNativeDimensionArray = [[NSMutableArray alloc] init];
@@ -1086,9 +1035,7 @@ static NSLock *fileDatabaseLock;
     int32_t *selectedDimIDs;
     NSMutableArray *theCurrentVars = [self getVariables];
     NSMutableArray *theCurrentDims = [self getDimensions];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: createNewVariableWithName");
-#endif
+
     //step 1. Parse variable name
     variableName = [self parseNameString:variableName];
     //step 2. check for variable names
@@ -1248,9 +1195,7 @@ static NSLock *fileDatabaseLock;
 -(NCDFVariable *)retrieveVariableByName:(NSString *)aName
 {
     int32_t i;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: retrieveVariableByName");
-#endif
+
     for(i=0;i<[theVariables count];i++)
     {
         if([[[theVariables objectAtIndex:i] variableName] isEqualToString:aName])
@@ -1262,9 +1207,7 @@ static NSLock *fileDatabaseLock;
 -(NCDFDimension *)retrieveDimensionByName:(NSString *)aName
 {
     int32_t i;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: retrieveDimensionByName");
-#endif
+
     for(i=0;i<[theDimensions count];i++)
     {
         if([[[theDimensions objectAtIndex:i] dimensionName] isEqualToString:aName])
@@ -1276,9 +1219,7 @@ static NSLock *fileDatabaseLock;
 -(NCDFAttribute *)retrieveGlobalAttributeByName:(NSString *)aName
 {
     int32_t i;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: retrieveDimensionByName");
-#endif
+
     for(i=0;i<[theGlobalAttributes count];i++)
     {
         if([[[theGlobalAttributes objectAtIndex:i] attributeName] isEqualToString:aName])
@@ -1290,9 +1231,7 @@ static NSLock *fileDatabaseLock;
 -(NCDFDimension *)retrieveUnlimitedDimension
 {
     int32_t i;
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: retrieveUnlimitedDimension");
-#endif
+
     for(i=0;i<[theDimensions count];i++)
     {
         if([[theDimensions objectAtIndex:i] isUnlimited] )
@@ -1306,9 +1245,7 @@ static NSLock *fileDatabaseLock;
 {
     int32_t i;
     NSString *nameOfUnlimited = [[self retrieveUnlimitedDimension] dimensionName];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: retrieveUnlimitedVariable");
-#endif
+
     for(i=0;i<[theVariables count];i++)
     {
         if([[[theVariables objectAtIndex:i] variableName] isEqualToString:nameOfUnlimited])
@@ -1332,9 +1269,7 @@ static NSLock *fileDatabaseLock;
     NSArray *varDimIDs;
     NSData *emptyObject;
     NCDFVariable *aVar = [self retrieveUnlimitedVariable];
-#ifdef DEBUG_NCDFHandle
-    NSLog(@"NCDFHandle: extendUnlimitedVariableBy");
-#endif
+
     dimLength = [[self retrieveUnlimitedDimension] dimLength];
     varDimIDs = [aVar variableDimensions];
     //set start coords
