@@ -62,7 +62,7 @@
     total_values = 1;
     for(i=0;i<[dimIDs count];i++)
     {
-        total_values *= [[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
+        total_values *= [[theDims objectAtIndex:[dimIDs[i] intValue]] dimLength];
     }
     ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&result];
     if(result!=NC_NOERR)
@@ -230,12 +230,12 @@
     for(i=0;i<[dimIDs count];i++)
     {
 
-        if([[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] isUnlimited])
+        if([[theDims objectAtIndex:[dimIDs[i] intValue]] isUnlimited])
         {
             usesUnlimitedDim = YES;
         }
         else
-        total_values *= [[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
+        total_values *= [[theDims objectAtIndex:[dimIDs[i] intValue]] dimLength];
     }
 
     ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&result];
@@ -398,9 +398,9 @@
         case NC_BYTE:
         {
             uint8 *theText;
-            theText = (uint8 *)malloc(sizeof(uint8)*[(NSData *)[theValues objectAtIndex:0]length]);
-            [[theValues objectAtIndex:0] getBytes:theText length: [(NSData *)[theValues objectAtIndex:0]length]];
-            status = nc_put_att_uchar (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
+            theText = (uint8 *)malloc(sizeof(uint8)*[(NSData *)theValues[0] length]);
+            [theValues[0] getBytes:theText length: [(NSData *)theValues[0] length]];
+            status = nc_put_att_uchar (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,[(NSData *)theValues[0] length],theText);
             free(theText);
             if(status!=NC_NOERR)
             {
@@ -412,7 +412,7 @@
         }
         case NC_CHAR:
         {
-            status = nc_put_att_text (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],[(NSString *)[theValues objectAtIndex:0]length],[[theValues objectAtIndex:0] cStringUsingEncoding:NSUTF8StringEncoding]);
+            status = nc_put_att_text (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],[(NSString *)theValues[0] length],[theValues[0] cStringUsingEncoding:NSUTF8StringEncoding]);
 
 			if(status!=NC_NOERR)
             {
@@ -429,7 +429,7 @@
             int16_t *array;
             array = (int16_t *)malloc(sizeof(int16_t)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] shortValue];
+                array[i] = [theValues[i] shortValue];
             status = nc_put_att_short (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
@@ -446,7 +446,7 @@
             int32_t *array;
             array = (int32_t *)malloc(sizeof(int)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] intValue];
+                array[i] = [theValues[i] intValue];
             status = nc_put_att_int (ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
@@ -463,7 +463,7 @@
             float *array;
             array = (float *)malloc(sizeof(float)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] floatValue];
+                array[i] = [theValues[i] floatValue];
             status = nc_put_att_float(ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
@@ -480,7 +480,7 @@
             double *array;
             array = (double *)malloc(sizeof(double)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] doubleValue];
+                array[i] = [theValues[i] doubleValue];
             status = nc_put_att_double(ncid,varID,[attName cStringUsingEncoding:NSUTF8StringEncoding],theType,(size_t)[theValues count],array);
             if(status!=NC_NOERR)
             {
@@ -615,7 +615,7 @@
     theString = @"[";
     for(i=0;i<[dimIDs count];i++)
     {
-        theString = [theString stringByAppendingString:[[theWorkingDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimensionName]];
+        theString = [theString stringByAppendingString:[[theWorkingDims objectAtIndex:[dimIDs[i] intValue]] dimensionName]];
         if(i+1<[dimIDs count])
             theString = [theString stringByAppendingString:@","];
     }
@@ -709,7 +709,7 @@
     index = (size_t *)malloc(sizeof(size_t)*[coordinates count]);
     for(i=0;i<[coordinates count];i++)
     {
-        index[i] = [[coordinates objectAtIndex:i] intValue];
+        index[i] = [coordinates[i] intValue];
     }
     ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
     if(status!=NC_NOERR)
@@ -841,8 +841,8 @@
     edges = (size_t *)malloc(sizeof(size_t)*[edgeLengths count]);
     for(i=0;i<[startCoordinates count];i++)
     {
-        index[i] = (size_t)[[startCoordinates objectAtIndex:i] intValue];
-        edges[i] = (size_t)[[edgeLengths objectAtIndex:i] intValue];
+        index[i] = (size_t)[startCoordinates[i] intValue];
+        edges[i] = (size_t)[edgeLengths[i] intValue];
 
     }
     ncid = [theHandle ncidWithOpenMode:NC_WRITE status:&status];
@@ -979,7 +979,7 @@
     index = (size_t *)malloc(sizeof(size_t)*[coordinates count]);
     for(i=0;i<[coordinates count];i++)
     {
-        index[i] = [[coordinates objectAtIndex:i] intValue];
+        index[i] = [coordinates[i] intValue];
     }
     ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];
     if(status!=NC_NOERR)
@@ -1082,12 +1082,12 @@
     edges = (size_t *)malloc(sizeof(size_t)*[edgeLengths count]);
     for(i=0;i<[startCoordinates count];i++)
     {
-        index[i] = (size_t)[[startCoordinates objectAtIndex:i] intValue];
-        edges[i] = (size_t)[[edgeLengths objectAtIndex:i] intValue];
+        index[i] = (size_t)[startCoordinates[i] intValue];
+        edges[i] = (size_t)[edgeLengths[i] intValue];
         if(i==0)
-            unitSize = (size_t)([[edgeLengths objectAtIndex:i] intValue]);
+            unitSize = (size_t)([edgeLengths[i] intValue]);
         else
-            unitSize *= (size_t)[[edgeLengths objectAtIndex:i] intValue];
+            unitSize *= (size_t)[edgeLengths[i] intValue];
     }
     ncid = [theHandle ncidWithOpenMode:NC_NOWRITE status:&status];;
     if(status!=NC_NOERR)
@@ -1196,7 +1196,7 @@
     if([dimIDs count]!=1)
         return NO;
     theArray = [theHandle getDimensions];
-    if([[[theArray objectAtIndex:[[dimIDs objectAtIndex:0]intValue]]  dimensionName] isEqualToString:variableName])
+    if([[[theArray objectAtIndex:[dimIDs[0] intValue]]  dimensionName] isEqualToString:variableName])
         return YES;
     return NO;
 }
@@ -1210,8 +1210,8 @@
     theSize = 1;
     for(i=0;i<[dimIDs count];i++)
     {
-        aLength = (int32_t)[[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
-        if(![[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] isUnlimited])
+        aLength = (int32_t)[[theDims objectAtIndex:[dimIDs[i] intValue]] dimLength];
+        if(![[theDims objectAtIndex:[dimIDs[i] intValue]] isUnlimited])
             theSize *= aLength;
     }
     return theSize;
@@ -1255,7 +1255,7 @@
     theSize = 1;
     for(i=0;i<[dimIDs count];i++)
     {
-        aLength = (int32_t)[[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
+        aLength = (int32_t)[[theDims objectAtIndex:[dimIDs[i] intValue]] dimLength];
         theSize *= aLength;
     }
     return theSize;
@@ -1331,7 +1331,7 @@
 
     for(i=0;i<[dimIDs count];i++)
     {
-        aLength = (int32_t)[[theDims objectAtIndex:[[dimIDs objectAtIndex:i] intValue]] dimLength];
+        aLength = (int32_t)[[theDims objectAtIndex:[dimIDs[i] intValue]] dimLength];
         if(aLength != NC_UNLIMITED)
             [theLengths addObject:[NSNumber numberWithInt:aLength]];
         else
@@ -1349,7 +1349,7 @@
     unlim = NO;
     for(i=0;i<[dimIDs count];i++)
     {
-        if([[theHandle retrieveDimensionByIndex:[[dimIDs objectAtIndex:i] intValue]] isUnlimited])
+        if([[theHandle retrieveDimensionByIndex:[dimIDs[i] intValue]] isUnlimited])
             unlim = YES;
     }
     return unlim;
@@ -1382,7 +1382,7 @@
     int32_t i;
     for(i=0;i<[dimLengths1 count];i++)
     {
-        if([[dimLengths1 objectAtIndex:i] intValue]!=[[dimLengths2 objectAtIndex:i] intValue])
+        if([dimLengths1[i] intValue]!=[dimLengths2[i] intValue])
         {
             //i = [dimLengths1 count];
             return NO;
@@ -1398,7 +1398,7 @@
     tempID = [[theHandle retrieveDimensionByName:aDimName] dimensionID];
     for(i=0;i<[dimIDs count];i++)
     {
-        if([[dimIDs objectAtIndex:i] intValue]==tempID)
+        if([dimIDs[i] intValue]==tempID)
             return YES;
     }
     return NO;
@@ -1410,7 +1410,7 @@
 
     for(i=0;i<[dimIDs count];i++)
     {
-        if([[dimIDs objectAtIndex:i] intValue]==aDimID)
+        if([dimIDs[i] intValue]==aDimID)
             return YES;
     }
     return NO;
@@ -1422,7 +1422,7 @@
 
     for(i=0;i<[newAttributes count];i++)
     {
-        if(![self createNewVariableAttributeWithName:[[newAttributes objectAtIndex:i]attributeName] dataType:[[newAttributes objectAtIndex:i]attributeNC_TYPE] values:[[newAttributes objectAtIndex:i]getAttributeValueArray]])
+        if(![self createNewVariableAttributeWithName:[newAttributes[i] attributeName] dataType:[newAttributes[i] attributeNC_TYPE] values:[newAttributes[i] getAttributeValueArray]])
             return NO;
     }
     return YES;
@@ -1446,7 +1446,7 @@
     originalAtts = [self getVariableAttributes];
     for(i=0;i<[originalAtts count];i++)
     {
-        [attributeDictionaries addObject:[[originalAtts objectAtIndex:i] propertyList]];
+        [attributeDictionaries addObject:[originalAtts[i] propertyList]];
     }
     [theTemp setObject:[NSArray arrayWithArray:attributeDictionaries]  forKey:@"attributes"];
     thePropertyList = [NSDictionary dictionaryWithDictionary:theTemp];
@@ -1461,7 +1461,7 @@
     temp = [[NSMutableArray alloc] init];
     for(i=0;i<[dimIDs count];i++)
     {
-        [temp addObject:[[theHandle retrieveDimensionByIndex:[[dimIDs objectAtIndex:i] intValue]] dimensionName]];
+        [temp addObject:[[theHandle retrieveDimensionByIndex:[dimIDs[i] intValue]] dimensionName]];
     }
     names = [NSArray arrayWithArray:temp];
     return names;
@@ -1476,7 +1476,7 @@
     temp = [[NSMutableArray alloc] init];
     for(i=0;i<[dimIDs count];i++)
     {
-        [temp addObject:[theHandle retrieveDimensionByIndex:[[dimIDs objectAtIndex:i] intValue]]];
+        [temp addObject:[theHandle retrieveDimensionByIndex:[dimIDs[i] intValue]]];
     }
     names = [NSArray arrayWithArray:temp];
     return names;
@@ -1512,7 +1512,7 @@
     //get all variable dims and determine which is flipped
     for(i=0;i<[theVarDims count];i++)
     {
-        if([[[theVarDims objectAtIndex:i] dimensionName] isEqualToString:theDimName])
+        if([[theVarDims[i] dimensionName] isEqualToString:theDimName])
             flippedDim = i;
     }
     if(flippedDim == -1)
@@ -1526,7 +1526,7 @@
         int32_t newValue = 1;
         for(j=i+1;j<[theLengths count];j++)
         {
-            newValue *= [[theLengths objectAtIndex:j] intValue];
+            newValue *= [theLengths[j] intValue];
         }
         //NSLog(@"new Length: %i",newValue);
         [theResetLengths addObject:[NSNumber numberWithInt:newValue]];
@@ -1568,8 +1568,8 @@
             bytes = 1;
             break;
     }
-    unitSize = bytes * [[theResetLengths objectAtIndex:flippedDim] intValue];
-    unitCount = [[theLengths objectAtIndex:flippedDim] intValue];
+    unitSize = bytes * [theResetLengths[flippedDim] intValue];
+    unitCount = [theLengths[flippedDim] intValue];
     totalUnits = (int32_t)[theData length]/(unitSize * unitCount);
     theRange.length = unitSize;
 
@@ -1583,7 +1583,7 @@
         }
         for(j=unitCount-1;j>-1;j--)
         {
-            [theFinalData appendData:[theArrayOfData objectAtIndex:j]];
+            [theFinalData appendData:theArrayOfData[j]];
         }
 
 
@@ -1621,7 +1621,7 @@
     //get all variable dims and determine which is flipped
     for(i=0;i<[theVarDims count];i++)
     {
-        if([[[theVarDims objectAtIndex:i] dimensionName] isEqualToString:theDimName])
+        if([[theVarDims[i] dimensionName] isEqualToString:theDimName])
             flippedDim = i;
     }
     if(flippedDim == -1)
@@ -1635,7 +1635,7 @@
         int32_t newValue = 1;
         for(j=i+1;j<[theLengths count];j++)
         {
-            newValue *= [[theLengths objectAtIndex:j] intValue];
+            newValue *= [theLengths[j] intValue];
         }
         [theResetLengths addObject:[NSNumber numberWithInt:newValue]];
     }
@@ -1677,8 +1677,8 @@
             break;
     }
     //int32_t unitSize,unitCount,totalUnits;
-    unitSize = bytes * [[theResetLengths objectAtIndex:flippedDim] intValue];
-    unitCount = [[theLengths objectAtIndex:flippedDim] intValue];
+    unitSize = bytes * [theResetLengths[flippedDim] intValue];
+    unitCount = [theLengths[flippedDim] intValue];
     totalUnits = (int32_t)[theData length]/(unitSize * unitCount);
     theRange.length = unitSize;
     for(i=0;i<totalUnits;i++)
@@ -1717,7 +1717,7 @@
             theShift *= -1;
             for(j=0;j<theShift;j++)
             {
-                someData = [theArrayOfData objectAtIndex:0];
+                someData = theArrayOfData[0];
                 [theArrayOfData removeObjectAtIndex:0];
                 [theArrayOfData addObject:someData];
             }
@@ -1725,7 +1725,7 @@
         //load into a new data object
         for(j=0;j<unitCount;j++)
         {
-            [theFinalData appendData:[theArrayOfData objectAtIndex:j]];
+            [theFinalData appendData:theArrayOfData[j]];
         }
 
 
@@ -1741,8 +1741,8 @@
     NSArray *theCurrentAtts = [self getVariableAttributes];
     for(i=0;i<[theCurrentAtts count];i++)
     {
-        if([[[theCurrentAtts objectAtIndex:i] attributeName] isEqualToString:name])
-            return [theCurrentAtts objectAtIndex:i];
+        if([[theCurrentAtts[i] attributeName] isEqualToString:name])
+            return theCurrentAtts[i];
     }
     return nil;
 }

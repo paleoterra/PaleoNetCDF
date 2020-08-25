@@ -109,7 +109,7 @@ static NSLock *fileDatabaseLock;
         }
         cocoaName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
         theDim = [[NCDFDimension alloc] initWithFileName:filePath dimID:i name:cocoaName length:length handle:self];
-        [[typeArrays objectAtIndex:0] addObject:theDim];
+        [typeArrays[0] addObject:theDim];
     }
     status = nc_inq_natts(ncid, &numberGlobalAtts);
     if(status!=NC_NOERR)
@@ -139,7 +139,7 @@ static NSLock *fileDatabaseLock;
             return;
         }
         theAtt = [[NCDFAttribute alloc] initWithPath:filePath name:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:NC_GLOBAL length:length type:attributeType handle:self];
-        [[typeArrays objectAtIndex:1] addObject:theAtt];
+        [typeArrays[1] addObject:theAtt];
         free(name);
     }
     for(i=0;i<numberVariables;i++)
@@ -163,7 +163,7 @@ static NSLock *fileDatabaseLock;
             [theDimList addObject:[NSNumber numberWithInt:dimIDs[j]]];
         }
         theVar = [[NCDFVariable alloc] initWithPath:filePath variableName:[NSString stringWithCString:name encoding:NSUTF8StringEncoding] variableID:i type:theType theDims:theDimList attributeCount:numberOfAttributes handle:self];
-        [[typeArrays objectAtIndex:2] addObject:theVar];
+        [typeArrays[2] addObject:theVar];
     }
     [self closeNCID:ncid];
 }
@@ -506,7 +506,7 @@ static NSLock *fileDatabaseLock;
         valid = YES;
         for(j=0;j<[theDimensions count];j++)
         {
-            if([[newDimensionArray objectAtIndex:i] isEqualToDim:[theDimensions objectAtIndex:i]])
+            if([newDimensionArray[i] isEqualToDim:theDimensions[i]])
             {
                 valid = NO;
                 j = (int)[theDimensions count];
@@ -519,7 +519,7 @@ static NSLock *fileDatabaseLock;
         else
         {
             [validDim addObject:[NSNumber numberWithInt:0]];
-            [returnDims addObject:[newDimensionArray objectAtIndex:i]];
+            [returnDims addObject:newDimensionArray[i]];
 
         }
     }
@@ -538,13 +538,13 @@ static NSLock *fileDatabaseLock;
     //cycle through dims
     for(i=0;i<[newDimensionArray count];i++)
     {
-        if([[validDim objectAtIndex:i] intValue]==1)
+        if([validDim[i] intValue]==1)
         {
-            dimName = [self parseNameString:[[newDimensionArray objectAtIndex:i]dimensionName]];
+            dimName = [self parseNameString:[newDimensionArray[i] dimensionName]];
 #ifdef DEBUG_LOG
             NSLog(dimName);
 #endif
-            length = [[newDimensionArray objectAtIndex:i]dimLength];
+            length = [newDimensionArray[i] dimLength];
             theCName = (char *)malloc(sizeof(char)*[dimName length]+1);
             [dimName getCString:theCName maxLength:[dimName length]+1 encoding:NSUTF8StringEncoding];
             status = nc_def_dim(ncid,theCName,length,&newID);
@@ -575,18 +575,18 @@ static NSLock *fileDatabaseLock;
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
     for(i=0;i<[theGlobalAttributes count];i++)
     {
-        [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
+        [newHandle createNewGlobalAttributeWithPropertyList:[theGlobalAttributes[i] propertyList]];
     }
     for(i=0;i<[theDimensions count];i++)
     {
-        if(![[[theDimensions objectAtIndex:i] dimensionName] isEqualToString:deleteDimName])
-            [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
+        if(![[theDimensions[i] dimensionName] isEqualToString:deleteDimName])
+            [newHandle createNewDimensionWithPropertyList:[theDimensions[i] propertyList]];
     }
     for(i=0;i<[theVariables count];i++)
     {
-        if(![[theVariables objectAtIndex:i] doesVariableUseDimensionName:deleteDimName])
+        if(![theVariables[i] doesVariableUseDimensionName:deleteDimName])
         {
-            [newHandle createNewVariableWithPropertyList:[[theVariables objectAtIndex:i] propertyList]];
+            [newHandle createNewVariableWithPropertyList:[theVariables[i] propertyList]];
         }
     }
     if(errorCount<[theErrorHandle errorCount])
@@ -618,35 +618,35 @@ static NSLock *fileDatabaseLock;
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
     for(i=0;i<[theGlobalAttributes count];i++)
     {
-        [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
+        [newHandle createNewGlobalAttributeWithPropertyList:[theGlobalAttributes[i] propertyList]];
     }
     for(i=0;i<[theDimensions count];i++)
     {
-        if(![[[theDimensions objectAtIndex:i] dimensionName] isEqualToString:resizeDimName])
-            [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
+        if(![[theDimensions[i] dimensionName] isEqualToString:resizeDimName])
+            [newHandle createNewDimensionWithPropertyList:[theDimensions[i] propertyList]];
         else
             [newHandle createNewDimensionWithName:resizeDimName size:(size_t)newSize];
     }
     for(i=0;i<[theVariables count];i++)
     {
-        if(![[theVariables objectAtIndex:i] doesVariableUseDimensionName:resizeDimName])
-            [newHandle createNewVariableWithPropertyList:[[theVariables objectAtIndex:i] propertyList]];
+        if(![theVariables[i] doesVariableUseDimensionName:resizeDimName])
+            [newHandle createNewVariableWithPropertyList:[theVariables[i] propertyList]];
         else
         {
             int32_t newSize,newCount;
-            NSArray *theUsedDims = [[theVariables objectAtIndex:i] allVariableDimInformation];
+            NSArray *theUsedDims = [theVariables[i] allVariableDimInformation];
             NSMutableData *newData;
             NSMutableDictionary *propertyList;
             newSize = 1;
             for(newCount = 0;newCount<[theUsedDims count];newCount++)
             {
-                if(![[[theUsedDims objectAtIndex:newCount] dimensionName] isEqualToString:resizeDimName])
-                    newSize *= (int)[[theUsedDims objectAtIndex:newCount] dimLength];
+                if(![[theUsedDims[newCount] dimensionName] isEqualToString:resizeDimName])
+                    newSize *= (int)[theUsedDims[newCount] dimLength];
                 else
                     newSize *= newSize;
             }
 
-            switch ([(NCDFVariable *)[theVariables objectAtIndex:i] variableNC_TYPE])
+            switch ([(NCDFVariable *)theVariables[i] variableNC_TYPE])
             {
                 case NC_BYTE:
                     newSize *= 1;
@@ -669,9 +669,9 @@ static NSLock *fileDatabaseLock;
                 default:
                     break;
             }
-            newData = [NSMutableData dataWithData:[[theVariables objectAtIndex:i] readAllVariableData]];
+            newData = [NSMutableData dataWithData:[theVariables[i] readAllVariableData]];
             [newData setLength:newSize];
-            propertyList = [NSMutableDictionary dictionaryWithDictionary:[[theVariables objectAtIndex:i] propertyList]];
+            propertyList = [NSMutableDictionary dictionaryWithDictionary:[theVariables[i] propertyList]];
             [propertyList setObject:[NSData dataWithData:newData] forKey:@"data"];
             [newHandle createNewVariableWithPropertyList:[NSDictionary dictionaryWithDictionary:propertyList]];
         }
@@ -727,9 +727,9 @@ static NSLock *fileDatabaseLock;
         case NC_BYTE:
         {
             uint8 *theText;
-            theText = (uint8 *)malloc(sizeof(uint8)*[(NSData *)[theValues objectAtIndex:0]length]);
-            [[theValues objectAtIndex:0] getBytes:theText length:[(NSData *)[theValues objectAtIndex:0]length]];
-            status = nc_put_att_uchar (ncid,NC_GLOBAL,[attName UTF8String],theType,[(NSData *)[theValues objectAtIndex:0]length],theText);
+            theText = (uint8 *)malloc(sizeof(uint8)*[(NSData *)theValues[0] length]);
+            [theValues[0] getBytes:theText length:[(NSData *)theValues[0] length]];
+            status = nc_put_att_uchar (ncid,NC_GLOBAL,[attName UTF8String],theType,[(NSData *)theValues[0] length],theText);
             free(theText);
             if(status==NC_NOERR)
                 dataWritten = YES;
@@ -741,7 +741,7 @@ static NSLock *fileDatabaseLock;
         }
         case NC_CHAR:
         {
-            status = nc_put_att_text (ncid,NC_GLOBAL,[attName UTF8String],[(NSString *)[theValues objectAtIndex:0] length], [[theValues objectAtIndex:0] UTF8String]);
+            status = nc_put_att_text (ncid,NC_GLOBAL,[attName UTF8String],[(NSString *)theValues[0] length], [theValues[0] UTF8String]);
             if(status==NC_NOERR)
                 dataWritten = YES;
             else
@@ -756,7 +756,7 @@ static NSLock *fileDatabaseLock;
             short *array;
             array = (int16_t *)malloc(sizeof(int16_t)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] shortValue];
+                array[i] = [theValues[i] shortValue];
             status = nc_put_att_short (ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
@@ -773,7 +773,7 @@ static NSLock *fileDatabaseLock;
             int32_t *array;
             array = (int32_t *)malloc(sizeof(int)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] intValue];
+                array[i] = [theValues[i] intValue];
             status = nc_put_att_int (ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
@@ -790,7 +790,7 @@ static NSLock *fileDatabaseLock;
             float *array;
             array = (float *)malloc(sizeof(float)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] floatValue];
+                array[i] = [theValues[i] floatValue];
             status = nc_put_att_float(ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
@@ -807,7 +807,7 @@ static NSLock *fileDatabaseLock;
             double *array;
             array = (double *)malloc(sizeof(double)*[theValues count]);
             for(i=0;i<[theValues count];i++)
-                array[i] = [[theValues objectAtIndex:i] doubleValue];
+                array[i] = [theValues[i] doubleValue];
             status = nc_put_att_double(ncid,NC_GLOBAL,[attName UTF8String],theType,(size_t)[theValues count],array);
             if(status==NC_NOERR)
                 dataWritten = YES;
@@ -853,7 +853,7 @@ static NSLock *fileDatabaseLock;
         valid = YES;
         for(j=0;j<[theGlobalAttributes count];j++)
         {
-            if([[theNewAttributes objectAtIndex:i] isEqualToAttribute:[theGlobalAttributes objectAtIndex:j]])
+            if([theNewAttributes[i] isEqualToAttribute:theGlobalAttributes[j]])
             {
                 valid = NO;
                 j = (int32_t)[theGlobalAttributes count];
@@ -861,15 +861,15 @@ static NSLock *fileDatabaseLock;
         }
         if(valid)
         {
-            result = [self createNewGlobalAttributeWithName:[[theNewAttributes objectAtIndex:i] attributeName] dataType:[[theNewAttributes objectAtIndex:i] attributeNC_TYPE] values:[[theNewAttributes objectAtIndex:i] getAttributeValueArray]];
+            result = [self createNewGlobalAttributeWithName:[theNewAttributes[i] attributeName] dataType:[theNewAttributes[i] attributeNC_TYPE] values:[theNewAttributes[i] getAttributeValueArray]];
             if(!result)
             {
-                [existingAttributes addObject:[theNewAttributes objectAtIndex:i]];
+                [existingAttributes addObject:theNewAttributes[i]];
                 NSLog(@"createNewGlobalAttributeWithArray: failed write");
             }
         }
         else
-            [existingAttributes addObject:[theNewAttributes objectAtIndex:i]];
+            [existingAttributes addObject:theNewAttributes[i]];
     }
     return [NSArray arrayWithArray:existingAttributes];
 }
@@ -949,7 +949,7 @@ static NSLock *fileDatabaseLock;
     theDimNumbers = (int32_t *)malloc(sizeof(int)*[theVariableDims count]);
     for(i=0;i<[theVariableDims count];i++)
     {
-        theDimNumbers[i] = [[theVariableDims objectAtIndex:i] dimensionID];
+        theDimNumbers[i] = [theVariableDims[i] dimensionID];
     }
     theName = [self parseNameString:varName];
 
@@ -982,7 +982,7 @@ static NSLock *fileDatabaseLock;
 
     for(i=0;i<[newDimNames count];i++)
     {
-        NCDFDimension *aDim = [self retrieveDimensionByName:[newDimNames objectAtIndex:i]];
+        NCDFDimension *aDim = [self retrieveDimensionByName:newDimNames[i]];
         [newDimIDs addObject:aDim];
     }
 
@@ -1010,26 +1010,26 @@ static NSLock *fileDatabaseLock;
     {
         NSMutableArray *theNativeDimensionArray = [[NSMutableArray alloc] init];
         //check for valid dims
-        for(j=0;j<[[[theNewVariables objectAtIndex:i] variableDimensions] count];j++)
+        for(j=0;j<[[theNewVariables[i] variableDimensions] count];j++)
         {
             NCDFDimension *theWorkingDim;
-            theWorkingDim = [[[theNewVariables objectAtIndex:i] variableDimensions] objectAtIndex:j];
+            theWorkingDim = [[theNewVariables[i] variableDimensions] objectAtIndex:j];
             for(k=0;k<[theDimensions count];k++)
             {
-                if([theWorkingDim isEqualToDim:[theDimensions objectAtIndex:k]])
+                if([theWorkingDim isEqualToDim:theDimensions[k]])
                 {
-                    [theNativeDimensionArray addObject:[theDimensions objectAtIndex:k]];
+                    [theNativeDimensionArray addObject:theDimensions[k]];
                     k = (int)[theDimensions count];
                 }
             }
         }
-        if([theNativeDimensionArray count]==[[[theNewVariables objectAtIndex:i] variableDimensions] count])
+        if([theNativeDimensionArray count]==[[theNewVariables[i] variableDimensions] count])
         {
-            [self createVariableWithName:[[theNewVariables objectAtIndex:i] variableName] type:[[theNewVariables objectAtIndex:i]variableNC_TYPE] dimArray:theNativeDimensionArray];
+            [self createVariableWithName:[theNewVariables[i] variableName] type:[theNewVariables[i] variableNC_TYPE] dimArray:theNativeDimensionArray];
         }
         else
         {
-            [variablesNotAdded addObject:[theNewVariables objectAtIndex:i]];
+            [variablesNotAdded addObject:theNewVariables[i]];
         }
     }
     return [NSArray arrayWithArray:variablesNotAdded];
@@ -1047,7 +1047,7 @@ static NSLock *fileDatabaseLock;
     //step 2. check for variable names
     for(i=0;i<[theCurrentVars count];i++)
     {
-        if([[[theCurrentVars objectAtIndex:i] variableName] isEqualToString:variableName])
+        if([[theCurrentVars[i] variableName] isEqualToString:variableName])
         {
             variableName = [variableName stringByAppendingString:@"_1"];
             i = (int)[theCurrentVars count];
@@ -1061,9 +1061,9 @@ static NSLock *fileDatabaseLock;
     {
         for(j=0;j<[selectedDims count];j++)
         {
-            if([[[theCurrentDims objectAtIndex:i] dimensionName] isEqualToString:[selectedDims objectAtIndex:j]])
+            if([[theCurrentDims[i] dimensionName] isEqualToString:selectedDims[j]])
             {
-                selectedDimIDs[j] = [[theCurrentDims objectAtIndex:i] dimensionID];
+                selectedDimIDs[j] = [theCurrentDims[i] dimensionID];
             }
 
         }
@@ -1118,17 +1118,17 @@ static NSLock *fileDatabaseLock;
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
     for(i=0;i<[theGlobalAttributes count];i++)
     {
-        [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
+        [newHandle createNewGlobalAttributeWithPropertyList:[theGlobalAttributes[i] propertyList]];
     }
     for(i=0;i<[theDimensions count];i++)
     {
-        [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
+        [newHandle createNewDimensionWithPropertyList:[theDimensions[i] propertyList]];
     }
     for(i=0;i<[theVariables count];i++)
     {
-        if(![[[theVariables objectAtIndex:i] variableName] isEqualToString:deleteVariableName])
+        if(![[theVariables[i] variableName] isEqualToString:deleteVariableName])
         {
-            [newHandle createNewVariableWithPropertyList:[[theVariables objectAtIndex:i] propertyList]];
+            [newHandle createNewVariableWithPropertyList:[theVariables[i] propertyList]];
         }
     }
     if(errorCount<[theErrorHandle errorCount])
@@ -1160,11 +1160,11 @@ static NSLock *fileDatabaseLock;
     newHandle = [[NCDFHandle alloc] initByCreatingFileAtPath:tempPath];
     for(i=0;i<[theGlobalAttributes count];i++)
     {
-        [newHandle createNewGlobalAttributeWithPropertyList:[[theGlobalAttributes objectAtIndex:i] propertyList]];
+        [newHandle createNewGlobalAttributeWithPropertyList:[theGlobalAttributes[i] propertyList]];
     }
     for(i=0;i<[theDimensions count];i++)
     {
-        [newHandle createNewDimensionWithPropertyList:[[theDimensions objectAtIndex:i] propertyList]];
+        [newHandle createNewDimensionWithPropertyList:[theDimensions[i] propertyList]];
     }
     for(i=0;i<[theVariables count];i++)
     {
@@ -1172,12 +1172,12 @@ static NSLock *fileDatabaseLock;
         Valid = YES;
         for(j=0;j<[nameArray count];j++)
         {
-            if([[[theVariables objectAtIndex:i] variableName] isEqualToString:[nameArray objectAtIndex:j]])
+            if([[theVariables[i] variableName] isEqualToString:nameArray[j]])
                 Valid = NO;
         }
         if(Valid)
         {
-            NSDictionary *aTempDict = [[theVariables objectAtIndex:i] propertyList];
+            NSDictionary *aTempDict = [theVariables[i] propertyList];
             [newHandle refresh];
             [newHandle createNewVariableWithPropertyList:aTempDict];
         }
@@ -1204,8 +1204,8 @@ static NSLock *fileDatabaseLock;
 
     for(i=0;i<[theVariables count];i++)
     {
-        if([[[theVariables objectAtIndex:i] variableName] isEqualToString:aName])
-            return [theVariables objectAtIndex:i];
+        if([[theVariables[i] variableName] isEqualToString:aName])
+            return theVariables[i];
     }
     return nil;
 }
@@ -1216,8 +1216,8 @@ static NSLock *fileDatabaseLock;
 
     for(i=0;i<[theDimensions count];i++)
     {
-        if([[[theDimensions objectAtIndex:i] dimensionName] isEqualToString:aName])
-            return [theDimensions objectAtIndex:i];
+        if([[theDimensions[i] dimensionName] isEqualToString:aName])
+            return theDimensions[i];
     }
     return nil;
 }
@@ -1228,8 +1228,8 @@ static NSLock *fileDatabaseLock;
 
     for(i=0;i<[theGlobalAttributes count];i++)
     {
-        if([[[theGlobalAttributes objectAtIndex:i] attributeName] isEqualToString:aName])
-            return [theGlobalAttributes objectAtIndex:i];
+        if([[theGlobalAttributes[i] attributeName] isEqualToString:aName])
+            return theGlobalAttributes[i];
     }
     return nil;
 }
@@ -1240,8 +1240,8 @@ static NSLock *fileDatabaseLock;
 
     for(i=0;i<[theDimensions count];i++)
     {
-        if([[theDimensions objectAtIndex:i] isUnlimited] )
-            return [theDimensions objectAtIndex:i];
+        if([theDimensions[i] isUnlimited] )
+            return theDimensions[i];
     }
     return nil;
 
@@ -1254,15 +1254,15 @@ static NSLock *fileDatabaseLock;
 
     for(i=0;i<[theVariables count];i++)
     {
-        if([[[theVariables objectAtIndex:i] variableName] isEqualToString:nameOfUnlimited])
-            return [theVariables objectAtIndex:i];
+        if([[theVariables[i] variableName] isEqualToString:nameOfUnlimited])
+            return theVariables[i];
     }
     return nil;
 }
 
 -(NCDFDimension *)retrieveDimensionByIndex:(int)index
 {
-    return [theDimensions objectAtIndex:index];
+    return theDimensions[index];
 }
 
 -(BOOL)extendUnlimitedVariableBy:(int)units
@@ -1296,7 +1296,7 @@ static NSLock *fileDatabaseLock;
             [endCoords addObject:[NSNumber numberWithInt:(units)]];
         else
         {
-            [endCoords addObject:[NSNumber numberWithInt:(int)[[self retrieveDimensionByIndex:[[varDimIDs objectAtIndex:i] intValue]] dimLength]]];
+            [endCoords addObject:[NSNumber numberWithInt:(int)[[self retrieveDimensionByIndex:[varDimIDs[i] intValue]] dimLength]]];
         }
     }
     dataSize *= [aVar sizeUnitVariableForType];

@@ -42,7 +42,7 @@
 	int32_t i;
 	for(i=0;i<[paths count];i++)
 	{
-		[newURL addObject:[NSURL fileURLWithPath:[paths objectAtIndex:i]]];
+		[newURL addObject:[NSURL fileURLWithPath:paths[i]]];
 	}
 	return [self initWithOrderedURLSeries:[NSArray arrayWithArray:newURL]];
 }
@@ -62,17 +62,17 @@
 		{
 			if(i==0)
 			{
-				dirPath = [[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent];
+				dirPath = [[urls[i] path] stringByDeletingLastPathComponent];
 			}
-			if(![[NSFileManager defaultManager] fileExistsAtPath:[[urls objectAtIndex:i] path]])
+			if(![[NSFileManager defaultManager] fileExistsAtPath:[urls[i] path]])
 			{
 				isValid = NO;
-				if(![[[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent] isEqualToString:dirPath])
+				if(![[[urls[i] path] stringByDeletingLastPathComponent] isEqualToString:dirPath])
 					_isSingleDirectory = NO;
 			}
 			if(isValid)
 			{
-				if((aHandle = [[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]]))
+				if((aHandle = [[NCDFHandle alloc] initWithFileAtPath:[urls[i] path]]))
 				{
 					[tempArray addObject:aHandle];
 				}
@@ -117,7 +117,7 @@
 			NSString *basePath = [theDict objectForKey:@"directoryPath"];
 			for(i=0;i<[theFiles count];i++)
 			{
-				[tempURLs addObject:[NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:[theFiles objectAtIndex:i]]]];
+				[tempURLs addObject:[NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:theFiles[i]]]];
 			}
 		}
 		else
@@ -125,7 +125,7 @@
 			_isSingleDirectory = NO;
 			for(i=0;i<[theFiles count];i++)
 			{
-				[tempURLs addObject:[NSURL fileURLWithPath:[theFiles objectAtIndex:i]]];
+				[tempURLs addObject:[NSURL fileURLWithPath:theFiles[i]]];
 			}
 		}
 		_theURLS = [NSArray arrayWithArray:tempURLs];
@@ -148,7 +148,7 @@
 	int32_t i;
 	for(i=0;i<[paths count];i++)
 	{
-		[newURL addObject:[NSURL fileURLWithPath:[paths objectAtIndex:i]]];
+		[newURL addObject:[NSURL fileURLWithPath:paths[i]]];
 	}
 	return [self initWithUnorderedURLSeries:[NSArray arrayWithArray:newURL] sorted:sorted];
 }
@@ -169,19 +169,19 @@
 		{
 			if(i==0)
 			{
-				dirPath = [[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent];
+				dirPath = [[urls[i] path] stringByDeletingLastPathComponent];
 			}
 
-			if(![[NSFileManager defaultManager] fileExistsAtPath:[[urls objectAtIndex:i] path]])
+			if(![[NSFileManager defaultManager] fileExistsAtPath:[urls[i] path]])
 			{
 				isValid = NO;
-				if(![[[[urls objectAtIndex:i] path] stringByDeletingLastPathComponent] isEqualToString:dirPath])
+				if(![[[urls[i] path] stringByDeletingLastPathComponent] isEqualToString:dirPath])
 					_isSingleDirectory = NO;
 			}
 
 			if(isValid)
 			{
-				if((aHandle = [[NCDFHandle alloc] initWithFileAtPath:[[urls objectAtIndex:i] path]]))
+				if((aHandle = [[NCDFHandle alloc] initWithFileAtPath:[urls[i] path]]))
 				{
 					[tempArray addObject:aHandle];
 				}
@@ -217,7 +217,7 @@
 	BOOL theFinalResult = YES;
 	for(i=0;i<[tempArray count]-1;i++)
 	{
-		NSComparisonResult theResult = [[tempArray objectAtIndex:i] compareUnlimitedValue:[tempArray objectAtIndex:i+1]];
+		NSComparisonResult theResult = [tempArray[i] compareUnlimitedValue:[tempArray objectAtIndex:i+1]];
 		if(theResult != NSOrderedAscending)
 		{
 			theFinalResult = NO;
@@ -230,7 +230,7 @@
 	for(i=0;i<[tempArray count];i++)
 	{
 
-		[newURLS addObject:[_theURLS objectAtIndex:[_theHandles indexOfObject:[tempArray objectAtIndex:i]]]];
+		[newURLS addObject:[_theURLS objectAtIndex:[_theHandles indexOfObject:tempArray[i]]]];
 	}
 
 	_theURLS = [NSArray arrayWithArray:newURLS];

@@ -110,7 +110,7 @@
 	int32_t i,fileid = 0;
 	for(i=0;i<[theResultRanges count];i++)
 	{
-		aRange = [[theResultRanges objectAtIndex:i] rangeValue];
+		aRange = [theResultRanges[i] rangeValue];
 		if(aRange.length >0)
 		{
 			fileid = i;
@@ -122,9 +122,9 @@
 	for(i=0;i<[coordinates count];i++)
 	{
 		if(i==_unlimitedDimLocation)
-			[newCoor addObject:[NSNumber numberWithInt:(int)[[theResultRanges objectAtIndex:fileid] rangeValue].location]];
+			[newCoor addObject:[NSNumber numberWithInt:(int)[theResultRanges[fileid] rangeValue].location]];
 		else
-			[newCoor addObject:[coordinates objectAtIndex:i]];
+			[newCoor addObject:coordinates[i]];
 	}
 	return [[[[_seriesHandle handles] objectAtIndex:fileid] retrieveVariableByName:_variableName] getSingleValue:newCoor];
 }
@@ -140,7 +140,7 @@
 	for(i=0;i<[theResultRanges count];i++)
 	{
 		@autoreleasepool {
-			NSRange aRange = [[theResultRanges objectAtIndex:i] rangeValue];
+			NSRange aRange = [theResultRanges[i] rangeValue];
 			if(aRange.length > 0)
 			{
 				NSMutableArray *newStartArray = [[NSMutableArray alloc] init];
@@ -149,13 +149,13 @@
 				{
 					if(j==_unlimitedDimLocation)
 					{
-						[newStartArray addObject:[NSNumber numberWithInt:(int)[[theResultRanges objectAtIndex:i] rangeValue].location]];
-						[newLengthArray addObject:[NSNumber numberWithInt:(int)[[theResultRanges objectAtIndex:i] rangeValue].length]];
+						[newStartArray addObject:[NSNumber numberWithInt:(int)[theResultRanges[i] rangeValue].location]];
+						[newLengthArray addObject:[NSNumber numberWithInt:(int)[theResultRanges[i] rangeValue].length]];
 					}
 					else
 					{
-						[newStartArray addObject:[startCoordinates objectAtIndex:j]];
-						[newLengthArray addObject:[edgeLengths objectAtIndex:j]];
+						[newStartArray addObject:startCoordinates[j]];
+						[newLengthArray addObject:edgeLengths[j]];
 					}
 				}
 				//now we have the new coordinate array for file.  Load data.

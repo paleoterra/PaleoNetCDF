@@ -93,10 +93,10 @@
 	int32_t i, temp;
 	for(i=0;i<dimCount;i++)
 	{
-		temp = [[startPositions objectAtIndex:i] intValue];
+		temp = [startPositions[i] intValue];
 		NSAssert(( temp < dimensionLengths[i]), ([NSString stringWithFormat:@"startPositions out of range: dim %i, %i of %zi",i,temp,dimensionLengths[i]]));
-		NSAssert(( [[lengths objectAtIndex:i] intValue] > 0), ([NSString stringWithFormat:@"length for dim %i, is zero",i]));
-		temp = temp + [[lengths objectAtIndex:i] intValue] ;//problem line
+		NSAssert(( [lengths[i] intValue] > 0), ([NSString stringWithFormat:@"length for dim %i, is zero",i]));
+		temp = temp + [lengths[i] intValue] ;//problem line
 		NSAssert(( temp <= dimensionLengths[i]), ([NSString stringWithFormat:@"lengths out of range: dim %i, max value %i of %zi",i,temp,dimensionLengths[i]]));
 	}
     int32_t steps = 1;
@@ -104,7 +104,7 @@
 	{
 		for (i=(dimCount - 2);i>-1;i--) //note that we don't count the most significant dim because we'll read all those data at once
 		{
-			steps *= [[lengths objectAtIndex:i] intValue];
+			steps *= [lengths[i] intValue];
 		}
 	}
 
@@ -139,7 +139,7 @@
 	dimCount = (int)[theLengths count];
 	for(i=0;i<dimCount;i++)
 	{
-		dimensionLengths[i] = (size_t)[[theLengths objectAtIndex:i] intValue];
+		dimensionLengths[i] = (size_t)[theLengths[i] intValue];
 	}
 }
 
@@ -156,10 +156,10 @@
 	carryover = 1;
 	for(i=(count-2);i>-1;i--)
 	{
-		newPoint = [[current objectAtIndex:i] intValue] + carryover;
-		if(newPoint == ([[startCoords objectAtIndex:i] intValue] + [[lengths objectAtIndex:i] intValue] ))
+		newPoint = [current[i] intValue] + carryover;
+		if(newPoint == ([startCoords[i] intValue] + [lengths[i] intValue] ))
 		{
-			newPoint = [[startCoords objectAtIndex:i] intValue];//reset dim
+			newPoint = [startCoords[i] intValue];//reset dim
 			carryover = 1;
 		}
 		else
@@ -179,7 +179,7 @@
 	int32_t startPosition = 0;
 	for(i=0;i<[coordinates count];i++)
 	{
-		temp = [[coordinates objectAtIndex:i] intValue];
+		temp = [coordinates[i] intValue];
 		for(j=i+1;j<[coordinates count];j++)
 		{
 			temp *= dimensionLengths[j];

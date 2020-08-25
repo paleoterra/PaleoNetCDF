@@ -62,7 +62,7 @@ NCDFErrorHandle *theDefaultErrorHandle;
 
 -(NCDFError *)errorAtIndex:(int)index
 {
-    return [theErrors objectAtIndex:index];
+    return theErrors[index];
 }
 
 -(NSArray *)allErrors
@@ -89,7 +89,7 @@ NCDFErrorHandle *theDefaultErrorHandle;
 -(NSString *)lastErrorString
 {
     NSArray *theArray = [[theErrors lastObject] alertArray];
-    return [NSString stringWithFormat:@"Error: %@\nFile: %@\nClass: %@\nMethod %@\nSub-Method %@\nCode: %i\n",[theArray objectAtIndex:0],[theArray objectAtIndex:1],[theArray objectAtIndex:2],[theArray objectAtIndex:3],[theArray objectAtIndex:4],[[theArray objectAtIndex:5]intValue]];
+    return [NSString stringWithFormat:@"Error: %@\nFile: %@\nClass: %@\nMethod %@\nSub-Method %@\nCode: %i\n",theArray[0],theArray[1],theArray[2],theArray[3],theArray[4],[theArray[5] intValue]];
 }
 
 -(NSArray *)lastErrorForAlert
@@ -112,7 +112,7 @@ NCDFErrorHandle *theDefaultErrorHandle;
     int32_t i;
     for(i=0;i<[theErrors count];i++)
     {
-        [[theErrors objectAtIndex:i] logString];
+        [theErrors[i] logString];
     }
 }
 

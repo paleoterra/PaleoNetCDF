@@ -233,7 +233,7 @@
     initial = [[NSMutableString alloc] init];
     for(i=0;i<[theValues count];i++)
     {
-        [initial appendString:[self stringFromObject:[theValues objectAtIndex:i]]];
+        [initial appendString:[self stringFromObject:theValues[i]]];
     }
     return [NSString stringWithString:initial];
 }
@@ -387,7 +387,7 @@
     else
     {
         theArray = [theHandle getVariables];
-        return [[theArray objectAtIndex:variableID] variableName];
+        return [theArray[variableID] variableName];
     }
     return nil;
 
