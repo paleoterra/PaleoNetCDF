@@ -108,13 +108,13 @@
 	if(self)
 	{
 		NSDictionary *theDict = [NSDictionary dictionaryWithContentsOfURL:url];
-		NSArray *theFiles = [theDict objectForKey:@"files"];
+		NSArray *theFiles = theDict[@"files"];
 		NSMutableArray *tempURLs = [[NSMutableArray alloc] init];
 		int32_t i;
-		if([[theDict objectForKey:@"isSingleDirectory"] isEqualToString:@"YES"])
+		if([theDict[@"isSingleDirectory"] isEqualToString:@"YES"])
 		{
 			_isSingleDirectory = YES;
-			NSString *basePath = [theDict objectForKey:@"directoryPath"];
+			NSString *basePath = theDict[@"directoryPath"];
 			for(i=0;i<[theFiles count];i++)
 			{
 				[tempURLs addObject:[NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:theFiles[i]]]];

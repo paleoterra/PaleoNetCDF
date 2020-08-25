@@ -508,7 +508,7 @@
 
 -(BOOL)createNewVariableAttributePropertyList:(NSDictionary *)propertyList
 {
-    if([self createNewVariableAttributeWithName:[propertyList objectForKey:@"attributeName"] dataType:[[propertyList objectForKey:@"nc_type"] intValue] values:[propertyList objectForKey:@"values"]])
+    if([self createNewVariableAttributeWithName:propertyList[@"attributeName"] dataType:[[propertyList objectForKey:@"nc_type"] intValue] values:propertyList[@"values"]])
     {
 		[theHandle refresh];
 		return YES;
@@ -1727,8 +1727,6 @@
         {
             [theFinalData appendData:theArrayOfData[j]];
         }
-
-
     }
     returnData = [NSData dataWithData:theFinalData];
     return returnData;

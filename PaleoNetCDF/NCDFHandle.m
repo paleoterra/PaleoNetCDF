@@ -478,9 +478,9 @@ static NSLock *fileDatabaseLock;
     BOOL result;
     size_t length;
     int32_t i;
-    i = [[propertyList objectForKey:@"length"] intValue];
+    i = [propertyList[@"length"] intValue];
     length = (size_t)i;
-    result = [self createNewDimensionWithName:[propertyList objectForKey:@"dimName"] size:length];
+    result = [self createNewDimensionWithName:propertyList[@"dimName"] size:length];
     if(result)
         [self refresh];
     return result;
@@ -835,7 +835,7 @@ static NSLock *fileDatabaseLock;
     BOOL result;
     int32_t i;
     i = [[propertyList objectForKey:@"nc_type"] intValue];
-    result = [self createNewGlobalAttributeWithName:[propertyList objectForKey:@"attributeName"] dataType:(nc_type)i values:[propertyList objectForKey:@"values"]];
+    result = [self createNewGlobalAttributeWithName:propertyList[@"attributeName"] dataType:(nc_type)i values:propertyList[@"values"]];
     if(result)
         [self refresh];
     return result;
@@ -978,7 +978,7 @@ static NSLock *fileDatabaseLock;
     NSArray *newDimNames;
     NCDFVariable *aVar;
     newDimIDs = [[NSMutableArray alloc] init];
-    newDimNames = [propertyList objectForKey:@"dimNames"];
+    newDimNames = propertyList[@"dimNames"];
 
     for(i=0;i<[newDimNames count];i++)
     {
@@ -987,12 +987,12 @@ static NSLock *fileDatabaseLock;
     }
 
     i = [[propertyList objectForKey:@"nc_type"] intValue];
-    result = [self createVariableWithName:[propertyList objectForKey:@"variableName"]  type:(nc_type)i dimArray:newDimIDs];
-    if([propertyList objectForKey:@"data"]!=nil)
+    result = [self createVariableWithName:propertyList[@"variableName"] type:(nc_type)i dimArray:newDimIDs];
+    if(propertyList[@"data"]!=nil)
     {
         aVar = nil;
-        aVar = [self retrieveVariableByName:[propertyList objectForKey:@"variableName"] ];
-        [aVar writeAllVariableData:[propertyList objectForKey:@"data"]];
+        aVar = [self retrieveVariableByName:propertyList[@"variableName"]];
+        [aVar writeAllVariableData:propertyList[@"data"]];
 
     }
 
