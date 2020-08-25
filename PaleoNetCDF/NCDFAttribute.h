@@ -221,7 +221,7 @@
 	/*!
     @method updateAttributeWithAttribute:
     @abstract Updates the receiver with information from a new NCDFAttribute.
-    @discussion  This method replaces all the information in an attribute with the information in anAtt, generally used for updated the object from file.  This method should be considered a private method.
+    @discussion  This method replaces all the information in an attribute with the information in anAtt, generally used for updated the object from file.
 	*/
 -(void)updateAttributeWithAttribute:(NCDFAttribute *)anAtt;
 

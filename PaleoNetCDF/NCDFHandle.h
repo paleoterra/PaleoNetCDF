@@ -344,12 +344,6 @@
 	 @discussion Returns the initial unlimited dimension variable's first value as an NSNUmber object.  This method is for sorting the order of NCDFHandles based on the unlimited dimension variable.
 	 */
 -(NSNumber *)compareValue;
-	/*!
-     @method createCompareValue
-	 @abstract Private method for creating the comparison value.
-	 @discussion Private method for creating the comparison value.  The value represents the first step along the unlimited dimension.  If no unlimited dimension exists, it will create a NAN NSNumber object.
-	 */
--(void)createCompareValue;
 -(int)ncidForReadOnly;
 -(void)closeNCID:(int)ncid;
 -(int)ncidWithOpenMode:(int)openMode status:(int32_t *)status;

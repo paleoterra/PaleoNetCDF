@@ -104,23 +104,6 @@
 @discussion Saves a the list of files used in the object to disk as a property list file at url.
 */
 -(BOOL)writeSeriesToURL:(NSURL *)url;
-
-/*!
-@method seedArray
-@abstract Private method
-*/
--(void)seedArrays;
-/*!
-@method seedDimensions
-@abstract Private method
-*/
--(void)seedDimensions;
-/*!
-@method seedVariables
-@abstract Private method
-*/
--(void)seedVariables;
-
 /*!
 @method urls
 @abstract Obtain a list of all the netcdf used by the object.

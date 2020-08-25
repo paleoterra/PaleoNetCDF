@@ -15,6 +15,25 @@
 #import "NCDFSeriesDimension.h"
 #import "NCDFSeriesVariable.h"
 
+@interface NCDFSeriesHandle (Private)
+/*!
+@method seedArray
+@abstract Private method
+*/
+-(void)seedArrays;
+/*!
+@method seedDimensions
+@abstract Private method
+*/
+-(void)seedDimensions;
+/*!
+@method seedVariables
+@abstract Private method
+*/
+-(void)seedVariables;
+
+@end
+
 @implementation NCDFSeriesHandle
 
 -(id)initWithOrderedPathSeries:(NSArray *)paths
